@@ -1,0 +1,49 @@
+[gd_scene format=3 uid="uid://bi38fjjs8nqmb"]
+
+[ext_resource type="PackedScene" uid="uid://d3swmgi1ckxhq" path="res://Characters/Main Character/player.tscn" id="1_y7n76"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_fo826"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pes26"]
+size = Vector2(484, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y7n76"]
+size = Vector2(20, 50)
+
+[node name="Street" type="Node2D" unique_id=254355949]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=237970056]
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D" unique_id=1632168400]
+position = Vector2(244, 104)
+scale = Vector2(483.99997, 20.000004)
+texture = SubResource("PlaceholderTexture2D_fo826")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=798302837]
+position = Vector2(244, 104)
+shape = SubResource("RectangleShape2D_pes26")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="." unique_id=542974657]
+position = Vector2(489.00003, 29.999998)
+rotation = 0.12391838
+scale = Vector2(0.99999994, 0.99999994)
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D2" unique_id=1001097780]
+position = Vector2(244, 104)
+rotation = 0.12391838
+scale = Vector2(483.99997, 20.000004)
+texture = SubResource("PlaceholderTexture2D_fo826")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2" unique_id=622072389]
+position = Vector2(244, 104)
+rotation = 0.12391838
+shape = SubResource("RectangleShape2D_pes26")
+
+[node name="Player" parent="." unique_id=455174183 instance=ExtResource("1_y7n76")]
+position = Vector2(32, 75)
+
+[node name="transisionzone[street2]" type="Area2D" parent="." unique_id=213990322]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="transisionzone[street2]" unique_id=629647417]
+position = Vector2(941, 187)
+shape = SubResource("RectangleShape2D_y7n76")

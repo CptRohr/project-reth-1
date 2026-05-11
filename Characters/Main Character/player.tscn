@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://d3swmgi1ckxhq"]
+
+[ext_resource type="Script" uid="uid://buub0y4nodujs" path="res://Scripts/basic_movement.gd" id="1_5or8t"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_lym1x"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_o4n52"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5or8t"]
+
+[node name="Player" type="Node2D" unique_id=455174183]
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="." unique_id=49715399]
+script = ExtResource("1_5or8t")
+
+[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D" unique_id=762205383]
+scale = Vector2(-19.918274, 30)
+texture = SubResource("PlaceholderTexture2D_lym1x")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D" unique_id=689007749]
+shape = SubResource("CapsuleShape2D_o4n52")
+
+[node name="Camera2D" type="Camera2D" parent="CharacterBody2D" unique_id=1655207131]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CharacterBody2D" unique_id=1044449671]
+
+[node name="interaction detector" type="Area2D" parent="CharacterBody2D" unique_id=1969417363]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D/interaction detector" unique_id=499438296]
+shape = SubResource("CapsuleShape2D_5or8t")
