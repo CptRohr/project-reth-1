@@ -1,10 +1,6 @@
-res://Managers/scene_manager.gd
-res://Characters/Main Character/player.tscn
 res://Areas/street.tscn
-res://Scripts/street.gd
-res://Areas/street.gd
-res://Scripts/basic_movement.gd
-res://Scene/door_transition.tscn
-res://Scripts/door_transition.gd
-res://Areas/street2.tscn
-res://Areas/street_2.gd
+res://Characters/Main Character/player.tscn
+res://Characters/NPC/NPC.dch
+res://Dialogue/test.dtl
+res://Characters/NPC/npc.gd
+res://Characters/NPC/NPC.tscn

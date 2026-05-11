@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://bjm140bsspmyt" path="res://Areas/street.gd" id="1_fo826"]
 [ext_resource type="PackedScene" uid="uid://d3swmgi1ckxhq" path="res://Characters/Main Character/player.tscn" id="1_y7n76"]
 [ext_resource type="PackedScene" uid="uid://bi003gu1i7jjb" path="res://Scene/door_transition.tscn" id="3_pes26"]
+[ext_resource type="PackedScene" uid="uid://cdioa01qum4k4" path="res://Characters/NPC/NPC.tscn" id="4_87pa4"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_fo826"]
 
@@ -62,3 +63,6 @@ offset_top = 39.0
 offset_right = 267.0
 offset_bottom = 62.0
 text = "pintu ke Street2"
+
+[node name="NPC" parent="." unique_id=936224332 instance=ExtResource("4_87pa4")]
+position = Vector2(10, 77)
