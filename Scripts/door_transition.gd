@@ -1,0 +1,22 @@
+extends Area2D
+
+@export_file("*.tscn") var target_scene
+@export var target_spawn := "FromStreet"
+
+var player_inside = false
+
+func _on_body_entered(body):
+	print("ENTERED:", body.name)
+
+	if body.name == "Player":
+		player_inside = true
+		print("PLAYER INSIDE")
+
+func _on_body_exited(body):
+	if body.name == "Player":
+		player_inside = false
+
+func _process(_delta):
+	if player_inside and Input.is_action_just_pressed("interact"):
+		print("TRYING TO CHANGE SCENE")
+		SceneManager.change_scene(target_scene, target_spawn)

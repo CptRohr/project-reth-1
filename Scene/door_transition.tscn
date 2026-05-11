@@ -1,3 +1,21 @@
 [gd_scene format=3 uid="uid://bi003gu1i7jjb"]
 
-[node name="DoorTransition" type="Node2D" unique_id=1977576990]
+[ext_resource type="Script" uid="uid://dkqcpc6q0y6v" path="res://Scripts/door_transition.gd" id="1_8d5ee"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_for01"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_8d5ee"]
+
+[node name="DoorTransition" type="Area2D" unique_id=382549217]
+script = ExtResource("1_8d5ee")
+target_scene = "uid://dhqrdnoowy84n"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1132023451]
+shape = SubResource("CircleShape2D_for01")
+
+[node name="Sprite2D" type="Sprite2D" parent="CollisionShape2D" unique_id=226772982]
+scale = Vector2(12, 14)
+texture = SubResource("PlaceholderTexture2D_8d5ee")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

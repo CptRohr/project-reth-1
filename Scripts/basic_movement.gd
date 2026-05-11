@@ -7,7 +7,8 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 func _physics_process(delta):
 	var direction := Input.get_axis("move_left", "move_right")
-
+	if Input.is_action_just_pressed("interact"):
+		print("INTERACT PRESSED")
 	velocity.x = direction * speed
 	if not is_on_floor():
 		velocity.y += gravity * delta

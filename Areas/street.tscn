@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bjm140bsspmyt" path="res://Areas/street.gd" id="1_fo826"]
 [ext_resource type="PackedScene" uid="uid://d3swmgi1ckxhq" path="res://Characters/Main Character/player.tscn" id="1_y7n76"]
+[ext_resource type="PackedScene" uid="uid://bi003gu1i7jjb" path="res://Scene/door_transition.tscn" id="3_pes26"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_fo826"]
 
@@ -10,6 +11,9 @@ size = Vector2(484, 20)
 
 [node name="Street" type="Node2D" unique_id=254355949]
 script = ExtResource("1_fo826")
+
+[node name="Player" parent="." unique_id=455174183 instance=ExtResource("1_y7n76")]
+position = Vector2(45, 47)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=237970056]
 
@@ -38,11 +42,23 @@ position = Vector2(244, 104)
 rotation = 0.12391838
 shape = SubResource("RectangleShape2D_pes26")
 
-[node name="Player" parent="." unique_id=455174183 instance=ExtResource("1_y7n76")]
-position = Vector2(32, 75)
+[node name="DoorTransition" parent="." unique_id=382549217 instance=ExtResource("3_pes26")]
+position = Vector2(204, 76)
 
 [node name="SpawnPoints" type="Marker2D" parent="." unique_id=587361112]
-position = Vector2(72, 76)
+position = Vector2(204, 76)
 
-[node name="to street2" type="Marker2D" parent="SpawnPoints" unique_id=181685437]
-position = Vector2(870, 111)
+[node name="FromStreet2" type="Marker2D" parent="SpawnPoints" unique_id=181685437]
+
+[node name="Label" type="Label" parent="." unique_id=190530367]
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Street 1"
+
+[node name="Label" type="Label" parent="Label" unique_id=122301574]
+layout_mode = 0
+offset_left = 143.0
+offset_top = 39.0
+offset_right = 267.0
+offset_bottom = 62.0
+text = "pintu ke Street2"

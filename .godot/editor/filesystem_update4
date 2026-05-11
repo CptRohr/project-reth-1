@@ -4,3 +4,7 @@ res://Areas/street.tscn
 res://Scripts/street.gd
 res://Areas/street.gd
 res://Scripts/basic_movement.gd
+res://Scene/door_transition.tscn
+res://Scripts/door_transition.gd
+res://Areas/street2.tscn
+res://Areas/street_2.gd

@@ -1,11 +1,19 @@
 [gd_scene format=3 uid="uid://dhqrdnoowy84n"]
 
+[ext_resource type="PackedScene" uid="uid://d3swmgi1ckxhq" path="res://Characters/Main Character/player.tscn" id="1_i82u8"]
+[ext_resource type="Script" uid="uid://chnkdp0xllg28" path="res://Areas/street_2.gd" id="1_ly3r1"]
+[ext_resource type="PackedScene" uid="uid://bi003gu1i7jjb" path="res://Scene/door_transition.tscn" id="2_3hmcq"]
+
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_3p1aa"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i82u8"]
 size = Vector2(484, 20)
 
 [node name="Street2" type="Node2D" unique_id=1138626659]
+script = ExtResource("1_ly3r1")
+
+[node name="Player" parent="." unique_id=455174183 instance=ExtResource("1_i82u8")]
+position = Vector2(46, 77)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=525494659]
 
@@ -17,3 +25,30 @@ texture = SubResource("PlaceholderTexture2D_3p1aa")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1633724065]
 position = Vector2(244, 104)
 shape = SubResource("RectangleShape2D_i82u8")
+
+[node name="DoorTransition" parent="." unique_id=382549217 instance=ExtResource("2_3hmcq")]
+position = Vector2(204, 76)
+target_scene = "uid://bi38fjjs8nqmb"
+target_spawn = "FromStreet2"
+
+[node name="SpawnPoints" type="Marker2D" parent="." unique_id=383211161]
+position = Vector2(204, 76)
+
+[node name="FromStreet" type="Marker2D" parent="SpawnPoints" unique_id=1655231775]
+
+[node name="Label" type="Label" parent="." unique_id=193113331]
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Street 2"
+
+[node name="Label" type="Label" parent="Label" unique_id=2012542665]
+layout_mode = 0
+offset_left = 144.0
+offset_top = 38.0
+offset_right = 268.0
+offset_bottom = 61.0
+text = "pintu ke Street"
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1680542451]
+offset_right = 40.0
+offset_bottom = 40.0
