@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://bi38fjjs8nqmb"]
 
+[ext_resource type="Script" uid="uid://bjm140bsspmyt" path="res://Areas/street.gd" id="1_fo826"]
 [ext_resource type="PackedScene" uid="uid://d3swmgi1ckxhq" path="res://Characters/Main Character/player.tscn" id="1_y7n76"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_fo826"]
@@ -7,10 +8,8 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pes26"]
 size = Vector2(484, 20)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_y7n76"]
-size = Vector2(20, 50)
-
 [node name="Street" type="Node2D" unique_id=254355949]
+script = ExtResource("1_fo826")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=237970056]
 
@@ -42,8 +41,8 @@ shape = SubResource("RectangleShape2D_pes26")
 [node name="Player" parent="." unique_id=455174183 instance=ExtResource("1_y7n76")]
 position = Vector2(32, 75)
 
-[node name="transisionzone[street2]" type="Area2D" parent="." unique_id=213990322]
+[node name="SpawnPoints" type="Marker2D" parent="." unique_id=587361112]
+position = Vector2(72, 76)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="transisionzone[street2]" unique_id=629647417]
-position = Vector2(941, 187)
-shape = SubResource("RectangleShape2D_y7n76")
+[node name="to street2" type="Marker2D" parent="SpawnPoints" unique_id=181685437]
+position = Vector2(870, 111)

@@ -1,7 +1,8 @@
 63f7b34db8d8cdea90c76aacccf841ec
-::res://::1778488838
+::res://::1778494182
 icon.svg::CompressedTexture2D::7047297600812045813::1778403263::1778403283::1::::<><><>0<>0<>8cd2dc43545da561a44dd320ce5aed39<>res://.godot/imported/icon.svg-218a8f2b3041327d8a5756f3a245f83b.ctex::
-::res://Areas/::1778488505
+::res://Areas/::1778493848
+door.tscn::PackedScene::1117023045278809421::1778493848::0::1::::<><><>0<>0<><>::
 street2.tscn::PackedScene::7684652251966522315::1778487704::0::1::::<><><>0<>0<><>::
 street.tscn::PackedScene::3007747087117709265::1778488505::0::1::::<><><>0<>0<><>::uid://d3swmgi1ckxhq::::res://Characters/Main Character/player.tscn
 ::res://Areas/Indoor/::1778405517
@@ -13,9 +14,10 @@ player.tscn::PackedScene::9163066004567956618::1778488503::0::1::::<><><>0<>0<><
 ::res://Dialogue/::1778405355
 ::res://Events/::1778405465
 ::res://Managers/::1778489521
-scene_manager.gd::GDScript::6327425472722409346::1778489521::0::1::::<>Node<><>0<>0<><>::
-::res://Scene/::1778489568
-transision_layer.tscn::PackedScene::3826333143175602813::1778489568::0::1::::<><><>0<>0<><>::
+scene_manager.gd::GDScript::6327425472722409346::1778492139::0::1::::<>Node<><>0<>0<><>::
+::res://Scene/::1778489634
+door_transition.tscn::PackedScene::3001109150926822551::1778489634::0::1::::<><><>0<>0<><>::
+transition_layer.tscn::PackedScene::3826333143175602813::1778489568::0::1::::<><><>0<>0<><>::
 ::res://Scripts/::1778455704
 basic_movement.gd::GDScript::3831591779344575212::1778455704::0::1::::<>CharacterBody2D<><>0<>0<><>::
 ::res://UI/::1778405374

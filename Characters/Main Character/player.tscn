@@ -21,6 +21,7 @@ texture = SubResource("PlaceholderTexture2D_lym1x")
 shape = SubResource("CapsuleShape2D_o4n52")
 
 [node name="Camera2D" type="Camera2D" parent="CharacterBody2D" unique_id=1655207131]
+zoom = Vector2(2.75, 2.75)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="CharacterBody2D" unique_id=1044449671]
 

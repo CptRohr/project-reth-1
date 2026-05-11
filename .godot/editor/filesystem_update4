@@ -1,1 +1,6 @@
 res://Managers/scene_manager.gd
+res://Characters/Main Character/player.tscn
+res://Areas/street.tscn
+res://Scripts/street.gd
+res://Areas/street.gd
+res://Scripts/basic_movement.gd
