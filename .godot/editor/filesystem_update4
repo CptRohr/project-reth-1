@@ -1,6 +1,8 @@
 res://Areas/street.tscn
-res://Characters/Main Character/player.tscn
+res://Styles/RETH Style.tres
 res://Characters/NPC/NPC.dch
-res://Dialogue/test.dtl
-res://Characters/NPC/npc.gd
+res://Characters/Main Character/player.tscn
+res://Scripts/basic_movement.gd
 res://Characters/NPC/NPC.tscn
+res://Characters/NPC/npc.gd
+res://Dialogue/test.dtl

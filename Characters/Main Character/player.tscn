@@ -1,8 +1,76 @@
 [gd_scene format=3 uid="uid://d3swmgi1ckxhq"]
 
 [ext_resource type="Script" uid="uid://buub0y4nodujs" path="res://Scripts/basic_movement.gd" id="1_5or8t"]
+[ext_resource type="Texture2D" uid="uid://c7ky1klesy23e" path="res://Assets/debug assets/Human Male Model/Sections/PNG/HMMWalkBare.png" id="2_qfc41"]
 
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_lym1x"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_qfc41"]
+atlas = ExtResource("2_qfc41")
+region = Rect2(1792, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6jyk0"]
+atlas = ExtResource("2_qfc41")
+region = Rect2(0, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ko7cq"]
+atlas = ExtResource("2_qfc41")
+region = Rect2(256, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tossv"]
+atlas = ExtResource("2_qfc41")
+region = Rect2(512, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pcm7u"]
+atlas = ExtResource("2_qfc41")
+region = Rect2(768, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hc7ql"]
+atlas = ExtResource("2_qfc41")
+region = Rect2(1024, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lbxrc"]
+atlas = ExtResource("2_qfc41")
+region = Rect2(1280, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pf0a7"]
+atlas = ExtResource("2_qfc41")
+region = Rect2(1536, 0, 256, 256)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kor45"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qfc41")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6jyk0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ko7cq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tossv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pcm7u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hc7ql")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lbxrc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pf0a7")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 8.0
+}]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_o4n52"]
 
@@ -13,19 +81,26 @@
 [node name="Player" type="CharacterBody2D" parent="." unique_id=49715399]
 script = ExtResource("1_5or8t")
 
-[node name="Sprite2D" type="Sprite2D" parent="Player" unique_id=762205383]
-scale = Vector2(-19.918274, 30)
-texture = SubResource("PlaceholderTexture2D_lym1x")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Player" unique_id=995348183]
+position = Vector2(0.99999994, -3.9999998)
+scale = Vector2(0.15625, 0.15625)
+sprite_frames = SubResource("SpriteFrames_kor45")
+animation = &"walk"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player" unique_id=689007749]
 shape = SubResource("CapsuleShape2D_o4n52")
 
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=1655207131]
 zoom = Vector2(2.75, 2.75)
+position_smoothing_enabled = true
+rotation_smoothing_enabled = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Player" unique_id=1044449671]
 
-[node name="InteractionArea" type="Area2D" parent="Player" unique_id=1969417363]
+[node name="InteractionArea" type="Area2D" parent="Player" unique_id=1969417363 groups=["Player"]]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player/InteractionArea" unique_id=499438296]
 shape = SubResource("CapsuleShape2D_5or8t")
+
+[connection signal="area_entered" from="Player/InteractionArea" to="Player" method="_on_interaction_area_area_entered"]
+[connection signal="area_exited" from="Player/InteractionArea" to="Player" method="_on_interaction_area_area_exited"]

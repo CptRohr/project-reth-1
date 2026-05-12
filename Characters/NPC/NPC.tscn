@@ -1,28 +1,29 @@
 [gd_scene format=3 uid="uid://cdioa01qum4k4"]
 
 [ext_resource type="Script" uid="uid://dnyhrmsffy5fg" path="res://Characters/NPC/npc.gd" id="1_eusmg"]
+[ext_resource type="Texture2D" uid="uid://8qemo0bvk24n" path="res://Assets/debug assets/Human Male Model/Sections/PNG/HMMIdleSword.png" id="2_pfeas"]
 
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_puump"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_gmade"]
+atlas = ExtResource("2_pfeas")
+region = Rect2(0, 0, 219.5, 256)
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_eusmg"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_pfeas"]
+radius = 17.0
+height = 42.0
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_eusmg"]
-size = Vector2(48, 30)
-
-[node name="NPC" type="CharacterBody2D" unique_id=936224332 groups=["Player"]]
+[node name="NPC" type="Node2D" unique_id=2048253647 groups=["Player"]]
 script = ExtResource("1_eusmg")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=813939964]
-scale = Vector2(20, 30)
-texture = SubResource("PlaceholderTexture2D_puump")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=995662299]
-shape = SubResource("CapsuleShape2D_eusmg")
+position = Vector2(-0.99999976, -7)
+scale = Vector2(0.17203555, 0.18359375)
+texture = SubResource("AtlasTexture_gmade")
 
 [node name="InteractionArea" type="Area2D" parent="." unique_id=47163714]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea" unique_id=1542298232]
-shape = SubResource("RectangleShape2D_eusmg")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea" unique_id=548873279]
+position = Vector2(0, -4)
+shape = SubResource("CapsuleShape2D_pfeas")
 
-[connection signal="body_entered" from="InteractionArea" to="." method="_on_interaction_area_body_entered"]
-[connection signal="body_exited" from="InteractionArea" to="." method="_on_interaction_area_body_exited"]
+[connection signal="area_entered" from="InteractionArea" to="." method="_on_interaction_area_area_entered"]
+[connection signal="area_exited" from="InteractionArea" to="." method="_on_interaction_area_area_exited"]
