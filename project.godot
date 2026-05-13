@@ -19,13 +19,16 @@ config/icon="res://icon.svg"
 
 SceneManager="*uid://cwfb1jxont4t7"
 Dialogic="*uid://ds2q0uclmolvu"
+Transition="*uid://burrfa5pw6bu0"
 
 [dialogic]
 
 directories/dch_directory={
+"AbangBrewok": "res://Characters/NPC/AbangBrewok.dch",
 "NPC": "res://Characters/NPC/NPC.dch"
 }
 directories/dtl_directory={
+"AbangBrewok": "res://Dialogue/AbangBrewok.dtl",
 "test": "res://Dialogue/test.dtl"
 }
 layout/style_directory={
@@ -36,7 +39,7 @@ layout/style_list=["res://Styles/RETH Style.tres"]
 layout/default_style=""
 variables={}
 extensions_folder="res://addons/dialogic_additions"
-text/letter_speed=0.01
+text/letter_speed=0.03
 text/initial_text_reveal_skippable=true
 text/text_reveal_skip_delay=0.1
 text/advance_delay=0.1
@@ -81,6 +84,9 @@ enabled=PackedStringArray("res://addons/dialogic/plugin.cfg")
 
 folder_colors={
 "res://Areas/": "green",
+"res://Assets/": "yellow",
+"res://Characters/": "teal",
+"res://Dialogue/": "purple",
 "res://Managers/": "yellow",
 "res://Scripts/": "red",
 "res://addons/": "pink"

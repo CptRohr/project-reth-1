@@ -6,13 +6,24 @@
 &"custom_info": {
 "prefix": "",
 "sound_mood_default": "",
-"sound_moods": {},
+"sound_moods": {
+"Mood 1": {
+"mode": 0,
+"name": "Mood 1",
+"pitch_base": 1.0,
+"pitch_variance": 0.0,
+"skip_characters": 0.0,
+"sound_path": "",
+"volume_base": 0.0,
+"volume_variance": 0.0
+}
+},
 "style": "RETH Style",
 "suffix": ""
 },
 &"default_portrait": "test portrait",
 &"description": "test npc",
-&"display_name": "Orang Aring",
+&"display_name": "Prabowo Subianto",
 &"mirror": false,
 &"nicknames": [""],
 &"offset": Vector2(0, 0),
@@ -28,11 +39,11 @@
 },
 "test portrait": {
 "export_overrides": {
-"image": "\"res://Assets/debug assets/HD-mJ5_bgAAgTFs.jpg\""
+"image": "\"res://Assets/debug assets/Prabowo_Subianto_2024_official_portrait.jpg\""
 },
-"ignore_char_scale": true,
+"ignore_char_scale": false,
 "mirror": false,
-"offset": Vector2(0, 0),
+"offset": Vector2(60, 140),
 "scale": 1.0,
 "scene": "res://addons/dialogic/Modules/Character/default_portrait.tscn"
 }

@@ -6,22 +6,22 @@ extends CharacterBody2D
 @onready var interaction_area = get_node("InteractionArea")
 @onready var anim = $AnimatedSprite2D
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
-var can_move = true
+var can_move = true:
+	set(value):
+		can_move = value
+		if not can_move and is_node_ready():
+			play_animation("idle")
 var player_inside = false
 
 
 func _ready():
 	Dialogic.timeline_started.connect(_on_dialogue_started)
 	Dialogic.timeline_ended.connect(_on_dialogue_ended)
-	anim.play("idle")
-	if velocity.x != 0:
-		anim.play("walk")
-	else:
-		anim.play("idle")
-		
+	play_animation("idle")
+
 	print(self.name)
 	print(get_tree_string_pretty())
-	
+	print(Transition)
 
 func _physics_process(delta):
 	var direction := Input.get_axis("move_left", "move_right")
@@ -34,6 +34,7 @@ func _physics_process(delta):
 		if not is_on_floor():
 			velocity.y += gravity * delta
 		move_and_slide()
+		play_animation("idle")
 		return
 
 	velocity.x = direction * speed
@@ -47,11 +48,9 @@ func _physics_process(delta):
 
 	# ANIMATION
 	if direction != 0:
-		if anim.animation != "walk":
-			anim.play("walk")
+		play_animation("walk")
 	else:
-		if anim.animation != "idle":
-			anim.play("idle")
+		play_animation("idle")
 
 func _on_dialogue_started():
 	can_move = false
@@ -62,6 +61,10 @@ func _on_dialogue_ended():
 func update_facing(direction):
 	if direction != 0:
 		$AnimatedSprite2D.flip_h = direction < 0
+
+func play_animation(animation_name: String):
+	if anim.animation != animation_name:
+		anim.play(animation_name)
 
 
 func _on_interaction_area_area_entered(area):

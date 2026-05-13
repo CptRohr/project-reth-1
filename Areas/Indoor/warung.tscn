@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://c2c6213v2o51r"]
+
+[ext_resource type="PackedScene" uid="uid://d3swmgi1ckxhq" path="res://Characters/Main Character/player.tscn" id="1_3h52a"]
+[ext_resource type="Script" uid="uid://ns7vm06wkktb" path="res://Areas/Indoor/warung.gd" id="1_rndmj"]
+[ext_resource type="PackedScene" uid="uid://bi003gu1i7jjb" path="res://Scene/door_transition.tscn" id="2_rndmj"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_koh3u"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gpl03"]
+size = Vector2(484, 20)
+
+[node name="Warung" type="Node2D" unique_id=1553801728]
+script = ExtResource("1_rndmj")
+
+[node name="Player" parent="." unique_id=455174183 instance=ExtResource("1_3h52a")]
+position = Vector2(122, 77)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1890359311]
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D" unique_id=72849359]
+position = Vector2(244, 104)
+scale = Vector2(483.99997, 20.000004)
+texture = SubResource("PlaceholderTexture2D_koh3u")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1497449621]
+position = Vector2(244, 104)
+shape = SubResource("RectangleShape2D_gpl03")
+
+[node name="DoorTransition" parent="." unique_id=382549217 instance=ExtResource("2_rndmj")]
+position = Vector2(183, 80)
+target_scene = "uid://bi38fjjs8nqmb"
+target_spawn = "FromWarung"
+
+[node name="SpawnPoints" type="Marker2D" parent="." unique_id=278694526]
+position = Vector2(183, 80)
+
+[node name="FromStreet" type="Marker2D" parent="SpawnPoints" unique_id=816051819]

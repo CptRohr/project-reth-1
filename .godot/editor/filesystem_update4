@@ -1,8 +1,10 @@
 res://Areas/street.tscn
 res://Styles/RETH Style.tres
-res://Characters/NPC/NPC.dch
-res://Characters/Main Character/player.tscn
+res://Areas/street2.tscn
+res://Areas/Indoor/warung.tscn
+res://Scripts/transition_layer.gd
+res://Scene/transition_layer.tscn
 res://Scripts/basic_movement.gd
-res://Characters/NPC/NPC.tscn
-res://Characters/NPC/npc.gd
-res://Dialogue/test.dtl
+res://Managers/transition_layer.gd
+res://Managers/scene_manager.gd
+res://Scripts/door_transition.gd

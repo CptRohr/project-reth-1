@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://cvsat2wwojd4b"]
+
+[ext_resource type="Script" uid="uid://eq4v17t6fsve" path="res://Characters/NPC/abang_brewok.gd" id="1_d4mls"]
+[ext_resource type="Texture2D" uid="uid://8qemo0bvk24n" path="res://Assets/debug assets/Human Male Model/Sections/PNG/HMMIdleSword.png" id="2_6s6ha"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gmade"]
+atlas = ExtResource("2_6s6ha")
+region = Rect2(0, 0, 219.5, 256)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_pfeas"]
+radius = 17.0
+height = 42.0
+
+[node name="NPC" type="Node2D" unique_id=2048253647 groups=["Player"]]
+script = ExtResource("1_d4mls")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=813939964]
+position = Vector2(-0.99999976, -7)
+scale = Vector2(0.17203555, 0.18359375)
+texture = SubResource("AtlasTexture_gmade")
+
+[node name="InteractionArea" type="Area2D" parent="." unique_id=47163714]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea" unique_id=548873279]
+position = Vector2(0, -4)
+shape = SubResource("CapsuleShape2D_pfeas")
+
+[connection signal="area_entered" from="InteractionArea" to="." method="_on_interaction_area_area_entered"]
+[connection signal="area_exited" from="InteractionArea" to="." method="_on_interaction_area_area_exited"]
