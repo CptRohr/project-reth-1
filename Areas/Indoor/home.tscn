@@ -1,0 +1,57 @@
+[gd_scene format=3 uid="uid://5u3q4ro435i1"]
+
+[ext_resource type="PackedScene" uid="uid://d3swmgi1ckxhq" path="res://Characters/Main Character/player.tscn" id="1_72b0g"]
+[ext_resource type="PackedScene" uid="uid://bi003gu1i7jjb" path="res://Scene/door_transition.tscn" id="2_f6vm4"]
+[ext_resource type="Script" uid="uid://ds7ha60onmcic" path="res://Areas/Indoor/home.gd" id="3_home"]
+[ext_resource type="Script" uid="uid://dcrykd7ugqep5" path="res://Scripts/sleep_interactable.gd" id="4_7rxqh"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_4xh7l"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tw2oj"]
+size = Vector2(484, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wu7jj"]
+size = Vector2(29, 17)
+
+[node name="Home" type="Node2D" unique_id=1748218625]
+script = ExtResource("3_home")
+
+[node name="Player" parent="." unique_id=455174183 instance=ExtResource("1_72b0g")]
+position = Vector2(347, 78)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=903601643]
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D" unique_id=1431447320]
+position = Vector2(244, 104)
+scale = Vector2(483.99997, 20.000004)
+texture = SubResource("PlaceholderTexture2D_4xh7l")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1316150592]
+position = Vector2(244, 104)
+shape = SubResource("RectangleShape2D_tw2oj")
+
+[node name="DoorTransition" parent="." unique_id=382549217 instance=ExtResource("2_f6vm4")]
+position = Vector2(469, 81)
+target_scene = "uid://bi38fjjs8nqmb"
+target_spawn = "FromHome"
+
+[node name="Bed" type="Area2D" parent="." unique_id=1632535900]
+position = Vector2(302, 80)
+script = ExtResource("4_7rxqh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bed" unique_id=1984742946]
+position = Vector2(0.5, 0.5)
+shape = SubResource("RectangleShape2D_wu7jj")
+
+[node name="Label" type="Label" parent="Bed" unique_id=363602486]
+offset_left = -15.0
+offset_top = -12.0
+offset_right = 15.0
+offset_bottom = 11.0
+text = "Bed"
+metadata/_edit_use_anchors_ = true
+
+[node name="SpawnPoints" type="Marker2D" parent="." unique_id=953319728]
+position = Vector2(469, 81)
+
+[node name="FromStreet" type="Marker2D" parent="SpawnPoints" unique_id=604892925]

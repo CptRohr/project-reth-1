@@ -1,13 +1,15 @@
 extends Node2D
 
 @export var timeline_name := "test"
+@export var timeline_rules: Array[Dictionary] = []
 
 var player_inside = false
 
 func _process(_delta):
 	if player_inside and Input.is_action_just_pressed("interact"):
 		if !Dialogic.current_timeline:
-			Dialogic.start(timeline_name)
+			var chosen_timeline := EventManager.choose_timeline(timeline_name, timeline_rules)
+			Dialogic.start(chosen_timeline)
 
 func _on_interaction_area_area_entered(area):
 	print("AREA ENTERED:", area.name)

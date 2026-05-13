@@ -9,6 +9,8 @@
 [ext_resource type="Texture2D" uid="uid://croo63lst6hai" path="res://Assets/debug assets/GandalfHardcore City Tiles/City background layer2.png" id="4_nbdgs"]
 [ext_resource type="Texture2D" uid="uid://b5iejj8tfy5u8" path="res://Assets/debug assets/GandalfHardcore City Tiles/GandalfHardcore city tiles 32x32.png" id="6_78jhs"]
 [ext_resource type="PackedScene" uid="uid://cvsat2wwojd4b" path="res://Characters/NPC/AbangBrewok.tscn" id="9_nbdgs"]
+[ext_resource type="Script" uid="uid://dcrykd7ugqep5" path="res://Scripts/sleep_interactable.gd" id="10_1eb4q"]
+[ext_resource type="Script" uid="uid://5uurhbsc5ucm" path="res://Scripts/activity_interactable.gd" id="11_utl14"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_yb0hq"]
 texture = ExtResource("6_78jhs")
@@ -179,6 +181,11 @@ texture = ExtResource("6_78jhs")
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_yb0hq")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_utl14"]
+size = Vector2(29, 17)
+
+[sub_resource type="LabelSettings" id="LabelSettings_1eb4q"]
+
 [node name="Street" type="Node2D" unique_id=254355949]
 script = ExtResource("1_fo826")
 
@@ -225,6 +232,10 @@ position = Vector2(202, 82)
 position = Vector2(398, 82)
 target_scene = "uid://c2c6213v2o51r"
 
+[node name="DoorTransition3" parent="." unique_id=1093588937 instance=ExtResource("3_pes26")]
+position = Vector2(-86, 82)
+target_scene = "uid://5u3q4ro435i1"
+
 [node name="SpawnPoints" type="Marker2D" parent="." unique_id=587361112]
 position = Vector2(202, 82)
 
@@ -232,6 +243,9 @@ position = Vector2(202, 82)
 
 [node name="FromWarung" type="Marker2D" parent="SpawnPoints" unique_id=693041293]
 position = Vector2(196, 0)
+
+[node name="FromHome" type="Marker2D" parent="SpawnPoints" unique_id=1600367913]
+position = Vector2(-288, 0)
 
 [node name="NPC" parent="." unique_id=936224332 instance=ExtResource("4_87pa4")]
 position = Vector2(8, 81)
@@ -241,12 +255,28 @@ offset_right = 40.0
 offset_bottom = 23.0
 text = "Street 1"
 
+[node name="Label3" type="Label" parent="Label" unique_id=1273494977]
+layout_mode = 0
+offset_left = 335.0
+offset_top = 46.0
+offset_right = 459.0
+offset_bottom = 69.0
+text = "pintu ke Warung"
+
+[node name="Label2" type="Label" parent="Label" unique_id=49173888]
+layout_mode = 0
+offset_left = -147.0
+offset_top = 49.0
+offset_right = -23.0
+offset_bottom = 72.0
+text = "pintu ke Home"
+
 [node name="Label" type="Label" parent="Label" unique_id=122301574]
 layout_mode = 0
 offset_left = 143.0
-offset_top = 39.0
+offset_top = 50.0
 offset_right = 267.0
-offset_bottom = 62.0
+offset_bottom = 73.0
 text = "pintu ke Street2"
 
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=382452151]
@@ -255,3 +285,35 @@ tile_set = SubResource("TileSet_nbdgs")
 
 [node name="NPC2" parent="." unique_id=2048253647 instance=ExtResource("9_nbdgs")]
 position = Vector2(323, 80)
+
+[node name="Bed" type="Area2D" parent="." unique_id=1427247159]
+position = Vector2(56, 82)
+script = ExtResource("10_1eb4q")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bed" unique_id=796610684]
+position = Vector2(0.5, 0.5)
+shape = SubResource("RectangleShape2D_utl14")
+
+[node name="Label" type="Label" parent="Bed" unique_id=467444320]
+offset_left = -15.0
+offset_top = -12.0
+offset_right = 15.0
+offset_bottom = 11.0
+text = "Bed"
+metadata/_edit_use_anchors_ = true
+
+[node name="PassTimeTest" type="Area2D" parent="." unique_id=928059428]
+script = ExtResource("11_utl14")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PassTimeTest" unique_id=1255192626]
+position = Vector2(131.5, 81.5)
+shape = SubResource("RectangleShape2D_utl14")
+
+[node name="Label" type="Label" parent="PassTimeTest" unique_id=1623517974]
+offset_left = 99.0
+offset_top = 67.0
+offset_right = 169.0
+offset_bottom = 90.0
+text = "Passtime"
+label_settings = SubResource("LabelSettings_1eb4q")
+metadata/_edit_use_anchors_ = true

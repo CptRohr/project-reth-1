@@ -1,10 +1,10 @@
+res://Characters/NPC/AbangBrewok.dch
+res://Characters/NPC/NPC.dch
+res://Managers/debug_hud.gd
+res://Managers/game_state.gd
 res://Areas/street.tscn
 res://Styles/RETH Style.tres
-res://Areas/street2.tscn
-res://Areas/Indoor/warung.tscn
-res://Scripts/transition_layer.gd
-res://Scene/transition_layer.tscn
-res://Scripts/basic_movement.gd
-res://Managers/transition_layer.gd
-res://Managers/scene_manager.gd
-res://Scripts/door_transition.gd
+res://Areas/Indoor/home.tscn
+res://Scripts/main_menu.gd
+res://Scene/MainMenu.tscn
+res://Managers/pause_menu.gd

@@ -1,0 +1,122 @@
+[gd_scene format=3 uid="uid://itvrshvxw4t8"]
+
+[ext_resource type="Script" uid="uid://yr7fsm4os8s3" path="res://Scripts/main_menu.gd" id="1_rrxvj"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_rrxvj"]
+font_size = 70
+
+[node name="MainMenu" type="Node2D" unique_id=1904567887]
+script = ExtResource("1_rrxvj")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=455929070]
+
+[node name="Control" type="Control" parent="CanvasLayer" unique_id=1119177702]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control" unique_id=373872087]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -66.0
+offset_top = -64.0
+offset_right = 66.0
+offset_bottom = 64.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/Control/VBoxContainer" unique_id=942704834]
+layout_mode = 2
+text = "RETH GAME 1"
+label_settings = SubResource("LabelSettings_rrxvj")
+horizontal_alignment = 1
+
+[node name="StartButton" type="Button" parent="CanvasLayer/Control/VBoxContainer" unique_id=1198836106]
+layout_mode = 2
+text = "Start"
+
+[node name="SettingsButton" type="Button" parent="CanvasLayer/Control/VBoxContainer" unique_id=1639330726]
+layout_mode = 2
+text = "Settings"
+
+[node name="ExitButton" type="Button" parent="CanvasLayer/Control/VBoxContainer" unique_id=1834787999]
+layout_mode = 2
+text = "Exit"
+
+[node name="SettingsPanel" type="PanelContainer" parent="CanvasLayer/Control"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -160.0
+offset_top = -118.0
+offset_right = 160.0
+offset_bottom = 118.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Control/SettingsPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control/SettingsPanel/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Title" type="Label" parent="CanvasLayer/Control/SettingsPanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Settings"
+horizontal_alignment = 1
+
+[node name="ResolutionRow" type="HBoxContainer" parent="CanvasLayer/Control/SettingsPanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="ResolutionLabel" type="Label" parent="CanvasLayer/Control/SettingsPanel/MarginContainer/VBoxContainer/ResolutionRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Resolution"
+
+[node name="ResolutionOptions" type="OptionButton" parent="CanvasLayer/Control/SettingsPanel/MarginContainer/VBoxContainer/ResolutionRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="FullscreenCheck" type="CheckBox" parent="CanvasLayer/Control/SettingsPanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Fullscreen"
+
+[node name="VsyncCheck" type="CheckBox" parent="CanvasLayer/Control/SettingsPanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "VSync"
+
+[node name="StatusLabel" type="Label" parent="CanvasLayer/Control/SettingsPanel/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+horizontal_alignment = 1
+
+[node name="ButtonRow" type="HBoxContainer" parent="CanvasLayer/Control/SettingsPanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="ApplyButton" type="Button" parent="CanvasLayer/Control/SettingsPanel/MarginContainer/VBoxContainer/ButtonRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Apply"
+
+[node name="BackButton" type="Button" parent="CanvasLayer/Control/SettingsPanel/MarginContainer/VBoxContainer/ButtonRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Back"
