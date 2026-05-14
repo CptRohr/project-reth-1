@@ -8,3 +8,5 @@ res://Areas/Indoor/home.tscn
 res://Scripts/main_menu.gd
 res://Scene/MainMenu.tscn
 res://Managers/pause_menu.gd
+res://Scripts/bootscreen.gd
+res://Scene/BootScene.tscn

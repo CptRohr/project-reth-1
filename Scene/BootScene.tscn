@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://be6k2qhq0icje"]
+
+[ext_resource type="Script" uid="uid://bu05g6n1sltem" path="res://Scripts/bootscreen.gd" id="1_l0e6s"]
+[ext_resource type="VideoStream" uid="uid://cjsdmdasoq5r3" path="res://Assets/Videos/SplashScreen.ogv" id="2_nfh2s"]
+
+[node name="BootScene" type="Control" unique_id=1960392239]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_l0e6s")
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="." unique_id=725803187]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+expand = true
+stream = ExtResource("2_nfh2s")

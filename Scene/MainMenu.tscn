@@ -1,8 +1,10 @@
 [gd_scene format=3 uid="uid://itvrshvxw4t8"]
 
 [ext_resource type="Script" uid="uid://yr7fsm4os8s3" path="res://Scripts/main_menu.gd" id="1_rrxvj"]
+[ext_resource type="FontFile" uid="uid://b38rgofq4civw" path="res://Fonts/VCR_OSD_MONO_1.001.ttf" id="2_c6fb4"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_rrxvj"]
+font = ExtResource("2_c6fb4")
 font_size = 70
 
 [node name="MainMenu" type="Node2D" unique_id=1904567887]
@@ -32,7 +34,7 @@ offset_bottom = 64.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Label" type="Label" parent="CanvasLayer/Control/VBoxContainer" unique_id=942704834]
+[node name="Title" type="Label" parent="CanvasLayer/Control/VBoxContainer" unique_id=942704834]
 layout_mode = 2
 text = "RETH GAME 1"
 label_settings = SubResource("LabelSettings_rrxvj")
@@ -50,7 +52,7 @@ text = "Settings"
 layout_mode = 2
 text = "Exit"
 
-[node name="SettingsPanel" type="PanelContainer" parent="CanvasLayer/Control"]
+[node name="SettingsPanel" type="PanelContainer" parent="CanvasLayer/Control" unique_id=1706783845]
 visible = false
 layout_mode = 1
 anchors_preset = 8
@@ -65,58 +67,58 @@ offset_bottom = 118.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Control/SettingsPanel"]
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Control/SettingsPanel" unique_id=226071030]
 layout_mode = 2
 theme_override_constants/margin_left = 12
 theme_override_constants/margin_top = 12
 theme_override_constants/margin_right = 12
 theme_override_constants/margin_bottom = 12
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control/SettingsPanel/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control/SettingsPanel/MarginContainer" unique_id=1793199899]
 layout_mode = 2
 theme_override_constants/separation = 8
 
-[node name="Title" type="Label" parent="CanvasLayer/Control/SettingsPanel/MarginContainer/VBoxContainer"]
+[node name="Title" type="Label" parent="CanvasLayer/Control/SettingsPanel/MarginContainer/VBoxContainer" unique_id=18527251]
 layout_mode = 2
 text = "Settings"
 horizontal_alignment = 1
 
-[node name="ResolutionRow" type="HBoxContainer" parent="CanvasLayer/Control/SettingsPanel/MarginContainer/VBoxContainer"]
+[node name="ResolutionRow" type="HBoxContainer" parent="CanvasLayer/Control/SettingsPanel/MarginContainer/VBoxContainer" unique_id=1864754561]
 layout_mode = 2
 theme_override_constants/separation = 8
 
-[node name="ResolutionLabel" type="Label" parent="CanvasLayer/Control/SettingsPanel/MarginContainer/VBoxContainer/ResolutionRow"]
+[node name="ResolutionLabel" type="Label" parent="CanvasLayer/Control/SettingsPanel/MarginContainer/VBoxContainer/ResolutionRow" unique_id=863353775]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Resolution"
 
-[node name="ResolutionOptions" type="OptionButton" parent="CanvasLayer/Control/SettingsPanel/MarginContainer/VBoxContainer/ResolutionRow"]
+[node name="ResolutionOptions" type="OptionButton" parent="CanvasLayer/Control/SettingsPanel/MarginContainer/VBoxContainer/ResolutionRow" unique_id=172077103]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="FullscreenCheck" type="CheckBox" parent="CanvasLayer/Control/SettingsPanel/MarginContainer/VBoxContainer"]
+[node name="FullscreenCheck" type="CheckBox" parent="CanvasLayer/Control/SettingsPanel/MarginContainer/VBoxContainer" unique_id=668779874]
 layout_mode = 2
 text = "Fullscreen"
 
-[node name="VsyncCheck" type="CheckBox" parent="CanvasLayer/Control/SettingsPanel/MarginContainer/VBoxContainer"]
+[node name="VsyncCheck" type="CheckBox" parent="CanvasLayer/Control/SettingsPanel/MarginContainer/VBoxContainer" unique_id=862556144]
 layout_mode = 2
 text = "VSync"
 
-[node name="StatusLabel" type="Label" parent="CanvasLayer/Control/SettingsPanel/MarginContainer/VBoxContainer"]
+[node name="StatusLabel" type="Label" parent="CanvasLayer/Control/SettingsPanel/MarginContainer/VBoxContainer" unique_id=210860596]
 custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
 horizontal_alignment = 1
 
-[node name="ButtonRow" type="HBoxContainer" parent="CanvasLayer/Control/SettingsPanel/MarginContainer/VBoxContainer"]
+[node name="ButtonRow" type="HBoxContainer" parent="CanvasLayer/Control/SettingsPanel/MarginContainer/VBoxContainer" unique_id=1038873131]
 layout_mode = 2
 theme_override_constants/separation = 8
 
-[node name="ApplyButton" type="Button" parent="CanvasLayer/Control/SettingsPanel/MarginContainer/VBoxContainer/ButtonRow"]
+[node name="ApplyButton" type="Button" parent="CanvasLayer/Control/SettingsPanel/MarginContainer/VBoxContainer/ButtonRow" unique_id=520373748]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Apply"
 
-[node name="BackButton" type="Button" parent="CanvasLayer/Control/SettingsPanel/MarginContainer/VBoxContainer/ButtonRow"]
+[node name="BackButton" type="Button" parent="CanvasLayer/Control/SettingsPanel/MarginContainer/VBoxContainer/ButtonRow" unique_id=31973658]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Back"
