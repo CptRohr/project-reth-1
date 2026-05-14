@@ -10,3 +10,8 @@ res://Scene/MainMenu.tscn
 res://Managers/pause_menu.gd
 res://Scripts/bootscreen.gd
 res://Scene/BootScene.tscn
+res://Managers/event_manager.gd
+res://Managers/calendar_manager.gd
+res://Scripts/sleep_interactable.gd
+res://Managers/school_summary.gd
+res://Scripts/school_interactable.gd

@@ -32,6 +32,24 @@ func _matches_rule(rule: Dictionary) -> bool:
 	if rule.has("day_max") and GameState.day > int(rule["day_max"]):
 		return false
 
+	if rule.has("date") and GameState.get_date_key() != str(rule["date"]):
+		return false
+
+	if rule.has("date_min"):
+		var min_index: int = get_calendar_manager().parse_date_key(str(rule["date_min"]))
+		if min_index != -1 and GameState.calendar_day_index < min_index:
+			return false
+
+	if rule.has("date_max"):
+		var max_index: int = get_calendar_manager().parse_date_key(str(rule["date_max"]))
+		if max_index != -1 and GameState.calendar_day_index > max_index:
+			return false
+
+	if rule.has("weekday"):
+		var current_weekday := str(get_calendar_manager().get_date_info(GameState.calendar_day_index)["weekday"])
+		if current_weekday != str(rule["weekday"]):
+			return false
+
 	if rule.has("time_block") and GameState.time_block != str(rule["time_block"]):
 		return false
 
@@ -52,3 +70,7 @@ func _completed_flag(event_id: String) -> String:
 
 func _last_day_flag(event_id: String) -> String:
 	return "event.%s.last_day" % event_id
+
+
+func get_calendar_manager():
+	return get_node("/root/CalendarManager")

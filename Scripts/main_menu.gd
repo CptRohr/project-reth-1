@@ -31,6 +31,7 @@ func _ready() -> void:
 
 
 func _on_start_pressed() -> void:
+	GameState.start_new_game()
 	SceneManager.spawn_id = ""
 	get_tree().change_scene_to_file(first_scene_path)
 

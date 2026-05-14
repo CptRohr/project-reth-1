@@ -41,7 +41,7 @@ func _update_text() -> void:
 	var scene_name := GameState.current_scene.get_file()
 	var lines := [
 		"FPS: %s" % Engine.get_frames_per_second(),
-		"Day: %s" % GameState.day,
+		"Date: %s" % GameState.get_display_date(),
 		"Time: %s" % GameState.get_time_block_label(),
 		"Spawn: %s" % _empty_text(GameState.current_spawn),
 		"Scene: %s" % _empty_text(scene_name),
@@ -57,7 +57,7 @@ func _update_text() -> void:
 
 
 func _on_day_changed(new_day) -> void:
-	show_message("Slept. Day %s started." % new_day)
+	show_message("New day: %s" % GameState.get_display_date())
 
 
 func _on_message_timer_timeout() -> void:

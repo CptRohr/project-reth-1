@@ -1,6 +1,6 @@
 extends Area2D
 
-@export var save_after_sleep := true
+@export var save_after_school := true
 
 var player_inside := false
 
@@ -15,13 +15,15 @@ func _ready():
 
 func _process(_delta):
 	if player_inside and Input.is_action_just_pressed("interact"):
-		GameState.sleep_to_next_day()
+		if GameState.time_block != "morning":
+			show_debug_message("School is only available in the morning.")
+			return
 
-		if save_after_sleep:
-			if GameState.save_game():
-				show_debug_message("Slept and saved. %s." % GameState.get_display_date())
-			else:
-				show_debug_message("Slept, but save failed.")
+		if not get_calendar_manager().is_school_day(GameState.calendar_day_index):
+			show_debug_message("There is no school today.")
+			return
+
+		SchoolSummary.show_for_current_day(save_after_school)
 
 
 func show_debug_message(message: String) -> void:
@@ -29,6 +31,10 @@ func show_debug_message(message: String) -> void:
 
 	if debug_hud != null:
 		debug_hud.show_message(message)
+
+
+func get_calendar_manager():
+	return get_node("/root/CalendarManager")
 
 
 func _on_body_entered(body):

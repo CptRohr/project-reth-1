@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://c73eekpd1dl31" path="res://Assets/debug assets/GandalfHardcore City Tiles/Building Tiles 32x32.png" id="9_nkyrm"]
 [ext_resource type="Script" uid="uid://dcrykd7ugqep5" path="res://Scripts/sleep_interactable.gd" id="10_1eb4q"]
 [ext_resource type="Script" uid="uid://5uurhbsc5ucm" path="res://Scripts/activity_interactable.gd" id="11_utl14"]
+[ext_resource type="Script" uid="uid://do5vk0tirle8m" path="res://Scripts/school_interactable.gd" id="12_a2c52"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_yb0hq"]
 texture = ExtResource("6_78jhs")
@@ -918,6 +919,23 @@ offset_top = -12.0
 offset_right = 15.0
 offset_bottom = 11.0
 text = "Bed"
+metadata/_edit_use_anchors_ = true
+
+[node name="SchoolPasstime" type="Area2D" parent="." unique_id=1184743744]
+position = Vector2(-339, -1)
+script = ExtResource("12_a2c52")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SchoolPasstime" unique_id=1957991177]
+position = Vector2(131.5, 81.5)
+shape = SubResource("RectangleShape2D_utl14")
+
+[node name="Label" type="Label" parent="SchoolPasstime" unique_id=1187596095]
+offset_left = 74.0
+offset_top = 68.0
+offset_right = 195.0
+offset_bottom = 91.0
+text = "SchoolPasstime"
+label_settings = SubResource("LabelSettings_1eb4q")
 metadata/_edit_use_anchors_ = true
 
 [node name="PassTimeTest" type="Area2D" parent="." unique_id=928059428]

@@ -25,6 +25,8 @@ GameState="*res://Managers/game_state.gd"
 EventManager="*res://Managers/event_manager.gd"
 DebugHud="*res://Managers/debug_hud.gd"
 PauseMenu="*res://Managers/pause_menu.gd"
+CalendarManager="*res://Managers/calendar_manager.gd"
+SchoolSummary="*res://Managers/school_summary.gd"
 
 [dialogic]
 

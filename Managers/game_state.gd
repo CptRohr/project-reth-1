@@ -16,8 +16,12 @@ const TIME_BLOCK_LABELS := {
 	"evening": "Evening",
 	"night": "Night",
 }
-
-var day := 1
+var calendar_day_index := 0
+var day: int:
+	get:
+		return calendar_day_index + 1
+	set(value):
+		calendar_day_index = get_calendar_manager().clamp_day_index(value - 1)
 var time_block := "morning"
 var flags := {}
 var stats := {}
@@ -57,6 +61,24 @@ func clear_flag(flag_name: String) -> void:
 
 func get_time_block_label() -> String:
 	return TIME_BLOCK_LABELS.get(time_block, time_block.capitalize())
+
+
+func get_display_date() -> String:
+	return get_calendar_manager().get_display_date(calendar_day_index)
+
+
+func get_date_key() -> String:
+	return str(get_calendar_manager().get_date_info(calendar_day_index)["date_key"])
+
+
+func set_time_block(new_time_block: String) -> void:
+	if not TIME_BLOCKS.has(new_time_block):
+		push_warning("Unknown time block: %s" % new_time_block)
+		return
+
+	time_block = new_time_block
+	time_block_changed.emit(time_block)
+	state_changed.emit()
 
 
 func advance_time_block(amount := 1) -> void:
@@ -100,15 +122,24 @@ func _advance_one_time_block() -> void:
 
 
 func sleep_to_next_day() -> void:
-	day += 1
+	calendar_day_index = get_calendar_manager().clamp_day_index(calendar_day_index + 1)
 	time_block = "morning"
 	day_changed.emit(day)
 	time_block_changed.emit(time_block)
 	state_changed.emit()
 
 
+func finish_morning_school() -> void:
+	if time_block == "morning":
+		set_time_block("after_school")
+
+
+func start_new_game() -> void:
+	reset_game()
+
+
 func reset_game() -> void:
-	day = 1
+	calendar_day_index = 0
 	time_block = "morning"
 	flags.clear()
 	stats.clear()
@@ -120,7 +151,7 @@ func reset_game() -> void:
 
 func to_save_data() -> Dictionary:
 	return {
-		"day": day,
+		"calendar_day_index": calendar_day_index,
 		"time_block": time_block,
 		"flags": flags,
 		"stats": stats,
@@ -130,7 +161,11 @@ func to_save_data() -> Dictionary:
 
 
 func load_from_data(data: Dictionary) -> void:
-	day = int(data.get("day", 1))
+	if data.has("calendar_day_index"):
+		calendar_day_index = get_calendar_manager().clamp_day_index(int(data["calendar_day_index"]))
+	else:
+		calendar_day_index = get_calendar_manager().clamp_day_index(int(data.get("day", 1)) - 1)
+
 	time_block = str(data.get("time_block", "morning"))
 	if time_block == "afternoon":
 		time_block = "after_school"
@@ -171,3 +206,7 @@ func load_game() -> bool:
 
 	push_error("Save file is not valid JSON data.")
 	return false
+
+
+func get_calendar_manager():
+	return get_node("/root/CalendarManager")

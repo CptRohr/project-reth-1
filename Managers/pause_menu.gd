@@ -11,6 +11,9 @@ var root_control: Control
 var root_panel: PanelContainer
 var main_row: HBoxContainer
 var settings_box: VBoxContainer
+var calendar_box: VBoxContainer
+var calendar_month_label: Label
+var calendar_grid: GridContainer
 var resolution_options: OptionButton
 var fullscreen_check: CheckBox
 var vsync_check: CheckBox
@@ -42,6 +45,7 @@ func show_pause_menu() -> void:
 	root_control.visible = true
 	main_row.visible = true
 	settings_box.visible = false
+	calendar_box.visible = false
 	status_label.text = ""
 
 
@@ -60,7 +64,7 @@ func _build_ui() -> void:
 	root_control.add_child(center_container)
 
 	root_panel = PanelContainer.new()
-	root_panel.custom_minimum_size = Vector2(680, 160)
+	root_panel.custom_minimum_size = Vector2(760, 420)
 	center_container.add_child(root_panel)
 
 	var margin := MarginContainer.new()
@@ -84,6 +88,7 @@ func _build_ui() -> void:
 	stack.add_child(main_row)
 
 	_add_button(main_row, "Resume", hide_pause_menu)
+	_add_button(main_row, "Calendar", _show_calendar)
 	_add_button(main_row, "Settings", _show_settings)
 	_add_button(main_row, "Main Menu", _go_to_main_menu)
 	_add_button(main_row, "Quit Game", Callable(get_tree(), "quit"))
@@ -125,6 +130,7 @@ func _build_ui() -> void:
 	_add_button(settings_buttons, "Apply", _apply_settings)
 	_add_button(settings_buttons, "Back", _show_main_buttons)
 
+	_build_calendar_ui(stack)
 	_setup_settings_values()
 
 
@@ -140,6 +146,7 @@ func _add_button(parent: Control, text: String, callback: Callable) -> Button:
 
 func _show_settings() -> void:
 	main_row.visible = false
+	calendar_box.visible = false
 	settings_box.visible = true
 	status_label.text = ""
 	_setup_settings_values()
@@ -148,6 +155,68 @@ func _show_settings() -> void:
 func _show_main_buttons() -> void:
 	main_row.visible = true
 	settings_box.visible = false
+	calendar_box.visible = false
+
+
+func _show_calendar() -> void:
+	main_row.visible = false
+	settings_box.visible = false
+	calendar_box.visible = true
+	_refresh_calendar_view()
+
+
+func _build_calendar_ui(parent: Control) -> void:
+	calendar_box = VBoxContainer.new()
+	calendar_box.add_theme_constant_override("separation", 8)
+	parent.add_child(calendar_box)
+
+	calendar_month_label = Label.new()
+	calendar_month_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	calendar_box.add_child(calendar_month_label)
+
+	calendar_grid = GridContainer.new()
+	calendar_grid.columns = 7
+	calendar_box.add_child(calendar_grid)
+
+	var calendar_buttons := HBoxContainer.new()
+	calendar_buttons.add_theme_constant_override("separation", 8)
+	calendar_box.add_child(calendar_buttons)
+
+	_add_button(calendar_buttons, "Back", _show_main_buttons)
+	calendar_box.visible = false
+
+
+func _refresh_calendar_view() -> void:
+	for child in calendar_grid.get_children():
+		child.queue_free()
+
+	var calendar_manager = get_node("/root/CalendarManager")
+	var date_info: Dictionary = calendar_manager.get_date_info(GameState.calendar_day_index)
+	var month := int(date_info["month"])
+	calendar_month_label.text = "%s %s" % [date_info["month_name"], calendar_manager.STORY_YEAR]
+
+	for weekday in ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]:
+		var header := Label.new()
+		header.text = weekday
+		header.custom_minimum_size = Vector2(96, 24)
+		header.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+		calendar_grid.add_child(header)
+
+	for cell in calendar_manager.get_month_grid(month, GameState.calendar_day_index):
+		var label := Label.new()
+		label.custom_minimum_size = Vector2(96, 48)
+		label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+		label.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
+
+		if cell.is_empty():
+			label.text = ""
+		else:
+			label.text = "%s\n%s" % [cell["day"], cell["routine"]]
+
+			if bool(cell["is_today"]):
+				label.add_theme_color_override("font_color", Color.YELLOW)
+
+		calendar_grid.add_child(label)
 
 
 func _setup_settings_values() -> void:
