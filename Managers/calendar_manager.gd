@@ -34,6 +34,20 @@ const MONTH_LENGTHS := {
 	12: 31,
 }
 const STORY_MONTHS := [4, 5, 6, 7, 8, 9, 10, 11, 12, 1, 2, 3]
+const DAILY_PLANS := {
+	"05/12": {
+		"planned_activities": ["Study at library"],
+		"objectives": ["Study at library"],
+		"reminders": [],
+		"events": [],
+	},
+	"05/13": {
+		"planned_activities": ["Meet Alex after school"],
+		"objectives": ["Meet Alex after school"],
+		"reminders": [],
+		"events": [],
+	},
+}
 
 var month_start_indices := {}
 var total_days := 0
@@ -134,6 +148,50 @@ func get_routine_label(day_index: int) -> String:
 	return "Free Day"
 
 
+func get_daily_plan(day_index: int) -> Dictionary:
+	var date_key := str(get_date_info(day_index)["date_key"])
+
+	if not DAILY_PLANS.has(date_key):
+		return {
+			"planned_activities": [],
+			"objectives": [],
+			"reminders": [],
+			"events": [],
+		}
+
+	var plan: Dictionary = DAILY_PLANS[date_key].duplicate(true)
+	plan["planned_activities"] = plan.get("planned_activities", [])
+	plan["objectives"] = plan.get("objectives", [])
+	plan["reminders"] = plan.get("reminders", [])
+	plan["events"] = plan.get("events", [])
+	return plan
+
+
+func get_current_daily_plan() -> Dictionary:
+	return get_daily_plan(GameState.calendar_day_index)
+
+
+func has_daily_plan(day_index: int) -> bool:
+	var plan: Dictionary = get_daily_plan(day_index)
+	return (
+		not plan["planned_activities"].is_empty()
+		or not plan["objectives"].is_empty()
+		or not plan["reminders"].is_empty()
+		or not plan["events"].is_empty()
+	)
+
+
+func get_daily_plan_summary(day_index: int) -> String:
+	var plan: Dictionary = get_daily_plan(day_index)
+
+	for key in ["objectives", "planned_activities", "reminders", "events"]:
+		var entries = plan[key]
+		if not entries.is_empty():
+			return str(entries[0])
+
+	return ""
+
+
 func get_month_grid(month: int, selected_day_index: int) -> Array:
 	_ensure_calendar_index()
 	var cells := []
@@ -155,6 +213,8 @@ func get_month_grid(month: int, selected_day_index: int) -> Array:
 			"day": day_of_month,
 			"is_today": day_index == selected_day_index,
 			"routine": get_routine_label(day_index),
+			"has_plan": has_daily_plan(day_index),
+			"plan_summary": get_daily_plan_summary(day_index),
 			"weekday": get_date_info(day_index)["weekday"],
 		})
 

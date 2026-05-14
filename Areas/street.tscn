@@ -873,12 +873,12 @@ position = Vector2(-288, 0)
 [node name="NPC" parent="." unique_id=936224332 instance=ExtResource("4_87pa4")]
 position = Vector2(8, 81)
 
-[node name="Label" type="Label" parent="." unique_id=190530367]
+[node name="DebugLabel" type="Label" parent="." unique_id=190530367]
 offset_right = 61.0
 offset_bottom = 23.0
 text = "Street 1"
 
-[node name="Label3" type="Label" parent="Label" unique_id=1273494977]
+[node name="Label3" type="Label" parent="DebugLabel" unique_id=1273494977]
 layout_mode = 0
 offset_left = 336.0
 offset_top = 44.0
@@ -886,7 +886,7 @@ offset_right = 465.0
 offset_bottom = 67.0
 text = "pintu ke Warung"
 
-[node name="Label2" type="Label" parent="Label" unique_id=49173888]
+[node name="Label2" type="Label" parent="DebugLabel" unique_id=49173888]
 layout_mode = 0
 offset_left = -147.0
 offset_top = 49.0
@@ -894,7 +894,7 @@ offset_right = -23.0
 offset_bottom = 72.0
 text = "pintu ke Home"
 
-[node name="Label" type="Label" parent="Label" unique_id=122301574]
+[node name="Label" type="Label" parent="DebugLabel" unique_id=122301574]
 layout_mode = 0
 offset_left = 143.0
 offset_top = 50.0
@@ -940,6 +940,14 @@ metadata/_edit_use_anchors_ = true
 
 [node name="PassTimeTest" type="Area2D" parent="." unique_id=928059428]
 script = ExtResource("11_utl14")
+activity_id = "study_library"
+activity_name = "Studying"
+stat_changes = {
+"Knowledge": 2
+}
+energy_cost = 2
+minimum_energy = 2
+success_message = "Studied at the library. Knowledge +2. Energy -2."
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PassTimeTest" unique_id=1255192626]
 position = Vector2(131.5, 81.5)
@@ -950,6 +958,6 @@ offset_left = 99.0
 offset_top = 67.0
 offset_right = 169.0
 offset_bottom = 90.0
-text = "Passtime"
+text = "Study"
 label_settings = SubResource("LabelSettings_1eb4q")
 metadata/_edit_use_anchors_ = true

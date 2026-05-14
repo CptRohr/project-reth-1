@@ -15,3 +15,4 @@ res://Managers/calendar_manager.gd
 res://Scripts/sleep_interactable.gd
 res://Managers/school_summary.gd
 res://Scripts/school_interactable.gd
+res://Scripts/activity_interactable.gd

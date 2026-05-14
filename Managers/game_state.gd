@@ -16,6 +16,18 @@ const TIME_BLOCK_LABELS := {
 	"evening": "Evening",
 	"night": "Night",
 }
+const STAT_MIN := 0
+const STAT_MAX := 100
+const ENERGY_STAT := "Energy"
+const DEFAULT_ENERGY := 100
+const PLAYER_STATS := [
+	"Knowledge",
+	"Charm",
+	"Courage",
+	"Social",
+	"Creativity",
+	ENERGY_STAT,
+]
 var calendar_day_index := 0
 var day: int:
 	get:
@@ -86,20 +98,30 @@ func advance_time_block(amount := 1) -> void:
 		_advance_one_time_block()
 
 
-func perform_activity(activity_id: String, activity_name := "", time_blocks_to_advance := 1, stat_changes: Dictionary = {}) -> void:
+func perform_activity(activity_id: String, activity_name := "", time_blocks_to_advance := 1, stat_changes: Dictionary = {}, energy_cost := 0, minimum_energy := -1) -> bool:
+	if not can_perform_activity(energy_cost, minimum_energy):
+		return false
+
 	apply_stat_changes(stat_changes)
+	spend_energy(energy_cost)
 	activity_completed.emit(activity_id, activity_name)
 	advance_time_block(time_blocks_to_advance)
+	return true
+
+
+func can_perform_activity(energy_cost := 0, minimum_energy := -1) -> bool:
+	var required_energy := energy_cost
+
+	if minimum_energy >= 0:
+		required_energy = minimum_energy
+
+	return can_spend_energy(required_energy)
 
 
 func apply_stat_changes(stat_changes: Dictionary) -> void:
 	for stat_name in stat_changes:
 		var change := int(stat_changes[stat_name])
-		var current_value := int(stats.get(stat_name, 0))
-		var new_value := current_value + change
-
-		stats[stat_name] = new_value
-		stat_changed.emit(stat_name, new_value, change)
+		add_stat(str(stat_name), change, false)
 
 	if not stat_changes.is_empty():
 		state_changed.emit()
@@ -107,6 +129,75 @@ func apply_stat_changes(stat_changes: Dictionary) -> void:
 
 func get_stat(stat_name: String, default_value := 0) -> int:
 	return int(stats.get(stat_name, default_value))
+
+
+func set_stat(stat_name: String, value: int) -> void:
+	var old_value := get_stat(stat_name, get_default_stat_value(stat_name))
+	var new_value := clamp_stat_value(value)
+	stats[stat_name] = new_value
+	stat_changed.emit(stat_name, new_value, new_value - old_value)
+	state_changed.emit()
+
+
+func add_stat(stat_name: String, amount: int, emit_state_update := true) -> void:
+	var old_value := get_stat(stat_name, get_default_stat_value(stat_name))
+	var new_value := clamp_stat_value(old_value + amount)
+	stats[stat_name] = new_value
+	stat_changed.emit(stat_name, new_value, new_value - old_value)
+
+	if emit_state_update:
+		state_changed.emit()
+
+
+func can_spend_energy(amount: int) -> bool:
+	return get_stat(ENERGY_STAT, DEFAULT_ENERGY) >= max(amount, 0)
+
+
+func spend_energy(amount: int) -> bool:
+	var energy_cost: int = max(amount, 0)
+
+	if energy_cost <= 0:
+		return true
+
+	if not can_spend_energy(energy_cost):
+		return false
+
+	add_stat(ENERGY_STAT, -energy_cost, false)
+	state_changed.emit()
+	return true
+
+
+func restore_energy(amount := DEFAULT_ENERGY) -> void:
+	set_stat(ENERGY_STAT, amount)
+
+
+func get_default_stat_value(stat_name: String) -> int:
+	if stat_name == ENERGY_STAT:
+		return DEFAULT_ENERGY
+
+	return STAT_MIN
+
+
+func get_player_stats() -> Dictionary:
+	ensure_default_stats()
+	var player_stats := {}
+
+	for stat_name in PLAYER_STATS:
+		player_stats[stat_name] = get_stat(stat_name, get_default_stat_value(stat_name))
+
+	return player_stats
+
+
+func ensure_default_stats() -> void:
+	for stat_name in PLAYER_STATS:
+		if not stats.has(stat_name):
+			stats[stat_name] = get_default_stat_value(stat_name)
+		else:
+			stats[stat_name] = clamp_stat_value(int(stats[stat_name]))
+
+
+func clamp_stat_value(value: int) -> int:
+	return int(clamp(value, STAT_MIN, STAT_MAX))
 
 
 func _advance_one_time_block() -> void:
@@ -124,6 +215,7 @@ func _advance_one_time_block() -> void:
 func sleep_to_next_day() -> void:
 	calendar_day_index = get_calendar_manager().clamp_day_index(calendar_day_index + 1)
 	time_block = "morning"
+	restore_energy()
 	day_changed.emit(day)
 	time_block_changed.emit(time_block)
 	state_changed.emit()
@@ -143,6 +235,7 @@ func reset_game() -> void:
 	time_block = "morning"
 	flags.clear()
 	stats.clear()
+	ensure_default_stats()
 	current_spawn = ""
 	current_scene = ""
 	state_loaded.emit()
@@ -170,7 +263,12 @@ func load_from_data(data: Dictionary) -> void:
 	if time_block == "afternoon":
 		time_block = "after_school"
 	flags = data.get("flags", {})
-	stats = data.get("stats", {})
+	var loaded_stats = data.get("stats", {})
+	if loaded_stats is Dictionary:
+		stats = loaded_stats as Dictionary
+	else:
+		stats = {}
+	ensure_default_stats()
 	current_spawn = str(data.get("current_spawn", ""))
 	current_scene = str(data.get("current_scene", ""))
 	state_loaded.emit()

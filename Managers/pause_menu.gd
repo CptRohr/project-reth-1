@@ -10,10 +10,13 @@ const RESOLUTIONS := [
 var root_control: Control
 var root_panel: PanelContainer
 var main_row: HBoxContainer
+var stats_box: VBoxContainer
+var stats_grid: GridContainer
 var settings_box: VBoxContainer
 var calendar_box: VBoxContainer
 var calendar_month_label: Label
 var calendar_grid: GridContainer
+var calendar_view_month := 4
 var resolution_options: OptionButton
 var fullscreen_check: CheckBox
 var vsync_check: CheckBox
@@ -44,6 +47,7 @@ func show_pause_menu() -> void:
 	get_tree().paused = true
 	root_control.visible = true
 	main_row.visible = true
+	stats_box.visible = false
 	settings_box.visible = false
 	calendar_box.visible = false
 	status_label.text = ""
@@ -88,10 +92,13 @@ func _build_ui() -> void:
 	stack.add_child(main_row)
 
 	_add_button(main_row, "Resume", hide_pause_menu)
+	_add_button(main_row, "Stats", _show_stats)
 	_add_button(main_row, "Calendar", _show_calendar)
 	_add_button(main_row, "Settings", _show_settings)
 	_add_button(main_row, "Main Menu", _go_to_main_menu)
 	_add_button(main_row, "Quit Game", Callable(get_tree(), "quit"))
+
+	_build_stats_ui(stack)
 
 	settings_box = VBoxContainer.new()
 	settings_box.add_theme_constant_override("separation", 8)
@@ -137,15 +144,24 @@ func _build_ui() -> void:
 func _add_button(parent: Control, text: String, callback: Callable) -> Button:
 	var button := Button.new()
 	button.text = text
-	button.custom_minimum_size = Vector2(130, 40)
+	button.custom_minimum_size = Vector2(110, 40)
 	button.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	button.pressed.connect(callback)
 	parent.add_child(button)
 	return button
 
 
+func _show_stats() -> void:
+	main_row.visible = false
+	stats_box.visible = true
+	settings_box.visible = false
+	calendar_box.visible = false
+	_refresh_stats_view()
+
+
 func _show_settings() -> void:
 	main_row.visible = false
+	stats_box.visible = false
 	calendar_box.visible = false
 	settings_box.visible = true
 	status_label.text = ""
@@ -154,15 +170,64 @@ func _show_settings() -> void:
 
 func _show_main_buttons() -> void:
 	main_row.visible = true
+	stats_box.visible = false
 	settings_box.visible = false
 	calendar_box.visible = false
 
 
 func _show_calendar() -> void:
 	main_row.visible = false
+	stats_box.visible = false
 	settings_box.visible = false
 	calendar_box.visible = true
+	calendar_view_month = int(get_calendar_manager().get_date_info(GameState.calendar_day_index)["month"])
 	_refresh_calendar_view()
+
+
+func _build_stats_ui(parent: Control) -> void:
+	stats_box = VBoxContainer.new()
+	stats_box.add_theme_constant_override("separation", 8)
+	parent.add_child(stats_box)
+
+	var title := Label.new()
+	title.text = "Player Stats"
+	title.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	stats_box.add_child(title)
+
+	stats_grid = GridContainer.new()
+	stats_grid.columns = 2
+	stats_box.add_child(stats_grid)
+
+	var stats_buttons := HBoxContainer.new()
+	stats_buttons.add_theme_constant_override("separation", 8)
+	stats_box.add_child(stats_buttons)
+
+	_add_button(stats_buttons, "Back", _show_main_buttons)
+	stats_box.visible = false
+
+
+func _refresh_stats_view() -> void:
+	for child in stats_grid.get_children():
+		child.queue_free()
+
+	var player_stats: Dictionary = GameState.get_player_stats()
+
+	for stat_name in GameState.PLAYER_STATS:
+		var name_label := Label.new()
+		name_label.text = str(stat_name)
+		name_label.custom_minimum_size = Vector2(240, 28)
+		stats_grid.add_child(name_label)
+
+		var value_label := Label.new()
+		value_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
+		value_label.custom_minimum_size = Vector2(160, 28)
+
+		if stat_name == GameState.ENERGY_STAT:
+			value_label.text = "%s / %s" % [player_stats[stat_name], GameState.DEFAULT_ENERGY]
+		else:
+			value_label.text = "%s / %s" % [player_stats[stat_name], GameState.STAT_MAX]
+
+		stats_grid.add_child(value_label)
 
 
 func _build_calendar_ui(parent: Control) -> void:
@@ -182,18 +247,53 @@ func _build_calendar_ui(parent: Control) -> void:
 	calendar_buttons.add_theme_constant_override("separation", 8)
 	calendar_box.add_child(calendar_buttons)
 
+	_add_button(calendar_buttons, "Previous", _show_previous_month)
+	_add_button(calendar_buttons, "Today", _show_current_month)
+	_add_button(calendar_buttons, "Next", _show_next_month)
 	_add_button(calendar_buttons, "Back", _show_main_buttons)
 	calendar_box.visible = false
+
+
+func _show_previous_month() -> void:
+	calendar_view_month = get_wrapped_story_month(-1)
+	_refresh_calendar_view()
+
+
+func _show_next_month() -> void:
+	calendar_view_month = get_wrapped_story_month(1)
+	_refresh_calendar_view()
+
+
+func _show_current_month() -> void:
+	calendar_view_month = int(get_calendar_manager().get_date_info(GameState.calendar_day_index)["month"])
+	_refresh_calendar_view()
+
+
+func get_wrapped_story_month(direction: int) -> int:
+	var calendar_manager = get_calendar_manager()
+	var story_months: Array = calendar_manager.get_story_months()
+	var current_index := story_months.find(calendar_view_month)
+
+	if current_index == -1:
+		return int(get_calendar_manager().get_date_info(GameState.calendar_day_index)["month"])
+
+	var next_index := (current_index + direction) % story_months.size()
+
+	if next_index < 0:
+		next_index = story_months.size() - 1
+
+	return int(story_months[next_index])
 
 
 func _refresh_calendar_view() -> void:
 	for child in calendar_grid.get_children():
 		child.queue_free()
 
-	var calendar_manager = get_node("/root/CalendarManager")
-	var date_info: Dictionary = calendar_manager.get_date_info(GameState.calendar_day_index)
-	var month := int(date_info["month"])
-	calendar_month_label.text = "%s %s" % [date_info["month_name"], calendar_manager.STORY_YEAR]
+	var calendar_manager = get_calendar_manager()
+	var current_date_info: Dictionary = calendar_manager.get_date_info(GameState.calendar_day_index)
+	var view_date_info: Dictionary = calendar_manager.get_date_info(calendar_manager.parse_date_key("%02d/01" % calendar_view_month))
+	var month := calendar_view_month
+	calendar_month_label.text = "%s %s" % [view_date_info["month_name"], calendar_manager.STORY_YEAR]
 
 	for weekday in ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]:
 		var header := Label.new()
@@ -204,7 +304,7 @@ func _refresh_calendar_view() -> void:
 
 	for cell in calendar_manager.get_month_grid(month, GameState.calendar_day_index):
 		var label := Label.new()
-		label.custom_minimum_size = Vector2(96, 48)
+		label.custom_minimum_size = Vector2(96, 72)
 		label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 		label.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
 
@@ -213,10 +313,19 @@ func _refresh_calendar_view() -> void:
 		else:
 			label.text = "%s\n%s" % [cell["day"], cell["routine"]]
 
+			if bool(cell.get("has_plan", false)):
+				label.text += "\n* %s" % cell["plan_summary"]
+
 			if bool(cell["is_today"]):
 				label.add_theme_color_override("font_color", Color.YELLOW)
+			elif int(current_date_info["month"]) != month:
+				label.add_theme_color_override("font_color", Color.LIGHT_GRAY)
 
 		calendar_grid.add_child(label)
+
+
+func get_calendar_manager():
+	return get_node("/root/CalendarManager")
 
 
 func _setup_settings_values() -> void:
