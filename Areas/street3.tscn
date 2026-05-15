@@ -1,0 +1,65 @@
+[gd_scene format=3 uid="uid://8hg7xmxre2oo"]
+
+[ext_resource type="PackedScene" uid="uid://bi003gu1i7jjb" path="res://Scene/door_transition.tscn" id="1_u4cs3"]
+[ext_resource type="Script" uid="uid://chnb8nau1k512" path="res://Areas/street_3.gd" id="1_uu2nb"]
+[ext_resource type="PackedScene" uid="uid://d3swmgi1ckxhq" path="res://Characters/Main Character/player.tscn" id="3_ukln7"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_sdx6k"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uu2nb"]
+size = Vector2(792, 20)
+
+[node name="Street3" type="Node2D" unique_id=806492278]
+script = ExtResource("1_uu2nb")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=719431532]
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D" unique_id=1972414070]
+position = Vector2(396.5, 104)
+scale = Vector2(789, 20.000004)
+texture = SubResource("PlaceholderTexture2D_sdx6k")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1743074684]
+position = Vector2(398, 104)
+shape = SubResource("RectangleShape2D_uu2nb")
+
+[node name="DoorTransition" parent="." unique_id=382549217 instance=ExtResource("1_u4cs3")]
+position = Vector2(70, 76)
+target_spawn = "FromStreet3"
+
+[node name="DoorTransition2" parent="." unique_id=1217320961 instance=ExtResource("1_u4cs3")]
+position = Vector2(767, 80)
+target_scene = "res://Areas/Indoor/schoolhallway.tscn"
+target_spawn = "FromStreet3"
+
+[node name="Label" type="Label" parent="." unique_id=175347889]
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Street3"
+
+[node name="Label" type="Label" parent="Label" unique_id=607713352]
+layout_mode = 0
+offset_left = 15.0
+offset_top = 43.0
+offset_right = 138.0
+offset_bottom = 66.0
+text = "pintu ke street2"
+
+[node name="Label2" type="Label" parent="Label" unique_id=163670205]
+layout_mode = 0
+offset_left = 652.0
+offset_top = 33.0
+offset_right = 830.0
+offset_bottom = 56.0
+text = "pintu ke schoolhallway"
+
+[node name="SpawnPoints" type="Marker2D" parent="." unique_id=394774027]
+position = Vector2(70, 75)
+
+[node name="FromStreet2" type="Marker2D" parent="SpawnPoints" unique_id=1790459926]
+
+[node name="FromSchoolhallway" type="Marker2D" parent="SpawnPoints" unique_id=753571453]
+position = Vector2(697, 5)
+
+[node name="Player" parent="." unique_id=455174183 instance=ExtResource("3_ukln7")]
+position = Vector2(23, 78)

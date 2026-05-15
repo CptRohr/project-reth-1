@@ -27,6 +27,7 @@ DebugHud="*res://Managers/debug_hud.gd"
 PauseMenu="*res://Managers/pause_menu.gd"
 CalendarManager="*res://Managers/calendar_manager.gd"
 SchoolSummary="*res://Managers/school_summary.gd"
+MobileControls="*res://Scene/MobileControls.tscn"
 
 [dialogic]
 
@@ -80,6 +81,13 @@ audio/channel_defaults={
 "volume": 0.0
 }
 }
+
+[display]
+
+window/size/viewport_width=1280
+window/size/viewport_height=720
+window/stretch/mode="canvas_items"
+window/stretch/aspect="expand"
 
 [editor]
 
@@ -147,3 +155,4 @@ pause_menu={
 
 rendering_device/driver.windows="d3d12"
 renderer/rendering_method="mobile"
+textures/vram_compression/import_etc2_astc=true

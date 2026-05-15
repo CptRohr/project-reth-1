@@ -28,7 +28,7 @@ shape = SubResource("RectangleShape2D_gpl03")
 
 [node name="DoorTransition" parent="." unique_id=382549217 instance=ExtResource("2_rndmj")]
 position = Vector2(183, 80)
-target_scene = "uid://bi38fjjs8nqmb"
+target_scene = "res://Areas/street.tscn"
 target_spawn = "FromWarung"
 
 [node name="SpawnPoints" type="Marker2D" parent="." unique_id=278694526]

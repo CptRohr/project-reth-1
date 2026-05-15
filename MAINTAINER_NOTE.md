@@ -42,6 +42,7 @@ DebugHud
 PauseMenu
 CalendarManager
 SchoolSummary
+MobileControls
 ```
 
 Use autoloads for systems that many scenes need. Do not turn every helper into an autoload.
@@ -81,6 +82,7 @@ Scene/door_transition.tscn
 Managers/scene_manager.gd
 Managers/transition_layer.gd
 Scene/transition_layer.tscn
+Assets/Shaders/double_dither_transition.gdshader
 ```
 
 Door nodes own:
@@ -89,6 +91,8 @@ Door nodes own:
 target_scene
 target_spawn
 ```
+
+The transition layer now uses a shader-driven double-dither mask instead of a plain alpha fade.
 
 The flow is:
 
@@ -100,7 +104,9 @@ Maintenance rules:
 
 - Door-specific settings belong on the door node.
 - Scene changing belongs in `SceneManager`.
-- Fade animation belongs in `Transition`.
+- Dither transition behavior belongs in `Transition`.
+- The shader visual belongs in `Assets/Shaders/double_dither_transition.gdshader`.
+- Keep the public methods `Transition.fade_out()` and `Transition.fade_in()` stable so scene changing code stays simple.
 - Maps should have a `SpawnPoints` node with named marker children.
 - Area scripts should register the current scene with `GameState.set_scene(scene_file_path)`.
 
@@ -534,6 +540,41 @@ Maintenance rules:
 - It should not own gameplay rules.
 - When adding new visible stats, update `GameState.PLAYER_STATS`; the Stats screen follows that list.
 
+## Mobile Controls
+
+Mobile controls live in:
+
+```text
+Managers/mobile_controls.gd
+Scene/MobileControls.tscn
+```
+
+It is an autoload `CanvasLayer` scene that creates touch buttons at runtime.
+
+Current buttons:
+
+```text
+<  -> move_left
+>  -> move_right
+E  -> interact
+|| -> PauseMenu.toggle_pause_menu()
+```
+
+Behavior:
+
+- visible on mobile builds
+- optionally visible on desktop touchscreens
+- hidden on BootScene and MainMenu
+- releases held actions when hidden
+- uses the existing input action names so player, NPC, door, school, sleep, and activity scripts keep working
+
+Maintenance rules:
+
+- MobileControls should only bridge touch UI into existing actions.
+- Do not put movement, quest, stat, save, or scene logic here.
+- If a gameplay script uses `Input.is_action_just_pressed("interact")`, the mobile `E` button should trigger it automatically.
+- Pause is called directly because `PauseMenu` listens through `_unhandled_input()` instead of polling.
+
 ## Main Menu
 
 Main menu logic lives in:
@@ -655,6 +696,7 @@ School popup -> SchoolSummary
 NPC-specific dialogue choice -> NPC script
 Dialogue text -> Dialogic timeline
 Pause/settings/stats/calendar UI -> PauseMenu
+Mobile touch buttons -> MobileControls
 Temporary dev display -> DebugHud
 ```
 
@@ -772,4 +814,3 @@ Interactables trigger reusable behavior.
 NPCs choose dialogue.
 Maps stay boring.
 ```
-

@@ -853,11 +853,11 @@ position = Vector2(202, 82)
 
 [node name="DoorTransitio2n2" parent="." unique_id=1083941707 instance=ExtResource("3_pes26")]
 position = Vector2(398, 82)
-target_scene = "uid://c2c6213v2o51r"
+target_scene = "res://Areas/Indoor/warung.tscn"
 
 [node name="DoorTransition3" parent="." unique_id=1093588937 instance=ExtResource("3_pes26")]
 position = Vector2(-86, 82)
-target_scene = "uid://5u3q4ro435i1"
+target_scene = "res://Areas/Indoor/home.tscn"
 
 [node name="SpawnPoints" type="Marker2D" parent="." unique_id=587361112]
 position = Vector2(202, 82)

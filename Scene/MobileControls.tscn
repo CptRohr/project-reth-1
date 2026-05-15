@@ -1,0 +1,105 @@
+[gd_scene load_steps=4 format=3 uid="uid://di2ar63sy7vfh"]
+
+[ext_resource type="Script" path="res://Managers/mobile_controls.gd" id="1_jwi1x"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_button"]
+bg_color = Color(0.05, 0.055, 0.065, 0.62)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(1, 1, 1, 0.5)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pressed"]
+bg_color = Color(0.22, 0.24, 0.28, 0.82)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(1, 1, 1, 0.82)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[node name="MobileControls" type="CanvasLayer" unique_id=412294311]
+script = ExtResource("1_jwi1x")
+
+[node name="RootControl" type="Control" parent="." unique_id=1774351971]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="MovementRow" type="HBoxContainer" parent="RootControl" unique_id=2146527097]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 28.0
+offset_top = -154.0
+offset_right = 272.0
+offset_bottom = -34.0
+grow_vertical = 0
+theme_override_constants/separation = 20
+
+[node name="LeftButton" type="Button" parent="RootControl/MovementRow" unique_id=586410718]
+custom_minimum_size = Vector2(112, 112)
+layout_mode = 2
+theme_override_font_sizes/font_size = 44
+theme_override_styles/normal = SubResource("StyleBoxFlat_button")
+theme_override_styles/hover = SubResource("StyleBoxFlat_button")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_pressed")
+theme_override_styles/focus = SubResource("StyleBoxFlat_pressed")
+text = "<"
+
+[node name="RightButton" type="Button" parent="RootControl/MovementRow" unique_id=1106979437]
+custom_minimum_size = Vector2(112, 112)
+layout_mode = 2
+theme_override_font_sizes/font_size = 44
+theme_override_styles/normal = SubResource("StyleBoxFlat_button")
+theme_override_styles/hover = SubResource("StyleBoxFlat_button")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_pressed")
+theme_override_styles/focus = SubResource("StyleBoxFlat_pressed")
+text = ">"
+
+[node name="ActionRow" type="HBoxContainer" parent="RootControl" unique_id=1462781468]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -312.0
+offset_top = -154.0
+offset_right = -28.0
+offset_bottom = -34.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_constants/separation = 20
+
+[node name="InteractButton" type="Button" parent="RootControl/ActionRow" unique_id=968246473]
+custom_minimum_size = Vector2(132, 112)
+layout_mode = 2
+theme_override_font_sizes/font_size = 34
+theme_override_styles/normal = SubResource("StyleBoxFlat_button")
+theme_override_styles/hover = SubResource("StyleBoxFlat_button")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_pressed")
+theme_override_styles/focus = SubResource("StyleBoxFlat_pressed")
+text = "E"
+
+[node name="PauseButton" type="Button" parent="RootControl/ActionRow" unique_id=1512745397]
+custom_minimum_size = Vector2(112, 112)
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_button")
+theme_override_styles/hover = SubResource("StyleBoxFlat_button")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_pressed")
+theme_override_styles/focus = SubResource("StyleBoxFlat_pressed")
+text = "||"

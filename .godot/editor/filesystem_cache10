@@ -1,6 +1,8 @@
-63f7b34db8d8cdea90c76aacccf841ec
-::res://::1778718982
+72322a848ab928aa5c89f0cb78209805
+::res://::1778819703
+export_presets.cfg::TextFile::-1::1778819669::0::1::::<><><>0<>0<><>::
 icon.svg::CompressedTexture2D::7047297600812045813::1778403263::1778403283::1::::<><><>0<>0<>8cd2dc43545da561a44dd320ce5aed39<>res://.godot/imported/icon.svg-218a8f2b3041327d8a5756f3a245f83b.ctex::
+MAINTAINER_NOTE.md::TextFile::-1::1778819443::0::1::::<><><>0<>0<><>::
 README.md::TextFile::-1::1778497195::0::1::::<><><>0<>0<><>::
 ::res://addons/::1778505333
 ::res://addons/dialogic/::1778505337
@@ -570,12 +572,12 @@ event_text.gd::GDScript::7199229198122971661::1768176379::0::1::::DialogicTextEv
 icon.svg::CompressedTexture2D::9151163472776694991::1768176379::1778505349::1::::<><><>0<>0<>0fe1b3b3cf3733ead1d66ddc5726114c<>res://.godot/imported/icon.svg-e2501ddcdef01c7f2c3538940f5abfc1.ctex::
 index.gd::GDScript::3735692247776249690::1768176379::0::1::::<>DialogicIndexer<><>0<>1<><>::
 manual_advance.gd::GDScript::7278833021501408885::1768176379::0::1::::DialogicManualAdvance<>RefCounted<><>0<>0<><>::
-node_dialog_text.gd::GDScript::8367256849905527338::1768176379::0::1::::DialogicNode_DialogText<>RichTextLabel<><>0<>0<><>::
+node_dialog_text.gd::GDScript::8367256849905527338::1768176379::0::1::::DialogicNode_DialogText<>RichTextLabel<>res://addons/dialogic/Modules/Text/node_dialog_text_icon.svg<>0<>0<><>::
 node_dialog_text_icon.svg::CompressedTexture2D::4044689466443943908::1768176379::1778505349::1::::<><><>0<>0<>0854d1eb256c2d7e9186a18e71c67bd8<>res://.godot/imported/node_dialog_text_icon.svg-3cf845e99d76137d8156865c09f39e3e.ctex::
 node_input.gd::GDScript::6135746528022206122::1768176379::0::1::::DialogicNode_Input<>Control<><>0<>0<><>::
-node_name_label.gd::GDScript::2409060177523604634::1768176379::0::1::::DialogicNode_NameLabel<>Label<><>0<>0<><>::
+node_name_label.gd::GDScript::2409060177523604634::1768176379::0::1::::DialogicNode_NameLabel<>Label<>res://addons/dialogic/Modules/Text/node_name_label_icon.svg<>0<>0<><>::
 node_name_label_icon.svg::CompressedTexture2D::753910208124862534::1768176379::1778505349::1::::<><><>0<>0<>a4c8bf4be7c45d309f0f460f60daff16<>res://.godot/imported/node_name_label_icon.svg-d482939b74b41ec2da6edc97e41c8bf8.ctex::
-node_next_indicator.gd::GDScript::8643102605516753138::1768176379::0::1::::DialogicNode_NextIndicator<>Control<><>0<>0<><>::
+node_next_indicator.gd::GDScript::8643102605516753138::1768176379::0::1::::DialogicNode_NextIndicator<>Control<>res://addons/dialogic/Modules/Text/node_next_indicator_icon.svg<>0<>0<><>::
 node_next_indicator_icon.svg::CompressedTexture2D::302873534409359568::1768176379::1778505349::1::::<><><>0<>0<>b19c8f494620393de69e28f29117e8d0<>res://.godot/imported/node_next_indicator_icon.svg-06167a3b3e290941c1c34386ebd60af8.ctex::
 node_type_sound.gd::GDScript::8257091630640999901::1768176379::0::1::::DialogicNode_TypeSounds<>AudioStreamPlayer<><>0<>1<><>::
 settings_text.gd::GDScript::5031029662621467051::1768176379::0::1::::<>DialogicSettingsPage<><>0<>1<><>::
@@ -617,7 +619,7 @@ event_wait_input.gd::GDScript::2473881298755643258::1768176379::0::1::::Dialogic
 icon.svg::CompressedTexture2D::2766149336681406939::1768176379::1778505350::1::::<><><>0<>0<>35002bf1f4e75410313770867b7720c7<>res://.godot/imported/icon.svg-cb8e50b081a310c64183b12c6d12fcf2.ctex::
 index.gd::GDScript::971839668851566764::1768176379::0::1::::<>DialogicIndexer<><>0<>1<><>::
 ::res://addons/dialogic/Resources/::1778505337
-character.gd::GDScript::8170509915016804394::1768176379::0::1::::DialogicCharacter<>Resource<><>0<>1<><>::
+character.gd::GDScript::8170509915016804394::1768176379::0::1::::DialogicCharacter<>Resource<>uid://bbea0efx0ybu7<>0<>1<><>::
 CharacterResourceLoader.gd::GDScript::3230683283296700613::1768176379::0::1::::DialogicCharacterFormatLoader<>ResourceFormatLoader<><>0<>1<><>::
 CharacterResourceSaver.gd::GDScript::11330996335859447::1768176379::0::1::::DialogicCharacterFormatSaver<>ResourceFormatSaver<><>0<>1<><>::
 dialogic_identifiable_resource.gd::GDScript::7504157656011423462::1768176379::0::1::::<>Resource<><>0<>1<><>::
@@ -626,21 +628,26 @@ dialogic_layout_layer.gd::GDScript::7097085608305494937::1768176379::0::1::::Dia
 dialogic_style.gd::GDScript::8686860375682204498::1768176379::0::1::::DialogicStyle<>Resource<><>0<>1<><>::
 dialogic_style_layer.gd::GDScript::3944887282532454131::1768176379::0::1::::DialogicStyleLayer<>Resource<><>0<>1<><>::
 event.gd::GDScript::8763588563558386910::1768176379::0::1::::DialogicEvent<>Resource<><>0<>1<><>::
-timeline.gd::GDScript::5667425671830628919::1768176379::0::1::::DialogicTimeline<>Resource<><>0<>1<><>::
+timeline.gd::GDScript::5667425671830628919::1768176379::0::1::::DialogicTimeline<>Resource<>uid://j7ym07anlusi<>0<>1<><>::
 TimelineResourceLoader.gd::GDScript::1953327801557244659::1768176379::0::1::::DialogicTimelineFormatLoader<>ResourceFormatLoader<><>0<>1<><>::
 TimelineResourceSaver.gd::GDScript::6005903703142383367::1768176379::0::1::::DialogicTimelineFormatSaver<>ResourceFormatSaver<><>0<>1<><>::
-::res://Areas/::1778676815
+::res://android/::1778819558
+::res://Areas/::1778807495
 door.tscn::PackedScene::1117023045278809421::1778493848::0::1::::<><><>0<>0<><>::
-street2.tscn::PackedScene::7684652251966522315::1778662917::0::1::::<><><>0<>0<><>::uid://d3swmgi1ckxhq::::res://Characters/Main Character/player.tscn<>uid://chnkdp0xllg28::::res://Areas/street_2.gd<>uid://bi003gu1i7jjb::::res://Scene/door_transition.tscn
+street2.tscn::PackedScene::7684652251966522315::1778807043::0::1::::<><><>0<>0<><>::uid://d3swmgi1ckxhq::::res://Characters/Main Character/player.tscn<>uid://chnkdp0xllg28::::res://Areas/street_2.gd<>uid://bi003gu1i7jjb::::res://Scene/door_transition.tscn
+street3.tscn::PackedScene::2331105159337670246::1778807495::0::1::::<><><>0<>0<><>::uid://bi003gu1i7jjb::::res://Scene/door_transition.tscn<>uid://chnb8nau1k512::::res://Areas/street_3.gd<>uid://d3swmgi1ckxhq::::res://Characters/Main Character/player.tscn
 street.gd::GDScript::3044524554790333835::1778669933::0::1::::<>Node2D<><>0<>0<><>::
-street.tscn::PackedScene::3007747087117709265::1778676815::0::1::::<><><>0<>0<><>::uid://bjm140bsspmyt::::res://Areas/street.gd<>uid://d3swmgi1ckxhq::::res://Characters/Main Character/player.tscn<>uid://i25y35vcck2s::::res://Assets/debug assets/GandalfHardcore City Tiles/City background sky.png<>uid://bi003gu1i7jjb::::res://Scene/door_transition.tscn<>uid://ds57i8r1obpam::::res://Assets/debug assets/GandalfHardcore City Tiles/City background layer1.png<>uid://cdioa01qum4k4::::res://Characters/NPC/NPC.tscn<>uid://croo63lst6hai::::res://Assets/debug assets/GandalfHardcore City Tiles/City background layer2.png<>uid://b5iejj8tfy5u8::::res://Assets/debug assets/GandalfHardcore City Tiles/GandalfHardcore city tiles 32x32.png<>uid://cvsat2wwojd4b::::res://Characters/NPC/AbangBrewok.tscn<>uid://dcrykd7ugqep5::::res://Scripts/sleep_interactable.gd<>uid://5uurhbsc5ucm::::res://Scripts/activity_interactable.gd
+street.tscn::PackedScene::3007747087117709265::1778729415::0::1::::<><><>0<>0<><>::uid://bjm140bsspmyt::::res://Areas/street.gd<>uid://d3swmgi1ckxhq::::res://Characters/Main Character/player.tscn<>uid://i25y35vcck2s::::res://Assets/debug assets/GandalfHardcore City Tiles/City background sky.png<>uid://bi003gu1i7jjb::::res://Scene/door_transition.tscn<>uid://ds57i8r1obpam::::res://Assets/debug assets/GandalfHardcore City Tiles/City background layer1.png<>uid://cdioa01qum4k4::::res://Characters/NPC/NPC.tscn<>uid://croo63lst6hai::::res://Assets/debug assets/GandalfHardcore City Tiles/City background layer2.png<>uid://b5iejj8tfy5u8::::res://Assets/debug assets/GandalfHardcore City Tiles/GandalfHardcore city tiles 32x32.png<>uid://cvsat2wwojd4b::::res://Characters/NPC/AbangBrewok.tscn<>uid://c73eekpd1dl31::::res://Assets/debug assets/GandalfHardcore City Tiles/Building Tiles 32x32.png<>uid://dcrykd7ugqep5::::res://Scripts/sleep_interactable.gd<>uid://5uurhbsc5ucm::::res://Scripts/activity_interactable.gd<>uid://do5vk0tirle8m::::res://Scripts/school_interactable.gd
 street_2.gd::GDScript::5291613538495102455::1778669933::0::1::::<>Node2D<><>0<>0<><>::
-::res://Areas/Indoor/::1778677549
+street_3.gd::GDScript::5291120515594267639::1778806782::0::1::::<>Node2D<><>0<>0<><>::
+::res://Areas/Indoor/::1778819506
 home.gd::GDScript::8489148011141071562::1778677444::0::1::::<>Node2D<><>0<>0<><>::
 home.tscn::PackedScene::2148683062836920786::1778677549::0::1::::<><><>0<>0<><>::uid://d3swmgi1ckxhq::::res://Characters/Main Character/player.tscn<>uid://bi003gu1i7jjb::::res://Scene/door_transition.tscn<>uid://ds7ha60onmcic::::res://Areas/Indoor/home.gd<>uid://dcrykd7ugqep5::::res://Scripts/sleep_interactable.gd
+schoolhallway.gd::GDScript::7543302974462665148::1778807432::0::1::::<>Node2D<><>0<>0<><>::
+schoolhallway.tscn::PackedScene::5327769519093130132::1778819506::0::1::::<><><>0<>0<><>::uid://dfqbdlf3ary5y::::res://Areas/Indoor/schoolhallway.gd<>uid://bi003gu1i7jjb::::res://Scene/door_transition.tscn<>uid://d3swmgi1ckxhq::::res://Characters/Main Character/player.tscn
 warung.gd::GDScript::951594882646641535::1778669934::0::1::::<>Node2D<><>0<>0<><>::
 warung.tscn::PackedScene::6674000754184826813::1778662949::0::1::::<><><>0<>0<><>::uid://d3swmgi1ckxhq::::res://Characters/Main Character/player.tscn<>uid://ns7vm06wkktb::::res://Areas/Indoor/warung.gd<>uid://bi003gu1i7jjb::::res://Scene/door_transition.tscn
-::res://Assets/::1778719226
+::res://Assets/::1778757543
 RETHorizon Studio Logo White.png::CompressedTexture2D::2860918285237663312::1778303641::1778719226::1::::<><><>0<>0<>330ca862f34950adec761c3a375b3354<>res://.godot/imported/RETHorizon Studio Logo White.png-3205d26a9189d212b433712110c24d1b.ctex::
 StreetBackground.png::CompressedTexture2D::4430255492485294545::1778577824::1778577825::1::::<><><>0<>0<>66686048b0993052e007c96cd965832c<>res://.godot/imported/StreetBackground.png-bad28b26fab1f449473987690db41827.ctex::
 ::res://Assets/debug assets/::1778590725
@@ -692,6 +699,10 @@ HMMWalkBare.png::CompressedTexture2D::7041032322244879816::1740773820::177857861
 HMMWalkBow.png::CompressedTexture2D::3612826201177958478::1740773826::1778578614::1::::<><><>0<>0<>0d8793e64819caa4b9cd91cc5b13dd8b<>res://.godot/imported/HMMWalkBow.png-c2af499d64a903efbf57fa3510b7dff5.ctex::
 HMMWalkStaff.png::CompressedTexture2D::8174452287215632795::1740773833::1778578614::1::::<><><>0<>0<>5afdd2e5c76418eacb458c205e08b817<>res://.godot/imported/HMMWalkStaff.png-aac247bea1f704e5683c73b7fd1c8776.ctex::
 HMMWalkSword.png::CompressedTexture2D::5649979300593456262::1740773840::1778578614::1::::<><><>0<>0<>ba848e4a347f96451519df97f6c784a8<>res://.godot/imported/HMMWalkSword.png-df66741b64b1ad0599a83301c3025bb2.ctex::
+::res://Assets/Shaders/::1778757670
+double_dither_transition.gdshader::Shader::7346881396470589973::1778757620::0::1::::<><><>0<>0<><>::
+::res://Assets/Videos/::1778723123
+SplashScreen.ogv::VideoStreamTheora::5441903498613988598::1778723105::0::1::::<><><>0<>0<><>::
 ::res://Audio/::1778719345
 ::res://Audio/Music/::1778719345
 ::res://Audio/SFX/::1778719337
@@ -699,10 +710,10 @@ HMMWalkSword.png::CompressedTexture2D::5649979300593456262::1740773840::17785786
 ::res://Characters/Main Character/::1778584552
 player.tscn::PackedScene::9163066004567956618::1778668071::0::1::::<><><>0<>0<><>::uid://buub0y4nodujs::::res://Scripts/basic_movement.gd<>uid://c7ky1klesy23e::::res://Assets/debug assets/Human Male Model/Sections/PNG/HMMWalkBare.png
 ::res://Characters/NPC/::1778671375
-AbangBrewok.dch::Resource/DialogicCharacter::4785350284579031370::1778671375::0::1::::<><>uid://bbea0efx0ybu7<>0<>0<><>::
+AbangBrewok.dch::Resource/DialogicCharacter::4785350284579031370::1778671375::0::1::::<><><>0<>0<><>::
 AbangBrewok.tscn::PackedScene::6284001266576948431::1778592599::0::1::::<><><>0<>0<><>::uid://eq4v17t6fsve::::res://Characters/NPC/abang_brewok.gd<>uid://8qemo0bvk24n::::res://Assets/debug assets/Human Male Model/Sections/PNG/HMMIdleSword.png
 abang_brewok.gd::GDScript::315585129025078798::1778670826::0::1::::<>Node2D<><>0<>0<><>::
-NPC.dch::Resource/DialogicCharacter::3888497355972282303::1778671373::0::1::::<><>uid://bbea0efx0ybu7<>0<>0<><>::res://addons/dialogic/Modules/HighlightPortrait/simple_highlight_portrait.tscn<>res://Styles/RETH Style.tres<>res://addons/dialogic/Modules/Character/default_portrait.tscn<>res://Assets/debug assets/Prabowo_Subianto_2024_official_portrait.jpg
+NPC.dch::Resource/DialogicCharacter::3888497355972282303::1778671373::0::1::::<><><>0<>0<><>::res://addons/dialogic/Modules/HighlightPortrait/simple_highlight_portrait.tscn<>res://Styles/RETH Style.tres<>res://addons/dialogic/Modules/Character/default_portrait.tscn<>res://Assets/debug assets/Prabowo_Subianto_2024_official_portrait.jpg
 npc.gd::GDScript::8121718120238425432::1778669882::0::1::::<>Node2D<><>0<>0<><>::
 NPC.tscn::PackedScene::5000774312234375429::1778585040::0::1::::<><><>0<>0<><>::uid://dnyhrmsffy5fg::::res://Characters/NPC/npc.gd<>uid://8qemo0bvk24n::::res://Assets/debug assets/Human Male Model/Sections/PNG/HMMIdleSword.png
 ::res://Dialogue/::1778670904
@@ -711,27 +722,33 @@ AbangBrewok_AfterMet.dtl::Resource/DialogicTimeline::818936069543917061::1778670
 AbangBrewok_LaterDay.dtl::Resource/DialogicTimeline::7036188188420537822::1778670826::0::1::::<><>uid://j7ym07anlusi<>0<>0<><>::uid://cagcaxfuj3wys
 test.dtl::Resource/DialogicTimeline::8000281388052277857::1778591117::0::1::::<><>uid://j7ym07anlusi<>0<>0<><>::uid://bvnu8o0bxi5qx
 ::res://Events/::1778405465
-::res://Fonts/::1778719540
+::res://Fonts/::1778719547
 PixelifySans-VariableFont_wght.ttf::FontFile::3033369275525030408::1758066372::1778719547::1::::<><><>0<>0<>59358b36df99409728592ea99c002a8f<>res://.godot/imported/PixelifySans-VariableFont_wght.ttf-ecd504d601b15dc473b9caf0868cf760.fontdata::
 VCR_OSD_MONO_1.001.ttf::FontFile::4420876418899172896::1427836911::1778719547::1::::<><><>0<>0<>1ae088810d74bbf24bda3ff81169b86c<>res://.godot/imported/VCR_OSD_MONO_1.001.ttf-6b8757c14e77df3a837ec4fc487b00cb.fontdata::
-::res://Managers/::1778680208
-debug_hud.gd::GDScript::6955763209048973674::1778679488::0::1::::<>CanvasLayer<><>0<>0<><>::
-event_manager.gd::GDScript::4362045031389290223::1778669870::0::1::::<>Node<><>0<>0<><>::
-game_state.gd::GDScript::7466684789968379564::1778671823::0::1::::<>Node<><>0<>0<><>::
-pause_menu.gd::GDScript::2245154173986087485::1778680376::0::1::::<>CanvasLayer<><>0<>0<><>::
+::res://Managers/::1778819498
+calendar_manager.gd::GDScript::2982500820377019982::1778730899::0::1::::<>Node<><>0<>0<><>::
+debug_hud.gd::GDScript::6955763209048973674::1778725502::0::1::::<>CanvasLayer<><>0<>0<><>::
+event_manager.gd::GDScript::4362045031389290223::1778726123::0::1::::<>Node<><>0<>0<><>::
+game_state.gd::GDScript::7466684789968379564::1778729508::0::1::::<>Node<><>0<>0<><>::
+mobile_controls.gd::GDScript::4606927957718869401::1778819450::0::1::::<>CanvasLayer<><>0<>0<><>::
+pause_menu.gd::GDScript::2245154173986087485::1778729545::0::1::::<>CanvasLayer<><>0<>0<><>::
 scene_manager.gd::GDScript::6327425472722409346::1778669944::0::1::::<>Node<><>0<>0<><>::
-transition_layer.gd::GDScript::984808028306279039::1778665081::0::1::::<>CanvasLayer<><>0<>0<><>::
-::res://Scene/::1778719044
+school_summary.gd::GDScript::1121519107232268697::1778725828::0::1::::<>CanvasLayer<><>0<>0<><>::
+transition_layer.gd::GDScript::984808028306279039::1778757595::0::1::::<>CanvasLayer<><>0<>0<><>::
+::res://Scene/::1778819435
+BootScene.tscn::PackedScene::2731828006932105934::1778723896::0::1::::<><><>0<>0<><>::uid://bu05g6n1sltem::::res://Scripts/bootscreen.gd<>uid://cjsdmdasoq5r3::::res://Assets/Videos/SplashScreen.ogv
 door_transition.tscn::PackedScene::3001109150926822551::1778500376::0::1::::<><><>0<>0<><>::uid://dkqcpc6q0y6v::::res://Scripts/door_transition.gd
-MainMenu.tscn::PackedScene::602040298995585819::1778679663::0::1::::<><><>0<>0<><>::uid://yr7fsm4os8s3::::res://Scripts/main_menu.gd
-BootScene.tscn::PackedScene::2731828006932105934::1778719044::0::1::::<><><>0<>0<><>::
-transition_layer.tscn::PackedScene::3826333143175602813::1778665156::0::1::::<><><>0<>0<><>::
-::res://Scripts/::1778678806
-activity_interactable.gd::GDScript::2148197932603847600::1778671830::0::1::::<>Area2D<><>0<>0<><>::
+MainMenu.tscn::PackedScene::602040298995585819::1778724179::0::1::::<><><>0<>0<><>::uid://yr7fsm4os8s3::::res://Scripts/main_menu.gd<>uid://b38rgofq4civw::::res://Fonts/VCR_OSD_MONO_1.001.ttf
+MobileControls.tscn::PackedScene::7776543030369129413::1778819435::0::1::::<><><>0<>0<><>::res://Managers/mobile_controls.gd
+transition_layer.tscn::PackedScene::3826333143175602813::1778757613::0::1::::<><><>0<>0<><>::res://Managers/transition_layer.gd<>res://Assets/Shaders/double_dither_transition.gdshader
+::res://Scripts/::1778725973
+activity_interactable.gd::GDScript::2148197932603847600::1778729612::0::1::::<>Area2D<><>0<>0<><>::
 basic_movement.gd::GDScript::3831591779344575212::1778668111::0::1::::<>CharacterBody2D<><>0<>0<><>::
+bootscreen.gd::GDScript::3843640874363807832::1778723896::0::1::::<>Control<><>0<>0<><>::
 door_transition.gd::GDScript::232186144297520059::1778666076::0::1::::<>Area2D<><>0<>0<><>::
-main_menu.gd::GDScript::1721579507164882580::1778679663::0::1::::<>Node<><>0<>0<><>::
-sleep_interactable.gd::GDScript::7336209433860980492::1778670245::0::1::::<>Area2D<><>0<>0<><>::
+main_menu.gd::GDScript::1721579507164882580::1778725502::0::1::::<>Node<><>0<>0<><>::
+school_interactable.gd::GDScript::8205131452242371238::1778726124::0::1::::<>Area2D<><>0<>0<><>::
+sleep_interactable.gd::GDScript::7336209433860980492::1778725502::0::1::::<>Area2D<><>0<>0<><>::
 ::res://Styles/::1778672014
 RETH Style.tres::Resource/DialogicStyle::3670375500129008452::1778672014::0::1::::<><><>0<>0<><>::uid://cqpb3ie51rwl5::::res://addons/dialogic/Modules/DefaultLayoutParts/Base_Default/default_layout_base.tscn<>uid://bwg6yncmh2cml::::res://addons/dialogic/Resources/dialogic_style_layer.gd<>uid://c1k5m0w3r40xf::::res://addons/dialogic/Modules/DefaultLayoutParts/Layer_FullBackground/full_background_layer.tscn<>uid://cn674foxwedqu::::res://addons/dialogic/Modules/DefaultLayoutParts/Layer_Input/full_advance_input_layer.tscn<>uid://by6waso0mjpjp::::res://addons/dialogic/Modules/DefaultLayoutParts/Layer_SpeakerPortraitTextbox/textbox_with_speaker_portrait.tscn<>uid://dsbwnp5hegnu3::::res://addons/dialogic/Modules/DefaultLayoutParts/Layer_Glossary/glossary_popup_layer.tscn<>uid://dhk6j6eb6e3q::::res://addons/dialogic/Modules/DefaultLayoutParts/Layer_VN_Choices/vn_choice_layer.tscn<>uid://cvgf4c6gg0tsy::::res://addons/dialogic/Modules/DefaultLayoutParts/Layer_TextInput/text_input_layer.tscn<>uid://lx24i8fl6uo::::res://addons/dialogic/Modules/DefaultLayoutParts/Layer_History/history_layer.tscn<>uid://dv08k6ljua6fm::::res://addons/dialogic/Resources/dialogic_style.gd
 ::res://UI/::1778405374

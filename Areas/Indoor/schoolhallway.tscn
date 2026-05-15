@@ -1,0 +1,44 @@
+[gd_scene format=3 uid="uid://ch52t560drojs"]
+
+[ext_resource type="Script" uid="uid://dfqbdlf3ary5y" path="res://Areas/Indoor/schoolhallway.gd" id="1_3nbbe"]
+[ext_resource type="PackedScene" uid="uid://bi003gu1i7jjb" path="res://Scene/door_transition.tscn" id="2_65vck"]
+[ext_resource type="PackedScene" uid="uid://d3swmgi1ckxhq" path="res://Characters/Main Character/player.tscn" id="3_wbpkf"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_st5y4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_j8jnu"]
+size = Vector2(792, 20)
+
+[node name="Schoolhallway" type="Node2D" unique_id=979236990]
+script = ExtResource("1_3nbbe")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=808159176]
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D" unique_id=812108675]
+position = Vector2(396.5, 104)
+scale = Vector2(789, 20.000004)
+texture = SubResource("PlaceholderTexture2D_st5y4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1725423079]
+position = Vector2(398, 104)
+shape = SubResource("RectangleShape2D_j8jnu")
+
+[node name="DoorTransition" parent="." unique_id=382549217 instance=ExtResource("2_65vck")]
+position = Vector2(77, 80)
+target_scene = "res://Areas/street3.tscn"
+target_spawn = "FromSchoolhallway"
+
+[node name="Player" parent="." unique_id=455174183 instance=ExtResource("3_wbpkf")]
+position = Vector2(17, 77)
+
+[node name="SpawnPoints" type="Marker2D" parent="." unique_id=2103217377]
+position = Vector2(77, 80)
+
+[node name="FromStreet3" type="Marker2D" parent="SpawnPoints" unique_id=1779939152]
+
+[node name="Label" type="Label" parent="." unique_id=409448357]
+offset_left = 18.0
+offset_top = 46.0
+offset_right = 141.0
+offset_bottom = 69.0
+text = "pintu ke street3"

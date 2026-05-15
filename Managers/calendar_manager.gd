@@ -42,8 +42,8 @@ const DAILY_PLANS := {
 		"events": [],
 	},
 	"05/13": {
-		"planned_activities": ["Meet Alex after school"],
-		"objectives": ["Meet Alex after school"],
+		"planned_activities": ["Meet Bella after school"],
+		"objectives": ["Meet Bella after school"],
 		"reminders": [],
 		"events": [],
 	},

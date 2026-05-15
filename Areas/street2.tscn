@@ -7,7 +7,7 @@
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_3p1aa"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i82u8"]
-size = Vector2(484, 20)
+size = Vector2(792, 20)
 
 [node name="Street2" type="Node2D" unique_id=1138626659]
 script = ExtResource("1_ly3r1")
@@ -18,23 +18,31 @@ position = Vector2(46, 77)
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=525494659]
 
 [node name="Sprite2D" type="Sprite2D" parent="StaticBody2D" unique_id=882965773]
-position = Vector2(244, 104)
-scale = Vector2(483.99997, 20.000004)
+position = Vector2(396.5, 104)
+scale = Vector2(789, 20.000004)
 texture = SubResource("PlaceholderTexture2D_3p1aa")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1633724065]
-position = Vector2(244, 104)
+position = Vector2(398, 104)
 shape = SubResource("RectangleShape2D_i82u8")
 
 [node name="DoorTransition" parent="." unique_id=382549217 instance=ExtResource("2_3hmcq")]
-position = Vector2(204, 76)
-target_scene = "uid://bi38fjjs8nqmb"
+position = Vector2(70, 75)
+target_scene = "res://Areas/street.tscn"
+target_spawn = "FromStreet2"
+
+[node name="DoorTransition2n2" parent="." unique_id=817062326 instance=ExtResource("2_3hmcq")]
+position = Vector2(768, 78)
+target_scene = "res://Areas/street3.tscn"
 target_spawn = "FromStreet2"
 
 [node name="SpawnPoints" type="Marker2D" parent="." unique_id=383211161]
-position = Vector2(204, 76)
+position = Vector2(70, 75)
 
 [node name="FromStreet" type="Marker2D" parent="SpawnPoints" unique_id=1655231775]
+
+[node name="FromStreet3" type="Marker2D" parent="SpawnPoints" unique_id=551947102]
+position = Vector2(698, 3)
 
 [node name="Label" type="Label" parent="." unique_id=193113331]
 offset_right = 40.0
@@ -43,11 +51,19 @@ text = "Street 2"
 
 [node name="Label" type="Label" parent="Label" unique_id=2012542665]
 layout_mode = 0
-offset_left = 144.0
-offset_top = 38.0
-offset_right = 268.0
-offset_bottom = 61.0
+offset_left = 10.0
+offset_top = 37.0
+offset_right = 134.0
+offset_bottom = 60.0
 text = "pintu ke Street"
+
+[node name="Label2" type="Label" parent="Label" unique_id=357612829]
+layout_mode = 0
+offset_left = 707.0
+offset_top = 48.0
+offset_right = 830.0
+offset_bottom = 71.0
+text = "pintu ke street3"
 
 [node name="TextureRect" type="TextureRect" parent="." unique_id=1680542451]
 offset_right = 40.0

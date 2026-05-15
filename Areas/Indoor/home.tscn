@@ -32,7 +32,7 @@ shape = SubResource("RectangleShape2D_tw2oj")
 
 [node name="DoorTransition" parent="." unique_id=382549217 instance=ExtResource("2_f6vm4")]
 position = Vector2(469, 81)
-target_scene = "uid://bi38fjjs8nqmb"
+target_scene = "res://Areas/street.tscn"
 target_spawn = "FromHome"
 
 [node name="Bed" type="Area2D" parent="." unique_id=1632535900]

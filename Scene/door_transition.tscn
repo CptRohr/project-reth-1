@@ -8,7 +8,7 @@
 
 [node name="DoorTransition" type="Area2D" unique_id=382549217]
 script = ExtResource("1_8d5ee")
-target_scene = "uid://dhqrdnoowy84n"
+target_scene = "res://Areas/street2.tscn"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1132023451]
 shape = SubResource("CircleShape2D_for01")
