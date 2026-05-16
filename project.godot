@@ -41,11 +41,9 @@ directories/dtl_directory={
 "AbangBrewok_LaterDay": "res://Dialogue/AbangBrewok_LaterDay.dtl",
 "test": "res://Dialogue/test.dtl"
 }
-layout/style_directory={
-"RETH Style": "res://Styles/RETH Style.tres"
-}
+layout/style_directory={}
 glossary/default_case_sensitive=true
-layout/style_list=["res://Styles/RETH Style.tres"]
+layout/style_list=[""]
 layout/default_style=""
 variables={}
 extensions_folder="res://addons/dialogic_additions"
@@ -153,6 +151,7 @@ pause_menu={
 
 [rendering]
 
+textures/canvas_textures/default_texture_filter=0
 rendering_device/driver.windows="d3d12"
 renderer/rendering_method="mobile"
 textures/vram_compression/import_etc2_astc=true

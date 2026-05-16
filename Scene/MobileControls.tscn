@@ -1,6 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://di2ar63sy7vfh"]
+[gd_scene format=3 uid="uid://di2ar63sy7vfh"]
 
-[ext_resource type="Script" path="res://Managers/mobile_controls.gd" id="1_jwi1x"]
+[ext_resource type="Script" uid="uid://b6vvovr1lryd2" path="res://Managers/mobile_controls.gd" id="1_jwi1x"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_button"]
 bg_color = Color(0.05, 0.055, 0.065, 0.62)
@@ -30,6 +30,7 @@ corner_radius_bottom_left = 12
 script = ExtResource("1_jwi1x")
 
 [node name="RootControl" type="Control" parent="." unique_id=1774351971]
+layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -54,8 +55,8 @@ custom_minimum_size = Vector2(112, 112)
 layout_mode = 2
 theme_override_font_sizes/font_size = 44
 theme_override_styles/normal = SubResource("StyleBoxFlat_button")
-theme_override_styles/hover = SubResource("StyleBoxFlat_button")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_pressed")
+theme_override_styles/hover = SubResource("StyleBoxFlat_button")
 theme_override_styles/focus = SubResource("StyleBoxFlat_pressed")
 text = "<"
 
@@ -64,8 +65,8 @@ custom_minimum_size = Vector2(112, 112)
 layout_mode = 2
 theme_override_font_sizes/font_size = 44
 theme_override_styles/normal = SubResource("StyleBoxFlat_button")
-theme_override_styles/hover = SubResource("StyleBoxFlat_button")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_pressed")
+theme_override_styles/hover = SubResource("StyleBoxFlat_button")
 theme_override_styles/focus = SubResource("StyleBoxFlat_pressed")
 text = ">"
 
@@ -89,8 +90,8 @@ custom_minimum_size = Vector2(132, 112)
 layout_mode = 2
 theme_override_font_sizes/font_size = 34
 theme_override_styles/normal = SubResource("StyleBoxFlat_button")
-theme_override_styles/hover = SubResource("StyleBoxFlat_button")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_pressed")
+theme_override_styles/hover = SubResource("StyleBoxFlat_button")
 theme_override_styles/focus = SubResource("StyleBoxFlat_pressed")
 text = "E"
 
@@ -99,7 +100,7 @@ custom_minimum_size = Vector2(112, 112)
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
 theme_override_styles/normal = SubResource("StyleBoxFlat_button")
-theme_override_styles/hover = SubResource("StyleBoxFlat_button")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_pressed")
+theme_override_styles/hover = SubResource("StyleBoxFlat_button")
 theme_override_styles/focus = SubResource("StyleBoxFlat_pressed")
 text = "||"

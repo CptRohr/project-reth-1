@@ -1,6 +1,7 @@
-res://Scene/MainMenu.tscn
+res://Areas/street.tscn
 res://Styles/RETH Style.tres
-res://Managers/mobile_controls.gd
-res://Managers/scene_manager.gd
-res://Scripts/door_transition.gd
-res://Managers/transition_layer.gd
+res://Styles/Buble.tres
+res://Characters/NPC/abang_brewok.gd
+res://Characters/NPC/npc.gd
+res://Characters/NPC/AbangBrewok.dch
+res://Characters/NPC/NPC.dch

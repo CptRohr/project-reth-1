@@ -9,11 +9,14 @@ const BOOT_SCENE := "res://Scene/BootScene.tscn"
 @onready var root_control: Control = $RootControl
 
 var pressed_actions: Dictionary = {}
+var dialogue_active: bool = false
 
 
 func _ready() -> void:
 	layer = 80
 	process_mode = Node.PROCESS_MODE_ALWAYS
+	Dialogic.timeline_started.connect(_on_dialogue_started)
+	Dialogic.timeline_ended.connect(_on_dialogue_ended)
 	_connect_button("RootControl/MovementRow/LeftButton", "move_left")
 	_connect_button("RootControl/MovementRow/RightButton", "move_right")
 	_connect_button("RootControl/ActionRow/InteractButton", "interact")
@@ -68,7 +71,7 @@ func _release_all_actions() -> void:
 func _update_visibility() -> void:
 	var should_show: bool = force_visible or _has_touch_controls()
 
-	if _is_non_game_scene():
+	if dialogue_active or _is_non_game_scene():
 		should_show = false
 
 	if root_control.visible == should_show:
@@ -94,3 +97,13 @@ func _is_non_game_scene() -> bool:
 		return true
 
 	return [MAIN_MENU_SCENE, BOOT_SCENE].has(current_scene.scene_file_path)
+
+
+func _on_dialogue_started() -> void:
+	dialogue_active = true
+	_update_visibility()
+
+
+func _on_dialogue_ended() -> void:
+	dialogue_active = false
+	_update_visibility()
