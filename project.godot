@@ -43,7 +43,7 @@ directories/dtl_directory={
 }
 layout/style_directory={}
 glossary/default_case_sensitive=true
-layout/style_list=[""]
+layout/style_list=[]
 layout/default_style=""
 variables={}
 extensions_folder="res://addons/dialogic_additions"

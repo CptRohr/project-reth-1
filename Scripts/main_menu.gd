@@ -1,6 +1,6 @@
 extends Node
 
-@export_file("*.tscn") var first_scene_path := "res://Areas/Indoor/home.tscn"
+@export_file("*.tscn") var first_scene_path := "res://Areas/Cutscenes/opening_cutscene.tscn"
 
 const RESOLUTIONS := [
 	Vector2i(1280, 720),

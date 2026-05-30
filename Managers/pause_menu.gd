@@ -1,6 +1,7 @@
 extends CanvasLayer
 
 const MAIN_MENU_SCENE := "res://Scene/MainMenu.tscn"
+const OPENING_CUTSCENE_SCENE := "res://Areas/Cutscenes/opening_cutscene.tscn"
 const RESOLUTIONS := [
 	Vector2i(1280, 720),
 	Vector2i(1600, 900),
@@ -31,7 +32,7 @@ func _ready() -> void:
 
 
 func _unhandled_input(event: InputEvent) -> void:
-	if event.is_action_pressed("pause_menu") and not _is_main_menu():
+	if event.is_action_pressed("pause_menu") and not _is_non_pause_scene():
 		toggle_pause_menu()
 		get_viewport().set_input_as_handled()
 
@@ -377,6 +378,6 @@ func _center_window() -> void:
 	DisplayServer.window_set_position(centered_position)
 
 
-func _is_main_menu() -> bool:
+func _is_non_pause_scene() -> bool:
 	var current_scene := get_tree().current_scene
-	return current_scene != null and current_scene.scene_file_path == MAIN_MENU_SCENE
+	return current_scene != null and [MAIN_MENU_SCENE, OPENING_CUTSCENE_SCENE].has(current_scene.scene_file_path)

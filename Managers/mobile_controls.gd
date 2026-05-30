@@ -2,6 +2,7 @@ extends CanvasLayer
 
 const MAIN_MENU_SCENE := "res://Scene/MainMenu.tscn"
 const BOOT_SCENE := "res://Scene/BootScene.tscn"
+const OPENING_CUTSCENE_SCENE := "res://Areas/Cutscenes/opening_cutscene.tscn"
 
 @export var force_visible: bool = false
 @export var show_on_desktop_touchscreen: bool = true
@@ -96,7 +97,7 @@ func _is_non_game_scene() -> bool:
 	if current_scene == null:
 		return true
 
-	return [MAIN_MENU_SCENE, BOOT_SCENE].has(current_scene.scene_file_path)
+	return [MAIN_MENU_SCENE, BOOT_SCENE, OPENING_CUTSCENE_SCENE].has(current_scene.scene_file_path)
 
 
 func _on_dialogue_started() -> void:

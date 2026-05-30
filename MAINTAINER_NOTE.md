@@ -110,6 +110,38 @@ Maintenance rules:
 - Maps should have a `SpawnPoints` node with named marker children.
 - Area scripts should register the current scene with `GameState.set_scene(scene_file_path)`.
 
+## Cutscenes
+
+Reusable cutscene playback lives in:
+
+```text
+Managers/cutscene_director.gd
+Managers/cutscene_director.md
+```
+
+Cutscene content lives with the cutscene scene:
+
+```text
+Areas/Cutscenes/opening_cutscene.tscn
+Areas/Cutscenes/opening_cutscene.gd
+Areas/Cutscenes/opening_cutscene.json
+```
+
+Current flow:
+
+```text
+cutscene scene loads -> CutsceneDirector reads timeline_path JSON -> actions play staged nodes/captions/fades -> optional skip_steps run -> SceneManager changes scene
+```
+
+Maintenance rules:
+
+- Shared cutscene actions belong in `Managers/cutscene_director.gd`.
+- JSON timing/content belongs beside the cutscene scene in `Areas/Cutscenes/`.
+- Scene-specific staging belongs in that cutscene's local script, such as mapping location names or fitting placeholder backdrops to fullscreen.
+- Persistent story milestones from cutscenes should use `GameState.set_flag()`.
+- Scene changes at the end of cutscenes should use the JSON `change_scene` action, which calls `SceneManager.transition_to()`.
+- Do not make `CutsceneDirector` an autoload unless multiple unrelated systems need to call it globally.
+
 ## Maps / Areas
 
 Current map scripts:
@@ -689,6 +721,8 @@ Calendar/date/planner data -> CalendarManager
 Checking if event can happen -> EventManager
 Changing scene -> SceneManager
 Fade transition -> Transition
+Cutscene JSON playback -> CutsceneDirector
+Cutscene stage setup -> cutscene-local script
 Player movement -> basic_movement.gd
 Map setup/spawn placement -> area scripts
 Press-E world object -> interactable script
@@ -708,6 +742,7 @@ Folder cleanup can happen later:
 Managers/
   game_state.gd
   event_manager.gd
+  cutscene_director.gd
   calendar_manager.gd
   scene_manager.gd
   transition_layer.gd
@@ -733,6 +768,7 @@ Characters/
 
 Dialogue/
 Areas/
+  Cutscenes/
 Scene/
 Assets/
 Audio/
