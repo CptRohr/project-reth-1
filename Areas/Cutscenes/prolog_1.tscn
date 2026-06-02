@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://bqe7d8cfuc3ar"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_oiql8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q40td"]
+size = Vector2(484, 20)
+
+[node name="Prolog1" type="Node2D" unique_id=242555272]
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1260770303]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=620534378]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1468568993]
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D" unique_id=1878164084]
+position = Vector2(244, 104)
+scale = Vector2(483.99997, 20.000004)
+texture = SubResource("PlaceholderTexture2D_oiql8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=240772257]
+position = Vector2(244, 104)
+shape = SubResource("RectangleShape2D_q40td")
+
+[node name="World" type="Node2D" parent="." unique_id=1469538767]

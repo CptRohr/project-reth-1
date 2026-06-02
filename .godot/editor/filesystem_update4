@@ -1,8 +1,3 @@
 res://Areas/street.tscn
-res://Scripts/main_menu.gd
-res://Story Draf/draf.txt
-res://Areas/Cutscenes/opening_cutscene.gd
-res://Managers/mobile_controls.gd
-res://Managers/pause_menu.gd
-res://Areas/Cutscenes/opening_cutscene.tscn
-res://Scripts/Cutscenes/cutscene_director.gd
+res://Areas/Cutscenes/prolog_1.tscn
+res://Characters/Main Character/player.tscn

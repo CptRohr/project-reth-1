@@ -535,9 +535,10 @@ Pause menu lives in:
 
 ```text
 Managers/pause_menu.gd
+Scene/PauseMenu.tscn
 ```
 
-It is an autoload `CanvasLayer` and currently provides:
+It is an autoload `CanvasLayer` scene and currently provides:
 
 - Resume
 - Stats
@@ -568,6 +569,8 @@ Settings:
 
 Maintenance rules:
 
+- Pause menu layout belongs in `Scene/PauseMenu.tscn`.
+- Pause menu behavior and data refresh belong in `Managers/pause_menu.gd`.
 - Pause menu UI can read `GameState` and `CalendarManager`.
 - It should not own gameplay rules.
 - When adding new visible stats, update `GameState.PLAYER_STATS`; the Stats screen follows that list.

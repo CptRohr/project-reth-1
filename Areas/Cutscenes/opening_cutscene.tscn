@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bjrvoedmpmjrs"]
 
-[ext_resource type="Script" uid="uid://bkxwimojj3h4x" path="res://Areas/Cutscenes/opening_cutscene.gd" id="1_opening"]
+[ext_resource type="Script" uid="uid://cm70jsyns2lg5" path="res://Areas/Cutscenes/opening_cutscene.gd" id="1_opening"]
 [ext_resource type="FontFile" uid="uid://b38rgofq4civw" path="res://Fonts/VCR_OSD_MONO_1.001.ttf" id="2_font"]
 
 [node name="OpeningCutscene" type="Node2D" unique_id=1312721999]

@@ -8,26 +8,27 @@ const RESOLUTIONS := [
 	Vector2i(1920, 1080),
 ]
 
-var root_control: Control
-var root_panel: PanelContainer
-var main_row: HBoxContainer
-var stats_box: VBoxContainer
-var stats_grid: GridContainer
-var settings_box: VBoxContainer
-var calendar_box: VBoxContainer
-var calendar_month_label: Label
-var calendar_grid: GridContainer
+@onready var root_control: Control = $RootControl
+@onready var main_row: HBoxContainer = $RootControl/CenterContainer/RootPanel/MarginContainer/Stack/MainRow
+@onready var stats_box: VBoxContainer = $RootControl/CenterContainer/RootPanel/MarginContainer/Stack/StatsBox
+@onready var stats_grid: GridContainer = $RootControl/CenterContainer/RootPanel/MarginContainer/Stack/StatsBox/StatsGrid
+@onready var settings_box: VBoxContainer = $RootControl/CenterContainer/RootPanel/MarginContainer/Stack/SettingsBox
+@onready var resolution_options: OptionButton = $RootControl/CenterContainer/RootPanel/MarginContainer/Stack/SettingsBox/ResolutionRow/ResolutionOptions
+@onready var fullscreen_check: CheckBox = $RootControl/CenterContainer/RootPanel/MarginContainer/Stack/SettingsBox/FullscreenCheck
+@onready var vsync_check: CheckBox = $RootControl/CenterContainer/RootPanel/MarginContainer/Stack/SettingsBox/VsyncCheck
+@onready var status_label: Label = $RootControl/CenterContainer/RootPanel/MarginContainer/Stack/SettingsBox/StatusLabel
+@onready var calendar_box: VBoxContainer = $RootControl/CenterContainer/RootPanel/MarginContainer/Stack/CalendarBox
+@onready var calendar_month_label: Label = $RootControl/CenterContainer/RootPanel/MarginContainer/Stack/CalendarBox/CalendarMonthLabel
+@onready var calendar_grid: GridContainer = $RootControl/CenterContainer/RootPanel/MarginContainer/Stack/CalendarBox/CalendarGrid
+
 var calendar_view_month := 4
-var resolution_options: OptionButton
-var fullscreen_check: CheckBox
-var vsync_check: CheckBox
-var status_label: Label
 
 
 func _ready() -> void:
 	layer = 90
 	process_mode = Node.PROCESS_MODE_ALWAYS
-	_build_ui()
+	_connect_buttons()
+	_setup_settings_values()
 	hide_pause_menu()
 
 
@@ -47,10 +48,7 @@ func toggle_pause_menu() -> void:
 func show_pause_menu() -> void:
 	get_tree().paused = true
 	root_control.visible = true
-	main_row.visible = true
-	stats_box.visible = false
-	settings_box.visible = false
-	calendar_box.visible = false
+	_show_main_buttons()
 	status_label.text = ""
 
 
@@ -59,97 +57,20 @@ func hide_pause_menu() -> void:
 	root_control.visible = false
 
 
-func _build_ui() -> void:
-	root_control = Control.new()
-	root_control.set_anchors_preset(Control.PRESET_FULL_RECT)
-	add_child(root_control)
-
-	var center_container := CenterContainer.new()
-	center_container.set_anchors_preset(Control.PRESET_FULL_RECT)
-	root_control.add_child(center_container)
-
-	root_panel = PanelContainer.new()
-	root_panel.custom_minimum_size = Vector2(760, 420)
-	center_container.add_child(root_panel)
-
-	var margin := MarginContainer.new()
-	margin.add_theme_constant_override("margin_left", 16)
-	margin.add_theme_constant_override("margin_top", 16)
-	margin.add_theme_constant_override("margin_right", 16)
-	margin.add_theme_constant_override("margin_bottom", 16)
-	root_panel.add_child(margin)
-
-	var stack := VBoxContainer.new()
-	stack.add_theme_constant_override("separation", 12)
-	margin.add_child(stack)
-
-	var title := Label.new()
-	title.text = "Paused"
-	title.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	stack.add_child(title)
-
-	main_row = HBoxContainer.new()
-	main_row.add_theme_constant_override("separation", 8)
-	stack.add_child(main_row)
-
-	_add_button(main_row, "Resume", hide_pause_menu)
-	_add_button(main_row, "Stats", _show_stats)
-	_add_button(main_row, "Calendar", _show_calendar)
-	_add_button(main_row, "Settings", _show_settings)
-	_add_button(main_row, "Main Menu", _go_to_main_menu)
-	_add_button(main_row, "Quit Game", Callable(get_tree(), "quit"))
-
-	_build_stats_ui(stack)
-
-	settings_box = VBoxContainer.new()
-	settings_box.add_theme_constant_override("separation", 8)
-	stack.add_child(settings_box)
-
-	var resolution_row := HBoxContainer.new()
-	resolution_row.add_theme_constant_override("separation", 8)
-	settings_box.add_child(resolution_row)
-
-	var resolution_label := Label.new()
-	resolution_label.text = "Resolution"
-	resolution_label.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-	resolution_row.add_child(resolution_label)
-
-	resolution_options = OptionButton.new()
-	resolution_options.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-	resolution_row.add_child(resolution_options)
-
-	fullscreen_check = CheckBox.new()
-	fullscreen_check.text = "Fullscreen"
-	settings_box.add_child(fullscreen_check)
-
-	vsync_check = CheckBox.new()
-	vsync_check.text = "VSync"
-	settings_box.add_child(vsync_check)
-
-	status_label = Label.new()
-	status_label.custom_minimum_size = Vector2(0, 20)
-	status_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	settings_box.add_child(status_label)
-
-	var settings_buttons := HBoxContainer.new()
-	settings_buttons.add_theme_constant_override("separation", 8)
-	settings_box.add_child(settings_buttons)
-
-	_add_button(settings_buttons, "Apply", _apply_settings)
-	_add_button(settings_buttons, "Back", _show_main_buttons)
-
-	_build_calendar_ui(stack)
-	_setup_settings_values()
-
-
-func _add_button(parent: Control, text: String, callback: Callable) -> Button:
-	var button := Button.new()
-	button.text = text
-	button.custom_minimum_size = Vector2(110, 40)
-	button.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-	button.pressed.connect(callback)
-	parent.add_child(button)
-	return button
+func _connect_buttons() -> void:
+	$RootControl/CenterContainer/RootPanel/MarginContainer/Stack/MainRow/ResumeButton.pressed.connect(hide_pause_menu)
+	$RootControl/CenterContainer/RootPanel/MarginContainer/Stack/MainRow/StatsButton.pressed.connect(_show_stats)
+	$RootControl/CenterContainer/RootPanel/MarginContainer/Stack/MainRow/CalendarButton.pressed.connect(_show_calendar)
+	$RootControl/CenterContainer/RootPanel/MarginContainer/Stack/MainRow/SettingsButton.pressed.connect(_show_settings)
+	$RootControl/CenterContainer/RootPanel/MarginContainer/Stack/MainRow/MainMenuButton.pressed.connect(_go_to_main_menu)
+	$RootControl/CenterContainer/RootPanel/MarginContainer/Stack/MainRow/QuitButton.pressed.connect(Callable(get_tree(), "quit"))
+	$RootControl/CenterContainer/RootPanel/MarginContainer/Stack/StatsBox/StatsButtons/StatsBackButton.pressed.connect(_show_main_buttons)
+	$RootControl/CenterContainer/RootPanel/MarginContainer/Stack/SettingsBox/SettingsButtons/ApplyButton.pressed.connect(_apply_settings)
+	$RootControl/CenterContainer/RootPanel/MarginContainer/Stack/SettingsBox/SettingsButtons/SettingsBackButton.pressed.connect(_show_main_buttons)
+	$RootControl/CenterContainer/RootPanel/MarginContainer/Stack/CalendarBox/CalendarButtons/PreviousButton.pressed.connect(_show_previous_month)
+	$RootControl/CenterContainer/RootPanel/MarginContainer/Stack/CalendarBox/CalendarButtons/TodayButton.pressed.connect(_show_current_month)
+	$RootControl/CenterContainer/RootPanel/MarginContainer/Stack/CalendarBox/CalendarButtons/NextButton.pressed.connect(_show_next_month)
+	$RootControl/CenterContainer/RootPanel/MarginContainer/Stack/CalendarBox/CalendarButtons/CalendarBackButton.pressed.connect(_show_main_buttons)
 
 
 func _show_stats() -> void:
@@ -185,28 +106,6 @@ func _show_calendar() -> void:
 	_refresh_calendar_view()
 
 
-func _build_stats_ui(parent: Control) -> void:
-	stats_box = VBoxContainer.new()
-	stats_box.add_theme_constant_override("separation", 8)
-	parent.add_child(stats_box)
-
-	var title := Label.new()
-	title.text = "Player Stats"
-	title.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	stats_box.add_child(title)
-
-	stats_grid = GridContainer.new()
-	stats_grid.columns = 2
-	stats_box.add_child(stats_grid)
-
-	var stats_buttons := HBoxContainer.new()
-	stats_buttons.add_theme_constant_override("separation", 8)
-	stats_box.add_child(stats_buttons)
-
-	_add_button(stats_buttons, "Back", _show_main_buttons)
-	stats_box.visible = false
-
-
 func _refresh_stats_view() -> void:
 	for child in stats_grid.get_children():
 		child.queue_free()
@@ -229,30 +128,6 @@ func _refresh_stats_view() -> void:
 			value_label.text = "%s / %s" % [player_stats[stat_name], GameState.STAT_MAX]
 
 		stats_grid.add_child(value_label)
-
-
-func _build_calendar_ui(parent: Control) -> void:
-	calendar_box = VBoxContainer.new()
-	calendar_box.add_theme_constant_override("separation", 8)
-	parent.add_child(calendar_box)
-
-	calendar_month_label = Label.new()
-	calendar_month_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	calendar_box.add_child(calendar_month_label)
-
-	calendar_grid = GridContainer.new()
-	calendar_grid.columns = 7
-	calendar_box.add_child(calendar_grid)
-
-	var calendar_buttons := HBoxContainer.new()
-	calendar_buttons.add_theme_constant_override("separation", 8)
-	calendar_box.add_child(calendar_buttons)
-
-	_add_button(calendar_buttons, "Previous", _show_previous_month)
-	_add_button(calendar_buttons, "Today", _show_current_month)
-	_add_button(calendar_buttons, "Next", _show_next_month)
-	_add_button(calendar_buttons, "Back", _show_main_buttons)
-	calendar_box.visible = false
 
 
 func _show_previous_month() -> void:

@@ -1,0 +1,197 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://Managers/pause_menu.gd" id="1_pause"]
+
+[node name="PauseMenu" type="CanvasLayer"]
+layer = 90
+process_mode = 3
+script = ExtResource("1_pause")
+
+[node name="RootControl" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="RootControl"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="RootPanel" type="PanelContainer" parent="RootControl/CenterContainer"]
+custom_minimum_size = Vector2(760, 420)
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="RootControl/CenterContainer/RootPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="Stack" type="VBoxContainer" parent="RootControl/CenterContainer/RootPanel/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="Title" type="Label" parent="RootControl/CenterContainer/RootPanel/MarginContainer/Stack"]
+layout_mode = 2
+text = "Paused"
+horizontal_alignment = 1
+
+[node name="MainRow" type="HBoxContainer" parent="RootControl/CenterContainer/RootPanel/MarginContainer/Stack"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="ResumeButton" type="Button" parent="RootControl/CenterContainer/RootPanel/MarginContainer/Stack/MainRow"]
+custom_minimum_size = Vector2(110, 40)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Resume"
+
+[node name="StatsButton" type="Button" parent="RootControl/CenterContainer/RootPanel/MarginContainer/Stack/MainRow"]
+custom_minimum_size = Vector2(110, 40)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Stats"
+
+[node name="CalendarButton" type="Button" parent="RootControl/CenterContainer/RootPanel/MarginContainer/Stack/MainRow"]
+custom_minimum_size = Vector2(110, 40)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Calendar"
+
+[node name="SettingsButton" type="Button" parent="RootControl/CenterContainer/RootPanel/MarginContainer/Stack/MainRow"]
+custom_minimum_size = Vector2(110, 40)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Settings"
+
+[node name="MainMenuButton" type="Button" parent="RootControl/CenterContainer/RootPanel/MarginContainer/Stack/MainRow"]
+custom_minimum_size = Vector2(110, 40)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Main Menu"
+
+[node name="QuitButton" type="Button" parent="RootControl/CenterContainer/RootPanel/MarginContainer/Stack/MainRow"]
+custom_minimum_size = Vector2(110, 40)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Quit Game"
+
+[node name="StatsBox" type="VBoxContainer" parent="RootControl/CenterContainer/RootPanel/MarginContainer/Stack"]
+visible = false
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="StatsTitle" type="Label" parent="RootControl/CenterContainer/RootPanel/MarginContainer/Stack/StatsBox"]
+layout_mode = 2
+text = "Player Stats"
+horizontal_alignment = 1
+
+[node name="StatsGrid" type="GridContainer" parent="RootControl/CenterContainer/RootPanel/MarginContainer/Stack/StatsBox"]
+layout_mode = 2
+columns = 2
+
+[node name="StatsButtons" type="HBoxContainer" parent="RootControl/CenterContainer/RootPanel/MarginContainer/Stack/StatsBox"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="StatsBackButton" type="Button" parent="RootControl/CenterContainer/RootPanel/MarginContainer/Stack/StatsBox/StatsButtons"]
+custom_minimum_size = Vector2(110, 40)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Back"
+
+[node name="SettingsBox" type="VBoxContainer" parent="RootControl/CenterContainer/RootPanel/MarginContainer/Stack"]
+visible = false
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="ResolutionRow" type="HBoxContainer" parent="RootControl/CenterContainer/RootPanel/MarginContainer/Stack/SettingsBox"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="ResolutionLabel" type="Label" parent="RootControl/CenterContainer/RootPanel/MarginContainer/Stack/SettingsBox/ResolutionRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Resolution"
+
+[node name="ResolutionOptions" type="OptionButton" parent="RootControl/CenterContainer/RootPanel/MarginContainer/Stack/SettingsBox/ResolutionRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="FullscreenCheck" type="CheckBox" parent="RootControl/CenterContainer/RootPanel/MarginContainer/Stack/SettingsBox"]
+layout_mode = 2
+text = "Fullscreen"
+
+[node name="VsyncCheck" type="CheckBox" parent="RootControl/CenterContainer/RootPanel/MarginContainer/Stack/SettingsBox"]
+layout_mode = 2
+text = "VSync"
+
+[node name="StatusLabel" type="Label" parent="RootControl/CenterContainer/RootPanel/MarginContainer/Stack/SettingsBox"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+horizontal_alignment = 1
+
+[node name="SettingsButtons" type="HBoxContainer" parent="RootControl/CenterContainer/RootPanel/MarginContainer/Stack/SettingsBox"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="ApplyButton" type="Button" parent="RootControl/CenterContainer/RootPanel/MarginContainer/Stack/SettingsBox/SettingsButtons"]
+custom_minimum_size = Vector2(110, 40)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Apply"
+
+[node name="SettingsBackButton" type="Button" parent="RootControl/CenterContainer/RootPanel/MarginContainer/Stack/SettingsBox/SettingsButtons"]
+custom_minimum_size = Vector2(110, 40)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Back"
+
+[node name="CalendarBox" type="VBoxContainer" parent="RootControl/CenterContainer/RootPanel/MarginContainer/Stack"]
+visible = false
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="CalendarMonthLabel" type="Label" parent="RootControl/CenterContainer/RootPanel/MarginContainer/Stack/CalendarBox"]
+layout_mode = 2
+horizontal_alignment = 1
+
+[node name="CalendarGrid" type="GridContainer" parent="RootControl/CenterContainer/RootPanel/MarginContainer/Stack/CalendarBox"]
+layout_mode = 2
+columns = 7
+
+[node name="CalendarButtons" type="HBoxContainer" parent="RootControl/CenterContainer/RootPanel/MarginContainer/Stack/CalendarBox"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="PreviousButton" type="Button" parent="RootControl/CenterContainer/RootPanel/MarginContainer/Stack/CalendarBox/CalendarButtons"]
+custom_minimum_size = Vector2(110, 40)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Previous"
+
+[node name="TodayButton" type="Button" parent="RootControl/CenterContainer/RootPanel/MarginContainer/Stack/CalendarBox/CalendarButtons"]
+custom_minimum_size = Vector2(110, 40)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Today"
+
+[node name="NextButton" type="Button" parent="RootControl/CenterContainer/RootPanel/MarginContainer/Stack/CalendarBox/CalendarButtons"]
+custom_minimum_size = Vector2(110, 40)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Next"
+
+[node name="CalendarBackButton" type="Button" parent="RootControl/CenterContainer/RootPanel/MarginContainer/Stack/CalendarBox/CalendarButtons"]
+custom_minimum_size = Vector2(110, 40)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Back"

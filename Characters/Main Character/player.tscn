@@ -91,6 +91,7 @@ animation = &"idle"
 shape = SubResource("CapsuleShape2D_o4n52")
 
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=1655207131]
+offset = Vector2(0, -50)
 zoom = Vector2(2.75, 2.75)
 position_smoothing_enabled = true
 rotation_smoothing_enabled = true
