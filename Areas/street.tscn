@@ -276,7 +276,7 @@ tile_map_data = PackedByteArray("AAAKAAEAAwAKAAMAAAAKAAIAAwAKAAQAAAALAAEAAwALAAM
 tile_set = SubResource("TileSet_nbdgs")
 
 [node name="Player" parent="." unique_id=455174183 instance=ExtResource("1_y7n76")]
-position = Vector2(252, 81)
+position = Vector2(-40, 79)
 
 [node name="DoorTransition" parent="." unique_id=382549217 instance=ExtResource("3_pes26")]
 position = Vector2(202, 82)

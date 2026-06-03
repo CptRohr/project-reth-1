@@ -1,21 +1,15 @@
-[gd_scene load_steps=6 format=3 uid="uid://c2qgetjc3mfo3"]
+[gd_scene format=3 uid="uid://c2qgetjc3mfo3"]
 
 [ext_resource type="Script" uid="uid://cqyhm6offcitc" path="res://addons/dialogic/Modules/Audio/settings_audio.gd" id="1_2iyyr"]
 [ext_resource type="PackedScene" uid="uid://dbpkta2tjsqim" path="res://addons/dialogic/Editor/Common/hint_tooltip_icon.tscn" id="2_o1ban"]
 [ext_resource type="PackedScene" uid="uid://dpwhshre1n4t6" path="res://addons/dialogic/Editor/Events/Fields/field_options_dynamic.tscn" id="3_bx557"]
 [ext_resource type="PackedScene" uid="uid://kdpp3mibml33" path="res://addons/dialogic/Editor/Events/Fields/field_number.tscn" id="4_xfyvc"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uaowc"]
-content_margin_left = 8.0
-content_margin_top = 8.0
-content_margin_right = 8.0
-content_margin_bottom = 8.0
-bg_color = Color(0.120869994, 0.120869994, 0.120869994, 1)
-corner_radius_top_left = 4
-corner_radius_top_right = 4
-corner_radius_bottom_right = 4
-corner_radius_bottom_left = 4
-corner_detail = 4
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_uaowc"]
+content_margin_left = 0.0
+content_margin_top = 0.0
+content_margin_right = 0.0
+content_margin_bottom = 0.0
 
 [node name="Audio" type="VBoxContainer" unique_id=1763173638]
 offset_right = 121.0
@@ -59,7 +53,7 @@ hint_text = "Default settings for named audio channels."
 
 [node name="Panel" type="PanelContainer" parent="." unique_id=163375319]
 layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_uaowc")
+theme_override_styles/panel = SubResource("StyleBoxEmpty_uaowc")
 
 [node name="VBox" type="VBoxContainer" parent="Panel" unique_id=1432516074]
 layout_mode = 2

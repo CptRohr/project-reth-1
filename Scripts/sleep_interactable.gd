@@ -15,6 +15,10 @@ func _ready():
 
 func _process(_delta):
 	if player_inside and Input.is_action_just_pressed("interact"):
+		if not get_calendar_manager().can_sleep_now():
+			show_debug_message(get_calendar_manager().get_sleep_lock_message())
+			return
+
 		GameState.sleep_to_next_day()
 
 		if save_after_sleep:
@@ -29,6 +33,10 @@ func show_debug_message(message: String) -> void:
 
 	if debug_hud != null:
 		debug_hud.show_message(message)
+
+
+func get_calendar_manager():
+	return get_node("/root/CalendarManager")
 
 
 func _on_body_entered(body):

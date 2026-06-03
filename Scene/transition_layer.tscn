@@ -1,7 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://burrfa5pw6bu0"]
+[gd_scene format=3 uid="uid://burrfa5pw6bu0"]
 
-[ext_resource type="Script" path="res://Managers/transition_layer.gd" id="1_y1kkw"]
-[ext_resource type="Shader" path="res://Assets/Shaders/double_dither_transition.gdshader" id="2_jx8q4"]
+[ext_resource type="Script" uid="uid://obbv54kauuxb" path="res://Managers/transition_layer.gd" id="1_y1kkw"]
+[ext_resource type="Shader" uid="uid://dcw5cfcj42iuf" path="res://Assets/Shaders/double_dither_transition.gdshader" id="2_jx8q4"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_y1kkw"]
 shader = ExtResource("2_jx8q4")
@@ -28,4 +28,3 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-color = Color(1, 1, 1, 1)

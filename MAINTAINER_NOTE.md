@@ -38,6 +38,7 @@ Dialogic
 Transition
 GameState
 EventManager
+TimeOfDayFilter
 DebugHud
 PauseMenu
 CalendarManager
@@ -236,6 +237,32 @@ Rules:
 - School moves from Morning to After School.
 - Sleeping advances to the next date, resets time to Morning, and restores Energy.
 - If the player spends time doing something in the world, use `activity_interactable.gd`.
+
+## Time-Of-Day Visual Filter
+
+Temporary global time tint lives in:
+
+```text
+Managers/time_of_day_filter.gd
+Scene/TimeOfDayFilter.tscn
+```
+
+`TimeOfDayFilter` is an autoloaded `CanvasLayer` that listens to `GameState.time_block_changed` and `GameState.state_loaded`. It overlays a subtle `ColorRect` tint based on `GameState.time_block`:
+
+```text
+Morning: clear
+After School: warm yellow
+Evening: pink/purple dusk
+Night: blue-dark
+```
+
+Maintenance rules:
+
+- This layer is intentionally temporary mood lighting until scene-specific evening/night backgrounds or parallax are ready.
+- Time still belongs to `GameState`; the filter only reads time and never advances it.
+- Keep the filter below UI layers. It currently uses layer `1`, while pause/school/transition/debug UI use higher layers.
+- Tune temporary colors in `TIME_BLOCK_TINTS`.
+- Later, this can become the manager that broadcasts visual profiles while outdoor scenes handle their own parallax/background swaps.
 
 ## Calendar And Daily Planner
 

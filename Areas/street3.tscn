@@ -29,7 +29,7 @@ target_spawn = "FromStreet3"
 
 [node name="DoorTransition2" parent="." unique_id=1217320961 instance=ExtResource("1_u4cs3")]
 position = Vector2(767, 80)
-target_scene = "res://Areas/Indoor/schoolhallway.tscn"
+target_scene = "res://Areas/Indoor/schoolgate.tscn"
 target_spawn = "FromStreet3"
 
 [node name="Label" type="Label" parent="." unique_id=175347889]
@@ -47,18 +47,18 @@ text = "pintu ke street2"
 
 [node name="Label2" type="Label" parent="Label" unique_id=163670205]
 layout_mode = 0
-offset_left = 652.0
-offset_top = 33.0
-offset_right = 830.0
-offset_bottom = 56.0
-text = "pintu ke schoolhallway"
+offset_left = 690.0
+offset_top = 41.0
+offset_right = 868.0
+offset_bottom = 64.0
+text = "pintu ke SchoolGate"
 
 [node name="SpawnPoints" type="Marker2D" parent="." unique_id=394774027]
 position = Vector2(70, 75)
 
 [node name="FromStreet2" type="Marker2D" parent="SpawnPoints" unique_id=1790459926]
 
-[node name="FromSchoolhallway" type="Marker2D" parent="SpawnPoints" unique_id=753571453]
+[node name="FromSchoolGate" type="Marker2D" parent="SpawnPoints" unique_id=753571453]
 position = Vector2(697, 5)
 
 [node name="Player" parent="." unique_id=455174183 instance=ExtResource("3_ukln7")]

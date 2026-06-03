@@ -25,8 +25,8 @@ shape = SubResource("RectangleShape2D_j8jnu")
 
 [node name="DoorTransition" parent="." unique_id=382549217 instance=ExtResource("2_65vck")]
 position = Vector2(77, 80)
-target_scene = "res://Areas/street3.tscn"
-target_spawn = "FromSchoolhallway"
+target_scene = "res://Areas/Indoor/schoolgate.tscn"
+target_spawn = "FromSchoolHallway"
 
 [node name="Player" parent="." unique_id=455174183 instance=ExtResource("3_wbpkf")]
 position = Vector2(17, 77)
@@ -34,11 +34,11 @@ position = Vector2(17, 77)
 [node name="SpawnPoints" type="Marker2D" parent="." unique_id=2103217377]
 position = Vector2(77, 80)
 
-[node name="FromStreet3" type="Marker2D" parent="SpawnPoints" unique_id=1779939152]
+[node name="FromSchoolGate" type="Marker2D" parent="SpawnPoints" unique_id=1779939152]
 
 [node name="Label" type="Label" parent="." unique_id=409448357]
 offset_left = 18.0
 offset_top = 46.0
 offset_right = 141.0
 offset_bottom = 69.0
-text = "pintu ke street3"
+text = "pintu ke SchoolGate"

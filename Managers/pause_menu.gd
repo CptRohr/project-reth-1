@@ -189,8 +189,12 @@ func _refresh_calendar_view() -> void:
 		else:
 			label.text = "%s\n%s" % [cell["day"], cell["routine"]]
 
-			if bool(cell.get("has_plan", false)):
+			if bool(cell.get("has_plan", false)) and str(cell.get("plan_summary", "")) != "":
 				label.text += "\n* %s" % cell["plan_summary"]
+
+			if bool(cell.get("has_special_events", false)):
+				label.text += "\n! %s" % cell["special_event_summary"]
+				label.add_theme_color_override("font_color", Color.ORANGE)
 
 			if bool(cell["is_today"]):
 				label.add_theme_color_override("font_color", Color.YELLOW)

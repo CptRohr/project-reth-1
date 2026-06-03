@@ -1,32 +1,32 @@
-[gd_scene load_steps=4 format=3 uid="uid://crke8suvv52c6"]
+[gd_scene format=3 uid="uid://crke8suvv52c6"]
 
 [ext_resource type="Script" uid="uid://uv6dx3sofwae" path="res://addons/dialogic/Editor/CharacterEditor/char_edit_p_section_layout.gd" id="1_76vf2"]
 [ext_resource type="PackedScene" uid="uid://dtimnsj014cu" path="res://addons/dialogic/Editor/Events/Fields/field_vector2.tscn" id="2_c8kyi"]
 [ext_resource type="PackedScene" uid="uid://kdpp3mibml33" path="res://addons/dialogic/Editor/Events/Fields/field_number.tscn" id="2_daw3l"]
 
-[node name="Layout" type="HFlowContainer"]
+[node name="Layout" type="HFlowContainer" unique_id=1052748887]
 offset_right = 428.0
 offset_bottom = 128.0
 size_flags_horizontal = 3
 script = ExtResource("1_76vf2")
 
-[node name="Label3" type="Label" parent="."]
+[node name="Label3" type="Label" parent="." unique_id=776923403]
 layout_mode = 2
 text = "Ignore Main Scale: "
 
-[node name="IgnoreScale" type="CheckBox" parent="."]
+[node name="IgnoreScale" type="CheckBox" parent="." unique_id=1702677246]
 unique_name_in_owner = true
 layout_mode = 2
 tooltip_text = "This portrait will ignore the main scale."
 
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=291867229]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="HBoxContainer"]
+[node name="Label" type="Label" parent="HBoxContainer" unique_id=28038254]
 layout_mode = 2
 text = "Scale:"
 
-[node name="PortraitScale" parent="HBoxContainer" instance=ExtResource("2_daw3l")]
+[node name="PortraitScale" parent="HBoxContainer" unique_id=2093174903 instance=ExtResource("2_daw3l")]
 unique_name_in_owner = true
 layout_mode = 2
 mode = 1
@@ -35,26 +35,26 @@ min_value = 0.0
 max_value = 999.0
 suffix = "%"
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="."]
+[node name="HBoxContainer2" type="HBoxContainer" parent="." unique_id=938372887]
 layout_mode = 2
 
-[node name="Label2" type="Label" parent="HBoxContainer2"]
+[node name="Label2" type="Label" parent="HBoxContainer2" unique_id=1819799937]
 layout_mode = 2
 text = "Offset:"
 
-[node name="PortraitOffset" parent="HBoxContainer2" instance=ExtResource("2_c8kyi")]
+[node name="PortraitOffset" parent="HBoxContainer2" unique_id=41470 instance=ExtResource("2_c8kyi")]
 unique_name_in_owner = true
 layout_mode = 2
 tooltip_text = "Offset that is applied on top of the main portrait offset."
 
-[node name="MirrorOption" type="HBoxContainer" parent="."]
+[node name="MirrorOption" type="HBoxContainer" parent="." unique_id=191180655]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="MirrorOption"]
+[node name="Label" type="Label" parent="MirrorOption" unique_id=1155443388]
 layout_mode = 2
 text = "Mirror:"
 
-[node name="PortraitMirror" type="CheckBox" parent="MirrorOption"]
+[node name="PortraitMirror" type="CheckBox" parent="MirrorOption" unique_id=1913901042]
 unique_name_in_owner = true
 layout_mode = 2
 tooltip_text = "Mirroring that is applied on top of the main portrait mirror."

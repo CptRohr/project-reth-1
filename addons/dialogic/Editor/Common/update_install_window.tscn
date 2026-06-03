@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://vv3m5m68fwg7"]
+[gd_scene format=3 uid="uid://vv3m5m68fwg7"]
 
 [ext_resource type="Script" uid="uid://cskkip1wso0pu" path="res://addons/dialogic/Editor/Common/update_install_window.gd" id="1_p1pbx"]
 [ext_resource type="Texture2D" uid="uid://dybg3l5pwetne" path="res://addons/dialogic/Editor/Images/plugin-icon.svg" id="2_20ke0"]
@@ -48,7 +48,7 @@ corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 
-[node name="UpdateInstallWindow" type="ColorRect"]
+[node name="UpdateInstallWindow" type="ColorRect" unique_id=105858861]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -57,7 +57,7 @@ grow_vertical = 2
 color = Color(0.207843, 0.129412, 0.372549, 1)
 script = ExtResource("1_p1pbx")
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1587998312]
 modulate = Color(0.447059, 0.447059, 0.447059, 1)
 layout_mode = 1
 anchors_preset = 15
@@ -67,7 +67,7 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("GradientTexture2D_nl8ke")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=855896736]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -79,49 +79,49 @@ offset_bottom = -13.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer"]
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer" unique_id=1343828775]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="Control" type="Control" parent="VBoxContainer/HBoxContainer2"]
+[node name="Control" type="Control" parent="VBoxContainer/HBoxContainer2" unique_id=1275538840]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 7
 
-[node name="VBox" type="VBoxContainer" parent="VBoxContainer/HBoxContainer2"]
+[node name="VBox" type="VBoxContainer" parent="VBoxContainer/HBoxContainer2" unique_id=962267207]
 custom_minimum_size = Vector2(450, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 3.74
 alignment = 1
 
-[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer/HBoxContainer2/VBox"]
+[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer/HBoxContainer2/VBox" unique_id=48985]
 clip_contents = false
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer2/VBox/ScrollContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer2/VBox/ScrollContainer" unique_id=712548736]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 alignment = 1
 
-[node name="Panel" type="PanelContainer" parent="VBoxContainer/HBoxContainer2/VBox/ScrollContainer/VBoxContainer"]
+[node name="Panel" type="PanelContainer" parent="VBoxContainer/HBoxContainer2/VBox/ScrollContainer/VBoxContainer" unique_id=104813994]
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_1g1am")
 
-[node name="VBox" type="VBoxContainer" parent="VBoxContainer/HBoxContainer2/VBox/ScrollContainer/VBoxContainer/Panel"]
+[node name="VBox" type="VBoxContainer" parent="VBoxContainer/HBoxContainer2/VBox/ScrollContainer/VBoxContainer/Panel" unique_id=1166266979]
 layout_mode = 2
 theme_override_constants/separation = -8
 
-[node name="State" type="Label" parent="VBoxContainer/HBoxContainer2/VBox/ScrollContainer/VBoxContainer/Panel/VBox"]
+[node name="State" type="Label" parent="VBoxContainer/HBoxContainer2/VBox/ScrollContainer/VBoxContainer/Panel/VBox" unique_id=1046698931]
 unique_name_in_owner = true
 layout_mode = 2
 theme_type_variation = &"DialogicSubTitle"
 text = "Update Available!"
 
-[node name="UpdateName" type="Label" parent="VBoxContainer/HBoxContainer2/VBox/ScrollContainer/VBoxContainer/Panel/VBox"]
+[node name="UpdateName" type="Label" parent="VBoxContainer/HBoxContainer2/VBox/ScrollContainer/VBoxContainer/Panel/VBox" unique_id=1555189859]
 unique_name_in_owner = true
 layout_mode = 2
 theme_type_variation = &"DialogicTitle"
@@ -129,14 +129,14 @@ theme_override_font_sizes/font_size = 25
 text = "Dialogic 2.0 - alpha 9"
 uppercase = true
 
-[node name="ShortInfo" type="Label" parent="VBoxContainer/HBoxContainer2/VBox/ScrollContainer/VBoxContainer/Panel/VBox"]
+[node name="ShortInfo" type="Label" parent="VBoxContainer/HBoxContainer2/VBox/ScrollContainer/VBoxContainer/Panel/VBox" unique_id=1842909945]
 unique_name_in_owner = true
 layout_mode = 2
 theme_type_variation = &"DialogicHintText2"
 theme_override_font_sizes/font_size = 10
 text = "12/31/23"
 
-[node name="Refresh" type="Button" parent="VBoxContainer/HBoxContainer2/VBox/ScrollContainer/VBoxContainer/Panel"]
+[node name="Refresh" type="Button" parent="VBoxContainer/HBoxContainer2/VBox/ScrollContainer/VBoxContainer/Panel" unique_id=727365899]
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 0
@@ -144,7 +144,7 @@ text = "Refresh
 "
 flat = true
 
-[node name="Content" type="RichTextLabel" parent="VBoxContainer/HBoxContainer2/VBox/ScrollContainer/VBoxContainer"]
+[node name="Content" type="RichTextLabel" parent="VBoxContainer/HBoxContainer2/VBox/ScrollContainer/VBoxContainer" unique_id=1274843270]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
@@ -158,97 +158,97 @@ This alpha brings a couple of very useful new features to dialogic as well as so
 "
 fit_content = true
 
-[node name="Reactions" type="HBoxContainer" parent="VBoxContainer/HBoxContainer2/VBox/ScrollContainer/VBoxContainer"]
+[node name="Reactions" type="HBoxContainer" parent="VBoxContainer/HBoxContainer2/VBox/ScrollContainer/VBoxContainer" unique_id=1978768864]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="Likes" type="Label" parent="VBoxContainer/HBoxContainer2/VBox/ScrollContainer/VBoxContainer/Reactions"]
+[node name="Likes" type="Label" parent="VBoxContainer/HBoxContainer2/VBox/ScrollContainer/VBoxContainer/Reactions" unique_id=407804861]
 layout_mode = 2
 theme_override_font_sizes/font_size = 14
 theme_override_styles/normal = SubResource("StyleBoxFlat_h4v2s")
 text = "👍12"
 
-[node name="Hooray" type="Label" parent="VBoxContainer/HBoxContainer2/VBox/ScrollContainer/VBoxContainer/Reactions"]
+[node name="Hooray" type="Label" parent="VBoxContainer/HBoxContainer2/VBox/ScrollContainer/VBoxContainer/Reactions" unique_id=1334701724]
 layout_mode = 2
 theme_override_font_sizes/font_size = 14
 theme_override_styles/normal = SubResource("StyleBoxFlat_h4v2s")
 text = "🎉12"
 
-[node name="Laugh" type="Label" parent="VBoxContainer/HBoxContainer2/VBox/ScrollContainer/VBoxContainer/Reactions"]
+[node name="Laugh" type="Label" parent="VBoxContainer/HBoxContainer2/VBox/ScrollContainer/VBoxContainer/Reactions" unique_id=1828269988]
 layout_mode = 2
 theme_override_font_sizes/font_size = 14
 theme_override_styles/normal = SubResource("StyleBoxFlat_h4v2s")
 text = "👀12"
 
-[node name="Heart" type="Label" parent="VBoxContainer/HBoxContainer2/VBox/ScrollContainer/VBoxContainer/Reactions"]
+[node name="Heart" type="Label" parent="VBoxContainer/HBoxContainer2/VBox/ScrollContainer/VBoxContainer/Reactions" unique_id=1218849600]
 layout_mode = 2
 theme_override_font_sizes/font_size = 14
 theme_override_styles/normal = SubResource("StyleBoxFlat_h4v2s")
 text = "❤️12"
 
-[node name="Rocket" type="Label" parent="VBoxContainer/HBoxContainer2/VBox/ScrollContainer/VBoxContainer/Reactions"]
+[node name="Rocket" type="Label" parent="VBoxContainer/HBoxContainer2/VBox/ScrollContainer/VBoxContainer/Reactions" unique_id=226595563]
 layout_mode = 2
 theme_override_font_sizes/font_size = 14
 theme_override_styles/normal = SubResource("StyleBoxFlat_h4v2s")
 text = "😕12"
 
-[node name="Eyes" type="Label" parent="VBoxContainer/HBoxContainer2/VBox/ScrollContainer/VBoxContainer/Reactions"]
+[node name="Eyes" type="Label" parent="VBoxContainer/HBoxContainer2/VBox/ScrollContainer/VBoxContainer/Reactions" unique_id=1394041408]
 layout_mode = 2
 theme_override_font_sizes/font_size = 14
 theme_override_styles/normal = SubResource("StyleBoxFlat_h4v2s")
 text = "🚀12"
 
-[node name="Confused" type="Label" parent="VBoxContainer/HBoxContainer2/VBox/ScrollContainer/VBoxContainer/Reactions"]
+[node name="Confused" type="Label" parent="VBoxContainer/HBoxContainer2/VBox/ScrollContainer/VBoxContainer/Reactions" unique_id=2072393333]
 layout_mode = 2
 theme_override_font_sizes/font_size = 14
 theme_override_styles/normal = SubResource("StyleBoxFlat_h4v2s")
 text = "😂12"
 
-[node name="ReadFull" type="LinkButton" parent="VBoxContainer/HBoxContainer2/VBox/ScrollContainer/VBoxContainer/Reactions"]
+[node name="ReadFull" type="LinkButton" parent="VBoxContainer/HBoxContainer2/VBox/ScrollContainer/VBoxContainer/Reactions" unique_id=1498635190]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 10
 text = "Read Full Announcement"
 
-[node name="Control" type="Control" parent="VBoxContainer/HBoxContainer2/VBox/ScrollContainer/VBoxContainer"]
+[node name="Control" type="Control" parent="VBoxContainer/HBoxContainer2/VBox/ScrollContainer/VBoxContainer" unique_id=1342541362]
 custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/HBoxContainer2/VBox/ScrollContainer/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/HBoxContainer2/VBox/ScrollContainer/VBoxContainer" unique_id=452362704]
 layout_mode = 2
 alignment = 2
 
-[node name="InfoLabel" type="Label" parent="VBoxContainer/HBoxContainer2/VBox/ScrollContainer/VBoxContainer/HBoxContainer"]
+[node name="InfoLabel" type="Label" parent="VBoxContainer/HBoxContainer2/VBox/ScrollContainer/VBoxContainer/HBoxContainer" unique_id=878394765]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 horizontal_alignment = 2
 autowrap_mode = 3
 
-[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer/HBoxContainer2/VBox/ScrollContainer/VBoxContainer/HBoxContainer"]
+[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer/HBoxContainer2/VBox/ScrollContainer/VBoxContainer/HBoxContainer" unique_id=877678300]
 self_modulate = Color(0, 0, 0, 1)
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_styles/panel = SubResource("StyleBoxFlat_h4v2s")
 
-[node name="HBox" type="HBoxContainer" parent="VBoxContainer/HBoxContainer2/VBox/ScrollContainer/VBoxContainer/HBoxContainer/PanelContainer"]
+[node name="HBox" type="HBoxContainer" parent="VBoxContainer/HBoxContainer2/VBox/ScrollContainer/VBoxContainer/HBoxContainer/PanelContainer" unique_id=1434882027]
 layout_mode = 2
 alignment = 2
 
-[node name="Loading" type="CenterContainer" parent="VBoxContainer/HBoxContainer2/VBox/ScrollContainer/VBoxContainer/HBoxContainer/PanelContainer/HBox"]
+[node name="Loading" type="CenterContainer" parent="VBoxContainer/HBoxContainer2/VBox/ScrollContainer/VBoxContainer/HBoxContainer/PanelContainer/HBox" unique_id=76573065]
 unique_name_in_owner = true
 visible = false
 custom_minimum_size = Vector2(30, 0)
 layout_mode = 2
 
-[node name="Control" type="Control" parent="VBoxContainer/HBoxContainer2/VBox/ScrollContainer/VBoxContainer/HBoxContainer/PanelContainer/HBox/Loading"]
+[node name="Control" type="Control" parent="VBoxContainer/HBoxContainer2/VBox/ScrollContainer/VBoxContainer/HBoxContainer/PanelContainer/HBox/Loading" unique_id=141251912]
 layout_mode = 2
 
-[node name="LoadingIcon" type="Sprite2D" parent="VBoxContainer/HBoxContainer2/VBox/ScrollContainer/VBoxContainer/HBoxContainer/PanelContainer/HBox/Loading/Control"]
+[node name="LoadingIcon" type="Sprite2D" parent="VBoxContainer/HBoxContainer2/VBox/ScrollContainer/VBoxContainer/HBoxContainer/PanelContainer/HBox/Loading/Control" unique_id=948534292]
 unique_name_in_owner = true
 texture = ExtResource("2_20ke0")
 
-[node name="Restart" type="Button" parent="VBoxContainer/HBoxContainer2/VBox/ScrollContainer/VBoxContainer/HBoxContainer/PanelContainer/HBox"]
+[node name="Restart" type="Button" parent="VBoxContainer/HBoxContainer2/VBox/ScrollContainer/VBoxContainer/HBoxContainer/PanelContainer/HBox" unique_id=402325262]
 unique_name_in_owner = true
 visible = false
 layout_mode = 2
@@ -256,14 +256,14 @@ size_flags_vertical = 4
 text = "Restart Now"
 flat = true
 
-[node name="Install" type="Button" parent="VBoxContainer/HBoxContainer2/VBox/ScrollContainer/VBoxContainer/HBoxContainer/PanelContainer/HBox"]
+[node name="Install" type="Button" parent="VBoxContainer/HBoxContainer2/VBox/ScrollContainer/VBoxContainer/HBoxContainer/PanelContainer/HBox" unique_id=65235643]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 4
 text = "Install"
 flat = true
 
-[node name="InstallWarning" type="PanelContainer" parent="VBoxContainer/HBoxContainer2/VBox/ScrollContainer/VBoxContainer/HBoxContainer/PanelContainer/HBox/Install"]
+[node name="InstallWarning" type="PanelContainer" parent="VBoxContainer/HBoxContainer2/VBox/ScrollContainer/VBoxContainer/HBoxContainer/PanelContainer/HBox/Install" unique_id=2086376055]
 unique_name_in_owner = true
 visible = false
 self_modulate = Color(0, 0, 0, 1)
@@ -278,23 +278,23 @@ offset_bottom = -8.0
 grow_horizontal = 0
 theme_override_styles/panel = SubResource("StyleBoxFlat_utju1")
 
-[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer2/VBox/ScrollContainer/VBoxContainer/HBoxContainer/PanelContainer/HBox/Install/InstallWarning"]
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer2/VBox/ScrollContainer/VBoxContainer/HBoxContainer/PanelContainer/HBox/Install/InstallWarning" unique_id=113730989]
 layout_mode = 2
 theme_override_font_sizes/font_size = 14
 text = "Be careful. This will delete the addons/dialogic folder and install the new version. Any custom changes in that folder will be lost.
 To be on the safe side, use version control!"
 autowrap_mode = 3
 
-[node name="Control2" type="Control" parent="VBoxContainer/HBoxContainer2"]
+[node name="Control2" type="Control" parent="VBoxContainer/HBoxContainer2" unique_id=1238200610]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 7
 
-[node name="Close" type="HBoxContainer" parent="VBoxContainer"]
+[node name="Close" type="HBoxContainer" parent="VBoxContainer" unique_id=1303310483]
 layout_mode = 2
 alignment = 1
 
-[node name="CloseButton" type="Button" parent="VBoxContainer/Close"]
+[node name="CloseButton" type="Button" parent="VBoxContainer/Close" unique_id=1788199808]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Close"

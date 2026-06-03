@@ -42,7 +42,12 @@ func _update_text() -> void:
 	var lines := [
 		"FPS: %s" % Engine.get_frames_per_second(),
 		"Date: %s" % GameState.get_display_date(),
+		"Date ID: %s" % _get_current_date_string(),
 		"Time: %s" % GameState.get_time_block_label(),
+		"Forced: %s" % _format_forced_event(),
+		"Activity Lock: %s" % _format_activity_lock(),
+		"Available: %s" % _format_available_activities(),
+		"Objective: %s" % _get_objective_text(),
 		"Spawn: %s" % _empty_text(GameState.current_spawn),
 		"Scene: %s" % _empty_text(scene_name),
 	]
@@ -70,3 +75,78 @@ func _empty_text(value: String) -> String:
 		return "-"
 
 	return value
+
+
+func _get_current_date_string() -> String:
+	var calendar_manager = get_node_or_null("/root/CalendarManager")
+
+	if calendar_manager == null:
+		return "-"
+
+	return calendar_manager.get_current_date_string()
+
+
+func _get_objective_text() -> String:
+	var calendar_manager = get_node_or_null("/root/CalendarManager")
+
+	if calendar_manager == null:
+		return "-"
+
+	return calendar_manager.get_current_objective_text()
+
+
+func _format_forced_event() -> String:
+	var calendar_manager = get_node_or_null("/root/CalendarManager")
+
+	if calendar_manager == null:
+		return "-"
+
+	var forced_event: Dictionary = calendar_manager.get_current_forced_event()
+	if forced_event.is_empty():
+		return "-"
+
+	var activity_id := str(forced_event.get("activity_id", ""))
+	var title := str(forced_event.get("title", ""))
+
+	if title != "":
+		return "%s (%s)" % [title, activity_id]
+
+	return "%s (%s)" % [str(forced_event.get("type", "event")), activity_id]
+
+
+func _format_available_activities() -> String:
+	var calendar_manager = get_node_or_null("/root/CalendarManager")
+
+	if calendar_manager == null:
+		return "-"
+
+	var activities: Array = calendar_manager.get_current_available_activities()
+	if activities.is_empty():
+		return "-"
+
+	var labels := []
+
+	for activity in activities:
+		if activity is Dictionary:
+			labels.append("%s:%s" % [
+				str(activity.get("id", "")),
+				str(activity.get("name", ""))
+			])
+
+	return ", ".join(labels)
+
+
+func _format_activity_lock() -> String:
+	var calendar_manager = get_node_or_null("/root/CalendarManager")
+
+	if calendar_manager == null:
+		return "-"
+
+	if not calendar_manager.are_normal_activities_locked_now():
+		return "-"
+
+	if GameState.time_block == "night":
+		return "night_rest"
+
+	var forced_activity: Dictionary = calendar_manager.get_current_forced_activity()
+	return str(forced_activity.get("id", "morning"))

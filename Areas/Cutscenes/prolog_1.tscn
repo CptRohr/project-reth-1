@@ -8,6 +8,7 @@ size = Vector2(484, 20)
 [node name="Prolog1" type="Node2D" unique_id=242555272]
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1260770303]
+zoom = Vector2(2.06, 2.06)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=620534378]
 

@@ -1,0 +1,60 @@
+[gd_scene format=3 uid="uid://i58a6ackbidn"]
+
+[ext_resource type="PackedScene" uid="uid://bi003gu1i7jjb" path="res://Scene/door_transition.tscn" id="1_qgeix"]
+[ext_resource type="PackedScene" uid="uid://d3swmgi1ckxhq" path="res://Characters/Main Character/player.tscn" id="2_brb3v"]
+[ext_resource type="Script" uid="uid://b7ua5nl05mk54" path="res://Areas/Indoor/schoolgate.gd" id="3_42bvg"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_r3slw"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_42bvg"]
+size = Vector2(792, 20)
+
+[node name="Schoolgate" type="Node2D" unique_id=1836095405]
+script = ExtResource("3_42bvg")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=805256357]
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D" unique_id=402365436]
+position = Vector2(396.5, 104)
+scale = Vector2(789, 20.000004)
+texture = SubResource("PlaceholderTexture2D_r3slw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=2013204890]
+position = Vector2(398, 104)
+shape = SubResource("RectangleShape2D_42bvg")
+
+[node name="DoorTransition" parent="." unique_id=382549217 instance=ExtResource("1_qgeix")]
+position = Vector2(77, 80)
+target_scene = "res://Areas/street3.tscn"
+target_spawn = "FromSchoolGate"
+
+[node name="DoorTransition2" parent="." unique_id=1142782899 instance=ExtResource("1_qgeix")]
+position = Vector2(748, 77)
+target_scene = "res://Areas/Indoor/schoolhallway.tscn"
+target_spawn = "FromSchoolGate"
+
+[node name="Player" parent="." unique_id=455174183 instance=ExtResource("2_brb3v")]
+position = Vector2(17, 77)
+
+[node name="SpawnPoints" type="Marker2D" parent="." unique_id=207378256]
+position = Vector2(77, 80)
+
+[node name="FromStreet3" type="Marker2D" parent="SpawnPoints" unique_id=1381040755]
+
+[node name="FromSchoolHallway" type="Marker2D" parent="SpawnPoints" unique_id=1434970657]
+position = Vector2(671, -3)
+
+[node name="Label" type="Label" parent="." unique_id=778249556]
+offset_left = 17.0
+offset_top = 46.0
+offset_right = 140.0
+offset_bottom = 69.0
+text = "pintu ke street3"
+
+[node name="Label" type="Label" parent="Label" unique_id=1324026539]
+layout_mode = 0
+offset_left = 652.0
+offset_top = -2.0
+offset_right = 831.0
+offset_bottom = 21.0
+text = "pintu ke Schoolhallway"

@@ -1,8 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://bar0t74j5v4sa"]
+[gd_scene format=3 uid="uid://bar0t74j5v4sa"]
 
 [ext_resource type="Script" uid="uid://u6evsmx7tynf" path="res://addons/dialogic/Editor/Events/Fields/field_image_preview.gd" id="1_e5vbc"]
 
-[node name="Field_Image_Preview" type="TextureRect"]
+[node name="Field_Image_Preview" type="TextureRect" unique_id=548214914]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -14,7 +14,7 @@ expand_mode = 2
 stretch_mode = 4
 script = ExtResource("1_e5vbc")
 
-[node name="HiddenLabel" type="Label" parent="."]
+[node name="HiddenLabel" type="Label" parent="." unique_id=1972963876]
 unique_name_in_owner = true
 visible = false
 layout_mode = 0

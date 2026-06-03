@@ -56,6 +56,9 @@ func can_do_activity() -> bool:
 	if once_per_day and not EventManager.can_run_today(activity_id):
 		return false
 
+	if not get_calendar_manager().can_perform_activity_now(activity_id, stat_changes):
+		return false
+
 	return GameState.can_perform_activity(energy_cost, get_minimum_energy())
 
 
@@ -79,6 +82,9 @@ func get_success_message() -> String:
 
 
 func get_not_enough_energy_message() -> String:
+	if not get_calendar_manager().can_perform_activity_now(activity_id, stat_changes):
+		return get_calendar_manager().get_activity_lock_message(activity_name)
+
 	if not_enough_energy_message != "":
 		return not_enough_energy_message
 
@@ -90,6 +96,10 @@ func show_debug_message(message: String) -> void:
 
 	if debug_hud != null:
 		debug_hud.show_message(message)
+
+
+func get_calendar_manager():
+	return get_node("/root/CalendarManager")
 
 
 func _on_body_entered(body):

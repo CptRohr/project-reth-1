@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://6tdle4y5o03o"]
+[gd_scene format=3 uid="uid://6tdle4y5o03o"]
 
 [ext_resource type="Script" uid="uid://d1yoykg323a5p" path="res://addons/dialogic/Modules/Variable/variables_editor/variables_editor.gd" id="2"]
 [ext_resource type="Script" uid="uid://deduielq1r0r" path="res://addons/dialogic/Modules/Variable/variables_editor/variable_tree.gd" id="2_1i17i"]

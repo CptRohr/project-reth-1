@@ -1,0 +1,26 @@
+[
+  {
+    "id": "first_school_day",
+    "title": "First School Day",
+    "date": "2026-04-13",
+    "time_block": "morning",
+    "description": "The first day of school.",
+    "forced": true,
+    "activity_id": "school_intro",
+    "required_flags": [],
+    "set_flags_after_complete": [
+      "met_classmates"
+    ]
+  },
+  {
+    "id": "bella_exercise",
+    "title": "Exercise with Bella",
+    "date": "2026-04-07",
+    "time_block": "morning",
+    "description": "You made a plan to exercise with bella this weekend",
+    "forced": true,
+    "activity_id": "exercise",
+    "required_flags": [],
+    "set_flags_after_complete": []
+  }
+]

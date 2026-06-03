@@ -1,6 +1,7 @@
 extends Node
 
-const STORY_YEAR := "20XX"
+const STORY_YEAR_NUMBER := 2026
+const STORY_YEAR := "2026"
 const START_MONTH := 4
 const START_DAY := 1
 const START_WEEKDAY_INDEX := 0
@@ -116,6 +117,190 @@ func get_current_date_key() -> String:
 	return str(get_date_info(GameState.calendar_day_index)["date_key"])
 
 
+func get_date_string(day_index: int) -> String:
+	var date_info := get_date_info(day_index)
+	return "%s-%s-%s" % [
+		STORY_YEAR,
+		_pad_2(int(date_info["month"])),
+		_pad_2(int(date_info["day"]))
+	]
+
+
+func get_current_date_string() -> String:
+	return get_date_string(GameState.calendar_day_index)
+
+
+func get_day_name(day_index: int) -> String:
+	return str(get_date_info(day_index)["weekday"]).to_lower()
+
+
+func get_current_day_name() -> String:
+	return get_day_name(GameState.calendar_day_index)
+
+
+func get_current_forced_event() -> Dictionary:
+	var calendar_data = get_calendar_data()
+
+	if calendar_data == null:
+		return {}
+
+	var special_event: Dictionary = calendar_data.get_special_event(
+		get_current_date_string(),
+		GameState.time_block,
+		GameState.flags
+	)
+
+	if not special_event.is_empty():
+		return special_event
+
+	return calendar_data.get_forced_weekly_event(get_current_day_name(), GameState.time_block)
+
+
+func get_current_forced_activity() -> Dictionary:
+	var forced_event := get_current_forced_event()
+
+	if forced_event.is_empty():
+		return {}
+
+	var activity_id := str(forced_event.get("activity_id", ""))
+	if activity_id == "":
+		return {}
+
+	var calendar_data = get_calendar_data()
+	if calendar_data == null:
+		return {}
+
+	return calendar_data.get_activity(activity_id)
+
+
+func get_special_events_for_day(day_index: int) -> Array:
+	var calendar_data = get_calendar_data()
+
+	if calendar_data == null:
+		return []
+
+	return calendar_data.get_special_events_for_date(get_date_string(day_index), GameState.flags)
+
+
+func has_special_events(day_index: int) -> bool:
+	return not get_special_events_for_day(day_index).is_empty()
+
+
+func get_special_event_summary(day_index: int) -> String:
+	var events := get_special_events_for_day(day_index)
+
+	if events.is_empty():
+		return ""
+
+	var event: Dictionary = events[0]
+	return str(event.get("title", event.get("id", "Event")))
+
+
+func get_current_available_activities() -> Array:
+	if are_normal_activities_locked_now():
+		return []
+
+	var calendar_data = get_calendar_data()
+
+	if calendar_data == null:
+		return []
+
+	return calendar_data.get_available_activities(
+		get_current_day_name(),
+		GameState.time_block,
+		GameState.flags
+	)
+
+
+func is_current_time_locked_to_forced_activity() -> bool:
+	var forced_event := get_current_forced_event()
+	return not forced_event.is_empty() and str(forced_event.get("activity_id", "")) != ""
+
+
+func are_stat_activities_locked_now() -> bool:
+	return GameState.time_block == "morning" and is_current_time_locked_to_forced_activity()
+
+
+func are_normal_activities_locked_now() -> bool:
+	return GameState.time_block == "night" or are_stat_activities_locked_now()
+
+
+func can_sleep_now() -> bool:
+	return GameState.time_block == "night"
+
+
+func get_sleep_lock_message() -> String:
+	return "You can only rest at night."
+
+
+func can_perform_activity_now(activity_id: String, stat_changes: Dictionary = {}) -> bool:
+	if GameState.time_block == "night":
+		return false
+
+	if not are_stat_activities_locked_now():
+		return true
+
+	if stat_changes.is_empty():
+		return true
+
+	var forced_event := get_current_forced_event()
+	var forced_activity_id := str(forced_event.get("activity_id", ""))
+
+	return forced_activity_id != "" and activity_id == forced_activity_id
+
+
+func get_activity_lock_message(activity_name := "Activity") -> String:
+	if GameState.time_block == "night":
+		return "%s is locked at night. Rest to continue the next day." % activity_name
+
+	var forced_activity := get_current_forced_activity()
+	var forced_name := str(forced_activity.get("name", "the required event"))
+
+	if forced_name == "":
+		forced_name = "school"
+
+	return "%s is locked during morning. Go to %s first." % [activity_name, forced_name]
+
+
+func get_current_objective_text() -> String:
+	var forced_event := get_current_forced_event()
+
+	if not forced_event.is_empty():
+		var activity := get_current_forced_activity()
+		var activity_name := str(activity.get("name", forced_event.get("activity_id", "")))
+		var special_title := str(forced_event.get("title", ""))
+
+		if special_title != "":
+			return "%s: %s" % [special_title, activity_name]
+
+		if activity_name != "":
+			return "Go to %s" % activity_name
+
+	var daily_summary := get_daily_plan_summary(GameState.calendar_day_index)
+	if daily_summary != "":
+		return daily_summary
+
+	var available := get_current_available_activities()
+	if not available.is_empty():
+		var names := []
+
+		for activity in available:
+			if activity is Dictionary:
+				names.append(str(activity.get("name", activity.get("id", "Activity"))))
+
+		if not names.is_empty():
+			return "Choose activity: %s" % ", ".join(names.slice(0, 3))
+
+	if GameState.time_block == "night":
+		return "Rest for tomorrow"
+
+	return "Explore or find an activity"
+
+
+func advance_time_block(amount := 1) -> void:
+	GameState.advance_time_block(amount)
+
+
 func parse_date_key(date_key: String) -> int:
 	_ensure_calendar_index()
 	var parts := date_key.split("/")
@@ -178,6 +363,7 @@ func has_daily_plan(day_index: int) -> bool:
 		or not plan["objectives"].is_empty()
 		or not plan["reminders"].is_empty()
 		or not plan["events"].is_empty()
+		or has_special_events(day_index)
 	)
 
 
@@ -215,6 +401,8 @@ func get_month_grid(month: int, selected_day_index: int) -> Array:
 			"routine": get_routine_label(day_index),
 			"has_plan": has_daily_plan(day_index),
 			"plan_summary": get_daily_plan_summary(day_index),
+			"has_special_events": has_special_events(day_index),
+			"special_event_summary": get_special_event_summary(day_index),
 			"weekday": get_date_info(day_index)["weekday"],
 		})
 
@@ -238,3 +426,7 @@ func _pad_2(value: int) -> String:
 func _ensure_calendar_index() -> void:
 	if total_days <= 0:
 		_build_calendar_index()
+
+
+func get_calendar_data():
+	return get_node_or_null("/root/CalendarData")

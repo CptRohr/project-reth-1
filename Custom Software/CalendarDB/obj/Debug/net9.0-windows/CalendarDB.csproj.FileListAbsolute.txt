@@ -1,0 +1,15 @@
+D:\GAME PROJECT\project-reth-1\Custom Software\CalendarDB\bin\Debug\net9.0-windows\CalendarDB.exe
+D:\GAME PROJECT\project-reth-1\Custom Software\CalendarDB\bin\Debug\net9.0-windows\CalendarDB.deps.json
+D:\GAME PROJECT\project-reth-1\Custom Software\CalendarDB\bin\Debug\net9.0-windows\CalendarDB.runtimeconfig.json
+D:\GAME PROJECT\project-reth-1\Custom Software\CalendarDB\bin\Debug\net9.0-windows\CalendarDB.dll
+D:\GAME PROJECT\project-reth-1\Custom Software\CalendarDB\bin\Debug\net9.0-windows\CalendarDB.pdb
+D:\GAME PROJECT\project-reth-1\Custom Software\CalendarDB\obj\Debug\net9.0-windows\CalendarDB.GeneratedMSBuildEditorConfig.editorconfig
+D:\GAME PROJECT\project-reth-1\Custom Software\CalendarDB\obj\Debug\net9.0-windows\CalendarDB.AssemblyInfoInputs.cache
+D:\GAME PROJECT\project-reth-1\Custom Software\CalendarDB\obj\Debug\net9.0-windows\CalendarDB.AssemblyInfo.cs
+D:\GAME PROJECT\project-reth-1\Custom Software\CalendarDB\obj\Debug\net9.0-windows\CalendarDB.csproj.CoreCompileInputs.cache
+D:\GAME PROJECT\project-reth-1\Custom Software\CalendarDB\obj\Debug\net9.0-windows\CalendarDB.sourcelink.json
+D:\GAME PROJECT\project-reth-1\Custom Software\CalendarDB\obj\Debug\net9.0-windows\CalendarDB.dll
+D:\GAME PROJECT\project-reth-1\Custom Software\CalendarDB\obj\Debug\net9.0-windows\refint\CalendarDB.dll
+D:\GAME PROJECT\project-reth-1\Custom Software\CalendarDB\obj\Debug\net9.0-windows\CalendarDB.pdb
+D:\GAME PROJECT\project-reth-1\Custom Software\CalendarDB\obj\Debug\net9.0-windows\CalendarDB.genruntimeconfig.cache
+D:\GAME PROJECT\project-reth-1\Custom Software\CalendarDB\obj\Debug\net9.0-windows\ref\CalendarDB.dll

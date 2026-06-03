@@ -1,0 +1,78 @@
+[
+  {
+    "id": "study",
+    "name": "Study",
+    "description": "Study after school to increase knowledge.",
+    "available_days": [
+      "monday",
+      "tuesday",
+      "wednesday",
+      "thursday",
+      "friday"
+    ],
+    "available_time_blocks": [
+      "after_school",
+      "evening"
+    ],
+    "stat_effects": {
+      "knowledge": 2,
+      "energy": -1
+    },
+    "required_flags": [],
+    "set_flags_after_complete": []
+  },
+  {
+    "id": "school",
+    "name": "School",
+    "description": "Attend normal morning classes.",
+    "available_days": [
+      "monday",
+      "tuesday",
+      "wednesday",
+      "thursday",
+      "friday"
+    ],
+    "available_time_blocks": [
+      "morning"
+    ],
+    "stat_effects": {},
+    "required_flags": [],
+    "set_flags_after_complete": []
+  },
+  {
+    "id": "school_intro",
+    "name": "School Intro",
+    "description": "The first morning at school.",
+    "available_days": [
+      "monday"
+    ],
+    "available_time_blocks": [
+      "morning"
+    ],
+    "stat_effects": {},
+    "required_flags": [],
+    "set_flags_after_complete": [
+      "met_classmates"
+    ]
+  },
+  {
+    "id": "exercise",
+    "name": "Exercise",
+    "description": "Exercise with Bella in the weekend",
+    "available_days": [
+      "saturday",
+      "sunday"
+    ],
+    "available_time_blocks": [
+      "morning"
+    ],
+    "stat_effects": {
+      "courage": 2,
+      "energy": -20
+    },
+    "required_flags": [],
+    "set_flags_after_complete": [
+      "met_bella"
+    ]
+  }
+]

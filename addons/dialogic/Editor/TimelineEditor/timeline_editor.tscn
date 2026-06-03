@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://crce0na84rhfd"]
+[gd_scene format=3 uid="uid://crce0na84rhfd"]
 
 [ext_resource type="Script" uid="uid://x21vral0xsxy" path="res://addons/dialogic/Editor/TimelineEditor/timeline_editor.gd" id="1_4aceh"]
 [ext_resource type="PackedScene" uid="uid://ysqbusmy0qma" path="res://addons/dialogic/Editor/TimelineEditor/VisualEditor/timeline_editor_visual.tscn" id="2_qs7vc"]

@@ -28,6 +28,9 @@ PauseMenu="*res://Scene/PauseMenu.tscn"
 CalendarManager="*res://Managers/calendar_manager.gd"
 SchoolSummary="*res://Managers/school_summary.gd"
 MobileControls="*res://Scene/MobileControls.tscn"
+TimeOfDayFilter="*res://Scene/TimeOfDayFilter.tscn"
+CalendarData="*res://Managers/CalendarData.gd"
+ObjectiveHud="*res://Managers/objective_hud.gd"
 
 [dialogic]
 
