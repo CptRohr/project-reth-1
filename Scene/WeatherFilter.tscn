@@ -1,0 +1,36 @@
+[gd_scene load_steps=4 format=3]
+
+[ext_resource type="Script" path="res://Managers/weather_filter.gd" id="1_weather"]
+[ext_resource type="AudioStream" uid="uid://bv18i0dpr0apa" path="res://Audio/SFX/rain loop.wav" id="2_rain"]
+[ext_resource type="AudioStream" uid="uid://cs00f2khqhggt" path="res://Audio/SFX/thunderstorm ambience.wav" id="3_thunder"]
+
+[node name="WeatherFilter" type="CanvasLayer"]
+layer = 2
+process_mode = 3
+script = ExtResource("1_weather")
+weather_audio_bus = "SFX"
+rain_loop_volume_db = -2.0
+thunderstorm_ambience_volume_db = -4.0
+
+[node name="RainLines" type="Node2D" parent="."]
+visible = false
+
+[node name="LightningFlash" type="ColorRect" parent="."]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(1, 1, 1, 0)
+
+[node name="RainAudio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_rain")
+volume_db = -2.0
+bus = &"SFX"
+
+[node name="ThunderstormAudio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_thunder")
+volume_db = -4.0
+bus = &"SFX"

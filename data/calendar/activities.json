@@ -35,25 +35,11 @@
     "available_time_blocks": [
       "morning"
     ],
-    "stat_effects": {},
+    "stat_effects": {
+      "energy": -30
+    },
     "required_flags": [],
     "set_flags_after_complete": []
-  },
-  {
-    "id": "school_intro",
-    "name": "School Intro",
-    "description": "The first morning at school.",
-    "available_days": [
-      "monday"
-    ],
-    "available_time_blocks": [
-      "morning"
-    ],
-    "stat_effects": {},
-    "required_flags": [],
-    "set_flags_after_complete": [
-      "met_classmates"
-    ]
   },
   {
     "id": "exercise",

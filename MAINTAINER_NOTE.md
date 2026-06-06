@@ -264,6 +264,41 @@ Maintenance rules:
 - Tune temporary colors in `TIME_BLOCK_TINTS`.
 - Later, this can become the manager that broadcasts visual profiles while outdoor scenes handle their own parallax/background swaps.
 
+## Weather Visual Filter
+
+Daily weather data lives in:
+
+```text
+data/calendar/weather.json
+```
+
+`CalendarData` loads weather by `YYYY-MM-DD`, `CalendarManager` exposes current-day weather, and `GameState` emits `weather_changed` when the active day changes or save data loads. Missing dates mean `clear`.
+
+Visual weather lives in:
+
+```text
+Managers/weather_filter.gd
+Scene/WeatherFilter.tscn
+```
+
+Maintenance rules:
+
+- `TimeOfDayFilter` still owns the final persistent full-screen tint. It composes time-of-day tint with weather tint so filters do not stack.
+- `WeatherFilter` owns weather effects: rain lines, full-screen white lightning flashes, and ambient weather loops.
+- Rain uses `Audio/SFX/rain loop.wav`; thunderstorm overlays `Audio/SFX/thunderstorm ambience.wav` on top of the rain loop.
+- Tune weather ids, labels, and tint colors in `GameState`; tune rain/lightning/audio placeholders through exported values in `WeatherFilter`.
+- Keep weather below UI layers. `WeatherFilter` uses layer `2`; objective/mobile/pause/school/transition/debug UI use much higher layers.
+
+## Audio Settings
+
+Runtime audio settings live in:
+
+```text
+Managers/audio_settings.gd
+```
+
+`AudioSettings` creates `SFX` and `Music` buses at startup, applies saved volumes from `user://audio_settings.json`, and exposes Master/SFX/Music percentage values to the main menu and pause menu settings screens. Weather audio uses the `SFX` bus.
+
 ## Calendar And Daily Planner
 
 Calendar logic lives in:
@@ -809,6 +844,51 @@ Styles/
 Do this cleanup only when ready to update scene/script paths carefully. Godot scenes store script paths, so moving files is a real refactor.
 
 ## Feature Recipes
+
+### Use CalendarDB
+
+CalendarDB is the local Windows editor in `Custom Software/CalendarDB/`. Run it with:
+
+```bat
+Custom Software\CalendarDB\Run CalendarDB.bat
+```
+
+It saves gameplay data into:
+
+```text
+data/calendar/activities.json
+data/calendar/weekly_schedule.json
+data/calendar/special_events.json
+data/calendar/weather.json
+data/npc/npcs.json
+```
+
+Use dropdown cells for fields that should not be typed by hand, such as activity ids, NPC ids, Dialogic timelines, scene paths, and single time blocks. For multi-value fields such as available days, available time blocks, NPC appearance days, and NPC appearance time blocks, double-click the cell to open a checklist picker. Leaving every checkbox empty means "any".
+
+Use the Weather tab to assign `clear`, `rain`, or `thunderstorm` to a whole `YYYY-MM-DD` story date. Dates not listed in `weather.json` are clear.
+
+CalendarDB cell colors:
+
+```text
+Red    = invalid value or broken reference. Saving is blocked.
+Yellow = broad wildcard/empty filter. Usually valid; means "any".
+White  = valid value.
+```
+
+NPC workflow:
+
+1. Add the NPC in the `NPCs` tab.
+2. Add when and where the pre-placed NPC appears in `NPC Appearance`.
+3. Add `NPC Dialogue Routes` only for specific overrides.
+4. Leave dialogue routes empty when a custom NPC script should handle progression, such as Abang Brewok's first-met, after-met, and later-day behavior.
+5. Set the matching `npc_id` export on the pre-placed NPC node in the scene.
+
+Calendar/event workflow:
+
+1. Add the activity first.
+2. Reference that activity from weekly schedule or special events.
+3. Use `Validation` or live red cells to catch bad ids, timelines, scene paths, days, time blocks, and dates.
+4. Save JSON and run Godot.
 
 ### Add A New Stat
 

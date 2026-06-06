@@ -25,7 +25,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="RootPanel" type="PanelContainer" parent="RootControl/CenterContainer" unique_id=1041131004]
-custom_minimum_size = Vector2(760, 420)
+custom_minimum_size = Vector2(760, 520)
 layout_mode = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="RootControl/CenterContainer/RootPanel" unique_id=771428448]
@@ -133,6 +133,72 @@ text = "Fullscreen"
 [node name="VsyncCheck" type="CheckBox" parent="RootControl/CenterContainer/RootPanel/MarginContainer/Stack/SettingsBox" unique_id=981595391]
 layout_mode = 2
 text = "VSync"
+
+[node name="MasterVolumeRow" type="HBoxContainer" parent="RootControl/CenterContainer/RootPanel/MarginContainer/Stack/SettingsBox"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="MasterVolumeLabel" type="Label" parent="RootControl/CenterContainer/RootPanel/MarginContainer/Stack/SettingsBox/MasterVolumeRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Master"
+
+[node name="MasterVolumeSlider" type="HSlider" parent="RootControl/CenterContainer/RootPanel/MarginContainer/Stack/SettingsBox/MasterVolumeRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+max_value = 100.0
+step = 1.0
+value = 100.0
+
+[node name="MasterVolumeValue" type="Label" parent="RootControl/CenterContainer/RootPanel/MarginContainer/Stack/SettingsBox/MasterVolumeRow"]
+custom_minimum_size = Vector2(44, 0)
+layout_mode = 2
+horizontal_alignment = 2
+text = "100"
+
+[node name="SfxVolumeRow" type="HBoxContainer" parent="RootControl/CenterContainer/RootPanel/MarginContainer/Stack/SettingsBox"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="SfxVolumeLabel" type="Label" parent="RootControl/CenterContainer/RootPanel/MarginContainer/Stack/SettingsBox/SfxVolumeRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "SFX"
+
+[node name="SfxVolumeSlider" type="HSlider" parent="RootControl/CenterContainer/RootPanel/MarginContainer/Stack/SettingsBox/SfxVolumeRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+max_value = 100.0
+step = 1.0
+value = 100.0
+
+[node name="SfxVolumeValue" type="Label" parent="RootControl/CenterContainer/RootPanel/MarginContainer/Stack/SettingsBox/SfxVolumeRow"]
+custom_minimum_size = Vector2(44, 0)
+layout_mode = 2
+horizontal_alignment = 2
+text = "100"
+
+[node name="MusicVolumeRow" type="HBoxContainer" parent="RootControl/CenterContainer/RootPanel/MarginContainer/Stack/SettingsBox"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="MusicVolumeLabel" type="Label" parent="RootControl/CenterContainer/RootPanel/MarginContainer/Stack/SettingsBox/MusicVolumeRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Music"
+
+[node name="MusicVolumeSlider" type="HSlider" parent="RootControl/CenterContainer/RootPanel/MarginContainer/Stack/SettingsBox/MusicVolumeRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+max_value = 100.0
+step = 1.0
+value = 100.0
+
+[node name="MusicVolumeValue" type="Label" parent="RootControl/CenterContainer/RootPanel/MarginContainer/Stack/SettingsBox/MusicVolumeRow"]
+custom_minimum_size = Vector2(44, 0)
+layout_mode = 2
+horizontal_alignment = 2
+text = "100"
 
 [node name="StatusLabel" type="Label" parent="RootControl/CenterContainer/RootPanel/MarginContainer/Stack/SettingsBox" unique_id=1567150289]
 custom_minimum_size = Vector2(0, 20)

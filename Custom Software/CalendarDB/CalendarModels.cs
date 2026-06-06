@@ -91,3 +91,134 @@ public sealed class SpecialEventGridRow
     public string RequiredFlags { get; set; } = "";
     public string SetFlagsAfterComplete { get; set; } = "";
 }
+
+public sealed class WeatherGridRow
+{
+    public string Date { get; set; } = "";
+    public string Weather { get; set; } = "";
+}
+
+public sealed class NpcDatabase
+{
+    [JsonPropertyName("npcs")]
+    public List<NpcRow> Npcs { get; set; } = [];
+
+    [JsonPropertyName("appearance_rules")]
+    public List<NpcAppearanceRuleRow> AppearanceRules { get; set; } = [];
+
+    [JsonPropertyName("dialogue_routes")]
+    public List<NpcDialogueRouteRow> DialogueRoutes { get; set; } = [];
+}
+
+public sealed class NpcRow
+{
+    [JsonPropertyName("id")]
+    public string Id { get; set; } = "";
+
+    [JsonPropertyName("display_name")]
+    public string DisplayName { get; set; } = "";
+
+    [JsonPropertyName("default_timeline")]
+    public string DefaultTimeline { get; set; } = "";
+
+    [JsonPropertyName("visible_by_default")]
+    public bool VisibleByDefault { get; set; }
+
+    [JsonPropertyName("notes")]
+    public string Notes { get; set; } = "";
+}
+
+public sealed class NpcGridRow
+{
+    public string Id { get; set; } = "";
+    public string DisplayName { get; set; } = "";
+    public string DefaultTimeline { get; set; } = "";
+    public bool VisibleByDefault { get; set; }
+    public string Notes { get; set; } = "";
+}
+
+public sealed class NpcAppearanceRuleRow
+{
+    [JsonPropertyName("npc_id")]
+    public string NpcId { get; set; } = "";
+
+    [JsonPropertyName("scene_path")]
+    public string ScenePath { get; set; } = "";
+
+    [JsonPropertyName("days")]
+    public List<string> Days { get; set; } = [];
+
+    [JsonPropertyName("dates")]
+    public List<string> Dates { get; set; } = [];
+
+    [JsonPropertyName("time_blocks")]
+    public List<string> TimeBlocks { get; set; } = [];
+
+    [JsonPropertyName("required_flags")]
+    public List<string> RequiredFlags { get; set; } = [];
+
+    [JsonPropertyName("blocked_flags")]
+    public List<string> BlockedFlags { get; set; } = [];
+
+    [JsonPropertyName("visible")]
+    public bool Visible { get; set; } = true;
+
+    [JsonPropertyName("interactable")]
+    public bool Interactable { get; set; } = true;
+}
+
+public sealed class NpcAppearanceGridRow
+{
+    public string NpcId { get; set; } = "";
+    public string ScenePath { get; set; } = "";
+    public string Days { get; set; } = "";
+    public string Dates { get; set; } = "";
+    public string TimeBlocks { get; set; } = "";
+    public string RequiredFlags { get; set; } = "";
+    public string BlockedFlags { get; set; } = "";
+    public bool Visible { get; set; } = true;
+    public bool Interactable { get; set; } = true;
+}
+
+public sealed class NpcDialogueRouteRow
+{
+    [JsonPropertyName("npc_id")]
+    public string NpcId { get; set; } = "";
+
+    [JsonPropertyName("priority")]
+    public int Priority { get; set; }
+
+    [JsonPropertyName("timeline")]
+    public string Timeline { get; set; } = "";
+
+    [JsonPropertyName("days")]
+    public List<string> Days { get; set; } = [];
+
+    [JsonPropertyName("dates")]
+    public List<string> Dates { get; set; } = [];
+
+    [JsonPropertyName("time_blocks")]
+    public List<string> TimeBlocks { get; set; } = [];
+
+    [JsonPropertyName("required_flags")]
+    public List<string> RequiredFlags { get; set; } = [];
+
+    [JsonPropertyName("blocked_flags")]
+    public List<string> BlockedFlags { get; set; } = [];
+
+    [JsonPropertyName("set_flags_after_interaction")]
+    public List<string> SetFlagsAfterInteraction { get; set; } = [];
+}
+
+public sealed class NpcDialogueGridRow
+{
+    public string NpcId { get; set; } = "";
+    public int Priority { get; set; }
+    public string Timeline { get; set; } = "";
+    public string Days { get; set; } = "";
+    public string Dates { get; set; } = "";
+    public string TimeBlocks { get; set; } = "";
+    public string RequiredFlags { get; set; } = "";
+    public string BlockedFlags { get; set; } = "";
+    public string SetFlagsAfterInteraction { get; set; } = "";
+}

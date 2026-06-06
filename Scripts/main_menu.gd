@@ -15,6 +15,12 @@ const RESOLUTIONS := [
 @onready var resolution_options: OptionButton = $CanvasLayer/Control/SettingsPanel/MarginContainer/VBoxContainer/ResolutionRow/ResolutionOptions
 @onready var fullscreen_check: CheckBox = $CanvasLayer/Control/SettingsPanel/MarginContainer/VBoxContainer/FullscreenCheck
 @onready var vsync_check: CheckBox = $CanvasLayer/Control/SettingsPanel/MarginContainer/VBoxContainer/VsyncCheck
+@onready var master_volume_slider: HSlider = $CanvasLayer/Control/SettingsPanel/MarginContainer/VBoxContainer/MasterVolumeRow/MasterVolumeSlider
+@onready var master_volume_value: Label = $CanvasLayer/Control/SettingsPanel/MarginContainer/VBoxContainer/MasterVolumeRow/MasterVolumeValue
+@onready var sfx_volume_slider: HSlider = $CanvasLayer/Control/SettingsPanel/MarginContainer/VBoxContainer/SfxVolumeRow/SfxVolumeSlider
+@onready var sfx_volume_value: Label = $CanvasLayer/Control/SettingsPanel/MarginContainer/VBoxContainer/SfxVolumeRow/SfxVolumeValue
+@onready var music_volume_slider: HSlider = $CanvasLayer/Control/SettingsPanel/MarginContainer/VBoxContainer/MusicVolumeRow/MusicVolumeSlider
+@onready var music_volume_value: Label = $CanvasLayer/Control/SettingsPanel/MarginContainer/VBoxContainer/MusicVolumeRow/MusicVolumeValue
 @onready var status_label: Label = $CanvasLayer/Control/SettingsPanel/MarginContainer/VBoxContainer/StatusLabel
 @onready var apply_button: Button = $CanvasLayer/Control/SettingsPanel/MarginContainer/VBoxContainer/ButtonRow/ApplyButton
 @onready var back_button: Button = $CanvasLayer/Control/SettingsPanel/MarginContainer/VBoxContainer/ButtonRow/BackButton
@@ -28,6 +34,9 @@ func _ready() -> void:
 	quit_button.pressed.connect(_on_quit_pressed)
 	apply_button.pressed.connect(_on_apply_pressed)
 	back_button.pressed.connect(_on_settings_back_pressed)
+	master_volume_slider.value_changed.connect(_on_audio_slider_changed)
+	sfx_volume_slider.value_changed.connect(_on_audio_slider_changed)
+	music_volume_slider.value_changed.connect(_on_audio_slider_changed)
 
 
 func _on_start_pressed() -> void:
@@ -66,6 +75,7 @@ func setup_settings_menu() -> void:
 	resolution_options.select(current_index)
 	fullscreen_check.button_pressed = DisplayServer.window_get_mode() == DisplayServer.WINDOW_MODE_FULLSCREEN
 	vsync_check.button_pressed = DisplayServer.window_get_vsync_mode() != DisplayServer.VSYNC_DISABLED
+	_setup_audio_settings_values()
 
 
 func _on_apply_pressed() -> void:
@@ -81,6 +91,7 @@ func _on_apply_pressed() -> void:
 	else:
 		DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_DISABLED)
 
+	_apply_audio_settings()
 	status_label.text = "Applied."
 
 
@@ -94,3 +105,27 @@ func center_window() -> void:
 		(screen_size.y - window_size.y) >> 1
 	)
 	DisplayServer.window_set_position(centered_position)
+
+
+func _setup_audio_settings_values() -> void:
+	master_volume_slider.value = AudioSettings.get_volume_percent(AudioSettings.MASTER_BUS)
+	sfx_volume_slider.value = AudioSettings.get_volume_percent(AudioSettings.SFX_BUS)
+	music_volume_slider.value = AudioSettings.get_volume_percent(AudioSettings.MUSIC_BUS)
+	_update_audio_volume_labels()
+
+
+func _on_audio_slider_changed(_value: float) -> void:
+	_update_audio_volume_labels()
+
+
+func _update_audio_volume_labels() -> void:
+	master_volume_value.text = "%s" % int(master_volume_slider.value)
+	sfx_volume_value.text = "%s" % int(sfx_volume_slider.value)
+	music_volume_value.text = "%s" % int(music_volume_slider.value)
+
+
+func _apply_audio_settings() -> void:
+	AudioSettings.set_volume_percent(AudioSettings.MASTER_BUS, master_volume_slider.value, false)
+	AudioSettings.set_volume_percent(AudioSettings.SFX_BUS, sfx_volume_slider.value, false)
+	AudioSettings.set_volume_percent(AudioSettings.MUSIC_BUS, music_volume_slider.value, false)
+	AudioSettings.save_settings()

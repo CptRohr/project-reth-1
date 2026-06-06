@@ -138,6 +138,19 @@ func get_current_day_name() -> String:
 	return get_day_name(GameState.calendar_day_index)
 
 
+func get_weather_for_day(day_index: int) -> String:
+	var calendar_data = get_calendar_data()
+
+	if calendar_data == null:
+		return "clear"
+
+	return calendar_data.get_weather_for_date(get_date_string(day_index))
+
+
+func get_current_weather() -> String:
+	return get_weather_for_day(GameState.calendar_day_index)
+
+
 func get_current_forced_event() -> Dictionary:
 	var calendar_data = get_calendar_data()
 

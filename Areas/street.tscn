@@ -334,6 +334,7 @@ text = "pintu ke Street2"
 
 [node name="NPC2" parent="." unique_id=2048253647 instance=ExtResource("9_nbdgs")]
 position = Vector2(323, 80)
+npc_id = "abang_brewok"
 
 [node name="Bed" type="Area2D" parent="." unique_id=1427247159]
 position = Vector2(56, 82)

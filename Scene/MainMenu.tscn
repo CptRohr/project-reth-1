@@ -61,9 +61,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -160.0
-offset_top = -118.0
+offset_top = -184.0
 offset_right = 160.0
-offset_bottom = 118.0
+offset_bottom = 184.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -103,6 +103,72 @@ text = "Fullscreen"
 [node name="VsyncCheck" type="CheckBox" parent="CanvasLayer/Control/SettingsPanel/MarginContainer/VBoxContainer" unique_id=862556144]
 layout_mode = 2
 text = "VSync"
+
+[node name="MasterVolumeRow" type="HBoxContainer" parent="CanvasLayer/Control/SettingsPanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="MasterVolumeLabel" type="Label" parent="CanvasLayer/Control/SettingsPanel/MarginContainer/VBoxContainer/MasterVolumeRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Master"
+
+[node name="MasterVolumeSlider" type="HSlider" parent="CanvasLayer/Control/SettingsPanel/MarginContainer/VBoxContainer/MasterVolumeRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+max_value = 100.0
+step = 1.0
+value = 100.0
+
+[node name="MasterVolumeValue" type="Label" parent="CanvasLayer/Control/SettingsPanel/MarginContainer/VBoxContainer/MasterVolumeRow"]
+custom_minimum_size = Vector2(44, 0)
+layout_mode = 2
+horizontal_alignment = 2
+text = "100"
+
+[node name="SfxVolumeRow" type="HBoxContainer" parent="CanvasLayer/Control/SettingsPanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="SfxVolumeLabel" type="Label" parent="CanvasLayer/Control/SettingsPanel/MarginContainer/VBoxContainer/SfxVolumeRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "SFX"
+
+[node name="SfxVolumeSlider" type="HSlider" parent="CanvasLayer/Control/SettingsPanel/MarginContainer/VBoxContainer/SfxVolumeRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+max_value = 100.0
+step = 1.0
+value = 100.0
+
+[node name="SfxVolumeValue" type="Label" parent="CanvasLayer/Control/SettingsPanel/MarginContainer/VBoxContainer/SfxVolumeRow"]
+custom_minimum_size = Vector2(44, 0)
+layout_mode = 2
+horizontal_alignment = 2
+text = "100"
+
+[node name="MusicVolumeRow" type="HBoxContainer" parent="CanvasLayer/Control/SettingsPanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="MusicVolumeLabel" type="Label" parent="CanvasLayer/Control/SettingsPanel/MarginContainer/VBoxContainer/MusicVolumeRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Music"
+
+[node name="MusicVolumeSlider" type="HSlider" parent="CanvasLayer/Control/SettingsPanel/MarginContainer/VBoxContainer/MusicVolumeRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+max_value = 100.0
+step = 1.0
+value = 100.0
+
+[node name="MusicVolumeValue" type="Label" parent="CanvasLayer/Control/SettingsPanel/MarginContainer/VBoxContainer/MusicVolumeRow"]
+custom_minimum_size = Vector2(44, 0)
+layout_mode = 2
+horizontal_alignment = 2
+text = "100"
 
 [node name="StatusLabel" type="Label" parent="CanvasLayer/Control/SettingsPanel/MarginContainer/VBoxContainer" unique_id=210860596]
 custom_minimum_size = Vector2(0, 20)

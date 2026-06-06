@@ -16,6 +16,12 @@ const RESOLUTIONS := [
 @onready var resolution_options: OptionButton = $RootControl/CenterContainer/RootPanel/MarginContainer/Stack/SettingsBox/ResolutionRow/ResolutionOptions
 @onready var fullscreen_check: CheckBox = $RootControl/CenterContainer/RootPanel/MarginContainer/Stack/SettingsBox/FullscreenCheck
 @onready var vsync_check: CheckBox = $RootControl/CenterContainer/RootPanel/MarginContainer/Stack/SettingsBox/VsyncCheck
+@onready var master_volume_slider: HSlider = $RootControl/CenterContainer/RootPanel/MarginContainer/Stack/SettingsBox/MasterVolumeRow/MasterVolumeSlider
+@onready var master_volume_value: Label = $RootControl/CenterContainer/RootPanel/MarginContainer/Stack/SettingsBox/MasterVolumeRow/MasterVolumeValue
+@onready var sfx_volume_slider: HSlider = $RootControl/CenterContainer/RootPanel/MarginContainer/Stack/SettingsBox/SfxVolumeRow/SfxVolumeSlider
+@onready var sfx_volume_value: Label = $RootControl/CenterContainer/RootPanel/MarginContainer/Stack/SettingsBox/SfxVolumeRow/SfxVolumeValue
+@onready var music_volume_slider: HSlider = $RootControl/CenterContainer/RootPanel/MarginContainer/Stack/SettingsBox/MusicVolumeRow/MusicVolumeSlider
+@onready var music_volume_value: Label = $RootControl/CenterContainer/RootPanel/MarginContainer/Stack/SettingsBox/MusicVolumeRow/MusicVolumeValue
 @onready var status_label: Label = $RootControl/CenterContainer/RootPanel/MarginContainer/Stack/SettingsBox/StatusLabel
 @onready var calendar_box: VBoxContainer = $RootControl/CenterContainer/RootPanel/MarginContainer/Stack/CalendarBox
 @onready var calendar_month_label: Label = $RootControl/CenterContainer/RootPanel/MarginContainer/Stack/CalendarBox/CalendarMonthLabel
@@ -71,6 +77,9 @@ func _connect_buttons() -> void:
 	$RootControl/CenterContainer/RootPanel/MarginContainer/Stack/CalendarBox/CalendarButtons/TodayButton.pressed.connect(_show_current_month)
 	$RootControl/CenterContainer/RootPanel/MarginContainer/Stack/CalendarBox/CalendarButtons/NextButton.pressed.connect(_show_next_month)
 	$RootControl/CenterContainer/RootPanel/MarginContainer/Stack/CalendarBox/CalendarButtons/CalendarBackButton.pressed.connect(_show_main_buttons)
+	master_volume_slider.value_changed.connect(_on_audio_slider_changed)
+	sfx_volume_slider.value_changed.connect(_on_audio_slider_changed)
+	music_volume_slider.value_changed.connect(_on_audio_slider_changed)
 
 
 func _show_stats() -> void:
@@ -222,6 +231,7 @@ func _setup_settings_values() -> void:
 	resolution_options.select(current_index)
 	fullscreen_check.button_pressed = DisplayServer.window_get_mode() == DisplayServer.WINDOW_MODE_FULLSCREEN
 	vsync_check.button_pressed = DisplayServer.window_get_vsync_mode() != DisplayServer.VSYNC_DISABLED
+	_setup_audio_settings_values()
 
 
 func _apply_settings() -> void:
@@ -237,6 +247,7 @@ func _apply_settings() -> void:
 	else:
 		DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_DISABLED)
 
+	_apply_audio_settings()
 	status_label.text = "Applied."
 
 
@@ -255,6 +266,30 @@ func _center_window() -> void:
 		(screen_size.y - window_size.y) >> 1
 	)
 	DisplayServer.window_set_position(centered_position)
+
+
+func _setup_audio_settings_values() -> void:
+	master_volume_slider.value = AudioSettings.get_volume_percent(AudioSettings.MASTER_BUS)
+	sfx_volume_slider.value = AudioSettings.get_volume_percent(AudioSettings.SFX_BUS)
+	music_volume_slider.value = AudioSettings.get_volume_percent(AudioSettings.MUSIC_BUS)
+	_update_audio_volume_labels()
+
+
+func _on_audio_slider_changed(_value: float) -> void:
+	_update_audio_volume_labels()
+
+
+func _update_audio_volume_labels() -> void:
+	master_volume_value.text = "%s" % int(master_volume_slider.value)
+	sfx_volume_value.text = "%s" % int(sfx_volume_slider.value)
+	music_volume_value.text = "%s" % int(music_volume_slider.value)
+
+
+func _apply_audio_settings() -> void:
+	AudioSettings.set_volume_percent(AudioSettings.MASTER_BUS, master_volume_slider.value, false)
+	AudioSettings.set_volume_percent(AudioSettings.SFX_BUS, sfx_volume_slider.value, false)
+	AudioSettings.set_volume_percent(AudioSettings.MUSIC_BUS, music_volume_slider.value, false)
+	AudioSettings.save_settings()
 
 
 func _is_non_pause_scene() -> bool:

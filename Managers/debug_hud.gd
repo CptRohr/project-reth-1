@@ -24,6 +24,7 @@ func _ready():
 
 	GameState.state_changed.connect(_update_text)
 	GameState.day_changed.connect(_on_day_changed)
+	GameState.weather_changed.connect(_on_weather_changed)
 	_update_text()
 
 
@@ -44,6 +45,7 @@ func _update_text() -> void:
 		"Date: %s" % GameState.get_display_date(),
 		"Date ID: %s" % _get_current_date_string(),
 		"Time: %s" % GameState.get_time_block_label(),
+		"Weather: %s (%s)" % [GameState.get_weather_label(), GameState.weather],
 		"Forced: %s" % _format_forced_event(),
 		"Activity Lock: %s" % _format_activity_lock(),
 		"Available: %s" % _format_available_activities(),
@@ -63,6 +65,10 @@ func _update_text() -> void:
 
 func _on_day_changed(new_day) -> void:
 	show_message("New day: %s" % GameState.get_display_date())
+
+
+func _on_weather_changed(new_weather: String) -> void:
+	_update_text()
 
 
 func _on_message_timer_timeout() -> void:

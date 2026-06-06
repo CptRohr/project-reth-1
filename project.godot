@@ -31,6 +31,9 @@ MobileControls="*res://Scene/MobileControls.tscn"
 TimeOfDayFilter="*res://Scene/TimeOfDayFilter.tscn"
 CalendarData="*res://Managers/CalendarData.gd"
 ObjectiveHud="*res://Managers/objective_hud.gd"
+NPCData="*res://Managers/NPCData.gd"
+WeatherFilter="*res://Scene/WeatherFilter.tscn"
+AudioSettings="*res://Managers/audio_settings.gd"
 
 [dialogic]
 
@@ -70,13 +73,13 @@ save/encryption_on_exports_only=true
 text/autopauses={}
 audio/channel_defaults={
 "": {
-"audio_bus": "",
+"audio_bus": "SFX",
 "fade_length": 0.0,
 "loop": false,
 "volume": 0.0
 },
 "music": {
-"audio_bus": "",
+"audio_bus": "Music",
 "fade_length": 0.0,
 "loop": true,
 "volume": 0.0

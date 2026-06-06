@@ -2,6 +2,7 @@ extends Node
 
 signal day_changed(new_day)
 signal time_block_changed(new_time_block)
+signal weather_changed(new_weather)
 signal flag_changed(flag_name, value)
 signal stat_changed(stat_name, value, amount)
 signal activity_completed(activity_id, activity_name)
@@ -15,6 +16,20 @@ const TIME_BLOCK_LABELS := {
 	"after_school": "After School",
 	"evening": "Evening",
 	"night": "Night",
+}
+const WEATHER_CLEAR := "clear"
+const WEATHER_RAIN := "rain"
+const WEATHER_THUNDERSTORM := "thunderstorm"
+const WEATHER_TYPES := [WEATHER_CLEAR, WEATHER_RAIN, WEATHER_THUNDERSTORM]
+const WEATHER_LABELS := {
+	"clear": "Clear",
+	"rain": "Rain",
+	"thunderstorm": "Thunderstorm",
+}
+const WEATHER_TINTS := {
+	"clear": Color(1.0, 1.0, 1.0, 0.0),
+	"rain": Color(0.46, 0.57, 0.70, 0.12),
+	"thunderstorm": Color(0.18, 0.22, 0.32, 0.22),
 }
 const STAT_MIN := 0
 const STAT_MAX := 100
@@ -35,6 +50,7 @@ var day: int:
 	set(value):
 		calendar_day_index = get_calendar_manager().clamp_day_index(value - 1)
 var time_block := "morning"
+var weather := WEATHER_CLEAR
 var flags := {}
 var stats := {}
 var current_spawn := ""
@@ -73,6 +89,43 @@ func clear_flag(flag_name: String) -> void:
 
 func get_time_block_label() -> String:
 	return TIME_BLOCK_LABELS.get(time_block, time_block.capitalize())
+
+
+func get_weather_label() -> String:
+	return WEATHER_LABELS.get(weather, weather.capitalize())
+
+
+func get_weather_tint(weather_id := weather) -> Color:
+	return WEATHER_TINTS.get(weather_id, Color(1.0, 1.0, 1.0, 0.0))
+
+
+func is_valid_weather(weather_id: String) -> bool:
+	return WEATHER_TYPES.has(weather_id)
+
+
+func set_weather(new_weather: String) -> void:
+	var normalized_weather := new_weather.strip_edges().to_lower()
+
+	if not is_valid_weather(normalized_weather):
+		push_warning("Unknown weather: %s" % new_weather)
+		normalized_weather = WEATHER_CLEAR
+
+	if weather == normalized_weather:
+		return
+
+	weather = normalized_weather
+	weather_changed.emit(weather)
+	state_changed.emit()
+
+
+func refresh_weather() -> void:
+	var calendar_manager = get_calendar_manager_or_null()
+
+	if calendar_manager == null:
+		set_weather(WEATHER_CLEAR)
+		return
+
+	set_weather(calendar_manager.get_current_weather())
 
 
 func get_display_date() -> String:
@@ -216,6 +269,7 @@ func sleep_to_next_day() -> void:
 	calendar_day_index = get_calendar_manager().clamp_day_index(calendar_day_index + 1)
 	time_block = "morning"
 	restore_energy()
+	refresh_weather()
 	day_changed.emit(day)
 	time_block_changed.emit(time_block)
 	state_changed.emit()
@@ -238,6 +292,7 @@ func reset_game() -> void:
 	ensure_default_stats()
 	current_spawn = ""
 	current_scene = ""
+	refresh_weather()
 	state_loaded.emit()
 	state_changed.emit()
 
@@ -271,6 +326,7 @@ func load_from_data(data: Dictionary) -> void:
 	ensure_default_stats()
 	current_spawn = str(data.get("current_spawn", ""))
 	current_scene = str(data.get("current_scene", ""))
+	refresh_weather()
 	state_loaded.emit()
 	state_changed.emit()
 
@@ -308,3 +364,7 @@ func load_game() -> bool:
 
 func get_calendar_manager():
 	return get_node("/root/CalendarManager")
+
+
+func get_calendar_manager_or_null():
+	return get_node_or_null("/root/CalendarManager")

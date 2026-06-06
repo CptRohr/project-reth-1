@@ -3,11 +3,13 @@ extends Node
 const ACTIVITIES_PATH := "res://data/calendar/activities.json"
 const WEEKLY_SCHEDULE_PATH := "res://data/calendar/weekly_schedule.json"
 const SPECIAL_EVENTS_PATH := "res://data/calendar/special_events.json"
+const WEATHER_PATH := "res://data/calendar/weather.json"
 
 var activities: Array = []
 var activities_by_id: Dictionary = {}
 var weekly_schedule: Dictionary = {}
 var special_events: Array = []
+var weather_by_date: Dictionary = {}
 
 
 func _ready() -> void:
@@ -18,7 +20,11 @@ func reload() -> void:
 	activities = _load_array(ACTIVITIES_PATH)
 	weekly_schedule = _load_dictionary(WEEKLY_SCHEDULE_PATH)
 	special_events = _load_array(SPECIAL_EVENTS_PATH)
+	weather_by_date = _load_dictionary(WEATHER_PATH)
 	_rebuild_activity_index()
+
+	if is_inside_tree() and has_node("/root/GameState"):
+		get_node("/root/GameState").refresh_weather()
 
 
 func get_activity(activity_id: String) -> Dictionary:
@@ -113,6 +119,15 @@ func get_special_events_for_date(date_string: String, active_flags) -> Array:
 		matches.append(event_data.duplicate(true))
 
 	return matches
+
+
+func get_weather_for_date(date_string: String) -> String:
+	var weather_id := str(weather_by_date.get(date_string, "clear")).strip_edges().to_lower()
+
+	if has_node("/root/GameState") and get_node("/root/GameState").is_valid_weather(weather_id):
+		return weather_id
+
+	return "clear"
 
 
 func _rebuild_activity_index() -> void:
