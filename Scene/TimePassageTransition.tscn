@@ -1,0 +1,45 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://Managers/time_passage_transition.gd" id="1_transition"]
+[ext_resource type="FontFile" path="res://Fonts/PixelifySans-VariableFont_wght.ttf" id="2_font"]
+
+[node name="TimePassageTransition" type="CanvasLayer"]
+layer = 120
+process_mode = 3
+script = ExtResource("1_transition")
+activity_text_template = "{activity} passed
+{time}"
+empty_activity_text_template = "Time passed
+{time}"
+new_day_text_template = "A new day begins
+{time}"
+
+[node name="Overlay" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 0
+color = Color(0, 0, 0, 0)
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="PassageLabel" type="Label" parent="CenterContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 36
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.75)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+text = "Time passed
+Evening"
+horizontal_alignment = 1
+vertical_alignment = 1

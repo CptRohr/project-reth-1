@@ -15,12 +15,9 @@ func _ready():
 
 func _process(_delta):
 	if player_inside and Input.is_action_just_pressed("interact"):
-		if GameState.time_block != "morning":
-			show_debug_message("School is only available in the morning.")
-			return
-
-		if not get_calendar_manager().is_school_day(GameState.calendar_day_index):
-			show_debug_message("There is no school today.")
+		var calendar_manager = get_calendar_manager()
+		if not calendar_manager.can_attend_school_now():
+			show_debug_message(calendar_manager.get_school_lock_message())
 			return
 
 		SchoolSummary.show_for_current_day(save_after_school)

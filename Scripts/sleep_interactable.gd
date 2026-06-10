@@ -3,6 +3,7 @@ extends Area2D
 @export var save_after_sleep := true
 
 var player_inside := false
+var sleep_running := false
 
 
 func _ready():
@@ -15,11 +16,18 @@ func _ready():
 
 func _process(_delta):
 	if player_inside and Input.is_action_just_pressed("interact"):
+		if sleep_running:
+			return
+
 		if not get_calendar_manager().can_sleep_now():
 			show_debug_message(get_calendar_manager().get_sleep_lock_message())
 			return
 
-		GameState.sleep_to_next_day()
+		sleep_running = true
+		await TimePassageTransition.play("A new day begins", func():
+			GameState.sleep_to_next_day()
+		)
+		sleep_running = false
 
 		if save_after_sleep:
 			if GameState.save_game():

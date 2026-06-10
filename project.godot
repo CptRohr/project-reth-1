@@ -34,6 +34,7 @@ ObjectiveHud="*res://Managers/objective_hud.gd"
 NPCData="*res://Managers/NPCData.gd"
 WeatherFilter="*res://Scene/WeatherFilter.tscn"
 AudioSettings="*res://Managers/audio_settings.gd"
+TimePassageTransition="*res://Scene/TimePassageTransition.tscn"
 
 [dialogic]
 
@@ -99,18 +100,20 @@ version_control/autoload_on_startup=true
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/dialogic/plugin.cfg")
+enabled=PackedStringArray("res://addons/dialogic/plugin.cfg", "res://addons/extended_ui/plugin.cfg")
 
 [file_customization]
 
 folder_colors={
 "res://Areas/": "green",
 "res://Assets/": "yellow",
+"res://Audio/": "pink",
 "res://Characters/": "teal",
 "res://Dialogue/": "purple",
 "res://Managers/": "yellow",
 "res://Scripts/": "red",
-"res://addons/": "pink"
+"res://addons/": "pink",
+"res://android/": "teal"
 }
 
 [global_group]

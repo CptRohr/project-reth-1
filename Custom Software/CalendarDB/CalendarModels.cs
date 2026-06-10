@@ -77,6 +77,18 @@ public sealed class SpecialEventRow
 
     [JsonPropertyName("set_flags_after_complete")]
     public List<string> SetFlagsAfterComplete { get; set; } = [];
+
+    [JsonPropertyName("objective_text")]
+    public string ObjectiveText { get; set; } = "";
+
+    [JsonPropertyName("objective_required")]
+    public bool ObjectiveRequired { get; set; }
+
+    [JsonPropertyName("objective_complete_flag")]
+    public string ObjectiveCompleteFlag { get; set; } = "";
+
+    [JsonPropertyName("objective_blocked_message")]
+    public string ObjectiveBlockedMessage { get; set; } = "";
 }
 
 public sealed class SpecialEventGridRow
@@ -90,6 +102,10 @@ public sealed class SpecialEventGridRow
     public string ActivityId { get; set; } = "";
     public string RequiredFlags { get; set; } = "";
     public string SetFlagsAfterComplete { get; set; } = "";
+    public string ObjectiveText { get; set; } = "";
+    public bool ObjectiveRequired { get; set; }
+    public string ObjectiveCompleteFlag { get; set; } = "";
+    public string ObjectiveBlockedMessage { get; set; } = "";
 }
 
 public sealed class WeatherGridRow

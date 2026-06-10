@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://cw65fe6egjoo5"]
+
+[ext_resource type="Script" uid="uid://bccms7decicay" path="res://addons/extended_ui/controls/sliders/XUIXYSlider.gd" id="1_lu06o"]
+
+[node name="2dSliderTest" type="Control" unique_id=426330151]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="XUI2DSlider" type="Control" parent="." unique_id=1755272995]
+custom_minimum_size = Vector2(128, 128)
+anchors_preset = 0
+offset_left = 84.0
+offset_top = 59.0
+offset_right = 212.0
+offset_bottom = 187.0
+script = ExtResource("1_lu06o")
+metadata/_custom_type_script = "uid://bccms7decicay"

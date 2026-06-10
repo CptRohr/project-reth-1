@@ -1,0 +1,172 @@
+[gd_scene format=3 uid="uid://dbg8nr0vb4n16"]
+
+[ext_resource type="Script" uid="uid://gj43tr10wtx7" path="res://addons/extended_ui/controls/sliders/XUIHslider.gd" id="1_agm3q"]
+
+[node name="SliderTest" type="Control" unique_id=282793658]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=772275731]
+layout_mode = 0
+offset_left = 48.0
+offset_top = 47.0
+offset_right = 576.0
+offset_bottom = 106.0
+theme_override_constants/separation = 16
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer" unique_id=1386426208]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer" unique_id=797323768]
+layout_mode = 2
+text = "Width:"
+
+[node name="XUIHSlider" type="Range" parent="HBoxContainer/VBoxContainer" unique_id=2090921595]
+unique_name_in_owner = false
+process_mode = 0
+process_priority = 0
+process_physics_priority = 0
+process_thread_group = 0
+physics_interpolation_mode = 2
+auto_translate_mode = 0
+editor_description = ""
+visible = true
+modulate = Color(1, 1, 1, 1)
+self_modulate = Color(1, 1, 1, 1)
+show_behind_parent = false
+top_level = false
+clip_children = 0
+light_mask = 1
+visibility_layer = 1
+z_index = 0
+z_as_relative = true
+y_sort_enabled = false
+texture_filter = 0
+texture_repeat = 0
+material = null
+use_parent_material = false
+clip_contents = false
+custom_minimum_size = Vector2(256, 32)
+layout_direction = 0
+layout_mode = 2
+size_flags_horizontal = 1
+size_flags_vertical = 1
+size_flags_stretch_ratio = 1.0
+localize_numeral_system = true
+tooltip_text = ""
+tooltip_auto_translate_mode = 0
+focus_neighbor_left = NodePath("")
+focus_neighbor_top = NodePath("")
+focus_neighbor_right = NodePath("")
+focus_neighbor_bottom = NodePath("")
+focus_next = NodePath("")
+focus_previous = NodePath("")
+focus_mode = 2
+focus_behavior_recursive = 0
+mouse_filter = 0
+mouse_behavior_recursive = 0
+mouse_force_pass_scroll_events = true
+mouse_default_cursor_shape = 0
+accessibility_name = ""
+accessibility_description = ""
+accessibility_live = 0
+accessibility_controls_nodes = Array[NodePath]([])
+accessibility_described_by_nodes = Array[NodePath]([])
+accessibility_labeled_by_nodes = Array[NodePath]([])
+accessibility_flow_to_nodes = Array[NodePath]([])
+theme = null
+theme_type_variation = &""
+min_value = 0.0
+max_value = 100.0
+step = 0.1
+page = 0.0
+value = 50.0
+exp_edit = false
+rounded = false
+allow_greater = false
+allow_lesser = false
+script = ExtResource("1_agm3q")
+label_mode = 1
+label_prefix = "width: "
+label_suffix = " px"
+metadata/_custom_type_script = "uid://gj43tr10wtx7"
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="HBoxContainer" unique_id=1212436853]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer2" unique_id=1631743833]
+layout_mode = 2
+text = "Height: "
+
+[node name="XUIHSlider" type="Range" parent="HBoxContainer/VBoxContainer2" unique_id=1892878959]
+unique_name_in_owner = false
+process_mode = 0
+process_priority = 0
+process_physics_priority = 0
+process_thread_group = 0
+physics_interpolation_mode = 2
+auto_translate_mode = 0
+editor_description = ""
+visible = true
+modulate = Color(1, 1, 1, 1)
+self_modulate = Color(1, 1, 1, 1)
+show_behind_parent = false
+top_level = false
+clip_children = 0
+light_mask = 1
+visibility_layer = 1
+z_index = 0
+z_as_relative = true
+y_sort_enabled = false
+texture_filter = 0
+texture_repeat = 0
+material = null
+use_parent_material = false
+clip_contents = false
+custom_minimum_size = Vector2(256, 32)
+layout_direction = 0
+layout_mode = 2
+size_flags_horizontal = 1
+size_flags_vertical = 1
+size_flags_stretch_ratio = 1.0
+localize_numeral_system = true
+tooltip_text = ""
+tooltip_auto_translate_mode = 0
+focus_neighbor_left = NodePath("")
+focus_neighbor_top = NodePath("")
+focus_neighbor_right = NodePath("")
+focus_neighbor_bottom = NodePath("")
+focus_next = NodePath("")
+focus_previous = NodePath("")
+focus_mode = 2
+focus_behavior_recursive = 0
+mouse_filter = 0
+mouse_behavior_recursive = 0
+mouse_force_pass_scroll_events = true
+mouse_default_cursor_shape = 0
+accessibility_name = ""
+accessibility_description = ""
+accessibility_live = 0
+accessibility_controls_nodes = Array[NodePath]([])
+accessibility_described_by_nodes = Array[NodePath]([])
+accessibility_labeled_by_nodes = Array[NodePath]([])
+accessibility_flow_to_nodes = Array[NodePath]([])
+theme = null
+theme_type_variation = &""
+min_value = 0.0
+max_value = 100.0
+step = 0.1
+page = 0.0
+value = 50.0
+exp_edit = false
+rounded = false
+allow_greater = false
+allow_lesser = false
+script = ExtResource("1_agm3q")
+label_mode = 1
+label_prefix = "height: "
+metadata/_custom_type_script = "uid://gj43tr10wtx7"

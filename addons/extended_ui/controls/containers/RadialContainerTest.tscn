@@ -1,0 +1,83 @@
+[gd_scene format=3 uid="uid://bh8qdfjmsdtre"]
+
+[ext_resource type="Script" uid="uid://cxy7radialco" path="res://addons/extended_ui/controls/containers/XUIRadialContainer.gd" id="1_070pq"]
+
+[node name="RadialContainerTest" type="HBoxContainer" unique_id=2100315308]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=592270933]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer" unique_id=336752237]
+layout_mode = 2
+text = "Radial Container 360"
+
+[node name="XUIRadialContainer" type="Container" parent="VBoxContainer" unique_id=1156325775]
+layout_mode = 2
+size_flags_horizontal = 3
+script = ExtResource("1_070pq")
+square_aspect = true
+metadata/_custom_type_script = "uid://cxy7radialco"
+
+[node name="Button1" type="Button" parent="VBoxContainer/XUIRadialContainer" unique_id=1827923481]
+layout_mode = 2
+text = "Button 1"
+
+[node name="Button2" type="Button" parent="VBoxContainer/XUIRadialContainer" unique_id=515966063]
+layout_mode = 2
+text = "Button 2"
+
+[node name="Button3" type="Button" parent="VBoxContainer/XUIRadialContainer" unique_id=1244047600]
+layout_mode = 2
+text = "Button 3"
+
+[node name="Button4" type="Button" parent="VBoxContainer/XUIRadialContainer" unique_id=1919931459]
+layout_mode = 2
+text = "Button 4"
+
+[node name="XUIRadialContainer2" type="Container" parent="." unique_id=1068296816]
+layout_mode = 2
+size_flags_horizontal = 3
+script = ExtResource("1_070pq")
+angle_distribution = 1
+metadata/_custom_type_script = "uid://cxy7radialco"
+
+[node name="Button1" type="Button" parent="XUIRadialContainer2" unique_id=1474798438]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Button 1"
+
+[node name="Button2" type="Button" parent="XUIRadialContainer2" unique_id=98516490]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Button 2"
+
+[node name="Button3" type="Button" parent="XUIRadialContainer2" unique_id=1401280860]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Button 3"
+
+[node name="Button4" type="Button" parent="XUIRadialContainer2" unique_id=2050309376]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Button 4"
+
+[node name="Button5" type="Button" parent="XUIRadialContainer2" unique_id=1212825694]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Button 5"
+
+[node name="Button6" type="Button" parent="XUIRadialContainer2" unique_id=1095929976]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Button 6"

@@ -101,6 +101,22 @@ func get_special_event(date_string: String, time_block: String, active_flags) ->
 	return {}
 
 
+func get_active_objective_event(date_string: String, time_block: String, active_flags) -> Dictionary:
+	var event_data := get_special_event(date_string, time_block, active_flags)
+
+	if event_data.is_empty():
+		return {}
+
+	if str(event_data.get("objective_text", "")).strip_edges() == "":
+		return {}
+
+	var complete_flag := str(event_data.get("objective_complete_flag", "")).strip_edges()
+	if complete_flag != "" and _flag_is_active(complete_flag, active_flags):
+		return {}
+
+	return event_data
+
+
 func get_special_events_for_date(date_string: String, active_flags) -> Array:
 	var matches := []
 
@@ -194,6 +210,16 @@ func _required_flags_match(required_flags, active_flags) -> bool:
 			return false
 
 	return true
+
+
+func _flag_is_active(flag_name: String, active_flags) -> bool:
+	if active_flags is Dictionary:
+		return bool(active_flags.get(flag_name, false))
+
+	if active_flags is Array:
+		return active_flags.has(flag_name)
+
+	return false
 
 
 func _array_has_string(values, expected_value: String) -> bool:

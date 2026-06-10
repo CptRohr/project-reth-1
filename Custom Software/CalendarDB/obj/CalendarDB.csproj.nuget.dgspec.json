@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\CodexSandboxOffline\\.codex\\.sandbox\\cwd\\d7d8da0c70f6e0a7\\Custom Software\\CalendarDB\\CalendarDB.csproj": {}
+    "D:\\GAME PROJECT\\project-reth-1\\Custom Software\\CalendarDB\\CalendarDB.csproj": {}
   },
   "projects": {
-    "C:\\Users\\CodexSandboxOffline\\.codex\\.sandbox\\cwd\\d7d8da0c70f6e0a7\\Custom Software\\CalendarDB\\CalendarDB.csproj": {
+    "D:\\GAME PROJECT\\project-reth-1\\Custom Software\\CalendarDB\\CalendarDB.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\CodexSandboxOffline\\.codex\\.sandbox\\cwd\\d7d8da0c70f6e0a7\\Custom Software\\CalendarDB\\CalendarDB.csproj",
+        "projectUniqueName": "D:\\GAME PROJECT\\project-reth-1\\Custom Software\\CalendarDB\\CalendarDB.csproj",
         "projectName": "CalendarDB",
-        "projectPath": "C:\\Users\\CodexSandboxOffline\\.codex\\.sandbox\\cwd\\d7d8da0c70f6e0a7\\Custom Software\\CalendarDB\\CalendarDB.csproj",
-        "packagesPath": "C:\\Users\\CodexSandboxOffline\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\CodexSandboxOffline\\.codex\\.sandbox\\cwd\\d7d8da0c70f6e0a7\\Custom Software\\CalendarDB\\obj\\",
+        "projectPath": "D:\\GAME PROJECT\\project-reth-1\\Custom Software\\CalendarDB\\CalendarDB.csproj",
+        "packagesPath": "C:\\Users\\PC HOME\\.nuget\\packages\\",
+        "outputPath": "D:\\GAME PROJECT\\project-reth-1\\Custom Software\\CalendarDB\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\PC HOME\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -62,7 +62,7 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.314/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.315/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

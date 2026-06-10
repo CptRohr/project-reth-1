@@ -110,7 +110,7 @@ public sealed class MainForm : Form
         tabs.HotTrack = true;
         tabs.TabPages.Add(CreateGridTab("Activities", activitiesGrid, activities, "Double-click Available Days or Available Time Blocks to pick from a checklist."));
         tabs.TabPages.Add(CreateWeeklyTab());
-        tabs.TabPages.Add(CreateGridTab("Special Events", specialEventsGrid, specialEvents, "Use dropdowns for Time Block and Activity ID. Dates use YYYY-MM-DD."));
+        tabs.TabPages.Add(CreateGridTab("Special Events", specialEventsGrid, specialEvents, "Use dropdowns for Time Block and Activity ID. Objective fields can drive the top-screen HUD."));
         tabs.TabPages.Add(CreateGridTab("Weather", weatherGrid, weatherRows, "Set one weather value for a whole story date. Missing dates are clear."));
         tabs.TabPages.Add(CreateGridTab("NPCs", npcsGrid, npcs, "Use the Default Timeline dropdown to pick an existing Dialogue/*.dtl timeline."));
         tabs.TabPages.Add(CreateGridTab("NPC Appearance", npcAppearanceGrid, npcAppearanceRules, "Use dropdowns for NPC ID and Scene Path. Double-click Days or Time Blocks for checklists."));
@@ -269,6 +269,15 @@ public sealed class MainForm : Form
         AddComboColumn(specialEventsGrid, nameof(SpecialEventGridRow.ActivityId), "Activity ID", 120, GetActivityIdOptions());
         AddTextColumn(specialEventsGrid, nameof(SpecialEventGridRow.RequiredFlags), "Required Flags", 150);
         AddTextColumn(specialEventsGrid, nameof(SpecialEventGridRow.SetFlagsAfterComplete), "Set Flags After Complete", 190);
+        AddTextColumn(specialEventsGrid, nameof(SpecialEventGridRow.ObjectiveText), "Objective Text", 190);
+        specialEventsGrid.Columns.Add(new DataGridViewCheckBoxColumn
+        {
+            DataPropertyName = nameof(SpecialEventGridRow.ObjectiveRequired),
+            HeaderText = "Objective Required",
+            FillWeight = 90
+        });
+        AddTextColumn(specialEventsGrid, nameof(SpecialEventGridRow.ObjectiveCompleteFlag), "Objective Complete Flag", 170);
+        AddTextColumn(specialEventsGrid, nameof(SpecialEventGridRow.ObjectiveBlockedMessage), "Objective Blocked Message", 210);
         specialEventsGrid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
     }
 
@@ -533,8 +542,13 @@ public sealed class MainForm : Form
 
             Cell colors:
             - Red: invalid or broken reference; save will be blocked.
-            - Yellow: empty wildcard list; this means "any" and is usually okay.
+            - Yellow: empty wildcard list or optional objective without a completion flag.
             - White: valid.
+
+            Special event objectives:
+            - Objective Text appears in the top-screen HUD while the event is active.
+            - Objective Required blocks optional/stat activities until Objective Complete Flag is true.
+            - Objective Blocked Message is shown when a blocked activity is touched.
 
             NPC workflow:
             1. Create an NPC row.
@@ -636,7 +650,11 @@ public sealed class MainForm : Form
                 Forced = source.Forced,
                 ActivityId = source.ActivityId,
                 RequiredFlags = source.RequiredFlags,
-                SetFlagsAfterComplete = source.SetFlagsAfterComplete
+                SetFlagsAfterComplete = source.SetFlagsAfterComplete,
+                ObjectiveText = source.ObjectiveText,
+                ObjectiveRequired = source.ObjectiveRequired,
+                ObjectiveCompleteFlag = source.ObjectiveCompleteFlag,
+                ObjectiveBlockedMessage = source.ObjectiveBlockedMessage
             });
         }
         else if (grid == weatherGrid)
@@ -1072,7 +1090,11 @@ public sealed class MainForm : Form
                 Description = "The first day of school.",
                 Forced = true,
                 ActivityId = "school_intro",
-                SetFlagsAfterComplete = "met_classmates"
+                SetFlagsAfterComplete = "met_classmates",
+                ObjectiveText = "Go to school for your first day.",
+                ObjectiveRequired = true,
+                ObjectiveCompleteFlag = "met_classmates",
+                ObjectiveBlockedMessage = "Go to school first."
             });
         }
 
@@ -1223,6 +1245,19 @@ public sealed class MainForm : Form
             else if (!activityIds.Contains(Clean(row.ActivityId)))
             {
                 errors.Add($"Special event '{id}' references missing activity_id '{row.ActivityId}'.");
+            }
+
+            if (row.ObjectiveRequired)
+            {
+                if (Clean(row.ObjectiveText).Length == 0)
+                {
+                    errors.Add($"Special event '{id}' has a required objective but objective_text is empty.");
+                }
+
+                if (Clean(row.ObjectiveCompleteFlag).Length == 0)
+                {
+                    errors.Add($"Special event '{id}' has a required objective but objective_complete_flag is empty.");
+                }
             }
         }
 
@@ -1376,10 +1411,77 @@ public sealed class MainForm : Form
 
     private void ApplyLiveValidationColors()
     {
+        ResetGridColors(specialEventsGrid);
         ResetGridColors(weatherGrid);
         ResetGridColors(npcsGrid);
         ResetGridColors(npcAppearanceGrid);
         ResetGridColors(npcDialogueGrid);
+
+        var activityIdSet = activities
+            .Select(row => Clean(row.Id))
+            .Where(id => id.Length > 0)
+            .ToHashSet();
+        var duplicateSpecialIds = specialEvents
+            .Select(row => Clean(row.Id))
+            .Where(id => id.Length > 0)
+            .GroupBy(id => id)
+            .Where(group => group.Count() > 1)
+            .Select(group => group.Key)
+            .ToHashSet();
+
+        for (var index = 0; index < specialEvents.Count; index++)
+        {
+            var row = specialEvents[index];
+            var id = Clean(row.Id);
+            var activityId = Clean(row.ActivityId);
+
+            if (id.Length == 0 || duplicateSpecialIds.Contains(id))
+            {
+                PaintCell(specialEventsGrid, index, nameof(SpecialEventGridRow.Id), Color.MistyRose);
+            }
+
+            if (Clean(row.Title).Length == 0)
+            {
+                PaintCell(specialEventsGrid, index, nameof(SpecialEventGridRow.Title), Color.MistyRose);
+            }
+
+            if (Clean(row.Description).Length == 0)
+            {
+                PaintCell(specialEventsGrid, index, nameof(SpecialEventGridRow.Description), Color.MistyRose);
+            }
+
+            if (!DateOnly.TryParseExact(Clean(row.Date), "yyyy-MM-dd", out _))
+            {
+                PaintCell(specialEventsGrid, index, nameof(SpecialEventGridRow.Date), Color.MistyRose);
+            }
+
+            if (!TimeBlocks.Contains(Clean(row.TimeBlock)))
+            {
+                PaintCell(specialEventsGrid, index, nameof(SpecialEventGridRow.TimeBlock), Color.MistyRose);
+            }
+
+            if (activityId.Length == 0 || !activityIdSet.Contains(activityId))
+            {
+                PaintCell(specialEventsGrid, index, nameof(SpecialEventGridRow.ActivityId), Color.MistyRose);
+            }
+
+            if (row.ObjectiveRequired)
+            {
+                if (Clean(row.ObjectiveText).Length == 0)
+                {
+                    PaintCell(specialEventsGrid, index, nameof(SpecialEventGridRow.ObjectiveText), Color.MistyRose);
+                }
+
+                if (Clean(row.ObjectiveCompleteFlag).Length == 0)
+                {
+                    PaintCell(specialEventsGrid, index, nameof(SpecialEventGridRow.ObjectiveCompleteFlag), Color.MistyRose);
+                }
+            }
+            else if (Clean(row.ObjectiveText).Length > 0 && Clean(row.ObjectiveCompleteFlag).Length == 0)
+            {
+                PaintCell(specialEventsGrid, index, nameof(SpecialEventGridRow.ObjectiveCompleteFlag), Color.LemonChiffon);
+            }
+        }
 
         var duplicateWeatherDates = weatherRows
             .Select(row => Clean(row.Date))
@@ -1688,7 +1790,11 @@ public sealed class MainForm : Form
             Forced = row.Forced,
             ActivityId = row.ActivityId,
             RequiredFlags = string.Join(", ", row.RequiredFlags),
-            SetFlagsAfterComplete = string.Join(", ", row.SetFlagsAfterComplete)
+            SetFlagsAfterComplete = string.Join(", ", row.SetFlagsAfterComplete),
+            ObjectiveText = row.ObjectiveText,
+            ObjectiveRequired = row.ObjectiveRequired,
+            ObjectiveCompleteFlag = row.ObjectiveCompleteFlag,
+            ObjectiveBlockedMessage = row.ObjectiveBlockedMessage
         };
     }
 
@@ -1704,7 +1810,11 @@ public sealed class MainForm : Form
             Forced = row.Forced,
             ActivityId = Clean(row.ActivityId),
             RequiredFlags = ParseList(row.RequiredFlags),
-            SetFlagsAfterComplete = ParseList(row.SetFlagsAfterComplete)
+            SetFlagsAfterComplete = ParseList(row.SetFlagsAfterComplete),
+            ObjectiveText = Clean(row.ObjectiveText),
+            ObjectiveRequired = row.ObjectiveRequired,
+            ObjectiveCompleteFlag = Clean(row.ObjectiveCompleteFlag),
+            ObjectiveBlockedMessage = Clean(row.ObjectiveBlockedMessage)
         };
     }
 

@@ -12,6 +12,7 @@ extends Area2D
 @export_multiline var not_enough_energy_message := ""
 
 var player_inside := false
+var activity_running := false
 
 
 func _ready():
@@ -24,6 +25,9 @@ func _ready():
 
 func _process(_delta):
 	if player_inside and Input.is_action_just_pressed("interact"):
+		if activity_running:
+			return
+
 		if once_per_day and not EventManager.can_run_today(activity_id):
 			show_debug_message("%s is already done today." % activity_name)
 			return
@@ -39,12 +43,16 @@ func _process(_delta):
 		if once_per_day:
 			EventManager.mark_done_today(activity_id)
 
-		GameState.perform_activity(
-			activity_id,
-			activity_name,
-			time_blocks_to_advance,
-			stat_changes
+		activity_running = true
+		await TimePassageTransition.play(activity_name, func():
+			GameState.perform_activity(
+				activity_id,
+				activity_name,
+				time_blocks_to_advance,
+				stat_changes
+			)
 		)
+		activity_running = false
 
 		if save_after_activity:
 			GameState.save_game()

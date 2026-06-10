@@ -8,9 +8,12 @@
 layer = 2
 process_mode = 3
 script = ExtResource("1_weather")
-weather_audio_bus = "SFX"
+weather_audio_bus = "WeatherSFX"
 rain_loop_volume_db = -2.0
 thunderstorm_ambience_volume_db = -4.0
+indoor_volume_offset_db = -16.0
+indoor_lowpass_cutoff_hz = 1150.0
+indoor_lowpass_resonance = 0.45
 
 [node name="RainLines" type="Node2D" parent="."]
 visible = false
@@ -28,9 +31,9 @@ color = Color(1, 1, 1, 0)
 [node name="RainAudio" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_rain")
 volume_db = -2.0
-bus = &"SFX"
+bus = &"WeatherSFX"
 
 [node name="ThunderstormAudio" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_thunder")
 volume_db = -4.0
-bus = &"SFX"
+bus = &"WeatherSFX"

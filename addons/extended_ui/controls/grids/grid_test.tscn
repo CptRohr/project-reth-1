@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://5he1b7806wts"]
+
+[ext_resource type="Script" uid="uid://dn1du5vckua1k" path="res://addons/extended_ui/controls/grids/XUIGridPanel.gd" id="1_u3ref"]
+
+[node name="GridTest" type="Control" unique_id=1716000534]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="XUIGridPanel" type="Control" parent="." unique_id=980852351]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_u3ref")
+major_grid_size = 64
+minor_grid_size = 32
+centered = true
+theme_override_major_grid_color_on = true
+theme_override_major_grid_color = Color(1, 1, 1, 0.28235295)
+theme_override_minor_grid_color_on = true
+theme_override_minor_grid_color = Color(1, 1, 1, 0.078431375)
+theme_override_major_grid_thickness_on = true
+theme_override_minor_grid_thickness_on = true
+metadata/_custom_type_script = "uid://dn1du5vckua1k"

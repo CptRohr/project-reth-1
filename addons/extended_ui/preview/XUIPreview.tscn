@@ -1,0 +1,464 @@
+[gd_scene format=3 uid="uid://5ndpm05e662h"]
+
+[ext_resource type="Script" uid="uid://gj43tr10wtx7" path="res://addons/extended_ui/controls/sliders/XUIHslider.gd" id="1_hab0f"]
+[ext_resource type="Script" uid="uid://bccms7decicay" path="res://addons/extended_ui/controls/sliders/XUIXYSlider.gd" id="2_4caqk"]
+[ext_resource type="Script" uid="uid://dn1du5vckua1k" path="res://addons/extended_ui/controls/grids/XUIGridPanel.gd" id="2_ca8l2"]
+[ext_resource type="Script" uid="uid://beenpvfk8aenl" path="res://addons/extended_ui/preview/barycentric_slider_test.gd" id="2_elgsy"]
+[ext_resource type="Script" uid="uid://c26s2qvpowfvc" path="res://addons/extended_ui/controls/sliders/XUIBarycentricSlider.gd" id="2_ll015"]
+[ext_resource type="Script" uid="uid://bcf0beduuvw5v" path="res://addons/extended_ui/controls/sliders/BarycentricPoint.gd" id="3_ll015"]
+[ext_resource type="Script" uid="uid://cwocty0e86ef7" path="res://addons/extended_ui/controls/containers/XUIViewContainer.gd" id="7_h67ga"]
+[ext_resource type="Script" uid="uid://cxy7radialco" path="res://addons/extended_ui/controls/containers/XUIRadialContainer.gd" id="8_pvlpn"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h67ga"]
+content_margin_left = 8.0
+content_margin_top = 8.0
+content_margin_right = 8.0
+content_margin_bottom = 8.0
+bg_color = Color(0, 0, 0, 0.5019608)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.15847227, 0.15847233, 0.15847221, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="LabelSettings" id="LabelSettings_hab0f"]
+font_size = 32
+
+[sub_resource type="LabelSettings" id="LabelSettings_elgsy"]
+font_size = 24
+
+[sub_resource type="Resource" id="Resource_elgsy"]
+script = ExtResource("3_ll015")
+point_name = "Skinny"
+
+[sub_resource type="Resource" id="Resource_h67ga"]
+script = ExtResource("3_ll015")
+point_name = "Fat"
+
+[sub_resource type="Resource" id="Resource_pvlpn"]
+script = ExtResource("3_ll015")
+point_name = "Muscular"
+
+[node name="XuiPreview" type="Control" unique_id=763654504]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1489933176]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer" unique_id=1909926667]
+visible = false
+layout_mode = 2
+horizontal_scroll_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/ScrollContainer" unique_id=550737006]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer" unique_id=1123565333]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="prev" type="MarginContainer" parent="MarginContainer/HBoxContainer" unique_id=2097428540]
+layout_mode = 2
+
+[node name="PrevButton" type="Button" parent="MarginContainer/HBoxContainer/prev" unique_id=1477041810]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 32
+text = "<"
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer/HBoxContainer" unique_id=1330993339]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_h67ga")
+
+[node name="XUIViewContainer" type="Container" parent="MarginContainer/HBoxContainer/PanelContainer" unique_id=1981462322]
+clip_contents = true
+layout_mode = 2
+size_flags_horizontal = 3
+script = ExtResource("7_h67ga")
+transition_type = 3
+metadata/_custom_type_script = "uid://cwocty0e86ef7"
+
+[node name="sliders" type="VBoxContainer" parent="MarginContainer/HBoxContainer/PanelContainer/XUIViewContainer" unique_id=204504046]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/PanelContainer/XUIViewContainer/sliders" unique_id=2049922853]
+layout_mode = 2
+text = "XUIHSlider"
+label_settings = SubResource("LabelSettings_hab0f")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer/PanelContainer/XUIViewContainer/sliders" unique_id=1702743816]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/PanelContainer/XUIViewContainer/sliders/VBoxContainer" unique_id=1273144854]
+layout_mode = 2
+text = "Width:"
+
+[node name="XUIHSlider" type="Range" parent="MarginContainer/HBoxContainer/PanelContainer/XUIViewContainer/sliders/VBoxContainer" unique_id=1037800765]
+unique_name_in_owner = false
+process_mode = 0
+process_priority = 0
+process_physics_priority = 0
+process_thread_group = 0
+physics_interpolation_mode = 2
+auto_translate_mode = 0
+editor_description = ""
+visible = true
+modulate = Color(1, 1, 1, 1)
+self_modulate = Color(1, 1, 1, 1)
+show_behind_parent = false
+top_level = false
+clip_children = 0
+light_mask = 1
+visibility_layer = 1
+z_index = 0
+z_as_relative = true
+y_sort_enabled = false
+texture_filter = 0
+texture_repeat = 0
+material = null
+use_parent_material = false
+clip_contents = false
+custom_minimum_size = Vector2(256, 32)
+layout_direction = 0
+layout_mode = 2
+size_flags_horizontal = 1
+size_flags_vertical = 1
+size_flags_stretch_ratio = 1.0
+localize_numeral_system = true
+tooltip_text = ""
+tooltip_auto_translate_mode = 0
+focus_neighbor_left = NodePath("")
+focus_neighbor_top = NodePath("")
+focus_neighbor_right = NodePath("")
+focus_neighbor_bottom = NodePath("")
+focus_next = NodePath("")
+focus_previous = NodePath("")
+focus_mode = 2
+focus_behavior_recursive = 0
+mouse_filter = 0
+mouse_behavior_recursive = 0
+mouse_force_pass_scroll_events = true
+mouse_default_cursor_shape = 0
+accessibility_name = ""
+accessibility_description = ""
+accessibility_live = 0
+accessibility_controls_nodes = Array[NodePath]([])
+accessibility_described_by_nodes = Array[NodePath]([])
+accessibility_labeled_by_nodes = Array[NodePath]([])
+accessibility_flow_to_nodes = Array[NodePath]([])
+theme = null
+theme_type_variation = &""
+min_value = 0.0
+max_value = 100.0
+step = 0.1
+page = 0.0
+value = 50.0
+exp_edit = false
+rounded = false
+allow_greater = false
+allow_lesser = false
+script = ExtResource("1_hab0f")
+label_mode = 1
+label_prefix = "width: "
+label_suffix = " px"
+metadata/_custom_type_script = "uid://gj43tr10wtx7"
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/HBoxContainer/PanelContainer/XUIViewContainer/sliders" unique_id=1620599491]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/PanelContainer/XUIViewContainer/sliders/VBoxContainer2" unique_id=1499561086]
+layout_mode = 2
+text = "Height: "
+
+[node name="XUIHSlider" type="Range" parent="MarginContainer/HBoxContainer/PanelContainer/XUIViewContainer/sliders/VBoxContainer2" unique_id=1052838513]
+unique_name_in_owner = false
+process_mode = 0
+process_priority = 0
+process_physics_priority = 0
+process_thread_group = 0
+physics_interpolation_mode = 2
+auto_translate_mode = 0
+editor_description = ""
+visible = true
+modulate = Color(1, 1, 1, 1)
+self_modulate = Color(1, 1, 1, 1)
+show_behind_parent = false
+top_level = false
+clip_children = 0
+light_mask = 1
+visibility_layer = 1
+z_index = 0
+z_as_relative = true
+y_sort_enabled = false
+texture_filter = 0
+texture_repeat = 0
+material = null
+use_parent_material = false
+clip_contents = false
+custom_minimum_size = Vector2(256, 32)
+layout_direction = 0
+layout_mode = 2
+size_flags_horizontal = 1
+size_flags_vertical = 1
+size_flags_stretch_ratio = 1.0
+localize_numeral_system = true
+tooltip_text = ""
+tooltip_auto_translate_mode = 0
+focus_neighbor_left = NodePath("")
+focus_neighbor_top = NodePath("")
+focus_neighbor_right = NodePath("")
+focus_neighbor_bottom = NodePath("")
+focus_next = NodePath("")
+focus_previous = NodePath("")
+focus_mode = 2
+focus_behavior_recursive = 0
+mouse_filter = 0
+mouse_behavior_recursive = 0
+mouse_force_pass_scroll_events = true
+mouse_default_cursor_shape = 0
+accessibility_name = ""
+accessibility_description = ""
+accessibility_live = 0
+accessibility_controls_nodes = Array[NodePath]([])
+accessibility_described_by_nodes = Array[NodePath]([])
+accessibility_labeled_by_nodes = Array[NodePath]([])
+accessibility_flow_to_nodes = Array[NodePath]([])
+theme = null
+theme_type_variation = &""
+min_value = 0.0
+max_value = 100.0
+step = 0.1
+page = 0.0
+value = 50.0
+exp_edit = false
+rounded = false
+allow_greater = false
+allow_lesser = false
+script = ExtResource("1_hab0f")
+label_mode = 1
+label_prefix = "height: "
+metadata/_custom_type_script = "uid://gj43tr10wtx7"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer/HBoxContainer/PanelContainer/XUIViewContainer/sliders" unique_id=829472163]
+layout_mode = 2
+bbcode_enabled = true
+text = "The horizontal slider supports:
+- precision editing while holding [b]shift[/b].
+- scrolling with the mouse wheel.
+- visible value with optional prefix/suffix.
+- direct copy-paste on hover via CTRL+C and CTRL+V
+- direct editing via double-click"
+fit_content = true
+
+[node name="Label2" type="Label" parent="MarginContainer/HBoxContainer/PanelContainer/XUIViewContainer/sliders" unique_id=762418230]
+layout_mode = 2
+text = "This is much more powerful than the standard HSlider Godot provides:"
+
+[node name="HSlider" type="HSlider" parent="MarginContainer/HBoxContainer/PanelContainer/XUIViewContainer/sliders" unique_id=1198150786]
+layout_mode = 2
+value = 50.0
+
+[node name="barycentric_slider" type="VBoxContainer" parent="MarginContainer/HBoxContainer/PanelContainer/XUIViewContainer" unique_id=1211419230 node_paths=PackedStringArray("slider", "values")]
+visible = false
+layout_mode = 2
+script = ExtResource("2_elgsy")
+slider = NodePath("HBoxContainer/XUIBarycentricSlider")
+values = NodePath("../sliders/RichTextLabel")
+
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/PanelContainer/XUIViewContainer/barycentric_slider" unique_id=1837857354]
+layout_mode = 2
+text = "XUIBarycentricSlider"
+label_settings = SubResource("LabelSettings_elgsy")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/HBoxContainer/PanelContainer/XUIViewContainer/barycentric_slider" unique_id=159146770]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="XUIBarycentricSlider" type="Control" parent="MarginContainer/HBoxContainer/PanelContainer/XUIViewContainer/barycentric_slider/HBoxContainer" unique_id=810466402]
+custom_minimum_size = Vector2(256, 256)
+layout_mode = 2
+script = ExtResource("2_ll015")
+points = Array[ExtResource("3_ll015")]([SubResource("Resource_elgsy"), SubResource("Resource_h67ga"), SubResource("Resource_pvlpn")])
+stretch = false
+
+[node name="HSeparator" type="VSeparator" parent="MarginContainer/HBoxContainer/PanelContainer/XUIViewContainer/barycentric_slider/HBoxContainer" unique_id=1790236109]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer/PanelContainer/XUIViewContainer/barycentric_slider/HBoxContainer" unique_id=1869628126]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+
+[node name="Label2" type="Label" parent="MarginContainer/HBoxContainer/PanelContainer/XUIViewContainer/barycentric_slider/HBoxContainer/VBoxContainer" unique_id=136824422]
+layout_mode = 2
+text = "Values:"
+label_settings = SubResource("LabelSettings_elgsy")
+
+[node name="values" type="RichTextLabel" parent="MarginContainer/HBoxContainer/PanelContainer/XUIViewContainer/barycentric_slider/HBoxContainer/VBoxContainer" unique_id=992249511]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "skinny: 0
+fat: 0
+muscular: 0"
+fit_content = true
+
+[node name="HSeparator2" type="HSeparator" parent="MarginContainer/HBoxContainer/PanelContainer/XUIViewContainer/barycentric_slider" unique_id=941958388]
+layout_mode = 2
+
+[node name="description" type="RichTextLabel" parent="MarginContainer/HBoxContainer/PanelContainer/XUIViewContainer/barycentric_slider" unique_id=733412544]
+layout_mode = 2
+text = "The BarycentricSlider allows the user to choose a mixture of several weights/features.
+
+This is commonly used in character creation systems for example, where each point corresponds to a blendshape."
+fit_content = true
+
+[node name="xyslider" type="VBoxContainer" parent="MarginContainer/HBoxContainer/PanelContainer/XUIViewContainer" unique_id=1519156478]
+visible = false
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/PanelContainer/XUIViewContainer/xyslider" unique_id=689323039]
+layout_mode = 2
+text = "XUI2DSlider"
+label_settings = SubResource("LabelSettings_hab0f")
+
+[node name="XUI2DSlider" type="Control" parent="MarginContainer/HBoxContainer/PanelContainer/XUIViewContainer/xyslider" unique_id=1370613983]
+custom_minimum_size = Vector2(256, 256)
+layout_mode = 2
+script = ExtResource("2_4caqk")
+metadata/_custom_type_script = "uid://bccms7decicay"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer/HBoxContainer/PanelContainer/XUIViewContainer/xyslider" unique_id=564008931]
+layout_mode = 2
+bbcode_enabled = true
+text = "The 2D Slider represents two values (a 2D vector) in one control.
+
+This \"XY Pad\" component is often used in audio software for controlling synths but can be useful in other contexts."
+fit_content = true
+
+[node name="grid" type="VBoxContainer" parent="MarginContainer/HBoxContainer/PanelContainer/XUIViewContainer" unique_id=539579316]
+visible = false
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/PanelContainer/XUIViewContainer/grid" unique_id=747733664]
+layout_mode = 2
+text = "XUIGridPanel"
+label_settings = SubResource("LabelSettings_hab0f")
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer/HBoxContainer/PanelContainer/XUIViewContainer/grid" unique_id=1273408452]
+custom_minimum_size = Vector2(256, 256)
+layout_mode = 2
+
+[node name="XUIGridPanel" type="Control" parent="MarginContainer/HBoxContainer/PanelContainer/XUIViewContainer/grid/PanelContainer" unique_id=985438833]
+layout_mode = 2
+script = ExtResource("2_ca8l2")
+major_grid_size = 64
+minor_grid_size = 32
+centered = true
+theme_override_major_grid_color_on = true
+theme_override_major_grid_color = Color(1, 1, 1, 0.28235295)
+theme_override_minor_grid_color_on = true
+theme_override_minor_grid_color = Color(1, 1, 1, 0.078431375)
+theme_override_major_grid_thickness_on = true
+theme_override_minor_grid_thickness_on = true
+metadata/_custom_type_script = "uid://dn1du5vckua1k"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer/HBoxContainer/PanelContainer/XUIViewContainer/grid" unique_id=1832238335]
+layout_mode = 2
+bbcode_enabled = true
+text = "The Grid Panel is can draw any arbitrary grid with major and optionally minor subdivisions.
+
+It can be relative to top-left corner or centered and an offset can be set to move the entire grid.
+
+It includes a public [b]snap_to_grid[/b] method to snap any local position to the grid."
+fit_content = true
+
+[node name="RadialContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer/PanelContainer/XUIViewContainer" unique_id=228403302]
+visible = false
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/PanelContainer/XUIViewContainer/RadialContainer" unique_id=1789157641]
+layout_mode = 2
+text = "XUIRadialContainer"
+label_settings = SubResource("LabelSettings_hab0f")
+
+[node name="XUIRadialContainer" type="Container" parent="MarginContainer/HBoxContainer/PanelContainer/XUIViewContainer/RadialContainer" unique_id=336942158]
+layout_mode = 2
+size_flags_horizontal = 3
+script = ExtResource("8_pvlpn")
+square_aspect = true
+metadata/_custom_type_script = "uid://cxy7radialco"
+
+[node name="Button1" type="Button" parent="MarginContainer/HBoxContainer/PanelContainer/XUIViewContainer/RadialContainer/XUIRadialContainer" unique_id=821021859]
+layout_mode = 2
+text = "Button 1"
+
+[node name="Button2" type="Button" parent="MarginContainer/HBoxContainer/PanelContainer/XUIViewContainer/RadialContainer/XUIRadialContainer" unique_id=1105354463]
+layout_mode = 2
+text = "Button 2"
+
+[node name="Button3" type="Button" parent="MarginContainer/HBoxContainer/PanelContainer/XUIViewContainer/RadialContainer/XUIRadialContainer" unique_id=1627796218]
+layout_mode = 2
+text = "Button 3"
+
+[node name="Button4" type="Button" parent="MarginContainer/HBoxContainer/PanelContainer/XUIViewContainer/RadialContainer/XUIRadialContainer" unique_id=1489477612]
+layout_mode = 2
+text = "Button 4"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer/HBoxContainer/PanelContainer/XUIViewContainer/RadialContainer" unique_id=1875849831]
+layout_mode = 2
+text = "The Radial Container lays out child nodes in an arc, and has useful options to create semi-circles, rotation offsets etc."
+fit_content = true
+
+[node name="ViewContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer/PanelContainer/XUIViewContainer" unique_id=531207478]
+visible = false
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/PanelContainer/XUIViewContainer/ViewContainer" unique_id=1503578683]
+layout_mode = 2
+text = "XUIViewContainer"
+label_settings = SubResource("LabelSettings_hab0f")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer/HBoxContainer/PanelContainer/XUIViewContainer/ViewContainer" unique_id=581602818]
+layout_mode = 2
+text = "The View Container is a useful container that can can be used for paged content views/screens.
+
+Only one child node is visible at a time, and several transition options are available.
+
+This preview app itself makes use of it, as you might guess :)"
+fit_content = true
+
+[node name="next" type="MarginContainer" parent="MarginContainer/HBoxContainer" unique_id=1746376475]
+layout_mode = 2
+
+[node name="NextButton" type="Button" parent="MarginContainer/HBoxContainer/next" unique_id=510959052]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 32
+text = ">"
+
+[connection signal="pressed" from="MarginContainer/HBoxContainer/prev/PrevButton" to="MarginContainer/HBoxContainer/PanelContainer/XUIViewContainer" method="previous"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/next/NextButton" to="MarginContainer/HBoxContainer/PanelContainer/XUIViewContainer" method="next"]

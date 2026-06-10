@@ -4,6 +4,7 @@ const SETTINGS_PATH := "user://audio_settings.json"
 const MASTER_BUS := "Master"
 const SFX_BUS := "SFX"
 const MUSIC_BUS := "Music"
+const WEATHER_BUS := "WeatherSFX"
 const DEFAULT_VOLUMES := {
 	"Master": 100.0,
 	"SFX": 100.0,
@@ -73,16 +74,17 @@ func save_settings() -> void:
 func _ensure_audio_buses() -> void:
 	_ensure_bus(SFX_BUS)
 	_ensure_bus(MUSIC_BUS)
+	_ensure_bus(WEATHER_BUS, SFX_BUS)
 
 
-func _ensure_bus(bus_name: String) -> void:
+func _ensure_bus(bus_name: String, send_bus := MASTER_BUS) -> void:
 	if AudioServer.get_bus_index(bus_name) != -1:
 		return
 
 	AudioServer.add_bus()
 	var bus_index: int = AudioServer.get_bus_count() - 1
 	AudioServer.set_bus_name(bus_index, bus_name)
-	AudioServer.set_bus_send(bus_index, MASTER_BUS)
+	AudioServer.set_bus_send(bus_index, send_bus)
 
 
 func _apply_bus_volume(bus_name: String, value: float) -> void:

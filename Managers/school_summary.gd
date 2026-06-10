@@ -6,6 +6,7 @@ var body_label: Label
 var continue_button: Button
 var active := false
 var save_after_school := true
+var transition_running := false
 
 
 func _ready() -> void:
@@ -71,8 +72,15 @@ func _build_ui() -> void:
 
 
 func _on_continue_pressed() -> void:
+	if transition_running:
+		return
+
+	transition_running = true
 	hide_summary()
-	GameState.finish_morning_school()
+	await TimePassageTransition.play("School", func():
+		GameState.finish_morning_school()
+	)
 	if save_after_school:
 		GameState.save_game()
 	get_tree().paused = false
+	transition_running = false

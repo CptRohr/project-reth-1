@@ -169,8 +169,21 @@ func get_current_forced_event() -> Dictionary:
 	return calendar_data.get_forced_weekly_event(get_current_day_name(), GameState.time_block)
 
 
+func get_current_special_event() -> Dictionary:
+	var calendar_data = get_calendar_data()
+
+	if calendar_data == null:
+		return {}
+
+	return calendar_data.get_special_event(
+		get_current_date_string(),
+		GameState.time_block,
+		GameState.flags
+	)
+
+
 func get_current_forced_activity() -> Dictionary:
-	var forced_event := get_current_forced_event()
+	var forced_event: Dictionary = get_current_forced_event()
 
 	if forced_event.is_empty():
 		return {}
@@ -184,6 +197,24 @@ func get_current_forced_activity() -> Dictionary:
 		return {}
 
 	return calendar_data.get_activity(activity_id)
+
+
+func get_current_objective_event() -> Dictionary:
+	var calendar_data = get_calendar_data()
+
+	if calendar_data == null:
+		return {}
+
+	return calendar_data.get_active_objective_event(
+		get_current_date_string(),
+		GameState.time_block,
+		GameState.flags
+	)
+
+
+func has_active_required_objective() -> bool:
+	var objective_event: Dictionary = get_current_objective_event()
+	return not objective_event.is_empty() and bool(objective_event.get("objective_required", false))
 
 
 func get_special_events_for_day(day_index: int) -> Array:
@@ -200,7 +231,7 @@ func has_special_events(day_index: int) -> bool:
 
 
 func get_special_event_summary(day_index: int) -> String:
-	var events := get_special_events_for_day(day_index)
+	var events: Array = get_special_events_for_day(day_index)
 
 	if events.is_empty():
 		return ""
@@ -225,8 +256,31 @@ func get_current_available_activities() -> Array:
 	)
 
 
+func get_flags_after_activity(activity_id: String) -> Array:
+	var calendar_data = get_calendar_data()
+	var flags := []
+
+	if calendar_data == null:
+		return flags
+
+	var activity: Dictionary = calendar_data.get_activity(activity_id)
+	if not activity.is_empty():
+		flags.append_array(_string_array(activity.get("set_flags_after_complete", [])))
+
+	var forced_event: Dictionary = get_current_forced_event()
+	if str(forced_event.get("activity_id", "")) == activity_id:
+		flags.append_array(_string_array(forced_event.get("set_flags_after_complete", [])))
+
+	var unique_flags := []
+	for flag_name in flags:
+		if not unique_flags.has(flag_name):
+			unique_flags.append(flag_name)
+
+	return unique_flags
+
+
 func is_current_time_locked_to_forced_activity() -> bool:
-	var forced_event := get_current_forced_event()
+	var forced_event: Dictionary = get_current_forced_event()
 	return not forced_event.is_empty() and str(forced_event.get("activity_id", "")) != ""
 
 
@@ -235,7 +289,7 @@ func are_stat_activities_locked_now() -> bool:
 
 
 func are_normal_activities_locked_now() -> bool:
-	return GameState.time_block == "night" or are_stat_activities_locked_now()
+	return GameState.time_block == "night" or are_stat_activities_locked_now() or has_active_required_objective()
 
 
 func can_sleep_now() -> bool:
@@ -246,8 +300,54 @@ func get_sleep_lock_message() -> String:
 	return "You can only rest at night."
 
 
+func can_attend_school_now() -> bool:
+	if GameState.time_block != "morning":
+		return false
+
+	if not is_school_day(GameState.calendar_day_index):
+		return false
+
+	var special_event: Dictionary = get_current_special_event()
+	if special_event.is_empty():
+		return true
+
+	return _is_school_activity_id(str(special_event.get("activity_id", "")))
+
+
+func get_school_lock_message() -> String:
+	if GameState.time_block != "morning":
+		return "School is only available in the morning."
+
+	if not is_school_day(GameState.calendar_day_index):
+		return "There is no school today."
+
+	var objective_event: Dictionary = get_current_objective_event()
+	if not objective_event.is_empty():
+		var blocked_message := str(objective_event.get("objective_blocked_message", "")).strip_edges()
+		if blocked_message != "":
+			return blocked_message
+
+	var special_event: Dictionary = get_current_special_event()
+	if not special_event.is_empty() and not _is_school_activity_id(str(special_event.get("activity_id", ""))):
+		var title := str(special_event.get("title", "")).strip_edges()
+		if title != "":
+			return "You need to handle %s first." % title
+
+		return "Finish the current event first."
+
+	return "School is not available right now."
+
+
 func can_perform_activity_now(activity_id: String, stat_changes: Dictionary = {}) -> bool:
 	if GameState.time_block == "night":
+		return false
+
+	var objective_event: Dictionary = get_current_objective_event()
+	if not objective_event.is_empty() and bool(objective_event.get("objective_required", false)):
+		var objective_activity_id := str(objective_event.get("activity_id", ""))
+		if objective_activity_id != "" and activity_id == objective_activity_id:
+			return true
+
 		return false
 
 	if not are_stat_activities_locked_now():
@@ -256,7 +356,7 @@ func can_perform_activity_now(activity_id: String, stat_changes: Dictionary = {}
 	if stat_changes.is_empty():
 		return true
 
-	var forced_event := get_current_forced_event()
+	var forced_event: Dictionary = get_current_forced_event()
 	var forced_activity_id := str(forced_event.get("activity_id", ""))
 
 	return forced_activity_id != "" and activity_id == forced_activity_id
@@ -266,7 +366,15 @@ func get_activity_lock_message(activity_name := "Activity") -> String:
 	if GameState.time_block == "night":
 		return "%s is locked at night. Rest to continue the next day." % activity_name
 
-	var forced_activity := get_current_forced_activity()
+	var objective_event: Dictionary = get_current_objective_event()
+	if not objective_event.is_empty() and bool(objective_event.get("objective_required", false)):
+		var blocked_message := str(objective_event.get("objective_blocked_message", "")).strip_edges()
+		if blocked_message != "":
+			return blocked_message
+
+		return "Finish the current objective first."
+
+	var forced_activity: Dictionary = get_current_forced_activity()
 	var forced_name := str(forced_activity.get("name", "the required event"))
 
 	if forced_name == "":
@@ -276,18 +384,28 @@ func get_activity_lock_message(activity_name := "Activity") -> String:
 
 
 func get_current_objective_text() -> String:
-	var forced_event := get_current_forced_event()
+	var objective_event: Dictionary = get_current_objective_event()
+	if not objective_event.is_empty():
+		return str(objective_event.get("objective_text", ""))
+
+	var forced_event: Dictionary = get_current_forced_event()
 
 	if not forced_event.is_empty():
-		var activity := get_current_forced_activity()
-		var activity_name := str(activity.get("name", forced_event.get("activity_id", "")))
-		var special_title := str(forced_event.get("title", ""))
+		var completed_objective_event := (
+			str(forced_event.get("objective_text", "")).strip_edges() != ""
+			and _is_objective_event_complete(forced_event)
+		)
 
-		if special_title != "":
-			return "%s: %s" % [special_title, activity_name]
+		if not completed_objective_event:
+			var activity: Dictionary = get_current_forced_activity()
+			var activity_name := str(activity.get("name", forced_event.get("activity_id", "")))
+			var special_title := str(forced_event.get("title", ""))
 
-		if activity_name != "":
-			return "Go to %s" % activity_name
+			if special_title != "":
+				return "%s: %s" % [special_title, activity_name]
+
+			if activity_name != "":
+				return "Go to %s" % activity_name
 
 	var daily_summary := get_daily_plan_summary(GameState.calendar_day_index)
 	if daily_summary != "":
@@ -308,6 +426,33 @@ func get_current_objective_text() -> String:
 		return "Rest for tomorrow"
 
 	return "Explore or find an activity"
+
+
+func _is_objective_event_complete(event_data: Dictionary) -> bool:
+	var complete_flag := str(event_data.get("objective_complete_flag", "")).strip_edges()
+
+	if complete_flag == "":
+		return false
+
+	return bool(GameState.get_flag(complete_flag, false))
+
+
+func _string_array(values) -> Array:
+	var results := []
+
+	if not (values is Array):
+		return results
+
+	for value in values:
+		var text := str(value).strip_edges()
+		if text != "":
+			results.append(text)
+
+	return results
+
+
+func _is_school_activity_id(activity_id: String) -> bool:
+	return activity_id == "school"
 
 
 func advance_time_block(amount := 1) -> void:

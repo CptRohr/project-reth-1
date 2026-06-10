@@ -2,12 +2,18 @@
   {
     "id": "bella_exercise",
     "title": "Exercise with Bella",
-    "date": "2026-04-07",
+    "date": "2026-04-02",
     "time_block": "morning",
     "description": "You made a plan to exercise with bella this weekend",
     "forced": true,
     "activity_id": "exercise",
     "required_flags": [],
-    "set_flags_after_complete": []
+    "set_flags_after_complete": [
+      "exercised_with_bella"
+    ],
+    "objective_text": "Exercise with Bella.",
+    "objective_required": true,
+    "objective_complete_flag": "exercised_with_bella",
+    "objective_blocked_message": "Meet Bella for exercise first."
   }
 ]

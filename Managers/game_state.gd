@@ -157,6 +157,7 @@ func perform_activity(activity_id: String, activity_name := "", time_blocks_to_a
 
 	apply_stat_changes(stat_changes)
 	spend_energy(energy_cost)
+	_apply_activity_completion_flags(activity_id)
 	activity_completed.emit(activity_id, activity_name)
 	advance_time_block(time_blocks_to_advance)
 	return true
@@ -178,6 +179,16 @@ func apply_stat_changes(stat_changes: Dictionary) -> void:
 
 	if not stat_changes.is_empty():
 		state_changed.emit()
+
+
+func _apply_activity_completion_flags(activity_id: String) -> void:
+	var calendar_manager = get_node_or_null("/root/CalendarManager")
+
+	if calendar_manager == null or not calendar_manager.has_method("get_flags_after_activity"):
+		return
+
+	for flag_name in calendar_manager.get_flags_after_activity(activity_id):
+		set_flag(str(flag_name), true)
 
 
 func get_stat(stat_name: String, default_value := 0) -> int:

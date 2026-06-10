@@ -238,6 +238,56 @@ Rules:
 - Sleeping advances to the next date, resets time to Morning, and restores Energy.
 - If the player spends time doing something in the world, use `activity_interactable.gd`.
 
+## Time Passage Transition
+
+The editable time-passage screen lives in:
+
+```text
+Scene/TimePassageTransition.tscn
+Managers/time_passage_transition.gd
+```
+
+`TimePassageTransition` is an autoloaded `CanvasLayer` used when activities, school, or sleep advance time. It fades to black, runs the `GameState` time change while the screen is covered, shows centered text, then fades back in.
+
+To change the displayed text without editing code:
+
+1. Open `Scene/TimePassageTransition.tscn`.
+2. Select the root `TimePassageTransition` node.
+3. Edit these Inspector fields:
+
+```text
+Activity Text Template
+Empty Activity Text Template
+New Day Text Template
+```
+
+Supported placeholders:
+
+```text
+{activity}
+{time}
+```
+
+Example templates:
+
+```text
+{activity} passed
+{time}
+
+After {activity}, time moves on...
+{time}
+
+A new day begins
+{time}
+```
+
+Maintenance rules:
+
+- Visual layout, font, text size, and sample text belong in `Scene/TimePassageTransition.tscn`.
+- Text templates should be changed from the scene root's Inspector when possible.
+- The script should only handle timing, placeholder replacement, and calling the passed state-change callback.
+- Keep this separate from `Transition`; `Transition` is for scene changes, while `TimePassageTransition` is for time passing.
+
 ## Time-Of-Day Visual Filter
 
 Temporary global time tint lives in:
@@ -286,6 +336,7 @@ Maintenance rules:
 - `TimeOfDayFilter` still owns the final persistent full-screen tint. It composes time-of-day tint with weather tint so filters do not stack.
 - `WeatherFilter` owns weather effects: rain lines, full-screen white lightning flashes, and ambient weather loops.
 - Rain uses `Audio/SFX/rain loop.wav`; thunderstorm overlays `Audio/SFX/thunderstorm ambience.wav` on top of the rain loop.
+- Outdoor scenes get full weather visuals and audio. Indoor scenes under `res://Areas/Indoor/` get weather audio only, with a lower volume and low-pass muffling.
 - Tune weather ids, labels, and tint colors in `GameState`; tune rain/lightning/audio placeholders through exported values in `WeatherFilter`.
 - Keep weather below UI layers. `WeatherFilter` uses layer `2`; objective/mobile/pause/school/transition/debug UI use much higher layers.
 
@@ -297,7 +348,7 @@ Runtime audio settings live in:
 Managers/audio_settings.gd
 ```
 
-`AudioSettings` creates `SFX` and `Music` buses at startup, applies saved volumes from `user://audio_settings.json`, and exposes Master/SFX/Music percentage values to the main menu and pause menu settings screens. Weather audio uses the `SFX` bus.
+`AudioSettings` creates `SFX`, `Music`, and `WeatherSFX` buses at startup, applies saved volumes from `user://audio_settings.json`, and exposes Master/SFX/Music percentage values to the main menu and pause menu settings screens. `WeatherSFX` routes into `SFX` so the SFX slider still controls weather audio.
 
 ## Calendar And Daily Planner
 
@@ -867,6 +918,17 @@ Use dropdown cells for fields that should not be typed by hand, such as activity
 
 Use the Weather tab to assign `clear`, `rain`, or `thunderstorm` to a whole `YYYY-MM-DD` story date. Dates not listed in `weather.json` are clear.
 
+Special event objectives live in the `Special Events` tab:
+
+```text
+objective_text            = top-screen objective HUD text
+objective_required        = blocks optional/stat activities until complete
+objective_complete_flag   = GameState flag that marks the objective done
+objective_blocked_message = message shown when a blocked activity is touched
+```
+
+Required objectives only block activity interactables that pass stat changes through `CalendarManager.can_perform_activity_now()`. They do not block player movement, scene travel, or dialogue. To complete a required objective, set the matching flag with `GameState.set_flag("flag_name", true)` from the event/activity/dialogue flow.
+
 CalendarDB cell colors:
 
 ```text
@@ -887,8 +949,10 @@ Calendar/event workflow:
 
 1. Add the activity first.
 2. Reference that activity from weekly schedule or special events.
-3. Use `Validation` or live red cells to catch bad ids, timelines, scene paths, days, time blocks, and dates.
-4. Save JSON and run Godot.
+3. For custom objective HUD text, fill `Objective Text`.
+4. For must-do events, enable `Objective Required` and fill `Objective Complete Flag`.
+5. Use `Validation` or live red cells to catch bad ids, timelines, scene paths, days, time blocks, and dates.
+6. Save JSON and run Godot.
 
 ### Add A New Stat
 

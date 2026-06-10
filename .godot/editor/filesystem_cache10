@@ -1,10 +1,10 @@
 72322a848ab928aa5c89f0cb78209805
-::res://::1780754329
+::res://::1781091075
 export_presets.cfg::TextFile::-1::1778821921::0::1::::<><><>0<>0<><>::
 icon.svg::CompressedTexture2D::7047297600812045813::1778403263::1780469216::1::::<><><>0<>0<>8cd2dc43545da561a44dd320ce5aed39<>res://.godot/imported/icon.svg-218a8f2b3041327d8a5756f3a245f83b.ctex::
-MAINTAINER_NOTE.md::TextFile::-1::1780755624::0::1::::<><><>0<>0<><>::
-README.md::TextFile::-1::1778937985::0::1::::<><><>0<>0<><>::
-::res://addons/::1778505333
+MAINTAINER_NOTE.md::TextFile::-1::1780842291::0::1::::<><><>0<>0<><>::
+README.md::TextFile::-1::1780757859::0::1::::<><><>0<>0<><>::
+::res://addons/::1781090985
 ::res://addons/dialogic/::1778505337
 plugin.cfg::TextFile::-1::1768176379::0::1::::<><><>0<>0<><>::
 plugin.gd::GDScript::3847838834304660710::1768176379::0::1::::<>EditorPlugin<><>0<>1<><>::
@@ -572,12 +572,12 @@ event_text.gd::GDScript::7199229198122971661::1768176379::0::1::::DialogicTextEv
 icon.svg::CompressedTexture2D::9151163472776694991::1768176379::1780469212::1::::<><><>0<>0<>0fe1b3b3cf3733ead1d66ddc5726114c<>res://.godot/imported/icon.svg-e2501ddcdef01c7f2c3538940f5abfc1.ctex::
 index.gd::GDScript::3735692247776249690::1768176379::0::1::::<>DialogicIndexer<><>0<>1<><>::
 manual_advance.gd::GDScript::7278833021501408885::1768176379::0::1::::DialogicManualAdvance<>RefCounted<><>0<>0<><>::
-node_dialog_text.gd::GDScript::8367256849905527338::1768176379::0::1::::DialogicNode_DialogText<>RichTextLabel<><>0<>0<><>::
+node_dialog_text.gd::GDScript::8367256849905527338::1768176379::0::1::::DialogicNode_DialogText<>RichTextLabel<>res://addons/dialogic/Modules/Text/node_dialog_text_icon.svg<>0<>0<><>::
 node_dialog_text_icon.svg::CompressedTexture2D::4044689466443943908::1768176379::1780469212::1::::<><><>0<>0<>0854d1eb256c2d7e9186a18e71c67bd8<>res://.godot/imported/node_dialog_text_icon.svg-3cf845e99d76137d8156865c09f39e3e.ctex::
 node_input.gd::GDScript::6135746528022206122::1768176379::0::1::::DialogicNode_Input<>Control<><>0<>0<><>::
-node_name_label.gd::GDScript::2409060177523604634::1768176379::0::1::::DialogicNode_NameLabel<>Label<><>0<>0<><>::
+node_name_label.gd::GDScript::2409060177523604634::1768176379::0::1::::DialogicNode_NameLabel<>Label<>res://addons/dialogic/Modules/Text/node_name_label_icon.svg<>0<>0<><>::
 node_name_label_icon.svg::CompressedTexture2D::753910208124862534::1768176379::1780469212::1::::<><><>0<>0<>a4c8bf4be7c45d309f0f460f60daff16<>res://.godot/imported/node_name_label_icon.svg-d482939b74b41ec2da6edc97e41c8bf8.ctex::
-node_next_indicator.gd::GDScript::8643102605516753138::1768176379::0::1::::DialogicNode_NextIndicator<>Control<><>0<>0<><>::
+node_next_indicator.gd::GDScript::8643102605516753138::1768176379::0::1::::DialogicNode_NextIndicator<>Control<>res://addons/dialogic/Modules/Text/node_next_indicator_icon.svg<>0<>0<><>::
 node_next_indicator_icon.svg::CompressedTexture2D::302873534409359568::1768176379::1780469213::1::::<><><>0<>0<>b19c8f494620393de69e28f29117e8d0<>res://.godot/imported/node_next_indicator_icon.svg-06167a3b3e290941c1c34386ebd60af8.ctex::
 node_type_sound.gd::GDScript::8257091630640999901::1768176379::0::1::::DialogicNode_TypeSounds<>AudioStreamPlayer<><>0<>1<><>::
 settings_text.gd::GDScript::5031029662621467051::1768176379::0::1::::<>DialogicSettingsPage<><>0<>1<><>::
@@ -619,7 +619,7 @@ event_wait_input.gd::GDScript::2473881298755643258::1768176379::0::1::::Dialogic
 icon.svg::CompressedTexture2D::2766149336681406939::1768176379::1780469214::1::::<><><>0<>0<>35002bf1f4e75410313770867b7720c7<>res://.godot/imported/icon.svg-cb8e50b081a310c64183b12c6d12fcf2.ctex::
 index.gd::GDScript::971839668851566764::1768176379::0::1::::<>DialogicIndexer<><>0<>1<><>::
 ::res://addons/dialogic/Resources/::1778505337
-character.gd::GDScript::8170509915016804394::1768176379::0::1::::DialogicCharacter<>Resource<><>0<>1<><>::
+character.gd::GDScript::8170509915016804394::1768176379::0::1::::DialogicCharacter<>Resource<>uid://bbea0efx0ybu7<>0<>1<><>::
 CharacterResourceLoader.gd::GDScript::3230683283296700613::1768176379::0::1::::DialogicCharacterFormatLoader<>ResourceFormatLoader<><>0<>1<><>::
 CharacterResourceSaver.gd::GDScript::11330996335859447::1768176379::0::1::::DialogicCharacterFormatSaver<>ResourceFormatSaver<><>0<>1<><>::
 dialogic_identifiable_resource.gd::GDScript::7504157656011423462::1768176379::0::1::::<>Resource<><>0<>1<><>::
@@ -628,16 +628,42 @@ dialogic_layout_layer.gd::GDScript::7097085608305494937::1768176379::0::1::::Dia
 dialogic_style.gd::GDScript::8686860375682204498::1768176379::0::1::::DialogicStyle<>Resource<><>0<>1<><>::
 dialogic_style_layer.gd::GDScript::3944887282532454131::1768176379::0::1::::DialogicStyleLayer<>Resource<><>0<>1<><>::
 event.gd::GDScript::8763588563558386910::1768176379::0::1::::DialogicEvent<>Resource<><>0<>1<><>::
-timeline.gd::GDScript::5667425671830628919::1768176379::0::1::::DialogicTimeline<>Resource<><>0<>1<><>::
+timeline.gd::GDScript::5667425671830628919::1768176379::0::1::::DialogicTimeline<>Resource<>uid://j7ym07anlusi<>0<>1<><>::
 TimelineResourceLoader.gd::GDScript::1953327801557244659::1768176379::0::1::::DialogicTimelineFormatLoader<>ResourceFormatLoader<><>0<>1<><>::
 TimelineResourceSaver.gd::GDScript::6005903703142383367::1768176379::0::1::::DialogicTimelineFormatSaver<>ResourceFormatSaver<><>0<>1<><>::
+::res://addons/extended_ui/::1781090985
+extended_ui.gd::GDScript::3695405079864694281::1769731041::0::1::::<>EditorPlugin<><>0<>1<><>::
+plugin.cfg::TextFile::-1::1769731041::0::1::::<><><>0<>0<><>::
+Theme.tres::Theme::6454723226285984470::1769731812::0::1::::<><><>0<>0<><>::
+::res://addons/extended_ui/controls/::1781090985
+::res://addons/extended_ui/controls/color/::1781090985
+XUIHSVColorWheel.gd::GDScript::5161117154096749230::1769963424::0::1::::VHSColorWheel<>ColorRect<><>0<>1<><>::
+XUI_VHS_Wheel.gdshader::Shader::475735401304226769::1770135539::0::1::::<><><>0<>0<><>::
+::res://addons/extended_ui/controls/containers/::1781090985
+RadialContainerTest.tscn::PackedScene::2946844161398688522::1770132713::0::1::::<><><>0<>0<><>::uid://cxy7radialco::::res://addons/extended_ui/controls/containers/XUIRadialContainer.gd
+XUIRadialContainer.gd::GDScript::189373621894753630::1770137408::0::1::::XUIRadialContainer<>Container<><>0<>1<><>::
+XUIViewContainer.gd::GDScript::6346053879457055266::1770137417::0::1::::XUIViewContainer<>Container<><>0<>1<><>::
+XUIViewContainerTest.tscn::PackedScene::2514214077643496775::1770135679::0::1::::<><><>0<>0<><>::uid://cwocty0e86ef7::::res://addons/extended_ui/controls/containers/XUIViewContainer.gd
+::res://addons/extended_ui/controls/grids/::1781090985
+grid_test.tscn::PackedScene::2120405355523096472::1769952670::0::1::::<><><>0<>0<><>::uid://dn1du5vckua1k::::res://addons/extended_ui/controls/grids/XUIGridPanel.gd
+XUIGridPanel.gd::GDScript::8125610315082093886::1769951203::0::1::::XUIGridPanel<>Control<><>0<>1<><>::
+::res://addons/extended_ui/controls/sliders/::1781090985
+2d_slider_test.tscn::PackedScene::6382822334723753626::1769948681::0::1::::<><><>0<>0<><>::uid://bccms7decicay::::res://addons/extended_ui/controls/sliders/XUIXYSlider.gd
+BarycentricPoint.gd::GDScript::2538640186016632081::1769954456::0::1::::BarycentricPoint<>Resource<><>0<>1<><>::
+hslider_test.tscn::PackedScene::7243864969797450015::1769951203::0::1::::<><><>0<>0<><>::uid://gj43tr10wtx7::::res://addons/extended_ui/controls/sliders/XUIHslider.gd
+XUIBarycentricSlider.gd::GDScript::6733077851809764368::1770139742::0::1::::XUIBarycentricSlider<>Control<><>0<>1<><>::
+XUIHslider.gd::GDScript::441524282055241530::1770139491::0::1::::XUIHSlider<>Range<><>0<>1<><>::
+XUIXYSlider.gd::GDScript::2531689560247120064::1769868526::0::1::::XUI2DSlider<>Control<><>0<>1<><>::
+::res://addons/extended_ui/preview/::1781090985
+barycentric_slider_test.gd::GDScript::2676250788288840677::1770140580::0::1::::<>VBoxContainer<><>0<>0<><>::
+XUIPreview.tscn::PackedScene::2132711828100596817::1770140619::0::1::::<><><>0<>0<><>::uid://gj43tr10wtx7::::res://addons/extended_ui/controls/sliders/XUIHslider.gd<>uid://bccms7decicay::::res://addons/extended_ui/controls/sliders/XUIXYSlider.gd<>uid://dn1du5vckua1k::::res://addons/extended_ui/controls/grids/XUIGridPanel.gd<>uid://beenpvfk8aenl::::res://addons/extended_ui/preview/barycentric_slider_test.gd<>uid://c26s2qvpowfvc::::res://addons/extended_ui/controls/sliders/XUIBarycentricSlider.gd<>uid://bcf0beduuvw5v::::res://addons/extended_ui/controls/sliders/BarycentricPoint.gd<>uid://cwocty0e86ef7::::res://addons/extended_ui/controls/containers/XUIViewContainer.gd<>uid://cxy7radialco::::res://addons/extended_ui/controls/containers/XUIRadialContainer.gd
 ::res://android/::1778819558
-::res://Areas/::1780749263
+::res://Areas/::1781089767
 door.tscn::PackedScene::1117023045278809421::1780469236::0::1::::<><><>0<>0<><>::
 street2.tscn::PackedScene::7684652251966522315::1780469236::0::1::::<><><>0<>0<><>::uid://d3swmgi1ckxhq::::res://Characters/Main Character/player.tscn<>uid://chnkdp0xllg28::::res://Areas/street_2.gd<>uid://bi003gu1i7jjb::::res://Scene/door_transition.tscn
 street3.tscn::PackedScene::2331105159337670246::1780483755::0::1::::<><><>0<>0<><>::uid://bi003gu1i7jjb::::res://Scene/door_transition.tscn<>uid://chnb8nau1k512::::res://Areas/street_3.gd<>uid://d3swmgi1ckxhq::::res://Characters/Main Character/player.tscn
 street.gd::GDScript::3044524554790333835::1778669933::0::1::::<>Node2D<><>0<>0<><>::
-street.tscn::PackedScene::3007747087117709265::1780749263::0::1::::<><><>0<>0<><>::uid://bjm140bsspmyt::::res://Areas/street.gd<>uid://d3swmgi1ckxhq::::res://Characters/Main Character/player.tscn<>uid://i25y35vcck2s::::res://Assets/debug assets/GandalfHardcore City Tiles/City background sky.png<>uid://bi003gu1i7jjb::::res://Scene/door_transition.tscn<>uid://ds57i8r1obpam::::res://Assets/debug assets/GandalfHardcore City Tiles/City background layer1.png<>uid://cdioa01qum4k4::::res://Characters/NPC/NPC.tscn<>uid://croo63lst6hai::::res://Assets/debug assets/GandalfHardcore City Tiles/City background layer2.png<>uid://bxjskl2e76kj8::::res://Assets/Background/Ground Tiles.png<>uid://cuugn7wk7te85::::res://Assets/Background/House1.png<>uid://cvsat2wwojd4b::::res://Characters/NPC/AbangBrewok.tscn<>uid://dcrykd7ugqep5::::res://Scripts/sleep_interactable.gd<>uid://5uurhbsc5ucm::::res://Scripts/activity_interactable.gd<>uid://do5vk0tirle8m::::res://Scripts/school_interactable.gd
+street.tscn::PackedScene::3007747087117709265::1781089767::0::1::::<><><>0<>0<><>::uid://bjm140bsspmyt::::res://Areas/street.gd<>uid://d3swmgi1ckxhq::::res://Characters/Main Character/player.tscn<>uid://i25y35vcck2s::::res://Assets/debug assets/GandalfHardcore City Tiles/City background sky.png<>uid://bi003gu1i7jjb::::res://Scene/door_transition.tscn<>uid://ds57i8r1obpam::::res://Assets/debug assets/GandalfHardcore City Tiles/City background layer1.png<>uid://cdioa01qum4k4::::res://Characters/NPC/NPC.tscn<>uid://croo63lst6hai::::res://Assets/debug assets/GandalfHardcore City Tiles/City background layer2.png<>uid://bxjskl2e76kj8::::res://Assets/Background/Ground Tiles.png<>uid://cuugn7wk7te85::::res://Assets/Background/House1.png<>uid://cvsat2wwojd4b::::res://Characters/NPC/AbangBrewok.tscn<>uid://dcrykd7ugqep5::::res://Scripts/sleep_interactable.gd<>uid://5uurhbsc5ucm::::res://Scripts/activity_interactable.gd<>uid://do5vk0tirle8m::::res://Scripts/school_interactable.gd
 street_2.gd::GDScript::5291613538495102455::1778669933::0::1::::<>Node2D<><>0<>0<><>::
 street_3.gd::GDScript::5291120515594267639::1778806782::0::1::::<>Node2D<><>0<>0<><>::
 ::res://Areas/Cutscenes/::1780469238
@@ -716,7 +742,7 @@ double_dither_transition.gdshader::Shader::7346881396470589973::1778757620::0::1
 SplashScreen.ogv::VideoStreamTheora::5441903498613988598::1778723105::0::1::::<><><>0<>0<><>::
 ::res://Audio/::1778719345
 ::res://Audio/Music/::1778719345
-::res://Audio/SFX/::1780755599
+::res://Audio/SFX/::1780755726
 rain loop.wav::AudioStreamWAV::3916079487233266806::1780755403::1780755726::1::::<><><>0<>0<>96a8089570fd96c93e9110de78d03492<>res://.godot/imported/rain loop.wav-725fdfa01ef128306313b6c9ab6a734d.sample::
 thunderstorm ambience.wav::AudioStreamWAV::6089378284429175183::1780755571::1780755725::1::::<><><>0<>0<>523c5af1eb49457b3575ae522f8b4f51<>res://.godot/imported/thunderstorm ambience.wav-7d0998f7837219b235ff15b046fda24a.sample::
 ::res://Characters/::1778505951
@@ -733,26 +759,26 @@ NPC.tscn::PackedScene::5000774312234375429::1780469239::0::1::::<><><>0<>0<><>::
 ::res://Custom Software/CalendarDB/::1780496697
 ::res://Custom Software/CalendarDB/bin/::1780496643
 ::res://Custom Software/CalendarDB/bin/Debug/::1780496643
-::res://Custom Software/CalendarDB/bin/Debug/net9.0-windows/::1780755704
-CalendarDB.deps.json::JSON::-1::1780755704::0::1::::<><><>0<>0<><>::
-CalendarDB.runtimeconfig.json::JSON::-1::1780755704::0::1::::<><><>0<>0<><>::
-::res://Custom Software/CalendarDB/obj/::1780755695
-CalendarDB.csproj.nuget.dgspec.json::JSON::-1::1780755695::0::1::::<><><>0<>0<><>::
-project.assets.json::JSON::-1::1780755695::0::1::::<><><>0<>0<><>::
+::res://Custom Software/CalendarDB/bin/Debug/net9.0-windows/::1781090830
+CalendarDB.deps.json::JSON::-1::1781090830::0::1::::<><><>0<>0<><>::
+CalendarDB.runtimeconfig.json::JSON::-1::1781090830::0::1::::<><><>0<>0<><>::
+::res://Custom Software/CalendarDB/obj/::1781089860
+CalendarDB.csproj.nuget.dgspec.json::JSON::-1::1781089860::0::1::::<><><>0<>0<><>::
+project.assets.json::JSON::-1::1781089860::0::1::::<><><>0<>0<><>::
 ::res://Custom Software/CalendarDB/obj/Debug/::1780496643
 ::res://Custom Software/CalendarDB/obj/Debug/net9.0-windows/::1780496647
 CalendarDB.csproj.FileListAbsolute.txt::TextFile::-1::1780748921::0::1::::<><><>0<>0<><>::
-CalendarDB.sourcelink.json::JSON::-1::1780755696::0::1::::<><><>0<>0<><>::
+CalendarDB.sourcelink.json::JSON::-1::1780896820::0::1::::<><><>0<>0<><>::
 ::res://Custom Software/CalendarDB/obj/Debug/net9.0-windows/ref/::1780496647
 ::res://Custom Software/CalendarDB/obj/Debug/net9.0-windows/refint/::1780496647
 ::res://data/::1780748859
 ::res://data/calendar/::1780755318
-activities.json::JSON::-1::1780754324::0::1::::<><><>0<>0<><>::
-special_events.json::JSON::-1::1780754324::0::1::::<><><>0<>0<><>::
-weather.json::JSON::-1::1780755318::0::1::::<><><>0<>0<><>::
-weekly_schedule.json::JSON::-1::1780754324::0::1::::<><><>0<>0<><>::
+activities.json::JSON::-1::1780842724::0::1::::<><><>0<>0<><>::
+special_events.json::JSON::-1::1780842724::0::1::::<><><>0<>0<><>::
+weather.json::JSON::-1::1780842724::0::1::::<><><>0<>0<><>::
+weekly_schedule.json::JSON::-1::1780842724::0::1::::<><><>0<>0<><>::
 ::res://data/npc/::1780748859
-npcs.json::JSON::-1::1780754324::0::1::::<><><>0<>0<><>::
+npcs.json::JSON::-1::1780842724::0::1::::<><><>0<>0<><>::
 ::res://Dialogue/::1778670904
 AbangBrewok.dtl::Resource/DialogicTimeline::662392918359479824::1778592805::0::1::::<><>uid://j7ym07anlusi<>0<>0<><>::uid://cagcaxfuj3wys
 AbangBrewok_AfterMet.dtl::Resource/DialogicTimeline::818936069543917061::1778670826::0::1::::<><>uid://j7ym07anlusi<>0<>0<><>::uid://cagcaxfuj3wys
@@ -763,40 +789,43 @@ test.dtl::Resource/DialogicTimeline::8000281388052277857::1778591117::0::1::::<>
 ::res://Fonts/::1780469212
 PixelifySans-VariableFont_wght.ttf::FontFile::3033369275525030408::1758066372::1780469212::1::::<><><>0<>0<>59358b36df99409728592ea99c002a8f<>res://.godot/imported/PixelifySans-VariableFont_wght.ttf-ecd504d601b15dc473b9caf0868cf760.fontdata::
 VCR_OSD_MONO_1.001.ttf::FontFile::4420876418899172896::1427836911::1780469212::1::::<><><>0<>0<>1ae088810d74bbf24bda3ff81169b86c<>res://.godot/imported/VCR_OSD_MONO_1.001.ttf-6b8757c14e77df3a837ec4fc487b00cb.fontdata::
-::res://Managers/::1780755293
-CalendarData.gd::GDScript::5885399420355311457::1780755199::0::1::::<>Node<><>0<>0<><>::
-calendar_manager.gd::GDScript::2982500820377019982::1780755208::0::1::::<>Node<><>0<>0<><>::
+::res://Managers/::1780840339
+audio_settings.gd::GDScript::8049189548967952018::1780758194::0::1::::<>Node<><>0<>0<><>::
+CalendarData.gd::GDScript::5885399420355311457::1780842420::0::1::::<>Node<><>0<>0<><>::
+calendar_manager.gd::GDScript::2982500820377019982::1780843106::0::1::::<>Node<><>0<>0<><>::
 cutscene_director.gd::GDScript::120095073266099803::1780142264::0::1::::<>Node2D<><>0<>0<><>::
 cutscene_director.md::TextFile::-1::1780144047::0::1::::<><><>0<>0<><>::
-debug_hud.gd::GDScript::6955763209048973674::1780498435::0::1::::<>CanvasLayer<><>0<>0<><>::
+debug_hud.gd::GDScript::6955763209048973674::1780757255::0::1::::<>CanvasLayer<><>0<>0<><>::
 event_manager.gd::GDScript::4362045031389290223::1778726123::0::1::::<>Node<><>0<>0<><>::
-game_state.gd::GDScript::7466684789968379564::1780755596::0::1::::<>Node<><>0<>0<><>::
+game_state.gd::GDScript::7466684789968379564::1780842561::0::1::::<>Node<><>0<>0<><>::
 mobile_controls.gd::GDScript::4606927957718869401::1780140185::0::1::::<>CanvasLayer<><>0<>0<><>::
 NPCData.gd::GDScript::6089551712735744507::1780749725::0::1::::<>Node<><>0<>0<><>::
 objective_hud.gd::GDScript::8396323903484880863::1780497990::0::1::::<>CanvasLayer<><>0<>0<><>::
-pause_menu.gd::GDScript::2245154173986087485::1780499187::0::1::::<>CanvasLayer<><>0<>0<><>::
+pause_menu.gd::GDScript::2245154173986087485::1780756821::0::1::::<>CanvasLayer<><>0<>0<><>::
 scene_manager.gd::GDScript::6327425472722409346::1778821348::0::1::::<>Node<><>0<>0<><>::
-school_summary.gd::GDScript::1121519107232268697::1778725828::0::1::::<>CanvasLayer<><>0<>0<><>::
-time_of_day_filter.gd::GDScript::5864379653346238263::1780755249::0::1::::<>CanvasLayer<><>0<>0<><>::
+school_summary.gd::GDScript::1121519107232268697::1780840221::0::1::::<>CanvasLayer<><>0<>0<><>::
+time_of_day_filter.gd::GDScript::5864379653346238263::1780756162::0::1::::<>CanvasLayer<><>0<>0<><>::
+time_passage_transition.gd::GDScript::3544800310453387397::1780841240::0::1::::<>CanvasLayer<><>0<>0<><>::
 transition_layer.gd::GDScript::984808028306279039::1778821882::0::1::::<>CanvasLayer<><>0<>0<><>::
-weather_filter.gd::GDScript::7300715438757218985::1780755596::0::1::::<>CanvasLayer<><>0<>0<><>::
-::res://Scene/::1780755309
+weather_filter.gd::GDScript::7300715438757218985::1780758266::0::1::::<>CanvasLayer<><>0<>0<><>::
+::res://Scene/::1781091048
 BootScene.tscn::PackedScene::2731828006932105934::1780469239::0::1::::<><><>0<>0<><>::uid://bu05g6n1sltem::::res://Scripts/bootscreen.gd<>uid://cjsdmdasoq5r3::::res://Assets/Videos/SplashScreen.ogv
 door_transition.tscn::PackedScene::3001109150926822551::1780469240::0::1::::<><><>0<>0<><>::uid://dkqcpc6q0y6v::::res://Scripts/door_transition.gd
-MainMenu.tscn::PackedScene::602040298995585819::1780469240::0::1::::<><><>0<>0<><>::uid://yr7fsm4os8s3::::res://Scripts/main_menu.gd<>uid://b38rgofq4civw::::res://Fonts/VCR_OSD_MONO_1.001.ttf
+MainMenu.tscn::PackedScene::602040298995585819::1781091048::0::1::::<><><>0<>0<><>::uid://yr7fsm4os8s3::::res://Scripts/main_menu.gd<>uid://b38rgofq4civw::::res://Fonts/VCR_OSD_MONO_1.001.ttf
 MobileControls.tscn::PackedScene::7776543030369129413::1780469240::0::1::::<><><>0<>0<><>::uid://b6vvovr1lryd2::::res://Managers/mobile_controls.gd
-PauseMenu.tscn::PackedScene::1235137516064594902::1780469241::0::1::::<><><>0<>0<><>::uid://68tmjttgyrfp::::res://Managers/pause_menu.gd
+PauseMenu.tscn::PackedScene::1235137516064594902::1780756796::0::1::::<><><>0<>0<><>::uid://68tmjttgyrfp::::res://Managers/pause_menu.gd
 TimeOfDayFilter.tscn::PackedScene::-1::1780484717::0::1::::<><><>0<>0<><>::res://Managers/time_of_day_filter.gd
+TimePassageTransition.tscn::PackedScene::-1::1780841240::0::1::::<><><>0<>0<><>::res://Managers/time_passage_transition.gd<>res://Fonts/PixelifySans-VariableFont_wght.ttf
 transition_layer.tscn::PackedScene::3826333143175602813::1780469241::0::1::::<><><>0<>0<><>::uid://obbv54kauuxb::::res://Managers/transition_layer.gd<>uid://dcw5cfcj42iuf::::res://Assets/Shaders/double_dither_transition.gdshader
-WeatherFilter.tscn::PackedScene::-1::1780755309::0::1::::<><><>0<>0<><>::
+WeatherFilter.tscn::PackedScene::-1::1780758246::0::1::::<><><>0<>0<><>::res://Managers/weather_filter.gd<>uid://bv18i0dpr0apa::::res://Audio/SFX/rain loop.wav<>uid://cs00f2khqhggt::::res://Audio/SFX/thunderstorm ambience.wav
 ::res://Scripts/::1780142125
-activity_interactable.gd::GDScript::2148197932603847600::1780498204::0::1::::<>Area2D<><>0<>0<><>::
+activity_interactable.gd::GDScript::2148197932603847600::1780840220::0::1::::<>Area2D<><>0<>0<><>::
 basic_movement.gd::GDScript::3831591779344575212::1778668111::0::1::::<>CharacterBody2D<><>0<>0<><>::
 bootscreen.gd::GDScript::3843640874363807832::1778723896::0::1::::<>Control<><>0<>0<><>::
 door_transition.gd::GDScript::232186144297520059::1778821355::0::1::::<>Area2D<><>0<>0<><>::
-main_menu.gd::GDScript::1721579507164882580::1780140093::0::1::::<>Node<><>0<>0<><>::
-school_interactable.gd::GDScript::8205131452242371238::1778726124::0::1::::<>Area2D<><>0<>0<><>::
-sleep_interactable.gd::GDScript::7336209433860980492::1780498435::0::1::::<>Area2D<><>0<>0<><>::
+main_menu.gd::GDScript::1721579507164882580::1780756770::0::1::::<>Node<><>0<>0<><>::
+school_interactable.gd::GDScript::8205131452242371238::1780843043::0::1::::<>Area2D<><>0<>0<><>::
+sleep_interactable.gd::GDScript::7336209433860980492::1780840221::0::1::::<>Area2D<><>0<>0<><>::
 ::res://Story Draf/::1780467729
 ::res://Styles/::1780469244
 Buble.tres::Resource/DialogicStyle::4253846648910597831::1780469244::0::1::::<><><>0<>0<><>::uid://syki6k0e6aac::::res://addons/dialogic/Modules/DefaultLayoutParts/Base_TextBubble/text_bubble_base.tscn<>uid://bwg6yncmh2cml::::res://addons/dialogic/Resources/dialogic_style_layer.gd<>uid://cn674foxwedqu::::res://addons/dialogic/Modules/DefaultLayoutParts/Layer_Input/full_advance_input_layer.tscn<>uid://dv08k6ljua6fm::::res://addons/dialogic/Resources/dialogic_style.gd
