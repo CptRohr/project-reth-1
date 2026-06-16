@@ -644,21 +644,33 @@ Maintenance rules:
 
 ### Dialogue Camera Zoom & Offset
 
-When a dialogue starts with an NPC (triggered via `start_dialogue_with(npc)`), the player's camera smoothly glides and zooms to focus on both characters.
+When a dialogue starts with an NPC, the camera smoothly glides and zooms to focus on a position between the player and the NPC.
 
-- **Configuring globally on the Player**:
-  In `player.tscn`, select the child `Player` (`CharacterBody2D`) node in the Inspector to edit default parameters:
-  - `dialogue_zoom_enabled`: Enable/disable this camera effect.
-  - `dialogue_zoom_factor`: Zoom multiplier (e.g. `1.25` zooms in 25%).
-  - `dialogue_zoom_duration`: Speed of transition (seconds).
-  - `dialogue_camera_blend`: Focus midpoint between player and NPC (`0.0` = Player, `1.0` = NPC, `0.5` = Midpoint).
-  - `dialogue_camera_offset`: Vector2 offset added to the dialogue camera target.
+> [!NOTE]
+> This behavior is handled globally in [basic_movement.gd](file:///d:/GAME%20PROJECT/project-reth-1/Scripts/basic_movement.gd) and utilizes Godot `Tween` logic to animate position and zoom.
 
-- **Overriding on specific NPCs**:
-  On an NPC instance or scene root, select the NPC node in the Inspector:
-  - Check `override_dialogue_camera` to enable overriding default player settings.
-  - Tune `dialogue_zoom_factor`, `dialogue_camera_blend`, and `dialogue_camera_offset` for that character.
-  - *Note:* If you modify these settings but keep `override_dialogue_camera` unchecked, a warning will be logged to the console at runtime.
+#### Global Settings on Player
+
+Configure these defaults globally on the child `Player` (`CharacterBody2D`) node inside [player.tscn](file:///d:/GAME%20PROJECT/project-reth-1/Characters/Main%20Character/player.tscn):
+
+| Parameter | Type | Default | Description |
+| :--- | :--- | :--- | :--- |
+| `dialogue_zoom_enabled` | `bool` | `true` | Enable or disable the dialogue zoom effect. |
+| `dialogue_zoom_factor` | `float` | `1.25` | Camera zoom multiplier (e.g. `1.25` zooms in by 25%). |
+| `dialogue_zoom_duration` | `float` | `0.5` | Transition speed in seconds. |
+| `dialogue_camera_blend` | `float` | `0.5` | Camera target blend between Player (`0.0`) and NPC (`1.0`). |
+| `dialogue_camera_offset` | `Vector2` | `(0, 0)` | Vector2 offset added to the camera target position. |
+
+#### Per-NPC Overrides
+
+You can customize camera settings for individual NPCs:
+1. Select the NPC instance in your scene.
+2. In the inspector, check `override_dialogue_camera` to `true`.
+3. Set your custom `dialogue_zoom_factor`, `dialogue_camera_blend`, or `dialogue_camera_offset`.
+
+> [!IMPORTANT]
+> If you customize settings on an NPC but forget to check `override_dialogue_camera`, a warning message will be printed to the Godot console at runtime:
+> `[CAMERA WARNING] NPC has custom settings, but 'override_dialogue_camera' is FALSE! These NPC settings are ignored.`
 
 ## Pause Menu And UI
 
@@ -1043,28 +1055,30 @@ once_per_day = false
 
 ### Add A New NPC
 
-1. **Create/Setup NPC Scene**:
-   - Instance `Characters/NPC/NPC.tscn` in your map scene, or create a new inherited scene from it.
-   - Adjust the sprite texture, collision shape dimensions under `InteractionArea`, and positions.
-   - By default, it runs `npc.gd`. For unique progression or custom logic, create a new script extending `npc.gd` and attach it.
+Follow this step-by-step checklist to register and place a new NPC in the game:
 
-2. **Register the NPC in CalendarDB**:
-   - Open CalendarDB via `Custom Software\CalendarDB\Run CalendarDB.bat`.
-   - Go to the **NPCs** tab and add your NPC with a unique `npc_id`.
-   - Go to the **NPC Appearance** tab and set the scenes, days, and time blocks when your NPC should be visible.
-   - Go to the **NPC Dialogue Routes** tab to specify Dialogic timeline mappings for this NPC under varying condition flags (leave empty if your custom script manages the timeline choice manually).
-   - Save the CalendarDB changes.
+- [ ] **Step 1: Setup the NPC Scene**
+  Instance [NPC.tscn](file:///d:/GAME%20PROJECT/project-reth-1/Characters/NPC/NPC.tscn) in your map scene, or create a new inherited scene from it.
+  - Set sprite texture, adjust the `CollisionShape2D` bounds inside `InteractionArea`, and position the node.
+  - By default, it runs [npc.gd](file:///d:/GAME%20PROJECT/project-reth-1/Characters/NPC/npc.gd). For custom progression logic (like Abang Brewok), extend `npc.gd` with a new script.
 
-3. **Configure Node in Scene**:
-   - Select your NPC node in the Godot inspector.
-   - Set `npc_id` to match the exact ID you created in CalendarDB.
-   - Set `timeline_name` to the default Dialogic timeline file (e.g. `test` matching `Dialogue/test.dtl`).
-   - Configure optional rule-based dialogue using the `timeline_rules` array.
-   - If a custom camera angle is desired, enable `override_dialogue_camera` under `Dialogue Camera Override` and configure the custom `dialogue_zoom_factor`, `dialogue_camera_blend`, or `dialogue_camera_offset`.
+- [ ] **Step 2: Register in CalendarDB**
+  Run `Custom Software\CalendarDB\Run CalendarDB.bat` and configure:
+  - **NPCs Tab**: Add the NPC metadata and set a unique `npc_id`.
+  - **NPC Appearance Tab**: Configure when (`day_index`, `time_block`) and where (`scene_path`) the NPC should be visible.
+  - **NPC Dialogue Routes Tab**: Map any Dialogic timelines to execute under specific condition flags (leave empty if handled via local NPC scripts).
+  - *Save changes in CalendarDB before continuing.*
 
-4. **Verify NPC**:
-   - Start the game during the scheduled day/time block, go to the scene, and confirm the NPC spawns correctly.
-   - Press `E` to interact and verify the dialogue starts and camera zoom functions properly.
+- [ ] **Step 3: Configure Node in Scene**
+  Select your NPC node in the Godot inspector and verify these settings:
+  - `npc_id`: Must match the exact ID created in CalendarDB.
+  - `timeline_name`: Default Dialogic timeline (e.g., `test` corresponding to [test.dtl](file:///d:/GAME%20PROJECT/project-reth-1/Dialogue/test.dtl)).
+  - `timeline_rules`: Optional rule list for choosing timelines dynamically.
+  - **Dialogue Camera Override**: Customize camera angles (zoom factor, offset, blend) for this NPC if needed, and make sure to check `override_dialogue_camera`.
+
+- [ ] **Step 4: Verify in Game**
+  - Launch the game, play until the scheduled day/time block, and travel to the target scene to confirm the NPC spawned.
+  - Move near the NPC, press `E` to interact, and verify that the dialogue starts and camera zoom functions properly.
 
 ### Add An NPC Dialogue Variant
 
