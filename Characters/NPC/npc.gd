@@ -6,6 +6,13 @@ extends Node2D
 
 var player_inside = false
 var is_interactable := true
+var player_ref: Node2D = null
+
+@export_group("Dialogue Camera Override")
+@export var override_dialogue_camera := false
+@export var dialogue_zoom_factor := 1.25
+@export var dialogue_camera_blend := 0.5
+@export var dialogue_camera_offset := Vector2(0, 0)
 
 
 func _ready() -> void:
@@ -22,6 +29,8 @@ func _process(_delta):
 			var chosen_timeline := get_dialogue_timeline()
 
 			if chosen_timeline != "":
+				if player_ref and player_ref.has_method("start_dialogue_with"):
+					player_ref.start_dialogue_with(self)
 				Dialogic.start(chosen_timeline)
 				_apply_interaction_flags()
 
@@ -86,11 +95,13 @@ func _on_interaction_area_area_entered(area):
 
 	if area.is_in_group("Player"):
 		player_inside = true
+		player_ref = area.get_parent() as Node2D
 		print("PLAYER INSIDE")
 
 func _on_interaction_area_area_exited(area):
 	if area.is_in_group("Player"):
 		player_inside = false
+		player_ref = null
 
 
 func _on_day_changed(_new_day) -> void:

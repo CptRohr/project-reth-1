@@ -1,0 +1,4 @@
+res://Areas/street.tscn
+res://Characters/NPC/abang_brewok.gd
+res://Characters/NPC/npc.gd
+res://Scripts/basic_movement.gd

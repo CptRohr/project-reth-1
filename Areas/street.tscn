@@ -300,8 +300,11 @@ position = Vector2(196, 0)
 [node name="FromHome" type="Marker2D" parent="SpawnPoints" unique_id=1600367913]
 position = Vector2(-288, 0)
 
-[node name="NPC" parent="." unique_id=936224332 instance=ExtResource("4_87pa4")]
+[node name="NPC [BASE]" parent="." unique_id=936224332 instance=ExtResource("4_87pa4")]
 position = Vector2(8, 81)
+override_dialogue_camera = true
+dialogue_zoom_factor = 2.0
+dialogue_camera_offset = Vector2(0, 50)
 
 [node name="DebugLabel" type="Label" parent="." unique_id=190530367]
 offset_right = 61.0
@@ -335,6 +338,8 @@ text = "pintu ke Street2"
 [node name="NPC2" parent="." unique_id=2048253647 instance=ExtResource("9_nbdgs")]
 position = Vector2(323, 80)
 npc_id = "abang_brewok"
+override_dialogue_camera = true
+dialogue_zoom_factor = 2.0
 
 [node name="Bed" type="Area2D" parent="." unique_id=1427247159]
 position = Vector2(56, 82)

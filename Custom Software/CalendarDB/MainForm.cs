@@ -43,6 +43,17 @@ public sealed class MainForm : Form
     private readonly DataGridView npcDialogueGrid = new();
     private readonly TextBox validationBox = new();
     private readonly Label pathLabel = new();
+    private readonly Label validationSummaryLabel = new();
+    private readonly Label statusLabel = new();
+    private readonly Label activeSectionLabel = new();
+    private readonly Label activeSectionHelpLabel = new();
+    private readonly ListBox sidebar = new();
+    private readonly Button addRowButton = new();
+    private readonly Button duplicateButton = new();
+    private readonly Button deleteButton = new();
+    private readonly Button saveButton = new();
+    private readonly ToolTip toolTip = new();
+    private readonly Dictionary<DataGridView, Label> emptyStateLabels = [];
     private TabControl? mainTabs;
 
     private readonly string projectRoot;
@@ -73,41 +84,15 @@ public sealed class MainForm : Form
             RowCount = 3,
             ColumnCount = 1
         };
-        root.RowStyles.Add(new RowStyle(SizeType.Absolute, 44));
+        root.RowStyles.Add(new RowStyle(SizeType.Absolute, 92));
         root.RowStyles.Add(new RowStyle(SizeType.Percent, 100));
-        root.RowStyles.Add(new RowStyle(SizeType.Absolute, 32));
-
-        var toolbar = new FlowLayoutPanel
-        {
-            Dock = DockStyle.Fill,
-            FlowDirection = FlowDirection.LeftToRight,
-            Padding = new Padding(8, 7, 8, 4)
-        };
-
-        var loadButton = new Button { Text = "Load JSON", AutoSize = true };
-        loadButton.Click += (_, _) => LoadData();
-        var saveButton = new Button { Text = "Validate + Save", AutoSize = true };
-        saveButton.Click += (_, _) => SaveData();
-        var addSampleButton = new Button { Text = "Add Sample Data", AutoSize = true };
-        addSampleButton.Click += (_, _) => AddSampleData();
-        var duplicateButton = new Button { Text = "Duplicate Row", AutoSize = true };
-        duplicateButton.Click += (_, _) => DuplicateSelectedRow();
-        var deleteButton = new Button { Text = "Delete Row", AutoSize = true };
-        deleteButton.Click += (_, _) => DeleteSelectedRow();
-        var helpButton = new Button { Text = "How To Use", AutoSize = true };
-        helpButton.Click += (_, _) => ShowHelp();
-
-        toolbar.Controls.Add(loadButton);
-        toolbar.Controls.Add(saveButton);
-        toolbar.Controls.Add(addSampleButton);
-        toolbar.Controls.Add(duplicateButton);
-        toolbar.Controls.Add(deleteButton);
-        toolbar.Controls.Add(helpButton);
+        root.RowStyles.Add(new RowStyle(SizeType.Absolute, 38));
 
         var tabs = new TabControl { Dock = DockStyle.Fill };
         mainTabs = tabs;
         tabs.Appearance = TabAppearance.Normal;
         tabs.HotTrack = true;
+        tabs.TabPages.Add(CreateDashboardTab());
         tabs.TabPages.Add(CreateGridTab("Activities", activitiesGrid, activities, "Double-click Available Days or Available Time Blocks to pick from a checklist."));
         tabs.TabPages.Add(CreateWeeklyTab());
         tabs.TabPages.Add(CreateGridTab("Special Events", specialEventsGrid, specialEvents, "Use dropdowns for Time Block and Activity ID. Objective fields can drive the top-screen HUD."));
@@ -116,15 +101,45 @@ public sealed class MainForm : Form
         tabs.TabPages.Add(CreateGridTab("NPC Appearance", npcAppearanceGrid, npcAppearanceRules, "Use dropdowns for NPC ID and Scene Path. Double-click Days or Time Blocks for checklists."));
         tabs.TabPages.Add(CreateGridTab("NPC Dialogue Routes", npcDialogueGrid, npcDialogueRoutes, "Use dropdowns for NPC ID and Timeline. Lower Priority number wins."));
         tabs.TabPages.Add(CreateValidationTab());
+        tabs.SelectedIndexChanged += (_, _) => UpdateActiveSectionUi();
 
-        pathLabel.Dock = DockStyle.Fill;
-        pathLabel.TextAlign = ContentAlignment.MiddleLeft;
-        pathLabel.Padding = new Padding(10, 0, 0, 0);
-        pathLabel.Text = $"Project: {projectRoot}";
+        sidebar.Dock = DockStyle.Fill;
+        sidebar.BorderStyle = BorderStyle.None;
+        sidebar.IntegralHeight = false;
+        sidebar.Font = new Font(Font.FontFamily, 10f, FontStyle.Bold);
+        sidebar.Items.AddRange(new object[]
+        {
+            "Start Here",
+            "Calendar",
+            "  Activities",
+            "  Weekly Schedule",
+            "  Special Events",
+            "  Weather",
+            "NPCs",
+            "  NPCs",
+            "  NPC Appearance",
+            "  NPC Dialogue Routes",
+            "Tools",
+            "  Validation"
+        });
+        sidebar.SelectedIndexChanged += (_, _) => SelectTabFromSidebar();
+        sidebar.SelectedIndex = 0;
 
-        root.Controls.Add(toolbar, 0, 0);
-        root.Controls.Add(tabs, 0, 1);
-        root.Controls.Add(pathLabel, 0, 2);
+        var shell = new TableLayoutPanel
+        {
+            Dock = DockStyle.Fill,
+            ColumnCount = 2,
+            RowCount = 1,
+            Padding = new Padding(10, 0, 10, 8)
+        };
+        shell.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 210));
+        shell.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100));
+        shell.Controls.Add(CreateSidebarPanel(), 0, 0);
+        shell.Controls.Add(tabs, 1, 0);
+
+        root.Controls.Add(CreateHeaderPanel(), 0, 0);
+        root.Controls.Add(shell, 0, 1);
+        root.Controls.Add(CreateStatusPanel(), 0, 2);
         Controls.Add(root);
 
         ConfigureActivitiesGrid();
@@ -135,44 +150,291 @@ public sealed class MainForm : Form
         ConfigureNpcAppearanceGrid();
         ConfigureNpcDialogueGrid();
         HookLiveValidation();
-        ApplyEditorTheme(root, toolbar, tabs);
+        ApplyEditorTheme(root, tabs);
+        UpdateActiveSectionUi();
     }
 
-    private static TabPage CreateGridTab<T>(string title, DataGridView grid, BindingList<T> source, string hint = "")
+    private Control CreateHeaderPanel()
+    {
+        var header = new TableLayoutPanel
+        {
+            Dock = DockStyle.Fill,
+            ColumnCount = 2,
+            RowCount = 1,
+            Padding = new Padding(14, 10, 14, 8)
+        };
+        header.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100));
+        header.ColumnStyles.Add(new ColumnStyle(SizeType.AutoSize));
+
+        var titleBox = new TableLayoutPanel
+        {
+            Dock = DockStyle.Fill,
+            RowCount = 3,
+            ColumnCount = 1
+        };
+        titleBox.RowStyles.Add(new RowStyle(SizeType.Absolute, 30));
+        titleBox.RowStyles.Add(new RowStyle(SizeType.Absolute, 26));
+        titleBox.RowStyles.Add(new RowStyle(SizeType.Percent, 100));
+
+        var title = new Label
+        {
+            Dock = DockStyle.Fill,
+            Text = "CalendarDB",
+            Font = new Font(Font.FontFamily, 18f, FontStyle.Bold),
+            TextAlign = ContentAlignment.MiddleLeft
+        };
+
+        var activeBox = new FlowLayoutPanel
+        {
+            Dock = DockStyle.Fill,
+            FlowDirection = FlowDirection.LeftToRight,
+            WrapContents = false,
+            Margin = Padding.Empty,
+            Padding = Padding.Empty
+        };
+        activeSectionLabel.AutoSize = true;
+        activeSectionLabel.Font = new Font(Font.FontFamily, 10f, FontStyle.Bold);
+        activeSectionLabel.Margin = new Padding(0, 4, 8, 0);
+        activeSectionHelpLabel.AutoSize = true;
+        activeSectionHelpLabel.Margin = new Padding(0, 5, 0, 0);
+        activeBox.Controls.Add(activeSectionLabel);
+        activeBox.Controls.Add(activeSectionHelpLabel);
+
+        pathLabel.Dock = DockStyle.Fill;
+        pathLabel.TextAlign = ContentAlignment.MiddleLeft;
+        pathLabel.Text = $"Project: {projectRoot}";
+
+        titleBox.Controls.Add(title, 0, 0);
+        titleBox.Controls.Add(activeBox, 0, 1);
+        titleBox.Controls.Add(pathLabel, 0, 2);
+
+        var actions = new FlowLayoutPanel
+        {
+            Dock = DockStyle.Fill,
+            FlowDirection = FlowDirection.LeftToRight,
+            WrapContents = false,
+            AutoSize = true,
+            Padding = new Padding(0, 13, 0, 0)
+        };
+
+        var loadButton = CreateActionButton("Open/Reload", "Reload JSON from the project data folders.");
+        loadButton.Click += (_, _) => LoadData();
+        saveButton.Text = "Save";
+        ConfigureActionButton(saveButton, "Validate and save all CalendarDB JSON files.");
+        saveButton.Click += (_, _) => SaveData();
+        addRowButton.Text = "Add Row";
+        ConfigureActionButton(addRowButton, "Add a blank row to the current editable table.");
+        addRowButton.Click += (_, _) => AddRowToActiveGrid();
+        duplicateButton.Text = "Duplicate";
+        ConfigureActionButton(duplicateButton, "Copy the selected row in the current table.");
+        duplicateButton.Click += (_, _) => DuplicateSelectedRow();
+        deleteButton.Text = "Delete";
+        ConfigureActionButton(deleteButton, "Delete the selected row after confirmation.");
+        deleteButton.Click += (_, _) => DeleteSelectedRow();
+        var addSampleButton = CreateActionButton("Add Sample Data", "Create starter data for calendar, weather, and NPC examples.");
+        addSampleButton.Click += (_, _) => AddSampleData();
+        var helpButton = CreateActionButton("Help", "Show a quick guide for using CalendarDB.");
+        helpButton.Click += (_, _) => ShowHelp();
+
+        actions.Controls.Add(loadButton);
+        actions.Controls.Add(saveButton);
+        actions.Controls.Add(addRowButton);
+        actions.Controls.Add(duplicateButton);
+        actions.Controls.Add(deleteButton);
+        actions.Controls.Add(addSampleButton);
+        actions.Controls.Add(helpButton);
+
+        header.Controls.Add(titleBox, 0, 0);
+        header.Controls.Add(actions, 1, 0);
+        return header;
+    }
+
+    private Control CreateSidebarPanel()
+    {
+        var panel = new TableLayoutPanel
+        {
+            Dock = DockStyle.Fill,
+            RowCount = 3,
+            ColumnCount = 1,
+            Padding = new Padding(0, 0, 10, 0)
+        };
+        panel.RowStyles.Add(new RowStyle(SizeType.Absolute, 86));
+        panel.RowStyles.Add(new RowStyle(SizeType.Percent, 100));
+        panel.RowStyles.Add(new RowStyle(SizeType.Absolute, 96));
+
+        var summary = new Panel { Dock = DockStyle.Fill, Padding = new Padding(10) };
+        validationSummaryLabel.Dock = DockStyle.Fill;
+        validationSummaryLabel.TextAlign = ContentAlignment.MiddleLeft;
+        validationSummaryLabel.Font = new Font(Font.FontFamily, 9.5f, FontStyle.Bold);
+        summary.Controls.Add(validationSummaryLabel);
+
+        var legend = new Label
+        {
+            Dock = DockStyle.Fill,
+            Text = "Colors\r\nRed = fix before save\r\nYellow = warning/any\r\nWhite = OK",
+            TextAlign = ContentAlignment.MiddleLeft,
+            Padding = new Padding(10),
+            Font = new Font(Font.FontFamily, 8.8f)
+        };
+
+        panel.Controls.Add(summary, 0, 0);
+        panel.Controls.Add(sidebar, 0, 1);
+        panel.Controls.Add(legend, 0, 2);
+        return panel;
+    }
+
+    private Control CreateStatusPanel()
+    {
+        var panel = new TableLayoutPanel
+        {
+            Dock = DockStyle.Fill,
+            ColumnCount = 2,
+            RowCount = 1,
+            Padding = new Padding(14, 0, 14, 0)
+        };
+        panel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100));
+        panel.ColumnStyles.Add(new ColumnStyle(SizeType.AutoSize));
+
+        statusLabel.Dock = DockStyle.Fill;
+        statusLabel.TextAlign = ContentAlignment.MiddleLeft;
+        statusLabel.Text = "Ready.";
+
+        var outputLabel = new Label
+        {
+            AutoSize = true,
+            Dock = DockStyle.Fill,
+            TextAlign = ContentAlignment.MiddleRight,
+            Text = $"Output: data/calendar + data/npc"
+        };
+
+        panel.Controls.Add(statusLabel, 0, 0);
+        panel.Controls.Add(outputLabel, 1, 0);
+        return panel;
+    }
+
+    private Button CreateActionButton(string text, string tooltip)
+    {
+        var button = new Button { Text = text };
+        ConfigureActionButton(button, tooltip);
+        return button;
+    }
+
+    private void ConfigureActionButton(Button button, string tooltip)
+    {
+        button.AutoSize = true;
+        button.Height = 30;
+        button.Margin = new Padding(4, 0, 0, 0);
+        toolTip.SetToolTip(button, tooltip);
+    }
+
+    private static TabPage CreateDashboardTab()
+    {
+        var tab = new TabPage("Start Here");
+        var panel = new TableLayoutPanel
+        {
+            Dock = DockStyle.Fill,
+            RowCount = 4,
+            ColumnCount = 1,
+            Padding = new Padding(28, 24, 28, 24)
+        };
+        panel.RowStyles.Add(new RowStyle(SizeType.Absolute, 48));
+        panel.RowStyles.Add(new RowStyle(SizeType.Absolute, 90));
+        panel.RowStyles.Add(new RowStyle(SizeType.Absolute, 130));
+        panel.RowStyles.Add(new RowStyle(SizeType.Percent, 100));
+
+        var title = new Label
+        {
+            Dock = DockStyle.Fill,
+            Text = "Start Here",
+            Font = new Font(SystemFonts.DefaultFont.FontFamily, 18f, FontStyle.Bold),
+            TextAlign = ContentAlignment.MiddleLeft
+        };
+        var intro = new Label
+        {
+            Dock = DockStyle.Fill,
+            Text = "CalendarDB edits Godot-readable JSON. Use the left sidebar, edit tables directly, then save when the validation card is green.",
+            TextAlign = ContentAlignment.MiddleLeft
+        };
+        var workflow = new Label
+        {
+            Dock = DockStyle.Fill,
+            Text = "Good first steps:\r\n1. Add or check Activities.\r\n2. Connect them to Weekly Schedule or Special Events.\r\n3. Add NPC rows and appearance rules when needed.\r\n4. Fix red cells before saving.",
+            TextAlign = ContentAlignment.MiddleLeft
+        };
+        var legend = new Label
+        {
+            Dock = DockStyle.Fill,
+            Text = "Tip: Tables still work like a spreadsheet. Dropdown cells prevent typo mistakes; double-click day/time list cells to pick from a checklist.",
+            TextAlign = ContentAlignment.TopLeft
+        };
+
+        panel.Controls.Add(title, 0, 0);
+        panel.Controls.Add(intro, 0, 1);
+        panel.Controls.Add(workflow, 0, 2);
+        panel.Controls.Add(legend, 0, 3);
+        tab.Controls.Add(panel);
+        return tab;
+    }
+
+    private TabPage CreateGridTab<T>(string title, DataGridView grid, BindingList<T> source, string hint = "")
     {
         var tab = new TabPage(title);
         var layout = new TableLayoutPanel
         {
             Dock = DockStyle.Fill,
-            RowCount = hint == "" ? 1 : 2,
+            RowCount = 3,
             ColumnCount = 1
         };
-        if (hint != "")
-        {
-            layout.RowStyles.Add(new RowStyle(SizeType.Absolute, 30));
-        }
+        layout.RowStyles.Add(new RowStyle(SizeType.Absolute, 78));
+        layout.RowStyles.Add(new RowStyle(SizeType.Absolute, 28));
         layout.RowStyles.Add(new RowStyle(SizeType.Percent, 100));
 
-        if (hint != "")
+        var guide = new TableLayoutPanel
         {
-            var hintLabel = new Label
-            {
-                Dock = DockStyle.Fill,
-                Text = hint,
-                TextAlign = ContentAlignment.MiddleLeft,
-                Padding = new Padding(10, 0, 10, 0),
-                BackColor = Color.FromArgb(244, 247, 251),
-                ForeColor = Color.FromArgb(64, 76, 92)
-            };
-            layout.Controls.Add(hintLabel, 0, 0);
-        }
+            Dock = DockStyle.Fill,
+            RowCount = 2,
+            ColumnCount = 1,
+            Padding = new Padding(10, 8, 10, 6)
+        };
+        guide.RowStyles.Add(new RowStyle(SizeType.Absolute, 26));
+        guide.RowStyles.Add(new RowStyle(SizeType.Percent, 100));
+
+        var titleLabel = new Label
+        {
+            Dock = DockStyle.Fill,
+            Text = title,
+            TextAlign = ContentAlignment.MiddleLeft,
+            Font = new Font(SystemFonts.DefaultFont.FontFamily, 12f, FontStyle.Bold)
+        };
+        var hintLabel = new Label
+        {
+            Dock = DockStyle.Fill,
+            Text = hint,
+            TextAlign = ContentAlignment.MiddleLeft
+        };
+        guide.Controls.Add(titleLabel, 0, 0);
+        guide.Controls.Add(hintLabel, 0, 1);
+
+        var emptyLabel = new Label
+        {
+            Dock = DockStyle.Fill,
+            Text = $"No {title.ToLowerInvariant()} rows yet. Use Add Row above to start.",
+            TextAlign = ContentAlignment.MiddleLeft,
+            Padding = new Padding(10, 0, 10, 0),
+            Visible = false
+        };
 
         grid.Dock = DockStyle.Fill;
         grid.AutoGenerateColumns = true;
         grid.AllowUserToAddRows = true;
         grid.AllowUserToDeleteRows = true;
         grid.DataSource = source;
-        layout.Controls.Add(grid, 0, hint == "" ? 0 : 1);
+        source.ListChanged += (_, _) => UpdateEmptyState(grid);
+        emptyStateLabels[grid] = emptyLabel;
+
+        layout.Controls.Add(guide, 0, 0);
+        layout.Controls.Add(emptyLabel, 0, 1);
+        layout.Controls.Add(grid, 0, 2);
         tab.Controls.Add(layout);
         return tab;
     }
@@ -180,18 +442,46 @@ public sealed class MainForm : Form
     private TabPage CreateWeeklyTab()
     {
         var tab = new TabPage("Weekly Schedule");
+        var layout = new TableLayoutPanel
+        {
+            Dock = DockStyle.Fill,
+            RowCount = 2,
+            ColumnCount = 1
+        };
+        layout.RowStyles.Add(new RowStyle(SizeType.Absolute, 78));
+        layout.RowStyles.Add(new RowStyle(SizeType.Percent, 100));
+
+        layout.Controls.Add(CreateGuidePanel(
+            "Weekly Schedule",
+            "This fixed grid controls repeat events like school. Clear Type and Activity ID to remove a forced slot."
+        ), 0, 0);
+
         weeklyGrid.Dock = DockStyle.Fill;
         weeklyGrid.AutoGenerateColumns = false;
         weeklyGrid.AllowUserToAddRows = false;
         weeklyGrid.AllowUserToDeleteRows = false;
         weeklyGrid.DataSource = weeklyRows;
-        tab.Controls.Add(weeklyGrid);
+        layout.Controls.Add(weeklyGrid, 0, 1);
+        tab.Controls.Add(layout);
         return tab;
     }
 
     private TabPage CreateValidationTab()
     {
         var tab = new TabPage("Validation");
+        var layout = new TableLayoutPanel
+        {
+            Dock = DockStyle.Fill,
+            RowCount = 2,
+            ColumnCount = 1
+        };
+        layout.RowStyles.Add(new RowStyle(SizeType.Absolute, 78));
+        layout.RowStyles.Add(new RowStyle(SizeType.Percent, 100));
+        layout.Controls.Add(CreateGuidePanel(
+            "Validation",
+            "Full save-blocking error list. Fix red cells first; yellow cells are warnings or broad filters."
+        ), 0, 0);
+
         validationBox.Dock = DockStyle.Fill;
         validationBox.Multiline = true;
         validationBox.ReadOnly = true;
@@ -206,9 +496,44 @@ public sealed class MainForm : Form
         };
         validateButton.Click += (_, _) => ValidateAndShow();
 
-        tab.Controls.Add(validationBox);
-        tab.Controls.Add(validateButton);
+        var validationPanel = new Panel { Dock = DockStyle.Fill };
+        validationPanel.Controls.Add(validationBox);
+        validationPanel.Controls.Add(validateButton);
+
+        layout.Controls.Add(validationPanel, 0, 1);
+        tab.Controls.Add(layout);
         return tab;
+    }
+
+    private static Control CreateGuidePanel(string title, string hint)
+    {
+        var guide = new TableLayoutPanel
+        {
+            Dock = DockStyle.Fill,
+            RowCount = 2,
+            ColumnCount = 1,
+            Padding = new Padding(10, 8, 10, 6)
+        };
+        guide.RowStyles.Add(new RowStyle(SizeType.Absolute, 26));
+        guide.RowStyles.Add(new RowStyle(SizeType.Percent, 100));
+
+        var titleLabel = new Label
+        {
+            Dock = DockStyle.Fill,
+            Text = title,
+            TextAlign = ContentAlignment.MiddleLeft,
+            Font = new Font(SystemFonts.DefaultFont.FontFamily, 12f, FontStyle.Bold)
+        };
+        var hintLabel = new Label
+        {
+            Dock = DockStyle.Fill,
+            Text = hint,
+            TextAlign = ContentAlignment.MiddleLeft
+        };
+
+        guide.Controls.Add(titleLabel, 0, 0);
+        guide.Controls.Add(hintLabel, 0, 1);
+        return guide;
     }
 
     private void ConfigureActivitiesGrid()
@@ -369,6 +694,8 @@ public sealed class MainForm : Form
             };
             grid.RowsAdded += (_, _) => ValidateAndShow();
             grid.RowsRemoved += (_, _) => ValidateAndShow();
+            grid.SelectionChanged += (_, _) => UpdateActionButtons();
+            grid.DataBindingComplete += (_, _) => UpdateEmptyState(grid);
             grid.DataError += (_, args) =>
             {
                 args.ThrowException = false;
@@ -526,6 +853,12 @@ public sealed class MainForm : Form
             """
             CalendarDB quick guide
 
+            Layout:
+            - Use the left sidebar to switch between Calendar, NPC, and Validation sections.
+            - The top buttons are the main actions: Open/Reload, Save, Add Row, Duplicate, Delete, Add Sample Data, Help.
+            - The bottom bar shows the last load/save result and the output folders.
+            - The card on the left shows current validation status.
+
             Save writes:
             - data/calendar/activities.json
             - data/calendar/weekly_schedule.json
@@ -535,8 +868,7 @@ public sealed class MainForm : Form
 
             Use dropdown cells for IDs, timelines, scenes, and single time blocks.
             Double-click day/time-block list cells to open a checklist picker.
-            Select a row and press Delete Row to remove it.
-            Select a row and press Duplicate Row to copy it.
+            Select a row and press Add Row, Duplicate, or Delete to manage rows.
             The Weekly Schedule grid is fixed; clear Type and Activity ID to remove a forced slot.
             The Weather tab sets one weather value for an entire story date. Missing dates are clear.
 
@@ -748,6 +1080,164 @@ public sealed class MainForm : Form
             .FirstOrDefault();
     }
 
+    private void AddRowToActiveGrid()
+    {
+        var grid = GetActiveGrid();
+
+        if (grid == null || grid == weeklyGrid)
+        {
+            MessageBox.Show("Open an editable data section first. Weekly Schedule uses fixed rows.", "CalendarDB", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            return;
+        }
+
+        if (grid == activitiesGrid)
+        {
+            activities.Add(new ActivityGridRow());
+        }
+        else if (grid == specialEventsGrid)
+        {
+            specialEvents.Add(new SpecialEventGridRow());
+        }
+        else if (grid == weatherGrid)
+        {
+            weatherRows.Add(new WeatherGridRow());
+        }
+        else if (grid == npcsGrid)
+        {
+            npcs.Add(new NpcGridRow());
+        }
+        else if (grid == npcAppearanceGrid)
+        {
+            npcAppearanceRules.Add(new NpcAppearanceGridRow());
+        }
+        else if (grid == npcDialogueGrid)
+        {
+            npcDialogueRoutes.Add(new NpcDialogueGridRow());
+        }
+
+        if (grid.Rows.Count > 0)
+        {
+            var rowIndex = Math.Max(0, grid.Rows.Count - 2);
+            grid.CurrentCell = grid.Rows[rowIndex].Cells[0];
+        }
+
+        ValidateAndShow();
+    }
+
+    private void SelectTabFromSidebar()
+    {
+        if (mainTabs == null || sidebar.SelectedItem == null)
+        {
+            return;
+        }
+
+        var label = sidebar.SelectedItem.ToString()?.Trim() ?? "";
+        var tabName = label switch
+        {
+            "Start Here" => "Start Here",
+            "Activities" => "Activities",
+            "Weekly Schedule" => "Weekly Schedule",
+            "Special Events" => "Special Events",
+            "Weather" => "Weather",
+            "NPCs" => "NPCs",
+            "NPC Appearance" => "NPC Appearance",
+            "NPC Dialogue Routes" => "NPC Dialogue Routes",
+            "Validation" => "Validation",
+            _ => ""
+        };
+
+        if (tabName == "")
+        {
+            sidebar.SelectedIndex = Math.Min(sidebar.Items.Count - 1, sidebar.SelectedIndex + 1);
+            return;
+        }
+
+        foreach (TabPage tab in mainTabs.TabPages)
+        {
+            if (tab.Text == tabName)
+            {
+                mainTabs.SelectedTab = tab;
+                return;
+            }
+        }
+    }
+
+    private void UpdateActiveSectionUi()
+    {
+        if (mainTabs == null || mainTabs.SelectedTab == null)
+        {
+            return;
+        }
+
+        var title = mainTabs.SelectedTab.Text;
+        activeSectionLabel.Text = title;
+        activeSectionHelpLabel.Text = GetSectionHelp(title);
+        SelectSidebarItem(title);
+        UpdateActionButtons();
+    }
+
+    private void SelectSidebarItem(string title)
+    {
+        for (var index = 0; index < sidebar.Items.Count; index++)
+        {
+            if ((sidebar.Items[index].ToString() ?? "").Trim() == title)
+            {
+                if (sidebar.SelectedIndex != index)
+                {
+                    sidebar.SelectedIndex = index;
+                }
+
+                return;
+            }
+        }
+    }
+
+    private void UpdateActionButtons()
+    {
+        var grid = GetActiveGrid();
+        var hasGrid = grid != null;
+        var hasRow = hasGrid && GetSelectedDataRows(grid!).Any();
+
+        addRowButton.Enabled = hasGrid && grid != weeklyGrid;
+        duplicateButton.Enabled = hasGrid && grid != weeklyGrid && hasRow;
+        deleteButton.Enabled = hasGrid && hasRow;
+    }
+
+    private void UpdateEmptyState(DataGridView grid)
+    {
+        if (!emptyStateLabels.TryGetValue(grid, out var label))
+        {
+            return;
+        }
+
+        label.Visible = GetDataRowCount(grid) == 0;
+        UpdateActionButtons();
+    }
+
+    private static int GetDataRowCount(DataGridView grid)
+    {
+        return grid.Rows
+            .Cast<DataGridViewRow>()
+            .Count(row => !row.IsNewRow);
+    }
+
+    private static string GetSectionHelp(string title)
+    {
+        return title switch
+        {
+            "Activities" => "Create optional activities and stat changes. Watch ID spelling; other tables reference these IDs.",
+            "Weekly Schedule" => "Set repeat forced slots like weekday school. This grid is fixed to every day/time block.",
+            "Special Events" => "Create exact-date events, forced activities, and top-screen objectives. Dates must be YYYY-MM-DD.",
+            "Weather" => "Set story-date weather. Missing dates automatically use clear weather.",
+            "NPCs" => "Register NPC IDs and their fallback Dialogic timeline.",
+            "NPC Appearance" => "Control where pre-placed NPCs appear and whether they can be interacted with.",
+            "NPC Dialogue Routes" => "Route an NPC to a specific existing Dialogic timeline for a scene/date/time condition.",
+            "Validation" => "Review every save-blocking issue in one place.",
+            "Start Here" => "Pick a section from the left, edit tables directly, and save when validation is green.",
+            _ => "Edit JSON-backed game data for Godot."
+        };
+    }
+
     private static IEnumerable<DataGridViewRow> GetSelectedDataRows(DataGridView grid)
     {
         return grid.SelectedRows
@@ -759,15 +1249,15 @@ public sealed class MainForm : Form
             .Distinct();
     }
 
-    private static void ApplyEditorTheme(Control root, Control toolbar, TabControl tabs)
+    private static void ApplyEditorTheme(Control root, TabControl tabs)
     {
         var background = Color.FromArgb(236, 240, 245);
         var surface = Color.FromArgb(250, 252, 255);
         var text = Color.FromArgb(32, 43, 55);
 
         root.BackColor = background;
-        toolbar.BackColor = Color.FromArgb(226, 232, 240);
         tabs.BackColor = background;
+        tabs.Padding = new Point(12, 4);
 
         foreach (var grid in root.Controls
             .Cast<Control>()
@@ -778,17 +1268,36 @@ public sealed class MainForm : Form
             grid.BorderStyle = BorderStyle.None;
             grid.GridColor = Color.FromArgb(218, 226, 235);
             grid.RowHeadersWidth = 28;
+            grid.RowTemplate.Height = 28;
             grid.EnableHeadersVisualStyles = false;
             grid.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(52, 71, 92);
             grid.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
             grid.ColumnHeadersDefaultCellStyle.SelectionBackColor = Color.FromArgb(52, 71, 92);
             grid.ColumnHeadersDefaultCellStyle.Font = new Font(grid.Font, FontStyle.Bold);
+            grid.ColumnHeadersHeight = 34;
             grid.DefaultCellStyle.BackColor = surface;
             grid.DefaultCellStyle.ForeColor = text;
             grid.DefaultCellStyle.SelectionBackColor = Color.FromArgb(197, 220, 245);
             grid.DefaultCellStyle.SelectionForeColor = text;
             grid.AlternatingRowsDefaultCellStyle.BackColor = Color.FromArgb(244, 247, 251);
             grid.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.DisplayedCellsExceptHeaders;
+            grid.MinimumSize = new Size(420, 260);
+        }
+
+        foreach (var panel in root.Controls
+            .Cast<Control>()
+            .SelectMany(FlattenControls)
+            .OfType<Panel>())
+        {
+            panel.BackColor = surface;
+        }
+
+        foreach (var button in root.Controls
+            .Cast<Control>()
+            .SelectMany(FlattenControls)
+            .OfType<Button>())
+        {
+            button.FlatStyle = FlatStyle.System;
         }
     }
 
@@ -860,6 +1369,7 @@ public sealed class MainForm : Form
         }
 
         isLoadingData = false;
+        statusLabel.Text = $"Loaded JSON from {Path.GetRelativePath(projectRoot, calendarDataPath)} and {Path.GetRelativePath(projectRoot, npcDataPath)}.";
         ValidateAndShow();
     }
 
@@ -964,6 +1474,7 @@ public sealed class MainForm : Form
 
         if (errors.Count > 0)
         {
+            statusLabel.Text = "Save blocked. Fix red validation errors first.";
             MessageBox.Show("Fix validation errors before saving.", "CalendarDB", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             return;
         }
@@ -991,6 +1502,7 @@ public sealed class MainForm : Form
             JsonSerializer.Serialize(BuildNpcDatabase(), jsonOptions)
         );
 
+        statusLabel.Text = $"Saved JSON at {DateTime.Now:HH:mm:ss}.";
         MessageBox.Show("Calendar JSON saved.", "CalendarDB", MessageBoxButtons.OK, MessageBoxIcon.Information);
     }
 
@@ -1384,10 +1896,41 @@ public sealed class MainForm : Form
 
     private void ShowValidation(List<string> errors)
     {
+        var warningCount = CountWarnings();
         validationBox.Text = errors.Count == 0
             ? "No validation errors."
             : string.Join(Environment.NewLine, errors);
+        validationSummaryLabel.Text = errors.Count == 0
+            ? $"Ready to save\r\n{warningCount} warning(s)"
+            : $"{errors.Count} error(s)\r\n{warningCount} warning(s)";
+        validationSummaryLabel.BackColor = errors.Count == 0
+            ? Color.FromArgb(226, 246, 231)
+            : Color.FromArgb(255, 228, 228);
+        validationSummaryLabel.ForeColor = errors.Count == 0
+            ? Color.FromArgb(31, 93, 48)
+            : Color.FromArgb(126, 42, 42);
         ApplyLiveValidationColors();
+        UpdateActionButtons();
+    }
+
+    private int CountWarnings()
+    {
+        var warningCount = 0;
+
+        warningCount += specialEvents.Count(row =>
+            !row.ObjectiveRequired
+            && Clean(row.ObjectiveText).Length > 0
+            && Clean(row.ObjectiveCompleteFlag).Length == 0
+        );
+
+        warningCount += npcAppearanceRules.Count(row => ParseList(row.Days).Count == 0);
+        warningCount += npcAppearanceRules.Count(row => ParseList(row.Dates).Count == 0);
+        warningCount += npcAppearanceRules.Count(row => ParseList(row.TimeBlocks).Count == 0);
+        warningCount += npcDialogueRoutes.Count(row => ParseList(row.Days).Count == 0);
+        warningCount += npcDialogueRoutes.Count(row => ParseList(row.Dates).Count == 0);
+        warningCount += npcDialogueRoutes.Count(row => ParseList(row.TimeBlocks).Count == 0);
+
+        return warningCount;
     }
 
     private static void ValidateListValues(IEnumerable<string> values, IReadOnlyCollection<string> validValues, string messagePrefix, List<string> errors)

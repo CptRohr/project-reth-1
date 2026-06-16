@@ -642,6 +642,24 @@ Maintenance rules:
 - Shared NPC behavior should eventually become a base NPC script.
 - Persistent relationship/story state should be written through `GameState` flags or stats.
 
+### Dialogue Camera Zoom & Offset
+
+When a dialogue starts with an NPC (triggered via `start_dialogue_with(npc)`), the player's camera smoothly glides and zooms to focus on both characters.
+
+- **Configuring globally on the Player**:
+  In `player.tscn`, select the child `Player` (`CharacterBody2D`) node in the Inspector to edit default parameters:
+  - `dialogue_zoom_enabled`: Enable/disable this camera effect.
+  - `dialogue_zoom_factor`: Zoom multiplier (e.g. `1.25` zooms in 25%).
+  - `dialogue_zoom_duration`: Speed of transition (seconds).
+  - `dialogue_camera_blend`: Focus midpoint between player and NPC (`0.0` = Player, `1.0` = NPC, `0.5` = Midpoint).
+  - `dialogue_camera_offset`: Vector2 offset added to the dialogue camera target.
+
+- **Overriding on specific NPCs**:
+  On an NPC instance or scene root, select the NPC node in the Inspector:
+  - Check `override_dialogue_camera` to enable overriding default player settings.
+  - Tune `dialogue_zoom_factor`, `dialogue_camera_blend`, and `dialogue_camera_offset` for that character.
+  - *Note:* If you modify these settings but keep `override_dialogue_camera` unchecked, a warning will be logged to the console at runtime.
+
 ## Pause Menu And UI
 
 Pause menu lives in:
@@ -914,7 +932,25 @@ data/calendar/weather.json
 data/npc/npcs.json
 ```
 
+CalendarDB uses a guided desktop layout:
+
+```text
+Top header  = project path plus Open/Reload, Save, Add Row, Duplicate, Delete, Add Sample Data, Help
+Left rail   = Start Here plus Calendar, NPC, and Validation navigation
+Main area   = Excel-like editable tables
+Left card   = validation summary and color legend
+Bottom bar  = last load/save result and output folders
+```
+
 Use dropdown cells for fields that should not be typed by hand, such as activity ids, NPC ids, Dialogic timelines, scene paths, and single time blocks. For multi-value fields such as available days, available time blocks, NPC appearance days, and NPC appearance time blocks, double-click the cell to open a checklist picker. Leaving every checkbox empty means "any".
+
+Table editing rules:
+
+1. Use `Add Row` to create a blank row in the current editable section.
+2. Select a row before using `Duplicate` or `Delete`.
+3. Weekly Schedule is fixed to every day/time block; deleting there clears the selected forced slots instead of removing rows.
+4. Red cells block save. Yellow cells are warnings, usually an empty broad filter or optional objective without a completion flag.
+5. Save only after the validation card says the data is ready.
 
 Use the Weather tab to assign `clear`, `rain`, or `thunderstorm` to a whole `YYYY-MM-DD` story date. Dates not listed in `weather.json` are clear.
 
@@ -953,6 +989,13 @@ Calendar/event workflow:
 4. For must-do events, enable `Objective Required` and fill `Objective Complete Flag`.
 5. Use `Validation` or live red cells to catch bad ids, timelines, scene paths, days, time blocks, and dates.
 6. Save JSON and run Godot.
+
+Common CalendarDB workflows:
+
+1. Add an activity: create it in `Activities`, then reference its `id` from Weekly Schedule or Special Events.
+2. Add a special-event objective: create the event in `Special Events`, fill `Objective Text`, enable `Objective Required` for must-do events, and set `Objective Complete Flag`.
+3. Add NPC appearance: create the NPC in `NPCs`, then add scene/day/time visibility in `NPC Appearance`.
+4. Add NPC dialogue route: add a route in `NPC Dialogue Routes` using an existing Dialogic timeline name from `Dialogue/*.dtl`.
 
 ### Add A New Stat
 
@@ -997,6 +1040,31 @@ once_per_day = false
 ```
 
 3. Open the pause menu calendar and check that the date shows a plan marker.
+
+### Add A New NPC
+
+1. **Create/Setup NPC Scene**:
+   - Instance `Characters/NPC/NPC.tscn` in your map scene, or create a new inherited scene from it.
+   - Adjust the sprite texture, collision shape dimensions under `InteractionArea`, and positions.
+   - By default, it runs `npc.gd`. For unique progression or custom logic, create a new script extending `npc.gd` and attach it.
+
+2. **Register the NPC in CalendarDB**:
+   - Open CalendarDB via `Custom Software\CalendarDB\Run CalendarDB.bat`.
+   - Go to the **NPCs** tab and add your NPC with a unique `npc_id`.
+   - Go to the **NPC Appearance** tab and set the scenes, days, and time blocks when your NPC should be visible.
+   - Go to the **NPC Dialogue Routes** tab to specify Dialogic timeline mappings for this NPC under varying condition flags (leave empty if your custom script manages the timeline choice manually).
+   - Save the CalendarDB changes.
+
+3. **Configure Node in Scene**:
+   - Select your NPC node in the Godot inspector.
+   - Set `npc_id` to match the exact ID you created in CalendarDB.
+   - Set `timeline_name` to the default Dialogic timeline file (e.g. `test` matching `Dialogue/test.dtl`).
+   - Configure optional rule-based dialogue using the `timeline_rules` array.
+   - If a custom camera angle is desired, enable `override_dialogue_camera` under `Dialogue Camera Override` and configure the custom `dialogue_zoom_factor`, `dialogue_camera_blend`, or `dialogue_camera_offset`.
+
+4. **Verify NPC**:
+   - Start the game during the scheduled day/time block, go to the scene, and confirm the NPC spawns correctly.
+   - Press `E` to interact and verify the dialogue starts and camera zoom functions properly.
 
 ### Add An NPC Dialogue Variant
 

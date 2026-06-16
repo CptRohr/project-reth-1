@@ -5,6 +5,15 @@ extends CharacterBody2D
 @export var speed := 70.0
 @onready var interaction_area = get_node("InteractionArea")
 @onready var anim = $AnimatedSprite2D
+@onready var camera: Camera2D = $Camera2D
+
+@export_group("Dialogue Camera")
+@export var dialogue_zoom_enabled := true
+@export var dialogue_zoom_factor := 1.25
+@export var dialogue_zoom_duration := 0.5
+@export var dialogue_camera_blend := 0.5
+@export var dialogue_camera_offset := Vector2(0, 0)
+
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var can_move = true:
 	set(value):
@@ -12,6 +21,10 @@ var can_move = true:
 		if not can_move and is_node_ready():
 			play_animation("idle")
 var player_inside = false
+
+var default_zoom := Vector2(2.75, 2.75)
+var active_dialogue_npc: Node2D = null
+var camera_tween: Tween = null
 
 
 func _ready():
@@ -22,6 +35,9 @@ func _ready():
 	print(self.name)
 	print(get_tree_string_pretty())
 	print(Transition)
+
+	if camera:
+		default_zoom = camera.zoom
 
 func _physics_process(delta):
 	var direction := Input.get_axis("move_left", "move_right")
@@ -57,6 +73,63 @@ func _on_dialogue_started():
 
 func _on_dialogue_ended():
 	can_move = true
+	if active_dialogue_npc != null:
+		_reset_camera()
+	active_dialogue_npc = null
+
+func start_dialogue_with(npc: Node2D) -> void:
+	active_dialogue_npc = npc
+	if dialogue_zoom_enabled:
+		_zoom_camera_to_npc(npc)
+
+func _zoom_camera_to_npc(npc: Node2D) -> void:
+	if not camera:
+		print("[CAMERA DEBUG] Camera is null!")
+		return
+	
+	if camera_tween:
+		camera_tween.kill()
+		
+	var zoom_factor: float = dialogue_zoom_factor
+	var blend: float = dialogue_camera_blend
+	var offset: Vector2 = dialogue_camera_offset
+	
+	var npc_has_override = npc.get("override_dialogue_camera") == true
+	if npc_has_override:
+		zoom_factor = npc.get("dialogue_zoom_factor") as float
+		blend = npc.get("dialogue_camera_blend") as float
+		offset = npc.get("dialogue_camera_offset") as Vector2
+	else:
+		# Check if the user set values on the NPC but forgot to turn on override_dialogue_camera
+		var npc_offset = npc.get("dialogue_camera_offset")
+		var npc_zoom = npc.get("dialogue_zoom_factor")
+		var npc_blend = npc.get("dialogue_camera_blend")
+		if (npc_offset != null and npc_offset != Vector2.ZERO) or (npc_zoom != null and npc_zoom != 1.25) or (npc_blend != null and npc_blend != 0.5):
+			print("[CAMERA WARNING] NPC has custom settings (Offset: %s, Zoom: %s, Blend: %s), but 'override_dialogue_camera' is FALSE! These NPC settings are ignored." % [npc_offset, npc_zoom, npc_blend])
+
+	var target_zoom: Vector2 = default_zoom * zoom_factor
+	var target_global_pos: Vector2 = global_position.lerp(npc.global_position, blend)
+	var target_local_pos: Vector2 = to_local(target_global_pos) + offset
+	
+	print("[CAMERA DEBUG] Dialogue zoom started with NPC: %s" % npc.name)
+	print("               Player Pos: %s, NPC Pos: %s" % [global_position, npc.global_position])
+	print("               Target Zoom: %s (factor: %f)" % [target_zoom, zoom_factor])
+	print("               Target Local Pos: %s (offset: %s, blend: %f)" % [target_local_pos, offset, blend])
+	
+	camera_tween = create_tween().set_parallel(true).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
+	camera_tween.tween_property(camera, "position", target_local_pos, dialogue_zoom_duration)
+	camera_tween.tween_property(camera, "zoom", target_zoom, dialogue_zoom_duration)
+
+func _reset_camera() -> void:
+	if not camera:
+		return
+		
+	if camera_tween:
+		camera_tween.kill()
+		
+	camera_tween = create_tween().set_parallel(true).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
+	camera_tween.tween_property(camera, "position", Vector2.ZERO, dialogue_zoom_duration)
+	camera_tween.tween_property(camera, "zoom", default_zoom, dialogue_zoom_duration)
 
 func update_facing(direction):
 	if direction != 0:

@@ -5,7 +5,7 @@
     "date": "2026-04-02",
     "time_block": "morning",
     "description": "You made a plan to exercise with bella this weekend",
-    "forced": true,
+    "forced": false,
     "activity_id": "exercise",
     "required_flags": [],
     "set_flags_after_complete": [
