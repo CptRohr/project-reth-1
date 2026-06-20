@@ -340,6 +340,7 @@ position = Vector2(323, 80)
 npc_id = "abang_brewok"
 override_dialogue_camera = true
 dialogue_zoom_factor = 2.0
+dialogue_camera_offset = Vector2(0, 50)
 
 [node name="Bed" type="Area2D" parent="." unique_id=1427247159]
 position = Vector2(56, 82)

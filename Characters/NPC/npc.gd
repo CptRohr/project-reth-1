@@ -25,6 +25,10 @@ func _process(_delta):
 		if not visible or not is_interactable:
 			return
 
+		# Temporary Dialogic shutdown while the plugin is broken on the current Godot version.
+		TemporaryDialogicBlocker.show_broken_message(self)
+		return
+
 		if !Dialogic.current_timeline:
 			var chosen_timeline := get_dialogue_timeline()
 

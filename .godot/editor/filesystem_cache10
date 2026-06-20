@@ -1,8 +1,8 @@
-72322a848ab928aa5c89f0cb78209805
-::res://::1781567504
+9cad1ddce9e5a63143ba340c9520626b
+::res://::1781972953
 export_presets.cfg::TextFile::-1::1778821921::0::1::::<><><>0<>0<><>::
 icon.svg::CompressedTexture2D::7047297600812045813::1778403263::1780469216::1::::<><><>0<>0<>8cd2dc43545da561a44dd320ce5aed39<>res://.godot/imported/icon.svg-218a8f2b3041327d8a5756f3a245f83b.ctex::
-MAINTAINER_NOTE.md::TextFile::-1::1781433083::0::1::::<><><>0<>0<><>::
+MAINTAINER_NOTE.md::TextFile::-1::1781574182::0::1::::<><><>0<>0<><>::
 README.md::TextFile::-1::1780757859::0::1::::<><><>0<>0<><>::
 ::res://addons/::1781090985
 ::res://addons/dialogic/::1778505337
@@ -658,12 +658,12 @@ XUIXYSlider.gd::GDScript::2531689560247120064::1769868526::0::1::::XUI2DSlider<>
 barycentric_slider_test.gd::GDScript::2676250788288840677::1770140580::0::1::::<>VBoxContainer<><>0<>0<><>::
 XUIPreview.tscn::PackedScene::2132711828100596817::1770140619::0::1::::<><><>0<>0<><>::uid://gj43tr10wtx7::::res://addons/extended_ui/controls/sliders/XUIHslider.gd<>uid://bccms7decicay::::res://addons/extended_ui/controls/sliders/XUIXYSlider.gd<>uid://dn1du5vckua1k::::res://addons/extended_ui/controls/grids/XUIGridPanel.gd<>uid://beenpvfk8aenl::::res://addons/extended_ui/preview/barycentric_slider_test.gd<>uid://c26s2qvpowfvc::::res://addons/extended_ui/controls/sliders/XUIBarycentricSlider.gd<>uid://bcf0beduuvw5v::::res://addons/extended_ui/controls/sliders/BarycentricPoint.gd<>uid://cwocty0e86ef7::::res://addons/extended_ui/controls/containers/XUIViewContainer.gd<>uid://cxy7radialco::::res://addons/extended_ui/controls/containers/XUIRadialContainer.gd
 ::res://android/::1778819558
-::res://Areas/::1781525889
+::res://Areas/::1781834396
 door.tscn::PackedScene::1117023045278809421::1780469236::0::1::::<><><>0<>0<><>::
 street2.tscn::PackedScene::7684652251966522315::1780469236::0::1::::<><><>0<>0<><>::uid://d3swmgi1ckxhq::::res://Characters/Main Character/player.tscn<>uid://chnkdp0xllg28::::res://Areas/street_2.gd<>uid://bi003gu1i7jjb::::res://Scene/door_transition.tscn
 street3.tscn::PackedScene::2331105159337670246::1780483755::0::1::::<><><>0<>0<><>::uid://bi003gu1i7jjb::::res://Scene/door_transition.tscn<>uid://chnb8nau1k512::::res://Areas/street_3.gd<>uid://d3swmgi1ckxhq::::res://Characters/Main Character/player.tscn
 street.gd::GDScript::3044524554790333835::1778669933::0::1::::<>Node2D<><>0<>0<><>::
-street.tscn::PackedScene::3007747087117709265::1781525889::0::1::::<><><>0<>0<><>::uid://bjm140bsspmyt::::res://Areas/street.gd<>uid://d3swmgi1ckxhq::::res://Characters/Main Character/player.tscn<>uid://i25y35vcck2s::::res://Assets/debug assets/GandalfHardcore City Tiles/City background sky.png<>uid://bi003gu1i7jjb::::res://Scene/door_transition.tscn<>uid://ds57i8r1obpam::::res://Assets/debug assets/GandalfHardcore City Tiles/City background layer1.png<>uid://cdioa01qum4k4::::res://Characters/NPC/NPC.tscn<>uid://croo63lst6hai::::res://Assets/debug assets/GandalfHardcore City Tiles/City background layer2.png<>uid://bxjskl2e76kj8::::res://Assets/Background/Ground Tiles.png<>uid://cuugn7wk7te85::::res://Assets/Background/House1.png<>uid://cvsat2wwojd4b::::res://Characters/NPC/AbangBrewok.tscn<>uid://dcrykd7ugqep5::::res://Scripts/sleep_interactable.gd<>uid://5uurhbsc5ucm::::res://Scripts/activity_interactable.gd<>uid://do5vk0tirle8m::::res://Scripts/school_interactable.gd
+street.tscn::PackedScene::3007747087117709265::1781834396::0::1::::<><><>0<>0<><>::uid://bjm140bsspmyt::::res://Areas/street.gd<>uid://d3swmgi1ckxhq::::res://Characters/Main Character/player.tscn<>uid://i25y35vcck2s::::res://Assets/debug assets/GandalfHardcore City Tiles/City background sky.png<>uid://bi003gu1i7jjb::::res://Scene/door_transition.tscn<>uid://ds57i8r1obpam::::res://Assets/debug assets/GandalfHardcore City Tiles/City background layer1.png<>uid://cdioa01qum4k4::::res://Characters/NPC/NPC.tscn<>uid://croo63lst6hai::::res://Assets/debug assets/GandalfHardcore City Tiles/City background layer2.png<>uid://bxjskl2e76kj8::::res://Assets/Background/Ground Tiles.png<>uid://cuugn7wk7te85::::res://Assets/Background/House1.png<>uid://cvsat2wwojd4b::::res://Characters/NPC/AbangBrewok.tscn<>uid://dcrykd7ugqep5::::res://Scripts/sleep_interactable.gd<>uid://5uurhbsc5ucm::::res://Scripts/activity_interactable.gd<>uid://do5vk0tirle8m::::res://Scripts/school_interactable.gd
 street_2.gd::GDScript::5291613538495102455::1778669933::0::1::::<>Node2D<><>0<>0<><>::
 street_3.gd::GDScript::5291120515594267639::1778806782::0::1::::<>Node2D<><>0<>0<><>::
 ::res://Areas/Cutscenes/::1780469238
@@ -751,9 +751,9 @@ player.tscn::PackedScene::9163066004567956618::1780469239::0::1::::<><><>0<>0<><
 ::res://Characters/NPC/::1780469239
 AbangBrewok.dch::Resource/DialogicCharacter::4785350284579031370::1778919600::0::1::::<><>uid://bbea0efx0ybu7<>0<>0<><>::
 AbangBrewok.tscn::PackedScene::6284001266576948431::1780469239::0::1::::<><><>0<>0<><>::uid://eq4v17t6fsve::::res://Characters/NPC/abang_brewok.gd<>uid://8qemo0bvk24n::::res://Assets/debug assets/Human Male Model/Sections/PNG/HMMIdleSword.png
-abang_brewok.gd::GDScript::315585129025078798::1780749725::0::1::::<>Node2D<><>0<>0<><>::
+abang_brewok.gd::GDScript::315585129025078798::1781570624::0::1::::<>Node2D<><>0<>0<><>::
 NPC.dch::Resource/DialogicCharacter::3888497355972282303::1778919602::0::1::::<><>uid://bbea0efx0ybu7<>0<>0<><>::res://addons/dialogic/Modules/HighlightPortrait/simple_highlight_portrait.tscn<>res://Styles/RETH Style.tres<>res://addons/dialogic/Modules/Character/default_portrait.tscn<>res://Assets/debug assets/Prabowo_Subianto_2024_official_portrait.jpg
-npc.gd::GDScript::8121718120238425432::1780749310::0::1::::<>Node2D<><>0<>0<><>::
+npc.gd::GDScript::8121718120238425432::1781570619::0::1::::<>Node2D<><>0<>0<><>::
 NPC.tscn::PackedScene::5000774312234375429::1780469239::0::1::::<><><>0<>0<><>::uid://dnyhrmsffy5fg::::res://Characters/NPC/npc.gd<>uid://8qemo0bvk24n::::res://Assets/debug assets/Human Male Model/Sections/PNG/HMMIdleSword.png
 ::res://Custom Software/::1780495548
 ::res://Custom Software/CalendarDB/::1780496697
@@ -820,7 +820,7 @@ transition_layer.tscn::PackedScene::3826333143175602813::1780469241::0::1::::<><
 WeatherFilter.tscn::PackedScene::-1::1780758246::0::1::::<><><>0<>0<><>::res://Managers/weather_filter.gd<>uid://bv18i0dpr0apa::::res://Audio/SFX/rain loop.wav<>uid://cs00f2khqhggt::::res://Audio/SFX/thunderstorm ambience.wav
 ::res://Scripts/::1780142125
 activity_interactable.gd::GDScript::2148197932603847600::1780840220::0::1::::<>Area2D<><>0<>0<><>::
-basic_movement.gd::GDScript::3831591779344575212::1778668111::0::1::::<>CharacterBody2D<><>0<>0<><>::
+basic_movement.gd::GDScript::3831591779344575212::1781570859::0::1::::<>CharacterBody2D<><>0<>0<><>::
 bootscreen.gd::GDScript::3843640874363807832::1778723896::0::1::::<>Control<><>0<>0<><>::
 door_transition.gd::GDScript::232186144297520059::1778821355::0::1::::<>Area2D<><>0<>0<><>::
 main_menu.gd::GDScript::1721579507164882580::1780756770::0::1::::<>Node<><>0<>0<><>::

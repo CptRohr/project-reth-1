@@ -13,7 +13,7 @@ config_version=5
 config/name="Project RETH 1"
 config/description="A side scrolling horror game with some life sim element to it and you need to uncover the mystery of the story yourselft"
 run/main_scene="uid://be6k2qhq0icje"
-config/features=PackedStringArray("4.6", "Mobile")
+config/features=PackedStringArray("4.7", "Mobile")
 config/icon="res://icon.svg"
 
 [autoload]

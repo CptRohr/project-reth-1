@@ -184,6 +184,8 @@ func _get(property):
 			return VariableFolder.new(dialogic.current_state_info['variables'][property], property, self)
 		else:
 			return DialogicUtil.logical_convert(dialogic.current_state_info['variables'][property])
+	# Temporary Godot 4.7 compatibility fallback.
+	return null
 
 
 func folders() -> Array:
@@ -245,6 +247,8 @@ class VariableFolder:
 				return VariableFolder.new(data[property], path+"."+property, outside)
 			else:
 				return DialogicUtil.logical_convert(data[property])
+		# Temporary Godot 4.7 compatibility fallback.
+		return null
 
 
 	func _set(property:StringName, value:Variant) -> bool:
