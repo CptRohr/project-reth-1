@@ -1,9 +1,21 @@
-[gd_scene format=3 uid="uid://b5yq6xh412ilm"]
+[gd_scene load_steps=5 format=3 uid="uid://b5yq6xh412ilm"]
 
 [ext_resource type="Script" uid="uid://cqfmftweedlvb" path="res://addons/dialogic/Modules/History/settings_history.gd" id="1_hbhst"]
 [ext_resource type="PackedScene" uid="uid://dbpkta2tjsqim" path="res://addons/dialogic/Editor/Common/hint_tooltip_icon.tscn" id="2_wefye"]
 
-[node name="History" type="PanelContainer" unique_id=75039409]
+[sub_resource type="Image" id="Image_cvlu0"]
+data = {
+"data": PackedByteArray(255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 255, 255, 0, 255, 94, 94, 127, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 255, 255, 0, 255, 93, 93, 255, 255, 94, 94, 127, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 255, 255, 0, 255, 93, 93, 255, 255, 93, 93, 255, 255, 94, 94, 127, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 255, 255, 0, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 94, 94, 127, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 93, 93, 231, 255, 94, 94, 54, 255, 94, 94, 57, 255, 93, 93, 233, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 231, 255, 94, 94, 54, 255, 94, 94, 57, 255, 93, 93, 233, 255, 93, 93, 255, 255, 93, 93, 255, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 97, 97, 42, 255, 255, 255, 0, 255, 255, 255, 0, 255, 97, 97, 42, 255, 93, 93, 233, 255, 93, 93, 232, 255, 93, 93, 41, 255, 255, 255, 0, 255, 255, 255, 0, 255, 97, 97, 42, 255, 93, 93, 233, 255, 93, 93, 232, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 96, 96, 45, 255, 93, 93, 44, 255, 255, 255, 0, 255, 97, 97, 42, 255, 97, 97, 42, 255, 255, 255, 0, 255, 96, 96, 45, 255, 93, 93, 44, 255, 255, 255, 0, 255, 97, 97, 42, 255, 97, 97, 42, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 96, 96, 45, 255, 93, 93, 235, 255, 94, 94, 234, 255, 95, 95, 43, 255, 255, 255, 0, 255, 255, 255, 0, 255, 96, 96, 45, 255, 93, 93, 235, 255, 94, 94, 234, 255, 95, 95, 43, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 93, 93, 235, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 233, 255, 95, 95, 59, 255, 96, 96, 61, 255, 93, 93, 235, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 233, 255, 95, 95, 59, 255, 96, 96, 61, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0),
+"format": "RGBA8",
+"height": 16,
+"mipmaps": false,
+"width": 16
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_irr0a"]
+image = SubResource("Image_cvlu0")
+
+[node name="History" type="PanelContainer"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -12,153 +24,153 @@ grow_vertical = 2
 theme_type_variation = &"DialogicPanelA"
 script = ExtResource("1_hbhst")
 
-[node name="HistoryOptions" type="VBoxContainer" parent="." unique_id=358951677]
+[node name="HistoryOptions" type="VBoxContainer" parent="."]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Title3" type="Label" parent="HistoryOptions" unique_id=475933403]
+[node name="Title3" type="Label" parent="HistoryOptions"]
 layout_mode = 2
 theme_type_variation = &"DialogicSettingsSection"
 text = "Simple History"
 
-[node name="HBoxContainer" type="HBoxContainer" parent="HistoryOptions" unique_id=993354741]
+[node name="HBoxContainer" type="HBoxContainer" parent="HistoryOptions"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="HistoryOptions/HBoxContainer" unique_id=1250133054]
+[node name="Label" type="Label" parent="HistoryOptions/HBoxContainer"]
 layout_mode = 2
 text = "Enabled"
 
-[node name="HintTooltip" parent="HistoryOptions/HBoxContainer" unique_id=528180322 instance=ExtResource("2_wefye")]
+[node name="HintTooltip" parent="HistoryOptions/HBoxContainer" instance=ExtResource("2_wefye")]
 layout_mode = 2
 tooltip_text = "When enabled, some events (Text, Join, Leave, Choice) will store a log.
 Also, the default layout will feature the log panel option."
-texture = null
+texture = SubResource("ImageTexture_irr0a")
 hint_text = "When enabled, some events (Text, Join, Leave, Choice) will store a log.
 Also, the default layout will feature the log panel option."
 
-[node name="SimpleHistoryEnabled" type="CheckBox" parent="HistoryOptions/HBoxContainer" unique_id=737391846]
+[node name="SimpleHistoryEnabled" type="CheckBox" parent="HistoryOptions/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="HistoryOptions" unique_id=337806205]
+[node name="HBoxContainer2" type="HBoxContainer" parent="HistoryOptions"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="HistoryOptions/HBoxContainer2" unique_id=1310572970]
+[node name="Label" type="Label" parent="HistoryOptions/HBoxContainer2"]
 layout_mode = 2
 text = "Save and Load"
 
-[node name="HintTooltip" parent="HistoryOptions/HBoxContainer2" unique_id=1622702604 instance=ExtResource("2_wefye")]
+[node name="HintTooltip" parent="HistoryOptions/HBoxContainer2" instance=ExtResource("2_wefye")]
 layout_mode = 2
 tooltip_text = "When enabled, the simple history is included in the savegame."
-texture = null
+texture = SubResource("ImageTexture_irr0a")
 hint_text = "When enabled, the simple history is included in the savegame. Also, it is reset on Dialogic.clear(FULL_CLEAR)."
 
-[node name="SimpleHistorySave" type="CheckBox" parent="HistoryOptions/HBoxContainer2" unique_id=946245483]
+[node name="SimpleHistorySave" type="CheckBox" parent="HistoryOptions/HBoxContainer2"]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="Title" type="Label" parent="HistoryOptions" unique_id=24193002]
+[node name="Title" type="Label" parent="HistoryOptions"]
 layout_mode = 2
 theme_type_variation = &"DialogicSettingsSection"
 text = "Full History"
 
-[node name="HBoxContainer5" type="HBoxContainer" parent="HistoryOptions" unique_id=617348576]
+[node name="HBoxContainer5" type="HBoxContainer" parent="HistoryOptions"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="HistoryOptions/HBoxContainer5" unique_id=172110383]
+[node name="Label" type="Label" parent="HistoryOptions/HBoxContainer5"]
 layout_mode = 2
 text = "Enabled"
 
-[node name="HintTooltip" parent="HistoryOptions/HBoxContainer5" unique_id=2049479935 instance=ExtResource("2_wefye")]
+[node name="HintTooltip" parent="HistoryOptions/HBoxContainer5" instance=ExtResource("2_wefye")]
 layout_mode = 2
 tooltip_text = "When enabled, stores a copy of each event."
-texture = null
+texture = SubResource("ImageTexture_irr0a")
 hint_text = "When enabled, stores a copy of each event."
 
-[node name="FullHistoryEnabled" type="CheckBox" parent="HistoryOptions/HBoxContainer5" unique_id=1403430418]
+[node name="FullHistoryEnabled" type="CheckBox" parent="HistoryOptions/HBoxContainer5"]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="HBoxContainer6" type="HBoxContainer" parent="HistoryOptions" unique_id=1891523038]
+[node name="HBoxContainer6" type="HBoxContainer" parent="HistoryOptions"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="HistoryOptions/HBoxContainer6" unique_id=12724902]
+[node name="Label" type="Label" parent="HistoryOptions/HBoxContainer6"]
 layout_mode = 2
 text = "Save and Load"
 
-[node name="HintTooltip" parent="HistoryOptions/HBoxContainer6" unique_id=1476377633 instance=ExtResource("2_wefye")]
+[node name="HintTooltip" parent="HistoryOptions/HBoxContainer6" instance=ExtResource("2_wefye")]
 layout_mode = 2
 tooltip_text = "When enabled, the full history is included in the savegame."
-texture = null
+texture = SubResource("ImageTexture_irr0a")
 hint_text = "When enabled, the full history is included in the savegame. Also, it is reset on Dialogic.clear(FULL_CLEAR)."
 
-[node name="FullHistorySave" type="CheckBox" parent="HistoryOptions/HBoxContainer6" unique_id=1225442673]
+[node name="FullHistorySave" type="CheckBox" parent="HistoryOptions/HBoxContainer6"]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="Title2" type="Label" parent="HistoryOptions" unique_id=1430719318]
+[node name="Title2" type="Label" parent="HistoryOptions"]
 layout_mode = 2
 theme_type_variation = &"DialogicSettingsSection"
 text = "Seen Events History"
 
-[node name="HBoxContainer4" type="HBoxContainer" parent="HistoryOptions" unique_id=738051133]
+[node name="HBoxContainer4" type="HBoxContainer" parent="HistoryOptions"]
 layout_mode = 2
 
-[node name="EnabledLabel" type="Label" parent="HistoryOptions/HBoxContainer4" unique_id=1082949977]
+[node name="EnabledLabel" type="Label" parent="HistoryOptions/HBoxContainer4"]
 layout_mode = 2
 text = "Enabled"
 
-[node name="HintTooltip" parent="HistoryOptions/HBoxContainer4" unique_id=861912950 instance=ExtResource("2_wefye")]
+[node name="HintTooltip" parent="HistoryOptions/HBoxContainer4" instance=ExtResource("2_wefye")]
 layout_mode = 2
 tooltip_text = "Remembers whether events were already met in the timeline.
 When enabled the signals \"Dialogic.History.visited_event\" and \"Dialogic.History.unvisited_event\" are emitted.
 "
-texture = null
+texture = SubResource("ImageTexture_irr0a")
 hint_text = "Remembers whether events were already met in the timeline.
 When enabled the signals \"Dialogic.History.visited_event\" and \"Dialogic.History.unvisited_event\" are emitted.
 "
 
-[node name="AlreadyReadHistoryEnabled" type="CheckBox" parent="HistoryOptions/HBoxContainer4" unique_id=767302425]
+[node name="AlreadyReadHistoryEnabled" type="CheckBox" parent="HistoryOptions/HBoxContainer4"]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="HBoxContainerSaveOnAutoSave" type="HBoxContainer" parent="HistoryOptions" unique_id=1089949632]
+[node name="HBoxContainerSaveOnAutoSave" type="HBoxContainer" parent="HistoryOptions"]
 layout_mode = 2
 
-[node name="EnabledLabel" type="Label" parent="HistoryOptions/HBoxContainerSaveOnAutoSave" unique_id=303666618]
+[node name="EnabledLabel" type="Label" parent="HistoryOptions/HBoxContainerSaveOnAutoSave"]
 layout_mode = 2
 text = "Save on Auto-Save signal"
 
-[node name="HintTooltip" parent="HistoryOptions/HBoxContainerSaveOnAutoSave" unique_id=1112322154 instance=ExtResource("2_wefye")]
+[node name="HintTooltip" parent="HistoryOptions/HBoxContainerSaveOnAutoSave" instance=ExtResource("2_wefye")]
 layout_mode = 2
 tooltip_text = "Stores the already-visited history in a global save file when an Auto-Save occurs.
 The Auto-Save is part of the Save settings."
-texture = null
+texture = SubResource("ImageTexture_irr0a")
 hint_text = "Stores the already-visited history in a global save file when an Auto-Save occurs.
 The Auto-Save is part of the Save settings."
 
-[node name="SaveOnAutoSaveToggle" type="CheckBox" parent="HistoryOptions/HBoxContainerSaveOnAutoSave" unique_id=46726281]
+[node name="SaveOnAutoSaveToggle" type="CheckBox" parent="HistoryOptions/HBoxContainerSaveOnAutoSave"]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="HBoxContainerSaveOnSave" type="HBoxContainer" parent="HistoryOptions" unique_id=1210758257]
+[node name="HBoxContainerSaveOnSave" type="HBoxContainer" parent="HistoryOptions"]
 layout_mode = 2
 
-[node name="EnabledLabel" type="Label" parent="HistoryOptions/HBoxContainerSaveOnSave" unique_id=1943912438]
+[node name="EnabledLabel" type="Label" parent="HistoryOptions/HBoxContainerSaveOnSave"]
 layout_mode = 2
 text = "Save on Save signal"
 
-[node name="HintTooltip" parent="HistoryOptions/HBoxContainerSaveOnSave" unique_id=735268852 instance=ExtResource("2_wefye")]
+[node name="HintTooltip" parent="HistoryOptions/HBoxContainerSaveOnSave" instance=ExtResource("2_wefye")]
 layout_mode = 2
 tooltip_text = "Stores the already-visited history in a global save file when a normal Save occurs.
 This can be done via the Dialogic.Save.save method.
 This setting ignores Auto-Saves."
-texture = null
+texture = SubResource("ImageTexture_irr0a")
 hint_text = "Stores the already-visited history in a global save file when a normal Save occurs.
 This can be done via the Dialogic.Save.save method.
 This setting ignores Auto-Saves."
 
-[node name="SaveOnSaveToggle" type="CheckBox" parent="HistoryOptions/HBoxContainerSaveOnSave" unique_id=266715562]
+[node name="SaveOnSaveToggle" type="CheckBox" parent="HistoryOptions/HBoxContainerSaveOnSave"]
 unique_name_in_owner = true
 layout_mode = 2

@@ -12,6 +12,10 @@
         "source": "com.godot.game-build-21:/mipmap/icon_foreground.webp"
     },
     {
+        "merged": "com.godot.game-standardDebug-20:/drawable_splash_icon.webp.flat",
+        "source": "com.godot.game-build-21:/drawable/splash_icon.webp"
+    },
+    {
         "merged": "com.godot.game-standardDebug-20:/mipmap-hdpi-v4_icon.webp.flat",
         "source": "com.godot.game-build-21:/mipmap-hdpi-v4/icon.webp"
     },

@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://lx24i8fl6uo"]
+[gd_scene load_steps=4 format=3 uid="uid://lx24i8fl6uo"]
 
 [ext_resource type="Script" uid="uid://gv8mqbjor5nu" path="res://addons/dialogic/Modules/DefaultLayoutParts/Layer_History/history_layer.gd" id="1_4mqm3"]
 [ext_resource type="PackedScene" uid="uid://cuoywrmvda1yg" path="res://addons/dialogic/Modules/DefaultLayoutParts/Layer_History/example_history_item.tscn" id="2_x1xgk"]
@@ -15,7 +15,7 @@ corner_radius_top_right = 20
 corner_radius_bottom_right = 20
 corner_radius_bottom_left = 20
 
-[node name="ExampleHistoryScene" type="Control" unique_id=702131684]
+[node name="ExampleHistoryScene" type="Control"]
 layout_direction = 1
 layout_mode = 3
 anchors_preset = 15
@@ -27,9 +27,16 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 mouse_filter = 2
 script = ExtResource("1_4mqm3")
+font_use_global_size = null
+font_custom_size = null
+font_use_global_fonts = null
+font_custom_normal = null
+font_custom_bold = null
+font_custom_italics = null
 HistoryItem = ExtResource("2_x1xgk")
+disabled = null
 
-[node name="HistoryBox" type="ScrollContainer" parent="." unique_id=1614068644]
+[node name="HistoryBox" type="ScrollContainer" parent="."]
 unique_name_in_owner = true
 visible = false
 layout_mode = 1
@@ -46,14 +53,14 @@ size_flags_vertical = 3
 theme_override_styles/panel = SubResource("StyleBoxFlat_1hdvb")
 horizontal_scroll_mode = 0
 
-[node name="HistoryLog" type="VBoxContainer" parent="HistoryBox" unique_id=241003830]
+[node name="HistoryLog" type="VBoxContainer" parent="HistoryBox"]
 unique_name_in_owner = true
 layout_direction = 1
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="ShowHistory" type="Button" parent="." unique_id=1428463642]
+[node name="ShowHistory" type="Button" parent="."]
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
@@ -67,7 +74,7 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 text = "History"
 
-[node name="HideHistory" type="Button" parent="." unique_id=2093329110]
+[node name="HideHistory" type="Button" parent="."]
 visible = false
 layout_mode = 1
 anchors_preset = 1

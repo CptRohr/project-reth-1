@@ -1,2 +1,3 @@
-res://Areas/street.tscn
-res://addons/dialogic/Modules/Variable/subsystem_variables.gd
+res://Areas/Indoor/home.tscn
+res://Characters/NPC/npc.gd
+res://Characters/NPC/abang_brewok.gd

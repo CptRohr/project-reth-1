@@ -6,8 +6,8 @@
     android:versionName="1.0.0" >
 
     <uses-sdk
-        android:minSdkVersion="24"
-        android:targetSdkVersion="35" />
+        android:minSdkVersion="29"
+        android:targetSdkVersion="36" />
 
     <supports-screens
         android:largeScreens="true"
@@ -24,8 +24,8 @@
         android:version="1" />
     <uses-feature
         android:name="android.hardware.vulkan.version"
-        android:required="true"
-        android:version="0x400003" />
+        android:required="false"
+        android:version="0x401000" />
 
     <application
         android:allowBackup="false"
@@ -43,7 +43,7 @@
             android:value="mobile" />
         <meta-data
             android:name="org.godotengine.editor.version"
-            android:value="4.6.2.stable" />
+            android:value="4.7.stable" />
 
         <activity
             android:name="com.godot.game.GodotApp"
@@ -53,6 +53,7 @@
             android:launchMode="singleInstancePerTask"
             android:resizeableActivity="true"
             android:screenOrientation="landscape"
+            android:supportsPictureInPicture="true"
             android:theme="@style/GodotAppSplashTheme"
             android:windowSoftInputMode="adjustResize" >
         </activity>
@@ -74,9 +75,7 @@
             android:shell="true" /> <!-- Records the version of the Godot library -->
         <meta-data
             android:name="org.godotengine.library.version"
-            android:value="4.6.2.stable" />
-
-        <service android:name="org.godotengine.godot.GodotDownloaderService" />
+            android:value="4.7.0.stable" />
 
         <activity
             android:name="org.godotengine.godot.utils.ProcessPhoenix"

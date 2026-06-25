@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://dlx7jcvm52tyw"]
+[gd_scene load_steps=11 format=3 uid="uid://dlx7jcvm52tyw"]
 
 [ext_resource type="Script" uid="uid://bminl7x3r40vc" path="res://addons/dialogic/Modules/DefaultLayoutParts/Layer_Textbubble/text_bubble.gd" id="1_jdhpk"]
 [ext_resource type="Shader" uid="uid://byskpb7ypvuab" path="res://addons/dialogic/Modules/DefaultLayoutParts/Layer_Textbubble/text_bubble.gdshader" id="2_1mhvf"]
@@ -16,8 +16,8 @@ fractal_type = 0
 cellular_jitter = 0.15
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_kr7hw"]
-noise = SubResource("FastNoiseLite_lsfnp")
 seamless = true
+noise = SubResource("FastNoiseLite_lsfnp")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_60xbe"]
 resource_local_to_scene = true
@@ -41,20 +41,20 @@ corner_radius_bottom_left = 10
 shadow_color = Color(0.152941, 0.152941, 0.152941, 0.12549)
 shadow_size = 5
 
-[node name="TextBubble" type="Control" unique_id=2552248]
+[node name="TextBubble" type="Control"]
 layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_jdhpk")
 
-[node name="Group" type="CanvasGroup" parent="." unique_id=1777918824]
+[node name="Group" type="CanvasGroup" parent="."]
 
-[node name="Tail" type="Line2D" parent="Group" unique_id=1965209545]
+[node name="Tail" type="Line2D" parent="Group"]
 unique_name_in_owner = true
 points = PackedVector2Array(-9, 7, -29, 118, -95, 174, -193, 195)
 width = 96.0
 width_curve = SubResource("Curve_0j8nu")
 
-[node name="Background" type="ColorRect" parent="Group" unique_id=532564536]
+[node name="Background" type="ColorRect" parent="Group"]
 unique_name_in_owner = true
 material = SubResource("ShaderMaterial_60xbe")
 offset_left = -115.0
@@ -63,7 +63,7 @@ offset_right = 108.0
 offset_bottom = 83.0
 mouse_filter = 2
 
-[node name="DialogText" type="RichTextLabel" parent="." unique_id=2128299327 node_paths=PackedStringArray("textbox_root")]
+[node name="DialogText" type="RichTextLabel" parent="." node_paths=PackedStringArray("textbox_root")]
 unique_name_in_owner = true
 clip_contents = false
 layout_mode = 1
@@ -85,10 +85,10 @@ visible_characters_behavior = 1
 script = ExtResource("3_syv35")
 textbox_root = NodePath("..")
 
-[node name="DialogicNode_TypeSounds" type="AudioStreamPlayer" parent="DialogText" unique_id=294859046]
+[node name="DialogicNode_TypeSounds" type="AudioStreamPlayer" parent="DialogText"]
 script = ExtResource("4_7bm4b")
 
-[node name="NameLabelPositioner" type="HBoxContainer" parent="DialogText" unique_id=1944500066]
+[node name="NameLabelPositioner" type="HBoxContainer" parent="DialogText"]
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
@@ -96,12 +96,12 @@ offset_bottom = 23.0
 grow_horizontal = 2
 alignment = 1
 
-[node name="NameLabelPanel" type="PanelContainer" parent="DialogText/NameLabelPositioner" unique_id=434510044]
+[node name="NameLabelPanel" type="PanelContainer" parent="DialogText/NameLabelPositioner"]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_h6ls0")
 
-[node name="NameLabel" type="Label" parent="DialogText/NameLabelPositioner/NameLabelPanel" unique_id=408659308 node_paths=PackedStringArray("name_label_root")]
+[node name="NameLabel" type="Label" parent="DialogText/NameLabelPositioner/NameLabelPanel" node_paths=PackedStringArray("name_label_root")]
 unique_name_in_owner = true
 layout_mode = 2
 horizontal_alignment = 1

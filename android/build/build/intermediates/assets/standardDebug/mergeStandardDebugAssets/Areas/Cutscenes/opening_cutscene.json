@@ -1,0 +1,66 @@
+{
+  "steps": [
+    {"action": "call", "method": "reset_opening_stage"},
+    {"action": "fade_black", "from": 1.0, "to": 0.0, "duration": 0.8},
+
+    {"action": "caption", "text": "Hutan - napas terburu-buru"},
+    {"action": "move", "target": "World/Girl", "from": [-560, 195], "to": [-110, 195], "duration": 4.0},
+    {"action": "wait", "duration": 3.5},
+    {"action": "allow_skip", "value": true, "show_hint": true},
+
+    {"action": "caption", "text": ""},
+    {"action": "wait", "duration": 0.9},
+    {"action": "location", "name": "cabin_exterior"},
+    {"action": "caption", "text": "Kabin tua muncul di tengah hujan"},
+    {"action": "move", "target": "World/Girl", "from": [-460, 205], "to": [-35, 205], "duration": 4.0},
+    {"action": "wait", "duration": 4.2},
+
+    {"action": "location", "name": "cabin_interior"},
+    {"action": "position", "target": "World/Girl", "position": [-190, 205]},
+    {"action": "caption", "text": "Tok tok tok"},
+    {"action": "pulse_caption", "count": 3, "delay": 0.48},
+
+    {"action": "caption", "text": ""},
+    {"action": "phone", "visible": true, "text": "Calling...\nNo signal"},
+    {"action": "wait", "duration": 3.0},
+
+    {"action": "location", "name": "loft"},
+    {"action": "position", "target": "World/Girl", "position": [-30, 95]},
+    {"action": "phone", "visible": true, "text": "No signal"},
+    {"action": "caption", "text": "Loteng"},
+    {"action": "wait", "duration": 2.5},
+
+    {"action": "caption", "text": "Pintu didobrak"},
+    {"action": "visible", "target": "World/SuitedPeople", "value": true},
+    {"action": "move", "target": "World/SuitedPeople", "from": [-290, 210], "to": [85, 210], "duration": 3.0},
+    {"action": "wait", "duration": 3.2},
+
+    {"action": "location", "name": "escape_path"},
+    {"action": "phone", "visible": true, "text": "No signal"},
+    {"action": "visible", "target": "World/SuitedPeople", "value": false},
+    {"action": "move", "target": "World/Girl", "from": [-500, 205], "to": [-85, 205], "duration": 3.0},
+    {"action": "caption", "text": ""},
+    {"action": "wait", "duration": 3.1},
+
+    {"action": "visible", "target": "World/BlackCar", "value": true},
+    {"action": "position", "target": "World/BlackCar", "position": [220, 212]},
+    {"action": "caption", "text": "Mobil hitam menghadang jalan"},
+    {"action": "wait", "duration": 2.2},
+
+    {"action": "allow_skip", "value": false, "show_hint": false},
+    {"action": "phone", "visible": false},
+    {"action": "caption", "text": ""},
+    {"action": "set_flag", "name": "opening_cutscene_completed", "value": true},
+    {"action": "black", "visible": true, "alpha": 1.0},
+    {"action": "wait", "duration": 0.4},
+    {"action": "change_scene", "scene": "res://Areas/Indoor/home.tscn"}
+  ],
+  "skip_steps": [
+    {"action": "phone", "visible": false},
+    {"action": "caption", "text": ""},
+    {"action": "set_flag", "name": "opening_cutscene_completed", "value": true},
+    {"action": "black", "visible": true, "alpha": 1.0},
+    {"action": "wait", "duration": 0.4},
+    {"action": "change_scene", "scene": "res://Areas/Indoor/home.tscn"}
+  ]
+}

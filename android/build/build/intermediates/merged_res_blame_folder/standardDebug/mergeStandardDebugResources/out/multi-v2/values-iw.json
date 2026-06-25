@@ -4,7 +4,24 @@
             "outputFile": "com.godot.game-mergeStandardDebugResources-18:/values-iw/values-iw.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\PC HOME\\.gradle\\caches\\8.11.1\\transforms\\1f78652368fcaf22ddb356e4bfe9a15a\\transformed\\core-1.8.0\\res\\values-iw\\values-iw.xml",
+                    "source": "D:\\GAME PROJECT\\project-reth-1\\android\\build\\res\\values-iw\\godot_project_name_string.xml",
+                    "from": {
+                        "startLines": "3",
+                        "startColumns": "1",
+                        "startOffsets": "112",
+                        "endColumns": "70",
+                        "endOffsets": "181"
+                    },
+                    "to": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "73",
+                        "endOffsets": "124"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\PC HOME\\.gradle\\caches\\8.11.1\\transforms\\f4e62fd05103296d15db064d8b7d9b6e\\transformed\\core-1.8.0\\res\\values-iw\\values-iw.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
@@ -15,26 +32,9 @@
                     "to": {
                         "startLines": "3",
                         "startColumns": "4",
-                        "startOffsets": "121",
+                        "startOffsets": "129",
                         "endColumns": "100",
-                        "endOffsets": "217"
-                    }
-                },
-                {
-                    "source": "D:\\GAME PROJECT\\project-reth-1\\android\\build\\res\\values-iw\\godot_project_name_string.xml",
-                    "from": {
-                        "startLines": "3",
-                        "startColumns": "1",
-                        "startOffsets": "112",
-                        "endColumns": "62",
-                        "endOffsets": "173"
-                    },
-                    "to": {
-                        "startLines": "2",
-                        "startColumns": "4",
-                        "startOffsets": "55",
-                        "endColumns": "65",
-                        "endOffsets": "116"
+                        "endOffsets": "225"
                     }
                 }
             ]

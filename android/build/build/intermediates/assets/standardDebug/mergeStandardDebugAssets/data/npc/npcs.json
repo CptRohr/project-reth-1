@@ -1,0 +1,34 @@
+{
+  "npcs": [
+    {
+      "id": "abang_brewok",
+      "display_name": "Abang Brewok",
+      "default_timeline": "AbangBrewok",
+      "visible_by_default": false,
+      "notes": "Sample NPC controlled by NPCData."
+    }
+  ],
+  "appearance_rules": [
+    {
+      "npc_id": "abang_brewok",
+      "scene_path": "res://Areas/street.tscn",
+      "days": [
+        "monday",
+        "tuesday",
+        "wednesday",
+        "thursday",
+        "friday"
+      ],
+      "dates": [],
+      "time_blocks": [
+        "after_school",
+        "evening"
+      ],
+      "required_flags": [],
+      "blocked_flags": [],
+      "visible": true,
+      "interactable": true
+    }
+  ],
+  "dialogue_routes": []
+}

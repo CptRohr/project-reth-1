@@ -19,7 +19,6 @@ config/icon="res://icon.svg"
 [autoload]
 
 SceneManager="*uid://cwfb1jxont4t7"
-Dialogic="*uid://ds2q0uclmolvu"
 Transition="*uid://burrfa5pw6bu0"
 GameState="*res://Managers/game_state.gd"
 EventManager="*res://Managers/event_manager.gd"
@@ -35,6 +34,7 @@ NPCData="*res://Managers/NPCData.gd"
 WeatherFilter="*res://Scene/WeatherFilter.tscn"
 AudioSettings="*res://Managers/audio_settings.gd"
 TimePassageTransition="*res://Scene/TimePassageTransition.tscn"
+Dialogic="*uid://ds2q0uclmolvu"
 
 [dialogic]
 

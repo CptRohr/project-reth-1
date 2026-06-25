@@ -29,8 +29,8 @@ func _process(_delta):
 			return
 
 		# Temporary Dialogic shutdown while the plugin is broken on the current Godot version.
-		TemporaryDialogicBlocker.show_broken_message(self)
-		return
+		#TemporaryDialogicBlocker.show_broken_message(self)
+		#return
 
 		if !Dialogic.current_timeline:
 			var chosen_timeline := get_dialogue_timeline()

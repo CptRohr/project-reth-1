@@ -1,0 +1,32 @@
+{
+  "monday": {
+    "morning": {
+      "type": "forced_activity",
+      "activity_id": "school"
+    }
+  },
+  "tuesday": {
+    "morning": {
+      "type": "forced_activity",
+      "activity_id": "school"
+    }
+  },
+  "wednesday": {
+    "morning": {
+      "type": "forced_activity",
+      "activity_id": "school"
+    }
+  },
+  "thursday": {
+    "morning": {
+      "type": "forced_activity",
+      "activity_id": "school"
+    }
+  },
+  "friday": {
+    "morning": {
+      "type": "forced_activity",
+      "activity_id": "school"
+    }
+  }
+}

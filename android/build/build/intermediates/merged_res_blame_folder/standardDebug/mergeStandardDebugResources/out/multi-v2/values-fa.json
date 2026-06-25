@@ -9,36 +9,19 @@
                         "startLines": "3",
                         "startColumns": "1",
                         "startOffsets": "112",
-                        "endColumns": "62",
-                        "endOffsets": "173"
+                        "endColumns": "70",
+                        "endOffsets": "181"
                     },
                     "to": {
                         "startLines": "2",
                         "startColumns": "4",
                         "startOffsets": "55",
-                        "endColumns": "65",
-                        "endOffsets": "116"
+                        "endColumns": "73",
+                        "endOffsets": "124"
                     }
                 },
                 {
-                    "source": "C:\\Users\\PC HOME\\.gradle\\caches\\8.11.1\\transforms\\18e3372bd8c516627d1204b827f30461\\transformed\\jetified-godot-lib.template_debug\\res\\values-fa\\values-fa.xml",
-                    "from": {
-                        "startLines": "2,3,4,5,6,7,8,9,10,11,12",
-                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4",
-                        "startOffsets": "55,109,183,241,301,370,440,618,791,893,972",
-                        "endColumns": "53,73,57,59,68,69,177,172,101,78,70",
-                        "endOffsets": "104,178,236,296,365,435,613,786,888,967,1038"
-                    },
-                    "to": {
-                        "startLines": "4,5,6,7,8,9,10,11,12,13,14",
-                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4",
-                        "startOffsets": "222,276,350,408,468,537,607,785,958,1060,1139",
-                        "endColumns": "53,73,57,59,68,69,177,172,101,78,70",
-                        "endOffsets": "271,345,403,463,532,602,780,953,1055,1134,1205"
-                    }
-                },
-                {
-                    "source": "C:\\Users\\PC HOME\\.gradle\\caches\\8.11.1\\transforms\\1f78652368fcaf22ddb356e4bfe9a15a\\transformed\\core-1.8.0\\res\\values-fa\\values-fa.xml",
+                    "source": "C:\\Users\\PC HOME\\.gradle\\caches\\8.11.1\\transforms\\f4e62fd05103296d15db064d8b7d9b6e\\transformed\\core-1.8.0\\res\\values-fa\\values-fa.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
@@ -49,9 +32,9 @@
                     "to": {
                         "startLines": "3",
                         "startColumns": "4",
-                        "startOffsets": "121",
+                        "startOffsets": "129",
                         "endColumns": "100",
-                        "endOffsets": "217"
+                        "endOffsets": "225"
                     }
                 }
             ]

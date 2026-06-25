@@ -106,6 +106,7 @@ layout_mode = 2
 unique_name_in_owner = true
 layout_mode = 2
 tooltip_text = "Resource List Options"
+theme_type_variation = &"FlatMenuButton"
 flat = false
 
 [node name="ResourceTree" type="Tree" parent="VBoxPrimary/Margin/MainVSplit/VBox" unique_id=47398120]

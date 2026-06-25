@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="godot_project_name_string">RETH Game 1</string>
+    <string name="godot_project_name_string">RETH Game 1 (indev)</string>
     <style name="GodotAppMainTheme" parent="@android:style/Theme.DeviceDefault.NoActionBar">
 		<item name="android:windowSwipeToDismiss">false</item>
 		<item name="android:windowIsTranslucent">false</item>
@@ -8,7 +8,7 @@
 	</style>
     <style name="GodotAppSplashTheme" parent="Theme.SplashScreen">
 		<item name="android:windowSplashScreenBackground">@mipmap/icon_background</item>
-		<item name="windowSplashScreenAnimatedIcon">@mipmap/icon_foreground</item>
+		<item name="windowSplashScreenAnimatedIcon">@drawable/splash_icon</item>
 		<item name="postSplashScreenTheme">@style/GodotAppMainTheme</item>
 		<item name="android:windowIsTranslucent">false</item>
 	</style>

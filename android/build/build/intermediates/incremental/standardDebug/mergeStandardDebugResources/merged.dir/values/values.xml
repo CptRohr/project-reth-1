@@ -110,55 +110,22 @@
     <integer name="default_icon_animation_duration">10000</integer>
     <integer name="status_bar_notification_info_maxnum">999</integer>
     <string name="androidx_startup" translatable="false">androidx.startup</string>
+    <string name="dialog_cancel">Cancel</string>
+    <string name="dialog_download">Download</string>
     <string name="dialog_ok">OK</string>
-    <string name="error_engine_setup_message">Unable to setup the Godot Engine! Aborting…</string>
+    <string name="error_engine_setup_message">Unable to set up the Godot Engine! Aborting…</string>
     <string name="error_missing_vulkan_requirements_message">Warning - this device does not meet the requirements for Vulkan support</string>
-    <string name="godot_project_name_string">RETH Game 1</string>
-    <string name="kilobytes_per_second">%1$s KB/s</string>
-    <string name="notification_download_complete">Download complete</string>
-    <string name="notification_download_failed">Download unsuccessful</string>
-    <string name="state_completed">Download finished</string>
-    <string name="state_connecting">Connecting to the download server</string>
-    <string name="state_downloading">Downloading resources</string>
-    <string name="state_failed">Download failed</string>
-    <string name="state_failed_cancelled">Download canceled</string>
-    <string name="state_failed_fetching_url">Download failed because the resources could not be found</string>
-    <string name="state_failed_sdcard_full">Download failed because the external storage is full</string>
-    <string name="state_failed_unlicensed">Download failed because you may not have purchased this app</string>
-    <string name="state_fetching_url">Looking for resources to download</string>
-    <string name="state_idle">Waiting for download to start</string>
-    <string name="state_paused_by_request">Download paused</string>
-    <string name="state_paused_network_setup_failure">Download paused. Test a website in browser</string>
-    <string name="state_paused_network_unavailable">Download paused because no network is available</string>
-    <string name="state_paused_roaming">Download paused because you are roaming</string>
-    <string name="state_paused_sdcard_unavailable">Download paused because the external storage is unavailable</string>
-    <string name="state_paused_wifi_disabled">Download paused because wifi is disabled</string>
-    <string name="state_paused_wifi_unavailable">Download paused because wifi is unavailable</string>
-    <string name="state_unknown">Starting…</string>
+    <string name="gabe_connection_error_message">Unable to connect to the Godot Android Build Environment (GABE). Please make sure it\'s installed on your device.</string>
+    <string name="gabe_connection_error_title">Connection Failed!</string>
+    <string name="godot_project_name_string">RETH Game 1 (indev)</string>
     <string name="status_bar_notification_info_overflow">999+</string>
-    <string name="text_button_cancel">Cancel</string>
-    <string name="text_button_cancel_verify">Cancel Verification</string>
-    <string name="text_button_pause">Pause Download</string>
-    <string name="text_button_resume">Resume Download</string>
-    <string name="text_button_resume_cellular">Resume download</string>
-    <string name="text_button_wifi_settings">Wi-Fi settings</string>
     <string name="text_error_title">Error!</string>
-    <string name="text_paused_cellular">Would you like to enable downloading over cellular connections? Depending on your data plan, this may cost you money.</string>
-    <string name="text_paused_cellular_2">If you choose not to enable downloading over cellular connections, the download will automatically resume when wi-fi is available.</string>
-    <string name="text_validation_complete">XAPK File Validation Complete. Select OK to exit.</string>
-    <string name="text_validation_failed">XAPK File Validation Failed.</string>
-    <string name="text_verifying_download">Verifying Download</string>
-    <string name="time_remaining">Time remaining: %1$s</string>
-    <string name="time_remaining_notification">%1$s left</string>
     <style name="Base.Theme.SplashScreen" parent="Base.v21.Theme.SplashScreen"/>
     <style name="Base.Theme.SplashScreen.DayNight" parent="Base.Theme.SplashScreen.Light"/>
     <style name="Base.Theme.SplashScreen.Light" parent="Base.v21.Theme.SplashScreen.Light"/>
     <style name="Base.v21.Theme.SplashScreen" parent="android:Theme.DeviceDefault.NoActionBar">
     </style>
     <style name="Base.v21.Theme.SplashScreen.Light" parent="android:Theme.DeviceDefault.Light.NoActionBar">
-    </style>
-    <style name="ButtonBackground">
-        <item name="android:background">@android:color/background_dark</item>
     </style>
     <style name="GodotAppMainTheme" parent="@android:style/Theme.DeviceDefault.NoActionBar">
 		<item name="android:windowSwipeToDismiss">false</item>
@@ -167,24 +134,10 @@
 	</style>
     <style name="GodotAppSplashTheme" parent="Theme.SplashScreen">
 		<item name="android:windowSplashScreenBackground">@mipmap/icon_background</item>
-		<item name="windowSplashScreenAnimatedIcon">@mipmap/icon_foreground</item>
+		<item name="windowSplashScreenAnimatedIcon">@drawable/splash_icon</item>
 		<item name="postSplashScreenTheme">@style/GodotAppMainTheme</item>
 		<item name="android:windowIsTranslucent">false</item>
 	</style>
-    <style name="NotificationText">
-        <item name="android:textColor">?android:attr/textColorPrimary</item>
-    </style>
-    <style name="NotificationTextShadow" parent="NotificationText">
-        <item name="android:textColor">?android:attr/textColorPrimary</item>
-        <item name="android:shadowColor">@android:color/background_dark</item>
-        <item name="android:shadowDx">1.0</item>
-        <item name="android:shadowDy">1.0</item>
-        <item name="android:shadowRadius">1</item>
-    </style>
-    <style name="NotificationTitle">
-        <item name="android:textColor">?android:attr/textColorPrimary</item>
-        <item name="android:textStyle">bold</item>
-    </style>
     <style name="TextAppearance.Compat.Notification" parent="@android:style/TextAppearance.StatusBar.EventContent"/>
     <style name="TextAppearance.Compat.Notification.Info">
         <item name="android:textSize">12sp</item>
