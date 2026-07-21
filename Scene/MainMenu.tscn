@@ -5,7 +5,62 @@
 
 [sub_resource type="LabelSettings" id="LabelSettings_rrxvj"]
 font = ExtResource("2_c6fb4")
-font_size = 70
+font_size = 102
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_638js"]
+bg_color = Color(1, 1, 1, 1)
+border_width_bottom = 6
+corner_radius_top_left = 24
+corner_radius_top_right = 24
+corner_radius_bottom_right = 24
+corner_radius_bottom_left = 24
+shadow_size = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c6fb4"]
+bg_color = Color(0.40832946, 0.40832946, 0.40832946, 1)
+corner_radius_top_left = 24
+corner_radius_top_right = 24
+corner_radius_bottom_right = 24
+corner_radius_bottom_left = 24
+shadow_size = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6o0c3"]
+bg_color = Color(0.70380783, 0.70380783, 0.70380783, 1)
+corner_radius_top_left = 24
+corner_radius_top_right = 24
+corner_radius_bottom_right = 24
+corner_radius_bottom_left = 24
+shadow_size = 3
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_d4yab"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jx3iw"]
+bg_color = Color(1, 1, 1, 1)
+border_width_bottom = 8
+corner_radius_top_left = 24
+corner_radius_top_right = 24
+corner_radius_bottom_right = 24
+corner_radius_bottom_left = 24
+shadow_size = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d136f"]
+bg_color = Color(1, 1, 1, 1)
+border_width_bottom = 8
+corner_radius_top_left = 24
+corner_radius_top_right = 24
+corner_radius_bottom_right = 24
+corner_radius_bottom_left = 24
+shadow_size = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d4yab"]
+bg_color = Color(0, 0, 0.59607846, 1)
+skew = Vector2(0.15, 0)
+border_width_top = 24
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+shadow_size = 3
 
 [node name="MainMenu" type="Node2D" unique_id=1904567887]
 script = ExtResource("1_rrxvj")
@@ -28,9 +83,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -225.5
-offset_top = -83.5
+offset_top = -187.0
 offset_right = 225.5
-offset_bottom = 83.5
+offset_bottom = 187.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -41,24 +96,51 @@ label_settings = SubResource("LabelSettings_rrxvj")
 horizontal_alignment = 1
 
 [node name="StartButton" type="Button" parent="CanvasLayer/Control/VBoxContainer" unique_id=1198836106]
-custom_minimum_size = Vector2(200, 100)
+custom_minimum_size = Vector2(400, 100)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-text = "Start"
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_638js")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_c6fb4")
+theme_override_styles/hover = SubResource("StyleBoxFlat_6o0c3")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_d4yab")
+text = "Start Game"
 
 [node name="SettingsButton" type="Button" parent="CanvasLayer/Control/VBoxContainer" unique_id=1639330726]
-custom_minimum_size = Vector2(200, 100)
+custom_minimum_size = Vector2(400, 80)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_jx3iw")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_c6fb4")
+theme_override_styles/hover = SubResource("StyleBoxFlat_6o0c3")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_d4yab")
 text = "Settings"
 
 [node name="ExitButton" type="Button" parent="CanvasLayer/Control/VBoxContainer" unique_id=1834787999]
-custom_minimum_size = Vector2(200, 100)
+custom_minimum_size = Vector2(400, 80)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_d136f")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_c6fb4")
+theme_override_styles/hover = SubResource("StyleBoxFlat_6o0c3")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_d4yab")
 text = "Exit"
 
 [node name="SettingsPanel" type="PanelContainer" parent="CanvasLayer/Control" unique_id=1706783845]
@@ -69,12 +151,13 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -160.0
+offset_left = -225.0
 offset_top = -184.0
-offset_right = 160.0
-offset_bottom = 184.0
+offset_right = 225.0
+offset_bottom = 166.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_d4yab")
 
 [node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Control/SettingsPanel" unique_id=226071030]
 layout_mode = 2
@@ -82,6 +165,7 @@ theme_override_constants/margin_left = 12
 theme_override_constants/margin_top = 12
 theme_override_constants/margin_right = 12
 theme_override_constants/margin_bottom = 12
+accessibility_region = true
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control/SettingsPanel/MarginContainer" unique_id=1793199899]
 layout_mode = 2
