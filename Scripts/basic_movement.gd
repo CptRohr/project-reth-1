@@ -25,6 +25,8 @@ var player_inside = false
 var default_zoom := Vector2(2.75, 2.75)
 var active_dialogue_npc: Node2D = null
 var camera_tween: Tween = null
+var camera_position_smoothing_enabled := false
+var camera_rotation_smoothing_enabled := false
 
 
 func _ready():
@@ -38,6 +40,8 @@ func _ready():
 
 	if camera:
 		default_zoom = camera.zoom
+		camera_position_smoothing_enabled = camera.position_smoothing_enabled
+		camera_rotation_smoothing_enabled = camera.rotation_smoothing_enabled
 
 func _physics_process(delta):
 	var direction := Input.get_axis("move_left", "move_right")
@@ -115,7 +119,12 @@ func _zoom_camera_to_npc(npc: Node2D) -> void:
 	print("               Player Pos: %s, NPC Pos: %s" % [global_position, npc.global_position])
 	print("               Target Zoom: %s (factor: %f)" % [target_zoom, zoom_factor])
 	print("               Target Local Pos: %s (offset: %s, blend: %f)" % [target_local_pos, offset, blend])
-	
+
+	# Tweening a smoothed camera can cause the zoom-in to feel late or stuttery.
+	# Disable smoothing while the dialogue camera tween is active, then restore it on reset.
+	camera.position_smoothing_enabled = false
+	camera.rotation_smoothing_enabled = false
+
 	camera_tween = create_tween().set_parallel(true).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
 	camera_tween.tween_property(camera, "position", target_local_pos, dialogue_zoom_duration)
 	camera_tween.tween_property(camera, "zoom", target_zoom, dialogue_zoom_duration)
@@ -130,6 +139,15 @@ func _reset_camera() -> void:
 	camera_tween = create_tween().set_parallel(true).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
 	camera_tween.tween_property(camera, "position", Vector2.ZERO, dialogue_zoom_duration)
 	camera_tween.tween_property(camera, "zoom", default_zoom, dialogue_zoom_duration)
+	camera_tween.finished.connect(_restore_camera_smoothing)
+
+
+func _restore_camera_smoothing() -> void:
+	if not camera:
+		return
+
+	camera.position_smoothing_enabled = camera_position_smoothing_enabled
+	camera.rotation_smoothing_enabled = camera_rotation_smoothing_enabled
 
 func update_facing(direction):
 	if direction != 0:

@@ -1,3 +1,5 @@
+Container
+ColorRect
 Panel
 Node2D
 Button
@@ -6,10 +8,8 @@ CanvasLayer
 Label
 Marker2D
 VideoStreamPlayer
-ColorRect
 Timer
 AudioStreamPlayer2D
 AnimationPlayer
 TextureRect
 VBoxContainer
-Area2D

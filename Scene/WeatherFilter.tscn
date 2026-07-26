@@ -5,7 +5,7 @@
 [ext_resource type="AudioStream" uid="uid://cs00f2khqhggt" path="res://Audio/SFX/thunderstorm ambience.wav" id="3_thunder"]
 
 [node name="WeatherFilter" type="CanvasLayer"]
-layer = 2
+layer = 3
 process_mode = 3
 script = ExtResource("1_weather")
 weather_audio_bus = "WeatherSFX"

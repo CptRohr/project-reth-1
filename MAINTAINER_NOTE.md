@@ -297,7 +297,15 @@ Managers/time_of_day_filter.gd
 Scene/TimeOfDayFilter.tscn
 ```
 
-`TimeOfDayFilter` is an autoloaded `CanvasLayer` that listens to `GameState.time_block_changed` and `GameState.state_loaded`. It overlays a subtle `ColorRect` tint based on `GameState.time_block`:
+`TimeOfDayFilter` is an autoloaded controller node that listens to `GameState.time_block_changed`, `GameState.state_loaded`, and `GameState.state_changed`. It only activates for gameplay scenes under `res://Areas/` and stays hidden for Boot, Main Menu, and cutscenes.
+
+It now drives three layers:
+
+- a background `ColorRect` with a time-block gradient for the sky/base backdrop
+- a foreground `ColorRect` tint for the old mood-color effect
+- a top `ColorRect` brightness/darkness wash that deepens the scene through the day
+
+The background layer sits behind the world, the tint layer stays in the middle, and the brightness layer sits above gameplay art but below UI. All three layers use `GameState.time_block` as the primary source of truth:
 
 ```text
 Morning: clear
@@ -310,8 +318,8 @@ Maintenance rules:
 
 - This layer is intentionally temporary mood lighting until scene-specific evening/night backgrounds or parallax are ready.
 - Time still belongs to `GameState`; the filter only reads time and never advances it.
-- Keep the filter below UI layers. It currently uses layer `1`, while pause/school/transition/debug UI use higher layers.
-- Tune temporary colors in `TIME_BLOCK_TINTS`.
+- Keep the filter below UI layers. It currently uses layer `1` for tint and `2` for brightness, while pause/school/transition/debug UI use higher layers.
+- Tune temporary colors in `TIME_BLOCK_TINTS` and `TIME_BLOCK_BRIGHTNESS`.
 - Later, this can become the manager that broadcasts visual profiles while outdoor scenes handle their own parallax/background swaps.
 
 ## Weather Visual Filter
@@ -333,12 +341,12 @@ Scene/WeatherFilter.tscn
 
 Maintenance rules:
 
-- `TimeOfDayFilter` still owns the final persistent full-screen tint. It composes time-of-day tint with weather tint so filters do not stack.
+- `TimeOfDayFilter` owns the persistent time-block sky gradient, the mood tint, and the brightness/darkness wash. It composes those with weather tint so filters do not stack.
 - `WeatherFilter` owns weather effects: rain lines, full-screen white lightning flashes, and ambient weather loops.
 - Rain uses `Audio/SFX/rain loop.wav`; thunderstorm overlays `Audio/SFX/thunderstorm ambience.wav` on top of the rain loop.
 - Outdoor scenes get full weather visuals and audio. Indoor scenes under `res://Areas/Indoor/` get weather audio only, with a lower volume and low-pass muffling.
 - Tune weather ids, labels, and tint colors in `GameState`; tune rain/lightning/audio placeholders through exported values in `WeatherFilter`.
-- Keep weather below UI layers. `WeatherFilter` uses layer `2`; objective/mobile/pause/school/transition/debug UI use much higher layers.
+- Keep weather below UI layers. `WeatherFilter` uses layer `3`; objective/mobile/pause/school/transition/debug UI use much higher layers.
 
 ## Audio Settings
 

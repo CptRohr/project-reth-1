@@ -2,7 +2,8 @@
 
 [ext_resource type="Script" uid="uid://bjm140bsspmyt" path="res://Areas/street.gd" id="1_fo826"]
 [ext_resource type="PackedScene" uid="uid://d3swmgi1ckxhq" path="res://Characters/Main Character/player.tscn" id="1_y7n76"]
-[ext_resource type="Texture2D" uid="uid://i25y35vcck2s" path="res://Assets/debug assets/GandalfHardcore City Tiles/City background sky.png" id="2_78jhs"]
+[ext_resource type="Texture2D" uid="uid://ceyoobvjjrq27" path="res://Assets/debug assets/Cloud 1.png" id="2_a2c52"]
+[ext_resource type="Texture2D" uid="uid://br4v8hu8mps7p" path="res://Assets/debug assets/Cloud 17.png" id="3_gugtu"]
 [ext_resource type="PackedScene" uid="uid://bi003gu1i7jjb" path="res://Scene/door_transition.tscn" id="3_pes26"]
 [ext_resource type="Texture2D" uid="uid://ds57i8r1obpam" path="res://Assets/debug assets/GandalfHardcore City Tiles/City background layer1.png" id="3_yb0hq"]
 [ext_resource type="PackedScene" uid="uid://cdioa01qum4k4" path="res://Characters/NPC/NPC.tscn" id="4_87pa4"]
@@ -239,34 +240,43 @@ script = ExtResource("1_fo826")
 
 [node name="ParallaxBackground" type="Node2D" parent="." unique_id=1126544392]
 
-[node name="Far" type="Parallax2D" parent="ParallaxBackground" unique_id=2014693656]
-scroll_scale = Vector2(0.1, 1)
-repeat_size = Vector2(1920, 0)
+[node name="High Clouds" type="Parallax2D" parent="ParallaxBackground" unique_id=2014693656]
+scroll_scale = Vector2(0.08, 1)
+repeat_size = Vector2(500, 0)
+autoscroll = Vector2(4, 0)
+repeat_times = 21
 
-[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Far" unique_id=1057957990]
-position = Vector2(-559, -223)
-scale = Vector2(1.2304598, 1.0462426)
-texture = ExtResource("2_78jhs")
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/High Clouds" unique_id=1057957990]
+position = Vector2(67, -102.99999)
+scale = Vector2(1.135, 1.135)
+texture = ExtResource("2_a2c52")
+centered = false
+
+[node name="Sprite2D2" type="Sprite2D" parent="ParallaxBackground/High Clouds" unique_id=1503188374]
+position = Vector2(-285.00003, -63.000008)
+scale = Vector2(1.2882249, 1.2882249)
+texture = ExtResource("3_gugtu")
 centered = false
 
 [node name="Medium" type="Parallax2D" parent="ParallaxBackground" unique_id=1197101498]
 scroll_scale = Vector2(0.5, 1)
-repeat_size = Vector2(1920, 0)
+repeat_size = Vector2(1162.205, 0)
+repeat_times = 3
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Medium" unique_id=916020495]
-position = Vector2(-392, -218)
-scale = Vector2(0.97687846, 0.9768786)
+position = Vector2(24, -288)
+scale = Vector2(1.135, 1.135)
 texture = ExtResource("3_yb0hq")
 centered = false
 
 [node name="Near" type="Parallax2D" parent="ParallaxBackground" unique_id=2029300139]
 scroll_scale = Vector2(0.7, 1)
-scroll_offset = Vector2(50, 25)
-repeat_size = Vector2(1920, 0)
+repeat_size = Vector2(1162.19, 0)
+repeat_times = 3
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Near" unique_id=1361928226]
-position = Vector2(-324, -174)
-scale = Vector2(0.8265896, 0.82658964)
+position = Vector2(24, -288)
+scale = Vector2(1.135, 1.135)
 texture = ExtResource("4_nbdgs")
 centered = false
 
@@ -385,15 +395,16 @@ stat_changes = {
 energy_cost = 2
 minimum_energy = 2
 success_message = "Studied at the library. Knowledge +2. Energy -2."
+not_enough_energy_message = "You are to tired to do this"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PassTimeTest" unique_id=1255192626]
 position = Vector2(131.5, 81.5)
 shape = SubResource("RectangleShape2D_utl14")
 
 [node name="Label" type="Label" parent="PassTimeTest" unique_id=1623517974]
-offset_left = 99.0
+offset_left = 109.0
 offset_top = 67.0
-offset_right = 169.0
+offset_right = 179.0
 offset_bottom = 90.0
 text = "Study"
 label_settings = SubResource("LabelSettings_1eb4q")

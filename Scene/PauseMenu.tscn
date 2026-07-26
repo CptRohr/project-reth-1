@@ -8,7 +8,6 @@ layer = 90
 script = ExtResource("1_pause")
 
 [node name="RootControl" type="Control" parent="." unique_id=55780040]
-visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -17,6 +16,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="CenterContainer" type="CenterContainer" parent="RootControl" unique_id=411715368]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -134,71 +134,65 @@ text = "Fullscreen"
 layout_mode = 2
 text = "VSync"
 
-[node name="MasterVolumeRow" type="HBoxContainer" parent="RootControl/CenterContainer/RootPanel/MarginContainer/Stack/SettingsBox"]
+[node name="MasterVolumeRow" type="HBoxContainer" parent="RootControl/CenterContainer/RootPanel/MarginContainer/Stack/SettingsBox" unique_id=1473631651]
 layout_mode = 2
 theme_override_constants/separation = 8
 
-[node name="MasterVolumeLabel" type="Label" parent="RootControl/CenterContainer/RootPanel/MarginContainer/Stack/SettingsBox/MasterVolumeRow"]
+[node name="MasterVolumeLabel" type="Label" parent="RootControl/CenterContainer/RootPanel/MarginContainer/Stack/SettingsBox/MasterVolumeRow" unique_id=921379460]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Master"
 
-[node name="MasterVolumeSlider" type="HSlider" parent="RootControl/CenterContainer/RootPanel/MarginContainer/Stack/SettingsBox/MasterVolumeRow"]
+[node name="MasterVolumeSlider" type="HSlider" parent="RootControl/CenterContainer/RootPanel/MarginContainer/Stack/SettingsBox/MasterVolumeRow" unique_id=871702986]
 layout_mode = 2
 size_flags_horizontal = 3
-max_value = 100.0
-step = 1.0
 value = 100.0
 
-[node name="MasterVolumeValue" type="Label" parent="RootControl/CenterContainer/RootPanel/MarginContainer/Stack/SettingsBox/MasterVolumeRow"]
+[node name="MasterVolumeValue" type="Label" parent="RootControl/CenterContainer/RootPanel/MarginContainer/Stack/SettingsBox/MasterVolumeRow" unique_id=1807626503]
 custom_minimum_size = Vector2(44, 0)
 layout_mode = 2
-horizontal_alignment = 2
 text = "100"
+horizontal_alignment = 2
 
-[node name="SfxVolumeRow" type="HBoxContainer" parent="RootControl/CenterContainer/RootPanel/MarginContainer/Stack/SettingsBox"]
+[node name="SfxVolumeRow" type="HBoxContainer" parent="RootControl/CenterContainer/RootPanel/MarginContainer/Stack/SettingsBox" unique_id=161196423]
 layout_mode = 2
 theme_override_constants/separation = 8
 
-[node name="SfxVolumeLabel" type="Label" parent="RootControl/CenterContainer/RootPanel/MarginContainer/Stack/SettingsBox/SfxVolumeRow"]
+[node name="SfxVolumeLabel" type="Label" parent="RootControl/CenterContainer/RootPanel/MarginContainer/Stack/SettingsBox/SfxVolumeRow" unique_id=2090670940]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "SFX"
 
-[node name="SfxVolumeSlider" type="HSlider" parent="RootControl/CenterContainer/RootPanel/MarginContainer/Stack/SettingsBox/SfxVolumeRow"]
+[node name="SfxVolumeSlider" type="HSlider" parent="RootControl/CenterContainer/RootPanel/MarginContainer/Stack/SettingsBox/SfxVolumeRow" unique_id=2054820068]
 layout_mode = 2
 size_flags_horizontal = 3
-max_value = 100.0
-step = 1.0
 value = 100.0
 
-[node name="SfxVolumeValue" type="Label" parent="RootControl/CenterContainer/RootPanel/MarginContainer/Stack/SettingsBox/SfxVolumeRow"]
+[node name="SfxVolumeValue" type="Label" parent="RootControl/CenterContainer/RootPanel/MarginContainer/Stack/SettingsBox/SfxVolumeRow" unique_id=1443864311]
 custom_minimum_size = Vector2(44, 0)
 layout_mode = 2
-horizontal_alignment = 2
 text = "100"
+horizontal_alignment = 2
 
-[node name="MusicVolumeRow" type="HBoxContainer" parent="RootControl/CenterContainer/RootPanel/MarginContainer/Stack/SettingsBox"]
+[node name="MusicVolumeRow" type="HBoxContainer" parent="RootControl/CenterContainer/RootPanel/MarginContainer/Stack/SettingsBox" unique_id=2140914332]
 layout_mode = 2
 theme_override_constants/separation = 8
 
-[node name="MusicVolumeLabel" type="Label" parent="RootControl/CenterContainer/RootPanel/MarginContainer/Stack/SettingsBox/MusicVolumeRow"]
+[node name="MusicVolumeLabel" type="Label" parent="RootControl/CenterContainer/RootPanel/MarginContainer/Stack/SettingsBox/MusicVolumeRow" unique_id=1508925430]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Music"
 
-[node name="MusicVolumeSlider" type="HSlider" parent="RootControl/CenterContainer/RootPanel/MarginContainer/Stack/SettingsBox/MusicVolumeRow"]
+[node name="MusicVolumeSlider" type="HSlider" parent="RootControl/CenterContainer/RootPanel/MarginContainer/Stack/SettingsBox/MusicVolumeRow" unique_id=1614553871]
 layout_mode = 2
 size_flags_horizontal = 3
-max_value = 100.0
-step = 1.0
 value = 100.0
 
-[node name="MusicVolumeValue" type="Label" parent="RootControl/CenterContainer/RootPanel/MarginContainer/Stack/SettingsBox/MusicVolumeRow"]
+[node name="MusicVolumeValue" type="Label" parent="RootControl/CenterContainer/RootPanel/MarginContainer/Stack/SettingsBox/MusicVolumeRow" unique_id=1185045547]
 custom_minimum_size = Vector2(44, 0)
 layout_mode = 2
-horizontal_alignment = 2
 text = "100"
+horizontal_alignment = 2
 
 [node name="StatusLabel" type="Label" parent="RootControl/CenterContainer/RootPanel/MarginContainer/Stack/SettingsBox" unique_id=1567150289]
 custom_minimum_size = Vector2(0, 20)

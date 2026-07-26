@@ -1,1 +1,5 @@
-res://Scene/MainMenu.tscn
+res://Areas/street.tscn
+res://Scripts/basic_movement.gd
+res://Scene/MobileControls.tscn
+res://Scene/PauseMenu.tscn
+res://Managers/time_of_day_filter.gd
