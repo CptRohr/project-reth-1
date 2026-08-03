@@ -2,10 +2,10 @@ com.godot.game-jetified-core-splashscreen-1.0.1-0 C:\Users\PC HOME\.gradle\cache
 com.godot.game-lifecycle-runtime-2.6.1-1 C:\Users\PC HOME\.gradle\caches\8.11.1\transforms\12c57944fe83e44f44d3e8d956179bfc\transformed\lifecycle-runtime-2.6.1\res
 com.godot.game-documentfile-1.1.0-2 C:\Users\PC HOME\.gradle\caches\8.11.1\transforms\1afd2c19949c46dd1f38ff16eda356f0\transformed\documentfile-1.1.0\res
 com.godot.game-lifecycle-viewmodel-2.6.1-3 C:\Users\PC HOME\.gradle\caches\8.11.1\transforms\2549439206a624270276b1a27e983160\transformed\lifecycle-viewmodel-2.6.1\res
-com.godot.game-jetified-godot-lib.template_debug-4 C:\Users\PC HOME\.gradle\caches\8.11.1\transforms\2a054675f96637db3680aa397c0eeda3\transformed\jetified-godot-lib.template_debug\res
-com.godot.game-jetified-startup-runtime-1.1.1-5 C:\Users\PC HOME\.gradle\caches\8.11.1\transforms\5b635a3c27fcfd4154ffaab5ad9bc267\transformed\jetified-startup-runtime-1.1.1\res
-com.godot.game-jetified-profileinstaller-1.3.1-6 C:\Users\PC HOME\.gradle\caches\8.11.1\transforms\84fea68a98a1f315d0418764414976ba\transformed\jetified-profileinstaller-1.3.1\res
-com.godot.game-jetified-annotation-experimental-1.4.0-7 C:\Users\PC HOME\.gradle\caches\8.11.1\transforms\8d5e4fb927feb4b586f55aa0aa105ab2\transformed\jetified-annotation-experimental-1.4.0\res
+com.godot.game-jetified-startup-runtime-1.1.1-4 C:\Users\PC HOME\.gradle\caches\8.11.1\transforms\5b635a3c27fcfd4154ffaab5ad9bc267\transformed\jetified-startup-runtime-1.1.1\res
+com.godot.game-jetified-profileinstaller-1.3.1-5 C:\Users\PC HOME\.gradle\caches\8.11.1\transforms\84fea68a98a1f315d0418764414976ba\transformed\jetified-profileinstaller-1.3.1\res
+com.godot.game-jetified-annotation-experimental-1.4.0-6 C:\Users\PC HOME\.gradle\caches\8.11.1\transforms\8d5e4fb927feb4b586f55aa0aa105ab2\transformed\jetified-annotation-experimental-1.4.0\res
+com.godot.game-jetified-godot-lib.template_debug-7 C:\Users\PC HOME\.gradle\caches\8.11.1\transforms\94f32312ae07087ca21554f7f0e23cf8\transformed\jetified-godot-lib.template_debug\res
 com.godot.game-jetified-savedstate-1.2.1-8 C:\Users\PC HOME\.gradle\caches\8.11.1\transforms\9c3e54e553df3bb9ae770707f9b07d89\transformed\jetified-savedstate-1.2.1\res
 com.godot.game-jetified-activity-1.8.1-9 C:\Users\PC HOME\.gradle\caches\8.11.1\transforms\a029e9219969bb1e2aa1ac5105da154b\transformed\jetified-activity-1.8.1\res
 com.godot.game-jetified-lifecycle-viewmodel-savedstate-2.6.1-10 C:\Users\PC HOME\.gradle\caches\8.11.1\transforms\a6c0cff515299e3e9fb6eacf33bc7592\transformed\jetified-lifecycle-viewmodel-savedstate-2.6.1\res

@@ -249,7 +249,13 @@ Managers/time_passage_transition.gd
 
 `TimePassageTransition` is an autoloaded `CanvasLayer` used when activities, school, or sleep advance time. It fades to black, runs the `GameState` time change while the screen is covered, shows centered text, then fades back in.
 
-To change the displayed text without editing code:
+Current visual flow:
+
+```text
+slash in -> text fades in while covered -> hold on black -> text fades out -> square out
+```
+
+To change the displayed text or its look without editing code:
 
 1. Open `Scene/TimePassageTransition.tscn`.
 2. Select the root `TimePassageTransition` node.
@@ -259,6 +265,36 @@ To change the displayed text without editing code:
 Activity Text Template
 Empty Activity Text Template
 New Day Text Template
+Text Fade Duration
+Text Visible Alpha
+Text Hidden Alpha
+Text Fade During In
+Text Fade During Out
+Text Jitter Strength
+Text Jitter Speed
+Text Jitter Frequency
+Text Separate XY
+Text Time Offset
+Text Enable Rotation
+Text Rotation Strength
+Text Rotation Speed
+Text Rotation Frequency
+Text Enable Scaling
+Text Scale Strength
+Text Scale Speed
+Text Scale Frequency
+Text Base Scale
+Text Color
+Text Use Custom Color
+Text Shake Intensity
+Text Enable Pixelation
+Text Pixel Size
+Text Adaptive Pixels
+Text Enable Outline
+Text Outline Color
+Text Outline Thickness
+Text Chromatic Aberration
+Text Aberration Strength
 ```
 
 Supported placeholders:
@@ -284,8 +320,9 @@ A new day begins
 Maintenance rules:
 
 - Visual layout, font, text size, and sample text belong in `Scene/TimePassageTransition.tscn`.
-- Text templates should be changed from the scene root's Inspector when possible.
-- The script should only handle timing, placeholder replacement, and calling the passed state-change callback.
+- The scene's label also owns the animated text shader, but its runtime parameters are surfaced through `Managers/time_passage_transition.gd`.
+- Text templates and text effect tuning should be changed from the scene root's Inspector when possible.
+- The script should handle timing, placeholder replacement, transition direction, and applying exported shader settings.
 - Keep this separate from `Transition`; `Transition` is for scene changes, while `TimePassageTransition` is for time passing.
 
 ## Time-Of-Day Visual Filter
@@ -906,15 +943,15 @@ Managers/
 
 Scripts/
   Player/
-    basic_movement.gd
+	basic_movement.gd
   Interactables/
-    activity_interactable.gd
-    sleep_interactable.gd
-    school_interactable.gd
-    door_transition.gd
+	activity_interactable.gd
+	sleep_interactable.gd
+	school_interactable.gd
+	door_transition.gd
   UI/
-    main_menu.gd
-    bootscreen.gd
+	main_menu.gd
+	bootscreen.gd
 
 Characters/
   Main Character/

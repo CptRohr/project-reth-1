@@ -1,45 +1,76 @@
-[gd_scene load_steps=3 format=3]
+[gd_scene format=3 uid="uid://bihaysdtggd1h"]
 
-[ext_resource type="Script" path="res://Managers/time_passage_transition.gd" id="1_transition"]
-[ext_resource type="FontFile" path="res://Fonts/PixelifySans-VariableFont_wght.ttf" id="2_font"]
+[ext_resource type="Script" uid="uid://bqrelw0txxfe8" path="res://Managers/time_passage_transition.gd" id="1_transition"]
+[ext_resource type="Shader" uid="uid://cg6mq2ad5712q" path="res://Assets/Shaders/animated_pixel_art_text.gdshader" id="2_03nti"]
+[ext_resource type="FontFile" uid="uid://b38rgofq4civw" path="res://Fonts/VCR_OSD_MONO_1.001.ttf" id="3_03nti"]
 
-[node name="TimePassageTransition" type="CanvasLayer"]
-layer = 120
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_03nti"]
+shader = ExtResource("2_03nti")
+shader_parameter/jitter_strength = 2.0
+shader_parameter/jitter_speed = 8.0
+shader_parameter/jitter_frequency = 12.0
+shader_parameter/separate_xy = true
+shader_parameter/time_offset = 0.0
+shader_parameter/enable_rotation = true
+shader_parameter/rotation_strength = 5.0
+shader_parameter/rotation_speed = 3.0
+shader_parameter/rotation_frequency = 4.0
+shader_parameter/enable_scaling = true
+shader_parameter/scale_strength = 0.1
+shader_parameter/scale_speed = 2.5
+shader_parameter/scale_frequency = 6.0
+shader_parameter/base_scale = 1.0
+shader_parameter/text_color = Color(1, 1, 1, 1)
+shader_parameter/use_custom_color = false
+shader_parameter/shake_intensity = 0.0
+shader_parameter/enable_pixelation = true
+shader_parameter/pixel_size = 1.0
+shader_parameter/adaptive_pixels = true
+shader_parameter/enable_outline = true
+shader_parameter/outline_color = Color(0, 0, 0, 1)
+shader_parameter/outline_thickness = 1.0
+shader_parameter/chromatic_aberration = false
+shader_parameter/aberration_strength = 1.0
+
+[node name="TimePassageTransition" type="CanvasLayer" unique_id=1475427293]
 process_mode = 3
+layer = 120
 script = ExtResource("1_transition")
-activity_text_template = "{activity} passed
-{time}"
-empty_activity_text_template = "Time passed
-{time}"
-new_day_text_template = "A new day begins
-{time}"
 
-[node name="Overlay" type="ColorRect" parent="."]
+[node name="Overlay" type="ColorRect" parent="." unique_id=87092947]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-mouse_filter = 0
 color = Color(0, 0, 0, 0)
 
-[node name="CenterContainer" type="CenterContainer" parent="."]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+[node name="CenterContainer" type="CenterContainer" parent="Overlay" unique_id=757307604]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -309.5
+offset_top = -86.5
+offset_right = 309.5
+offset_bottom = 86.5
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="PassageLabel" type="Label" parent="CenterContainer"]
+[node name="PassageLabel" type="Label" parent="Overlay/CenterContainer" unique_id=1083915441]
+material = SubResource("ShaderMaterial_03nti")
 layout_mode = 2
-theme_override_fonts/font = ExtResource("2_font")
-theme_override_font_sizes/font_size = 36
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.75)
 theme_override_constants/shadow_offset_x = 2
 theme_override_constants/shadow_offset_y = 2
+theme_override_fonts/font = ExtResource("3_03nti")
+theme_override_font_sizes/font_size = 96
 text = "Time passed
 Evening"
 horizontal_alignment = 1
 vertical_alignment = 1
+uppercase = true

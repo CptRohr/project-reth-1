@@ -1,6 +1,11 @@
 [gd_scene format=3 uid="uid://ruksf2nbk6mc"]
 
 [ext_resource type="Script" uid="uid://68tmjttgyrfp" path="res://Managers/pause_menu.gd" id="1_pause"]
+[ext_resource type="Shader" uid="uid://ch2q2i83wsq0l" path="res://Assets/Shaders/vibrancy_backdrop_blurredfrosted.gdshader" id="2_c4igy"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qfc41"]
+shader = ExtResource("2_c4igy")
+shader_parameter/blur_lod = 3.5
 
 [node name="PauseMenu" type="CanvasLayer" unique_id=1472331725]
 process_mode = 3
@@ -8,6 +13,7 @@ layer = 90
 script = ExtResource("1_pause")
 
 [node name="RootControl" type="Control" parent="." unique_id=55780040]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -16,7 +22,6 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="CenterContainer" type="CenterContainer" parent="RootControl" unique_id=411715368]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -25,6 +30,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="RootPanel" type="PanelContainer" parent="RootControl/CenterContainer" unique_id=1041131004]
+material = SubResource("ShaderMaterial_qfc41")
 custom_minimum_size = Vector2(760, 520)
 layout_mode = 2
 

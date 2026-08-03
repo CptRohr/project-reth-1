@@ -40,25 +40,5 @@
     },
     "required_flags": [],
     "set_flags_after_complete": []
-  },
-  {
-    "id": "exercise",
-    "name": "Exercise",
-    "description": "Exercise with Bella in the weekend",
-    "available_days": [
-      "saturday",
-      "sunday"
-    ],
-    "available_time_blocks": [
-      "morning"
-    ],
-    "stat_effects": {
-      "courage": 2,
-      "energy": -20
-    },
-    "required_flags": [],
-    "set_flags_after_complete": [
-      "met_bella"
-    ]
   }
 ]

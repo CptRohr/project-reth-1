@@ -1,20 +1,73 @@
 [gd_scene format=3 uid="uid://itvrshvxw4t8"]
 
 [ext_resource type="Script" uid="uid://yr7fsm4os8s3" path="res://Scripts/main_menu.gd" id="1_rrxvj"]
+[ext_resource type="Shader" uid="uid://cg6mq2ad5712q" path="res://Assets/Shaders/animated_pixel_art_text.gdshader" id="2_6o0c3"]
 [ext_resource type="FontFile" uid="uid://b38rgofq4civw" path="res://Fonts/VCR_OSD_MONO_1.001.ttf" id="2_c6fb4"]
+[ext_resource type="FontFile" uid="uid://cjeyn3nfbvwcg" path="res://Fonts/HarmonyOS_Sans_Black.ttf" id="4_d4yab"]
+[ext_resource type="Shader" uid="uid://ch2q2i83wsq0l" path="res://Assets/Shaders/vibrancy_backdrop_blurredfrosted.gdshader" id="4_o3nbu"]
+[ext_resource type="Shader" uid="uid://b0874rmf04i1p" path="res://Assets/Shaders/highlight.gdshader" id="4_v3p41"]
 
-[sub_resource type="LabelSettings" id="LabelSettings_rrxvj"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_main_panel_border"]
+bg_color = Color(1, 1, 1, 1)
+draw_center = false
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 40
+corner_radius_top_right = 40
+corner_radius_bottom_right = 40
+corner_radius_bottom_left = 40
+
+[sub_resource type="LabelSettings" id="LabelSettings_small_text"]
+font = ExtResource("2_c6fb4")
+font_size = 22
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_sau1s"]
+shader = ExtResource("2_6o0c3")
+shader_parameter/jitter_strength = 2.0
+shader_parameter/jitter_speed = 6.51200030606012
+shader_parameter/jitter_frequency = 12.0
+shader_parameter/separate_xy = true
+shader_parameter/time_offset = 0.0
+shader_parameter/enable_rotation = true
+shader_parameter/rotation_strength = 5.0
+shader_parameter/rotation_speed = 3.0
+shader_parameter/rotation_frequency = 4.0
+shader_parameter/enable_scaling = true
+shader_parameter/scale_strength = 0.0770000036575
+shader_parameter/scale_speed = 1.48200006713512
+shader_parameter/scale_frequency = 1.77400008100512
+shader_parameter/base_scale = 1.0
+shader_parameter/text_color = Color(0, 0, 0, 1)
+shader_parameter/use_custom_color = true
+shader_parameter/shake_intensity = 0.5
+shader_parameter/enable_pixelation = true
+shader_parameter/pixel_size = 4.0
+shader_parameter/adaptive_pixels = true
+shader_parameter/enable_outline = true
+shader_parameter/outline_color = Color(0, 0, 0, 1)
+shader_parameter/outline_thickness = 1.0
+shader_parameter/chromatic_aberration = false
+shader_parameter/aberration_strength = 1.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_title_big"]
 font = ExtResource("2_c6fb4")
 font_size = 102
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_638js"]
-bg_color = Color(1, 1, 1, 1)
-border_width_bottom = 6
+[sub_resource type="LabelSettings" id="LabelSettings_title_small"]
+font = ExtResource("2_c6fb4")
+font_size = 32
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_start_normal"]
+bg_color = Color(0, 0.819608, 0.901961, 1)
 corner_radius_top_left = 24
 corner_radius_top_right = 24
 corner_radius_bottom_right = 24
 corner_radius_bottom_left = 24
-shadow_size = 3
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c6fb4"]
 bg_color = Color(0.40832946, 0.40832946, 0.40832946, 1)
@@ -25,7 +78,11 @@ corner_radius_bottom_left = 24
 shadow_size = 3
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6o0c3"]
-bg_color = Color(0.70380783, 0.70380783, 0.70380783, 1)
+bg_color = Color(0.78431374, 0.78431374, 0.7882353, 0.7529412)
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
 corner_radius_top_left = 24
 corner_radius_top_right = 24
 corner_radius_bottom_right = 24
@@ -34,40 +91,1465 @@ shadow_size = 3
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_d4yab"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jx3iw"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bhunq"]
+shader = ExtResource("4_v3p41")
+shader_parameter/Line_Smoothness = 0.045
+shader_parameter/Line_Width = 0.09
+shader_parameter/Brightness = 3.0
+shader_parameter/Rotation_deg = 30.0
+shader_parameter/Distortion = 1.8
+shader_parameter/Speed = 0.7
+shader_parameter/Position = 0.0
+shader_parameter/Position_Min = 0.25
+shader_parameter/Position_Max = 0.5
+shader_parameter/Alpha = 1.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_riqys"]
 bg_color = Color(1, 1, 1, 1)
-border_width_bottom = 8
+corner_detail = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_black_normal"]
+bg_color = Color(0, 0, 0, 1)
 corner_radius_top_left = 24
 corner_radius_top_right = 24
 corner_radius_bottom_right = 24
 corner_radius_bottom_left = 24
-shadow_size = 3
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d136f"]
-bg_color = Color(1, 1, 1, 1)
-border_width_bottom = 8
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_credits_normal"]
+bg_color = Color(1, 0.941176, 0, 1)
 corner_radius_top_left = 24
 corner_radius_top_right = 24
 corner_radius_bottom_right = 24
 corner_radius_bottom_left = 24
-shadow_size = 3
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d4yab"]
-bg_color = Color(0, 0, 0.59607846, 1)
-skew = Vector2(0.15, 0)
-border_width_top = 24
-corner_radius_top_left = 8
-corner_radius_top_right = 8
-corner_radius_bottom_right = 8
-corner_radius_bottom_left = 8
-shadow_size = 3
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_d4yab"]
+shader = ExtResource("4_o3nbu")
+shader_parameter/blur_lod = 0.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_settings_black"]
+bg_color = Color(1, 1, 1, 0)
+
+[sub_resource type="LabelSettings" id="LabelSettings_6o0c3"]
+font = ExtResource("4_d4yab")
+font_size = 128
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_settings_select"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_settings_apply"]
+bg_color = Color(1, 0.941176, 0, 1)
+corner_radius_top_left = 18
+corner_radius_top_right = 18
+corner_radius_bottom_right = 18
+corner_radius_bottom_left = 18
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_settings_apply_hover"]
+bg_color = Color(0.6104444, 0.5290864, 3.85046e-07, 1)
+corner_radius_top_left = 18
+corner_radius_top_right = 18
+corner_radius_bottom_right = 18
+corner_radius_bottom_left = 18
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_settings_tab"]
+bg_color = Color(0.6, 0.6, 0.6, 0.7882353)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.87160254, 0.8148521, 0.3039898, 1)
+corner_radius_top_left = 28
+corner_radius_top_right = 28
+corner_radius_bottom_right = 28
+corner_radius_bottom_left = 28
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_settings_tab_active"]
+bg_color = Color(0, 0.6199902, 0.68756235, 1)
+corner_radius_top_left = 28
+corner_radius_top_right = 28
+corner_radius_bottom_right = 28
+corner_radius_bottom_left = 28
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o3nbu"]
+corner_radius_top_left = 28
+corner_radius_top_right = 28
+corner_radius_bottom_right = 28
+corner_radius_bottom_left = 28
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v3p41"]
+corner_radius_top_left = 28
+corner_radius_top_right = 28
+corner_radius_bottom_right = 28
+corner_radius_bottom_left = 28
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6nqpc"]
+bg_color = Color(0.98972136, 0.0012057716, 0.0006605464, 1)
+corner_radius_top_left = 18
+corner_radius_top_right = 18
+corner_radius_bottom_right = 18
+corner_radius_bottom_left = 18
+
+[sub_resource type="Animation" id="Animation_o3nbu"]
+length = 0.8
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MenuMainContainer/SettingsPanel/DiagonalInk:size:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(8, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MenuMainContainer/SettingsPanel/DiagonalInk:size:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("MenuMainContainer/SettingsPanel/DiagonalInk2:size:x")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(8, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("MenuMainContainer/SettingsPanel/DiagonalInk2:size:y")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("MenuMainContainer/SettingsPanel/DiagonalInk3:size:x")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(8, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/5/type = "bezier"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("MenuMainContainer/SettingsPanel/DiagonalInk3:size:y")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/6/type = "bezier"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("MenuMainContainer/SettingsPanel/DiagonalInk4:size:x")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(8, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/7/type = "bezier"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("MenuMainContainer/SettingsPanel/DiagonalInk4:size:y")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/8/type = "bezier"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("MenuMainContainer/SettingsPanel/SettingsWord:visible_ratio")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/9/type = "bezier"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("MenuMainContainer/SettingsPanel/StairTeeth2/Tooth1:size:x")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/10/type = "bezier"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("MenuMainContainer/SettingsPanel/StairTeeth2/Tooth1:size:y")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(80, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/11/type = "bezier"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("MenuMainContainer/SettingsPanel/StairTeeth2/Tooth2:size:x")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/12/type = "bezier"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("MenuMainContainer/SettingsPanel/StairTeeth2/Tooth2:size:y")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(80, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/13/type = "bezier"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("MenuMainContainer/SettingsPanel/StairTeeth2/Tooth3:size:x")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/14/type = "bezier"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("MenuMainContainer/SettingsPanel/StairTeeth2/Tooth3:size:y")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(80, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/15/type = "bezier"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("MenuMainContainer/SettingsPanel/StairTeeth2/Tooth4:size:x")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/16/type = "bezier"
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/path = NodePath("MenuMainContainer/SettingsPanel/StairTeeth2/Tooth4:size:y")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(80, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/17/type = "bezier"
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/path = NodePath("MenuMainContainer/SettingsPanel/StairTeeth2/Tooth5:size:x")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/18/type = "bezier"
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/path = NodePath("MenuMainContainer/SettingsPanel/StairTeeth2/Tooth5:size:y")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(80, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/19/type = "bezier"
+tracks/19/imported = false
+tracks/19/enabled = true
+tracks/19/path = NodePath("MenuMainContainer/SettingsPanel/StairTeeth/Tooth1:size:x")
+tracks/19/interp = 1
+tracks/19/loop_wrap = true
+tracks/19/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(50, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/20/type = "bezier"
+tracks/20/imported = false
+tracks/20/enabled = true
+tracks/20/path = NodePath("MenuMainContainer/SettingsPanel/StairTeeth/Tooth1:size:y")
+tracks/20/interp = 1
+tracks/20/loop_wrap = true
+tracks/20/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/21/type = "bezier"
+tracks/21/imported = false
+tracks/21/enabled = true
+tracks/21/path = NodePath("MenuMainContainer/SettingsPanel/StairTeeth/Tooth2:size:x")
+tracks/21/interp = 1
+tracks/21/loop_wrap = true
+tracks/21/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(50, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/22/type = "bezier"
+tracks/22/imported = false
+tracks/22/enabled = true
+tracks/22/path = NodePath("MenuMainContainer/SettingsPanel/StairTeeth/Tooth2:size:y")
+tracks/22/interp = 1
+tracks/22/loop_wrap = true
+tracks/22/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/23/type = "bezier"
+tracks/23/imported = false
+tracks/23/enabled = true
+tracks/23/path = NodePath("MenuMainContainer/SettingsPanel/StairTeeth/Tooth3:size:x")
+tracks/23/interp = 1
+tracks/23/loop_wrap = true
+tracks/23/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(50, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/24/type = "bezier"
+tracks/24/imported = false
+tracks/24/enabled = true
+tracks/24/path = NodePath("MenuMainContainer/SettingsPanel/StairTeeth/Tooth3:size:y")
+tracks/24/interp = 1
+tracks/24/loop_wrap = true
+tracks/24/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/25/type = "bezier"
+tracks/25/imported = false
+tracks/25/enabled = true
+tracks/25/path = NodePath("MenuMainContainer/SettingsPanel/StairTeeth/Tooth4:size:x")
+tracks/25/interp = 1
+tracks/25/loop_wrap = true
+tracks/25/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(50, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/26/type = "bezier"
+tracks/26/imported = false
+tracks/26/enabled = true
+tracks/26/path = NodePath("MenuMainContainer/SettingsPanel/StairTeeth/Tooth4:size:y")
+tracks/26/interp = 1
+tracks/26/loop_wrap = true
+tracks/26/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/27/type = "bezier"
+tracks/27/imported = false
+tracks/27/enabled = true
+tracks/27/path = NodePath("MenuMainContainer/SettingsPanel/StairTeeth/Tooth5:size:x")
+tracks/27/interp = 1
+tracks/27/loop_wrap = true
+tracks/27/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(50, -0.21666667, 0, 0.21666667, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/28/type = "bezier"
+tracks/28/imported = false
+tracks/28/enabled = true
+tracks/28/path = NodePath("MenuMainContainer/SettingsPanel/StairTeeth/Tooth5:size:y")
+tracks/28/interp = 1
+tracks/28/loop_wrap = true
+tracks/28/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.21666667, 0, 0.21666667, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/29/type = "bezier"
+tracks/29/imported = false
+tracks/29/enabled = true
+tracks/29/path = NodePath("MenuMainContainer/SettingsPanel/StairTeeth/Tooth6:size:x")
+tracks/29/interp = 1
+tracks/29/loop_wrap = true
+tracks/29/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(50, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/30/type = "bezier"
+tracks/30/imported = false
+tracks/30/enabled = true
+tracks/30/path = NodePath("MenuMainContainer/SettingsPanel/StairTeeth/Tooth6:size:y")
+tracks/30/interp = 1
+tracks/30/loop_wrap = true
+tracks/30/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/31/type = "bezier"
+tracks/31/imported = false
+tracks/31/enabled = true
+tracks/31/path = NodePath("MenuMainContainer/SettingsPanel/StairTeeth/Tooth7:size:x")
+tracks/31/interp = 1
+tracks/31/loop_wrap = true
+tracks/31/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(50, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/32/type = "bezier"
+tracks/32/imported = false
+tracks/32/enabled = true
+tracks/32/path = NodePath("MenuMainContainer/SettingsPanel/StairTeeth/Tooth7:size:y")
+tracks/32/interp = 1
+tracks/32/loop_wrap = true
+tracks/32/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/33/type = "bezier"
+tracks/33/imported = false
+tracks/33/enabled = true
+tracks/33/path = NodePath("MenuMainContainer/SettingsPanel/StairTeeth/Tooth8:size:x")
+tracks/33/interp = 1
+tracks/33/loop_wrap = true
+tracks/33/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(50, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/34/type = "bezier"
+tracks/34/imported = false
+tracks/34/enabled = true
+tracks/34/path = NodePath("MenuMainContainer/SettingsPanel/StairTeeth/Tooth8:size:y")
+tracks/34/interp = 1
+tracks/34/loop_wrap = true
+tracks/34/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/35/type = "bezier"
+tracks/35/imported = false
+tracks/35/enabled = true
+tracks/35/path = NodePath("MenuMainContainer/SettingsPanel/StairTeeth/Tooth9:size:x")
+tracks/35/interp = 1
+tracks/35/loop_wrap = true
+tracks/35/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(50, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/36/type = "bezier"
+tracks/36/imported = false
+tracks/36/enabled = true
+tracks/36/path = NodePath("MenuMainContainer/SettingsPanel/StairTeeth/Tooth9:size:y")
+tracks/36/interp = 1
+tracks/36/loop_wrap = true
+tracks/36/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/37/type = "bezier"
+tracks/37/imported = false
+tracks/37/enabled = true
+tracks/37/path = NodePath("MenuMainContainer/SettingsPanel/StairTeeth/Tooth10:size:x")
+tracks/37/interp = 1
+tracks/37/loop_wrap = true
+tracks/37/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(50, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/38/type = "bezier"
+tracks/38/imported = false
+tracks/38/enabled = true
+tracks/38/path = NodePath("MenuMainContainer/SettingsPanel/StairTeeth/Tooth10:size:y")
+tracks/38/interp = 1
+tracks/38/loop_wrap = true
+tracks/38/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/39/type = "bezier"
+tracks/39/imported = false
+tracks/39/enabled = true
+tracks/39/path = NodePath("MenuMainContainer/SettingsPanel/StairTeeth/Tooth11:size:x")
+tracks/39/interp = 1
+tracks/39/loop_wrap = true
+tracks/39/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(50, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/40/type = "bezier"
+tracks/40/imported = false
+tracks/40/enabled = true
+tracks/40/path = NodePath("MenuMainContainer/SettingsPanel/StairTeeth/Tooth11:size:y")
+tracks/40/interp = 1
+tracks/40/loop_wrap = true
+tracks/40/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/41/type = "bezier"
+tracks/41/imported = false
+tracks/41/enabled = true
+tracks/41/path = NodePath("MenuMainContainer/SettingsPanel/StairTeeth/Tooth12:size:x")
+tracks/41/interp = 1
+tracks/41/loop_wrap = true
+tracks/41/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(50, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/42/type = "bezier"
+tracks/42/imported = false
+tracks/42/enabled = true
+tracks/42/path = NodePath("MenuMainContainer/SettingsPanel/StairTeeth/Tooth12:size:y")
+tracks/42/interp = 1
+tracks/42/loop_wrap = true
+tracks/42/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/43/type = "bezier"
+tracks/43/imported = false
+tracks/43/enabled = true
+tracks/43/path = NodePath("MenuMainContainer/SettingsPanel/StairTeeth/Tooth13:size:x")
+tracks/43/interp = 1
+tracks/43/loop_wrap = true
+tracks/43/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(50, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/44/type = "bezier"
+tracks/44/imported = false
+tracks/44/enabled = true
+tracks/44/path = NodePath("MenuMainContainer/SettingsPanel/StairTeeth/Tooth13:size:y")
+tracks/44/interp = 1
+tracks/44/loop_wrap = true
+tracks/44/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/45/type = "bezier"
+tracks/45/imported = false
+tracks/45/enabled = true
+tracks/45/path = NodePath("MenuMainContainer/SettingsPanel/StairTeeth/Tooth14:size:x")
+tracks/45/interp = 1
+tracks/45/loop_wrap = true
+tracks/45/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(50, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/46/type = "bezier"
+tracks/46/imported = false
+tracks/46/enabled = true
+tracks/46/path = NodePath("MenuMainContainer/SettingsPanel/StairTeeth/Tooth14:size:y")
+tracks/46/interp = 1
+tracks/46/loop_wrap = true
+tracks/46/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/47/type = "bezier"
+tracks/47/imported = false
+tracks/47/enabled = true
+tracks/47/path = NodePath("MenuMainContainer/SettingsPanel/StairTeeth/Tooth15:size:x")
+tracks/47/interp = 1
+tracks/47/loop_wrap = true
+tracks/47/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(50, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/48/type = "bezier"
+tracks/48/imported = false
+tracks/48/enabled = true
+tracks/48/path = NodePath("MenuMainContainer/SettingsPanel/StairTeeth/Tooth15:size:y")
+tracks/48/interp = 1
+tracks/48/loop_wrap = true
+tracks/48/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/49/type = "bezier"
+tracks/49/imported = false
+tracks/49/enabled = true
+tracks/49/path = NodePath("MenuMainContainer/SettingsPanel/LeftContent/ResolutionSection/ResolutionTitle:visible_ratio")
+tracks/49/interp = 1
+tracks/49/loop_wrap = true
+tracks/49/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/50/type = "bezier"
+tracks/50/imported = false
+tracks/50/enabled = true
+tracks/50/path = NodePath("MenuMainContainer/SettingsPanel/LeftContent/ResolutionSection/ResolutionHint:visible_ratio")
+tracks/50/interp = 1
+tracks/50/loop_wrap = true
+tracks/50/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/51/type = "bezier"
+tracks/51/imported = false
+tracks/51/enabled = true
+tracks/51/path = NodePath("MenuMainContainer/SettingsPanel/LeftContent:position:x")
+tracks/51/interp = 1
+tracks/51/loop_wrap = true
+tracks/51/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(-400, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/52/type = "bezier"
+tracks/52/imported = false
+tracks/52/enabled = true
+tracks/52/path = NodePath("MenuMainContainer/SettingsPanel/LeftContent:position:y")
+tracks/52/interp = 1
+tracks/52/loop_wrap = true
+tracks/52/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(184, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/53/type = "bezier"
+tracks/53/imported = false
+tracks/53/enabled = true
+tracks/53/path = NodePath("MenuMainContainer/SettingsPanel/RightTabs:position:y")
+tracks/53/interp = 1
+tracks/53/loop_wrap = true
+tracks/53/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(140, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/54/type = "bezier"
+tracks/54/imported = false
+tracks/54/enabled = true
+tracks/54/path = NodePath("MenuMainContainer/SettingsPanel/RightTabs:position:x")
+tracks/54/interp = 1
+tracks/54/loop_wrap = true
+tracks/54/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1300, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/55/type = "bezier"
+tracks/55/imported = false
+tracks/55/enabled = true
+tracks/55/path = NodePath("MenuMainContainer/SettingsPanel/ResetButton:position:x")
+tracks/55/interp = 1
+tracks/55/loop_wrap = true
+tracks/55/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1300, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/56/type = "bezier"
+tracks/56/imported = false
+tracks/56/enabled = true
+tracks/56/path = NodePath("MenuMainContainer/SettingsPanel/ResetButton:position:y")
+tracks/56/interp = 1
+tracks/56/loop_wrap = true
+tracks/56/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(432, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/57/type = "bezier"
+tracks/57/imported = false
+tracks/57/enabled = true
+tracks/57/path = NodePath("MenuMainContainer/SettingsPanel/CloseButton:position:x")
+tracks/57/interp = 1
+tracks/57/loop_wrap = true
+tracks/57/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1300, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/58/type = "bezier"
+tracks/58/imported = false
+tracks/58/enabled = true
+tracks/58/path = NodePath("MenuMainContainer/SettingsPanel/CloseButton:position:y")
+tracks/58/interp = 1
+tracks/58/loop_wrap = true
+tracks/58/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(22, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/59/type = "bezier"
+tracks/59/imported = false
+tracks/59/enabled = true
+tracks/59/path = NodePath("MenuMainContainer/SettingsPanel/Blur:material:shader_parameter/blur_lod")
+tracks/59/interp = 1
+tracks/59/loop_wrap = true
+tracks/59/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_v3p41"]
+resource_name = "SettingsPanel"
+length = 1.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MenuMainContainer/SettingsPanel:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 0,
+"values": []
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MenuMainContainer/SettingsPanel/DiagonalInk:size:x")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(8, -0.25, 0, 0.25, 0, 8, -0.083333336, 0, 0, 0),
+"times": PackedFloat32Array(0, 0.4)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("MenuMainContainer/SettingsPanel/DiagonalInk:size:y")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 882.117, -0.083333336, -147.0195, 0, 0),
+"times": PackedFloat32Array(0, 0.4)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("MenuMainContainer/SettingsPanel/DiagonalInk2:size:x")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(8, -0.25, 0, 0.25, 0, 8, -0.083333336, 0, 0, 0),
+"times": PackedFloat32Array(0, 0.5)
+}
+tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("MenuMainContainer/SettingsPanel/DiagonalInk2:size:y")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 882.117, -0.083333336, -147.0195, 0, 0),
+"times": PackedFloat32Array(0, 0.5)
+}
+tracks/5/type = "bezier"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("MenuMainContainer/SettingsPanel/DiagonalInk3:size:x")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"handle_modes": PackedInt32Array(0, 2),
+"points": PackedFloat32Array(8, -0.25, 0, 0.25, 0, 8, -0.03333333, 0, 0, 0),
+"times": PackedFloat32Array(0, 0.5)
+}
+tracks/6/type = "bezier"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("MenuMainContainer/SettingsPanel/DiagonalInk3:size:y")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"handle_modes": PackedInt32Array(0, 2),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 882.117, -0.03333333, -147.0195, 0, 0),
+"times": PackedFloat32Array(0, 0.5)
+}
+tracks/7/type = "bezier"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("MenuMainContainer/SettingsPanel/DiagonalInk4:size:x")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"handle_modes": PackedInt32Array(0, 2),
+"points": PackedFloat32Array(8, -0.25, 0, 0.25, 0, 8, -0.13333334, 0, 0, 0),
+"times": PackedFloat32Array(0, 0.8)
+}
+tracks/8/type = "bezier"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("MenuMainContainer/SettingsPanel/DiagonalInk4:size:y")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"handle_modes": PackedInt32Array(0, 2),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 882.11694, -0.13333334, -147.01949, 0, 0),
+"times": PackedFloat32Array(0, 0.8)
+}
+tracks/9/type = "bezier"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("MenuMainContainer/SettingsPanel/SettingsWord:visible_ratio")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"handle_modes": PackedInt32Array(0, 2),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 1, -0.13333334, -0.16666667, 0, 0),
+"times": PackedFloat32Array(0.2, 0.8)
+}
+tracks/10/type = "bezier"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("MenuMainContainer/SettingsPanel/StairTeeth2/Tooth1:size:x")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 544, -0.13333334, -90.66667, 0, 0),
+"times": PackedFloat32Array(0, 0.4)
+}
+tracks/11/type = "bezier"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("MenuMainContainer/SettingsPanel/StairTeeth2/Tooth1:size:y")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(80, -0.25, 0, 0.25, 0, 80, -0.13333334, 0, 0, 0),
+"times": PackedFloat32Array(0, 0.4)
+}
+tracks/12/type = "bezier"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("MenuMainContainer/SettingsPanel/StairTeeth2/Tooth2:size:x")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"handle_modes": PackedInt32Array(0, 2),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 592, -0.083333336, -98.66667, 0, 0),
+"times": PackedFloat32Array(0, 0.5)
+}
+tracks/13/type = "bezier"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("MenuMainContainer/SettingsPanel/StairTeeth2/Tooth2:size:y")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"handle_modes": PackedInt32Array(0, 2),
+"points": PackedFloat32Array(80, -0.25, 0, 0.25, 0, 80, -0.083333336, 0, 0, 0),
+"times": PackedFloat32Array(0, 0.5)
+}
+tracks/14/type = "bezier"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("MenuMainContainer/SettingsPanel/StairTeeth2/Tooth3:size:x")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"handle_modes": PackedInt32Array(0, 2),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 544, -0.10000001, -90.66667, 0, 0),
+"times": PackedFloat32Array(0, 0.6)
+}
+tracks/15/type = "bezier"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("MenuMainContainer/SettingsPanel/StairTeeth2/Tooth3:size:y")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"handle_modes": PackedInt32Array(0, 2),
+"points": PackedFloat32Array(80, -0.25, 0, 0.25, 0, 80, -0.10000001, 0, 0, 0),
+"times": PackedFloat32Array(0, 0.6)
+}
+tracks/16/type = "bezier"
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/path = NodePath("MenuMainContainer/SettingsPanel/StairTeeth2/Tooth4:size:x")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/keys = {
+"handle_modes": PackedInt32Array(0, 2),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 512, -0.11666667, -85.333336, 0, 0),
+"times": PackedFloat32Array(0, 0.7)
+}
+tracks/17/type = "bezier"
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/path = NodePath("MenuMainContainer/SettingsPanel/StairTeeth2/Tooth4:size:y")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/keys = {
+"handle_modes": PackedInt32Array(0, 2),
+"points": PackedFloat32Array(80, -0.25, 0, 0.25, 0, 80, -0.11666667, 0, 0, 0),
+"times": PackedFloat32Array(0, 0.7)
+}
+tracks/18/type = "bezier"
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/path = NodePath("MenuMainContainer/SettingsPanel/StairTeeth2/Tooth5:size:x")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/keys = {
+"handle_modes": PackedInt32Array(0, 2),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 480, -0.13333334, -80.00001, 0, 0),
+"times": PackedFloat32Array(0, 0.8)
+}
+tracks/19/type = "bezier"
+tracks/19/imported = false
+tracks/19/enabled = true
+tracks/19/path = NodePath("MenuMainContainer/SettingsPanel/StairTeeth2/Tooth5:size:y")
+tracks/19/interp = 1
+tracks/19/loop_wrap = true
+tracks/19/keys = {
+"handle_modes": PackedInt32Array(0, 2),
+"points": PackedFloat32Array(80, -0.25, 0, 0.25, 0, 80, -0.13333334, 0, 0, 0),
+"times": PackedFloat32Array(0, 0.8)
+}
+tracks/20/type = "bezier"
+tracks/20/imported = false
+tracks/20/enabled = true
+tracks/20/path = NodePath("MenuMainContainer/SettingsPanel/StairTeeth/Tooth1:size:x")
+tracks/20/interp = 1
+tracks/20/loop_wrap = true
+tracks/20/keys = {
+"handle_modes": PackedInt32Array(0, 2),
+"points": PackedFloat32Array(50, -0.25, 0, 0.25, 0, 50, -0.06666667, 0, 0, 0),
+"times": PackedFloat32Array(0, 0.4)
+}
+tracks/21/type = "bezier"
+tracks/21/imported = false
+tracks/21/enabled = true
+tracks/21/path = NodePath("MenuMainContainer/SettingsPanel/StairTeeth/Tooth1:size:y")
+tracks/21/interp = 1
+tracks/21/loop_wrap = true
+tracks/21/keys = {
+"handle_modes": PackedInt32Array(0, 2),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 1022.1, -0.06666667, -170.35, 0, 0),
+"times": PackedFloat32Array(0, 0.4)
+}
+tracks/22/type = "bezier"
+tracks/22/imported = false
+tracks/22/enabled = true
+tracks/22/path = NodePath("MenuMainContainer/SettingsPanel/StairTeeth/Tooth2:size:x")
+tracks/22/interp = 1
+tracks/22/loop_wrap = true
+tracks/22/keys = {
+"handle_modes": PackedInt32Array(0, 2),
+"points": PackedFloat32Array(50, -0.25, 0, 0.25, 0, 50, -0.058333334, 0, 0, 0),
+"times": PackedFloat32Array(0.1, 0.45)
+}
+tracks/23/type = "bezier"
+tracks/23/imported = false
+tracks/23/enabled = true
+tracks/23/path = NodePath("MenuMainContainer/SettingsPanel/StairTeeth/Tooth2:size:y")
+tracks/23/interp = 1
+tracks/23/loop_wrap = true
+tracks/23/keys = {
+"handle_modes": PackedInt32Array(0, 2),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 967.692, -0.058333334, -161.28201, 0, 0),
+"times": PackedFloat32Array(0.1, 0.45)
+}
+tracks/24/type = "bezier"
+tracks/24/imported = false
+tracks/24/enabled = true
+tracks/24/path = NodePath("MenuMainContainer/SettingsPanel/StairTeeth/Tooth3:size:x")
+tracks/24/interp = 1
+tracks/24/loop_wrap = true
+tracks/24/keys = {
+"handle_modes": PackedInt32Array(0, 2),
+"points": PackedFloat32Array(50, -0.25, 0, 0.25, 0, 50, -0.061666667, 0, 0, 0),
+"times": PackedFloat32Array(0.2, 0.57)
+}
+tracks/25/type = "bezier"
+tracks/25/imported = false
+tracks/25/enabled = true
+tracks/25/path = NodePath("MenuMainContainer/SettingsPanel/StairTeeth/Tooth3:size:y")
+tracks/25/interp = 1
+tracks/25/loop_wrap = true
+tracks/25/keys = {
+"handle_modes": PackedInt32Array(0, 2),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 920.532, -0.061666667, -153.422, 0, 0),
+"times": PackedFloat32Array(0.2, 0.57)
+}
+tracks/26/type = "bezier"
+tracks/26/imported = false
+tracks/26/enabled = true
+tracks/26/path = NodePath("MenuMainContainer/SettingsPanel/StairTeeth/Tooth4:size:x")
+tracks/26/interp = 1
+tracks/26/loop_wrap = true
+tracks/26/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(50, -0.25, 0, 0.25, 0, 50, -0.058333334, 0, 0, 0),
+"times": PackedFloat32Array(0, 0.4)
+}
+tracks/27/type = "bezier"
+tracks/27/imported = false
+tracks/27/enabled = true
+tracks/27/path = NodePath("MenuMainContainer/SettingsPanel/StairTeeth/Tooth4:size:y")
+tracks/27/interp = 1
+tracks/27/loop_wrap = true
+tracks/27/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 961.466, -0.058333334, -160.24432, 0, 0),
+"times": PackedFloat32Array(0, 0.4)
+}
+tracks/28/type = "bezier"
+tracks/28/imported = false
+tracks/28/enabled = true
+tracks/28/path = NodePath("MenuMainContainer/SettingsPanel/StairTeeth/Tooth5:size:x")
+tracks/28/interp = 1
+tracks/28/loop_wrap = true
+tracks/28/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(50, -0.21666667, 0, 0.21666667, 0, 50, -0.03333334, 0, 0, 0),
+"times": PackedFloat32Array(0.1, 0.46666667)
+}
+tracks/29/type = "bezier"
+tracks/29/imported = false
+tracks/29/enabled = true
+tracks/29/path = NodePath("MenuMainContainer/SettingsPanel/StairTeeth/Tooth5:size:y")
+tracks/29/interp = 1
+tracks/29/loop_wrap = true
+tracks/29/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.21666667, 0, 0.21666667, 0, 916.019, -0.03333334, -152.66985, 0, 0),
+"times": PackedFloat32Array(0.1, 0.46666667)
+}
+tracks/30/type = "bezier"
+tracks/30/imported = false
+tracks/30/enabled = true
+tracks/30/path = NodePath("MenuMainContainer/SettingsPanel/StairTeeth/Tooth6:size:x")
+tracks/30/interp = 1
+tracks/30/loop_wrap = true
+tracks/30/keys = {
+"handle_modes": PackedInt32Array(0, 2),
+"points": PackedFloat32Array(50, -0.25, 0, 0.25, 0, 50, -0.11666667, 0, 0, 0),
+"times": PackedFloat32Array(0, 0.7)
+}
+tracks/31/type = "bezier"
+tracks/31/imported = false
+tracks/31/enabled = true
+tracks/31/path = NodePath("MenuMainContainer/SettingsPanel/StairTeeth/Tooth6:size:y")
+tracks/31/interp = 1
+tracks/31/loop_wrap = true
+tracks/31/keys = {
+"handle_modes": PackedInt32Array(0, 2),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 863.609, -0.11666667, -143.93484, 0, 0),
+"times": PackedFloat32Array(0, 0.7)
+}
+tracks/32/type = "bezier"
+tracks/32/imported = false
+tracks/32/enabled = true
+tracks/32/path = NodePath("MenuMainContainer/SettingsPanel/StairTeeth/Tooth7:size:x")
+tracks/32/interp = 1
+tracks/32/loop_wrap = true
+tracks/32/keys = {
+"handle_modes": PackedInt32Array(0, 2),
+"points": PackedFloat32Array(50, -0.25, 0, 0.25, 0, 50, -0.083333336, 0, 0, 0),
+"times": PackedFloat32Array(0, 0.5)
+}
+tracks/33/type = "bezier"
+tracks/33/imported = false
+tracks/33/enabled = true
+tracks/33/path = NodePath("MenuMainContainer/SettingsPanel/StairTeeth/Tooth7:size:y")
+tracks/33/interp = 1
+tracks/33/loop_wrap = true
+tracks/33/keys = {
+"handle_modes": PackedInt32Array(0, 2),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 829.065, -0.083333336, -138.1775, 0, 0),
+"times": PackedFloat32Array(0, 0.5)
+}
+tracks/34/type = "bezier"
+tracks/34/imported = false
+tracks/34/enabled = true
+tracks/34/path = NodePath("MenuMainContainer/SettingsPanel/StairTeeth/Tooth8:size:x")
+tracks/34/interp = 1
+tracks/34/loop_wrap = true
+tracks/34/keys = {
+"handle_modes": PackedInt32Array(0, 2),
+"points": PackedFloat32Array(50, -0.25, 0, 0.25, 0, 50, -0.050000004, 0, 0, 0),
+"times": PackedFloat32Array(0, 0.3)
+}
+tracks/35/type = "bezier"
+tracks/35/imported = false
+tracks/35/enabled = true
+tracks/35/path = NodePath("MenuMainContainer/SettingsPanel/StairTeeth/Tooth8:size:y")
+tracks/35/interp = 1
+tracks/35/loop_wrap = true
+tracks/35/keys = {
+"handle_modes": PackedInt32Array(0, 2),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 859.018, -0.050000004, -143.16968, 0, 0),
+"times": PackedFloat32Array(0, 0.3)
+}
+tracks/36/type = "bezier"
+tracks/36/imported = false
+tracks/36/enabled = true
+tracks/36/path = NodePath("MenuMainContainer/SettingsPanel/StairTeeth/Tooth9:size:x")
+tracks/36/interp = 1
+tracks/36/loop_wrap = true
+tracks/36/keys = {
+"handle_modes": PackedInt32Array(0, 2),
+"points": PackedFloat32Array(50, -0.25, 0, 0.25, 0, 50, -0.10000001, 0, 0, 0),
+"times": PackedFloat32Array(0, 0.6)
+}
+tracks/37/type = "bezier"
+tracks/37/imported = false
+tracks/37/enabled = true
+tracks/37/path = NodePath("MenuMainContainer/SettingsPanel/StairTeeth/Tooth9:size:y")
+tracks/37/interp = 1
+tracks/37/loop_wrap = true
+tracks/37/keys = {
+"handle_modes": PackedInt32Array(0, 2),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 842.339, -0.10000001, -140.38985, 0, 0),
+"times": PackedFloat32Array(0, 0.6)
+}
+tracks/38/type = "bezier"
+tracks/38/imported = false
+tracks/38/enabled = true
+tracks/38/path = NodePath("MenuMainContainer/SettingsPanel/StairTeeth/Tooth10:size:x")
+tracks/38/interp = 1
+tracks/38/loop_wrap = true
+tracks/38/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(50, -0.25, 0, 0.25, 0, 50, -0.10000001, 0, 0, 0),
+"times": PackedFloat32Array(0, 0.4)
+}
+tracks/39/type = "bezier"
+tracks/39/imported = false
+tracks/39/enabled = true
+tracks/39/path = NodePath("MenuMainContainer/SettingsPanel/StairTeeth/Tooth10:size:y")
+tracks/39/interp = 1
+tracks/39/loop_wrap = true
+tracks/39/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 814.757, -0.10000001, -135.79285, 0, 0),
+"times": PackedFloat32Array(0, 0.4)
+}
+tracks/40/type = "bezier"
+tracks/40/imported = false
+tracks/40/enabled = true
+tracks/40/path = NodePath("MenuMainContainer/SettingsPanel/StairTeeth/Tooth11:size:x")
+tracks/40/interp = 1
+tracks/40/loop_wrap = true
+tracks/40/keys = {
+"handle_modes": PackedInt32Array(0, 2),
+"points": PackedFloat32Array(50, -0.25, 0, 0.25, 0, 50, -0.07666667, 0, 0, 0),
+"times": PackedFloat32Array(0.03, 0.49)
+}
+tracks/41/type = "bezier"
+tracks/41/imported = false
+tracks/41/enabled = true
+tracks/41/path = NodePath("MenuMainContainer/SettingsPanel/StairTeeth/Tooth11:size:y")
+tracks/41/interp = 1
+tracks/41/loop_wrap = true
+tracks/41/keys = {
+"handle_modes": PackedInt32Array(0, 2),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 780.213, -0.07666667, -130.0355, 0, 0),
+"times": PackedFloat32Array(0.03, 0.49)
+}
+tracks/42/type = "bezier"
+tracks/42/imported = false
+tracks/42/enabled = true
+tracks/42/path = NodePath("MenuMainContainer/SettingsPanel/StairTeeth/Tooth12:size:x")
+tracks/42/interp = 1
+tracks/42/loop_wrap = true
+tracks/42/keys = {
+"handle_modes": PackedInt32Array(0, 2),
+"points": PackedFloat32Array(50, -0.25, 0, 0.25, 0, 50, -0.06333333, 0, 0, 0),
+"times": PackedFloat32Array(0.07, 0.45)
+}
+tracks/43/type = "bezier"
+tracks/43/imported = false
+tracks/43/enabled = true
+tracks/43/path = NodePath("MenuMainContainer/SettingsPanel/StairTeeth/Tooth12:size:y")
+tracks/43/interp = 1
+tracks/43/loop_wrap = true
+tracks/43/keys = {
+"handle_modes": PackedInt32Array(0, 2),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 756.571, -0.06333333, -126.09516, 0, 0),
+"times": PackedFloat32Array(0.07, 0.45)
+}
+tracks/44/type = "bezier"
+tracks/44/imported = false
+tracks/44/enabled = true
+tracks/44/path = NodePath("MenuMainContainer/SettingsPanel/StairTeeth/Tooth13:size:x")
+tracks/44/interp = 1
+tracks/44/loop_wrap = true
+tracks/44/keys = {
+"handle_modes": PackedInt32Array(0, 2),
+"points": PackedFloat32Array(50, -0.25, 0, 0.25, 0, 50, -0.061666667, 0, 0, 0),
+"times": PackedFloat32Array(0, 0.37)
+}
+tracks/45/type = "bezier"
+tracks/45/imported = false
+tracks/45/enabled = true
+tracks/45/path = NodePath("MenuMainContainer/SettingsPanel/StairTeeth/Tooth13:size:y")
+tracks/45/interp = 1
+tracks/45/loop_wrap = true
+tracks/45/keys = {
+"handle_modes": PackedInt32Array(0, 2),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 786.524, -0.061666667, -131.08733, 0, 0),
+"times": PackedFloat32Array(0, 0.37)
+}
+tracks/46/type = "bezier"
+tracks/46/imported = false
+tracks/46/enabled = true
+tracks/46/path = NodePath("MenuMainContainer/SettingsPanel/StairTeeth/Tooth14:size:x")
+tracks/46/interp = 1
+tracks/46/loop_wrap = true
+tracks/46/keys = {
+"handle_modes": PackedInt32Array(0, 2),
+"points": PackedFloat32Array(50, -0.25, 0, 0.25, 0, 50, -0.095, 0, 0, 0),
+"times": PackedFloat32Array(0, 0.57)
+}
+tracks/47/type = "bezier"
+tracks/47/imported = false
+tracks/47/enabled = true
+tracks/47/path = NodePath("MenuMainContainer/SettingsPanel/StairTeeth/Tooth14:size:y")
+tracks/47/interp = 1
+tracks/47/loop_wrap = true
+tracks/47/keys = {
+"handle_modes": PackedInt32Array(0, 2),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 768.975, -0.095, -128.1625, 0, 0),
+"times": PackedFloat32Array(0, 0.57)
+}
+tracks/48/type = "bezier"
+tracks/48/imported = false
+tracks/48/enabled = true
+tracks/48/path = NodePath("MenuMainContainer/SettingsPanel/StairTeeth/Tooth15:size:x")
+tracks/48/interp = 1
+tracks/48/loop_wrap = true
+tracks/48/keys = {
+"handle_modes": PackedInt32Array(0, 2),
+"points": PackedFloat32Array(50, -0.25, 0, 0.25, 0, 50, -0.07166667, 0, 0, 0),
+"times": PackedFloat32Array(0, 0.43)
+}
+tracks/49/type = "bezier"
+tracks/49/imported = false
+tracks/49/enabled = true
+tracks/49/path = NodePath("MenuMainContainer/SettingsPanel/StairTeeth/Tooth15:size:y")
+tracks/49/interp = 1
+tracks/49/loop_wrap = true
+tracks/49/keys = {
+"handle_modes": PackedInt32Array(0, 2),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 1022.1, -0.07166667, -170.35, 0, 0),
+"times": PackedFloat32Array(0, 0.43)
+}
+tracks/50/type = "bezier"
+tracks/50/imported = false
+tracks/50/enabled = true
+tracks/50/path = NodePath("MenuMainContainer/SettingsPanel/LeftContent/ResolutionSection/ResolutionTitle:visible_ratio")
+tracks/50/interp = 1
+tracks/50/loop_wrap = true
+tracks/50/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 1, -0.018333336, -0.16666667, 0, 0),
+"times": PackedFloat32Array(0, 0.8)
+}
+tracks/51/type = "bezier"
+tracks/51/imported = false
+tracks/51/enabled = true
+tracks/51/path = NodePath("MenuMainContainer/SettingsPanel/LeftContent/ResolutionSection/ResolutionHint:visible_ratio")
+tracks/51/interp = 1
+tracks/51/loop_wrap = true
+tracks/51/keys = {
+"handle_modes": PackedInt32Array(0, 2),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 1, -0.09166667, -0.16666667, 0, 0),
+"times": PackedFloat32Array(0.25, 0.8)
+}
+tracks/52/type = "bezier"
+tracks/52/imported = false
+tracks/52/enabled = true
+tracks/52/path = NodePath("MenuMainContainer/SettingsPanel/LeftContent:position:x")
+tracks/52/interp = 1
+tracks/52/loop_wrap = true
+tracks/52/keys = {
+"handle_modes": PackedInt32Array(0, 2),
+"points": PackedFloat32Array(-400, -0.25, 0, 0.25, 0, 48, -0.093333334, -74.666664, 0, 0),
+"times": PackedFloat32Array(0.43333334, 0.8)
+}
+tracks/53/type = "bezier"
+tracks/53/imported = false
+tracks/53/enabled = true
+tracks/53/path = NodePath("MenuMainContainer/SettingsPanel/LeftContent:position:y")
+tracks/53/interp = 1
+tracks/53/loop_wrap = true
+tracks/53/keys = {
+"handle_modes": PackedInt32Array(0, 2),
+"points": PackedFloat32Array(184, -0.25, 0, 0.25, 0, 184, -0.093333334, 0, 0, 0),
+"times": PackedFloat32Array(0.43333334, 0.8)
+}
+tracks/54/type = "bezier"
+tracks/54/imported = false
+tracks/54/enabled = true
+tracks/54/path = NodePath("MenuMainContainer/SettingsPanel/RightTabs:position:y")
+tracks/54/interp = 1
+tracks/54/loop_wrap = true
+tracks/54/keys = {
+"handle_modes": PackedInt32Array(2, 2, 0),
+"points": PackedFloat32Array(140, 0, 0, 0.058333345, 0, 140, -0.058333345, 0, 0.06666668, 0, 140, -0.06666668, 0, 0, 0),
+"times": PackedFloat32Array(0.44999996, 0.8, 1.2)
+}
+tracks/55/type = "bezier"
+tracks/55/imported = false
+tracks/55/enabled = true
+tracks/55/path = NodePath("MenuMainContainer/SettingsPanel/RightTabs:position:x")
+tracks/55/interp = 1
+tracks/55/loop_wrap = true
+tracks/55/keys = {
+"handle_modes": PackedInt32Array(2, 2),
+"points": PackedFloat32Array(1304, 0, 0, 0.058333345, -26.913332, 968, -0.058333345, 56.000004, 0, 0),
+"times": PackedFloat32Array(0.44999996, 0.8)
+}
+tracks/56/type = "bezier"
+tracks/56/imported = false
+tracks/56/enabled = true
+tracks/56/path = NodePath("MenuMainContainer/SettingsPanel/ResetButton:position:x")
+tracks/56/interp = 1
+tracks/56/loop_wrap = true
+tracks/56/keys = {
+"handle_modes": PackedInt32Array(2, 2),
+"points": PackedFloat32Array(1320, 0, 0, 0.066666685, -28.333336, 952, -0.066666685, 61.333332, 0, 0),
+"times": PackedFloat32Array(0.79999995, 1.2)
+}
+tracks/57/type = "bezier"
+tracks/57/imported = false
+tracks/57/enabled = true
+tracks/57/path = NodePath("MenuMainContainer/SettingsPanel/ResetButton:position:y")
+tracks/57/interp = 1
+tracks/57/loop_wrap = true
+tracks/57/keys = {
+"handle_modes": PackedInt32Array(2, 2),
+"points": PackedFloat32Array(432, 0, 0, 0.066666685, 0, 424, -0.066666685, 1.3333335, 0, 0),
+"times": PackedFloat32Array(0.79999995, 1.2)
+}
+tracks/58/type = "bezier"
+tracks/58/imported = false
+tracks/58/enabled = true
+tracks/58/path = NodePath("MenuMainContainer/SettingsPanel/CloseButton:position:x")
+tracks/58/interp = 1
+tracks/58/loop_wrap = true
+tracks/58/keys = {
+"handle_modes": PackedInt32Array(2, 0),
+"points": PackedFloat32Array(1300, 0, 0, 0.08333334, 0, 1176, -0.08333334, 20.666666, 0, 0),
+"times": PackedFloat32Array(0.7, 1.2)
+}
+tracks/59/type = "bezier"
+tracks/59/imported = false
+tracks/59/enabled = true
+tracks/59/path = NodePath("MenuMainContainer/SettingsPanel/CloseButton:position:y")
+tracks/59/interp = 1
+tracks/59/loop_wrap = true
+tracks/59/keys = {
+"handle_modes": PackedInt32Array(2, 0),
+"points": PackedFloat32Array(22, 0, 0, 0.08333334, 0, 22, -0.08333334, 0, 0, 0),
+"times": PackedFloat32Array(0.7, 1.2)
+}
+tracks/60/type = "bezier"
+tracks/60/imported = false
+tracks/60/enabled = true
+tracks/60/path = NodePath("MenuMainContainer/SettingsPanel/Blur:material:shader_parameter/blur_lod")
+tracks/60/interp = 1
+tracks/60/loop_wrap = true
+tracks/60/keys = {
+"handle_modes": PackedInt32Array(0, 2),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 3.5000002, -0.060000002, -0.5833334, 0, 0),
+"times": PackedFloat32Array(0, 0.36)
+}
+
+[sub_resource type="Animation" id="Animation_6nqpc"]
+resource_name = "hovermenu"
+loop_mode = 1
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6nqpc"]
+_data = {
+&"RESET": SubResource("Animation_o3nbu"),
+&"SettingsPanel": SubResource("Animation_v3p41"),
+&"hovermenu": SubResource("Animation_6nqpc")
+}
 
 [node name="MainMenu" type="Node2D" unique_id=1904567887]
 script = ExtResource("1_rrxvj")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=455929070]
 
-[node name="Control" type="Control" parent="CanvasLayer" unique_id=1119177702]
+[node name="MenuMainContainer" type="Control" parent="CanvasLayer" unique_id=1119177702]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -75,29 +1557,75 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control" unique_id=373872087]
+[node name="bg debug" type="ColorRect" parent="CanvasLayer/MenuMainContainer" unique_id=124068527]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Panel" type="PanelContainer" parent="CanvasLayer/MenuMainContainer" unique_id=1024567890]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 28.444458
+offset_top = 16.0
+offset_right = -28.444458
+offset_bottom = -16.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_main_panel_border")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/MenuMainContainer" unique_id=373872087]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -418.5
+offset_top = -89.0
+offset_right = 418.5
+offset_bottom = 411.0
+grow_horizontal = 2
+alignment = 1
+
+[node name="RETHorizonPresent" type="Label" parent="CanvasLayer/MenuMainContainer/VBoxContainer" unique_id=370141057]
+layout_mode = 2
+text = "RETHorizon Present"
+label_settings = SubResource("LabelSettings_small_text")
+horizontal_alignment = 1
+
+[node name="Title" type="Label" parent="CanvasLayer/MenuMainContainer/VBoxContainer" unique_id=942704834]
+material = SubResource("ShaderMaterial_sau1s")
+layout_mode = 2
+text = "PROJECT RETH 1"
+label_settings = SubResource("LabelSettings_title_big")
+horizontal_alignment = 1
+
+[node name="Subtitle" type="Label" parent="CanvasLayer/MenuMainContainer/VBoxContainer" unique_id=116409606]
+layout_mode = 2
+text = "- SUBTITLE -"
+label_settings = SubResource("LabelSettings_title_small")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="StartButton" type="Button" parent="CanvasLayer/MenuMainContainer" unique_id=1198836106]
+custom_minimum_size = Vector2(250, 70)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -225.5
-offset_top = -187.0
-offset_right = 225.5
-offset_bottom = 187.0
+offset_left = -125.0
+offset_top = -35.0
+offset_right = 125.0
+offset_bottom = 35.0
 grow_horizontal = 2
 grow_vertical = 2
-
-[node name="Title" type="Label" parent="CanvasLayer/Control/VBoxContainer" unique_id=942704834]
-layout_mode = 2
-text = "RETH GAME 1"
-label_settings = SubResource("LabelSettings_rrxvj")
-horizontal_alignment = 1
-
-[node name="StartButton" type="Button" parent="CanvasLayer/Control/VBoxContainer" unique_id=1198836106]
-custom_minimum_size = Vector2(400, 100)
-layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_colors/font_color = Color(0, 0, 0, 1)
@@ -105,173 +1633,867 @@ theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
 theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
 theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 32
-theme_override_styles/normal = SubResource("StyleBoxFlat_638js")
+theme_override_styles/normal = SubResource("StyleBoxFlat_start_normal")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_c6fb4")
 theme_override_styles/hover = SubResource("StyleBoxFlat_6o0c3")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_d4yab")
-text = "Start Game"
+text = "START"
 
-[node name="SettingsButton" type="Button" parent="CanvasLayer/Control/VBoxContainer" unique_id=1639330726]
-custom_minimum_size = Vector2(400, 80)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
-theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
-theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 32
-theme_override_styles/normal = SubResource("StyleBoxFlat_jx3iw")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_c6fb4")
-theme_override_styles/hover = SubResource("StyleBoxFlat_6o0c3")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_d4yab")
-text = "Settings"
+[node name="ColorRect" type="Panel" parent="CanvasLayer/MenuMainContainer/StartButton" unique_id=79167074]
+material = SubResource("ShaderMaterial_bhunq")
+layout_mode = 0
+offset_right = 250.0
+offset_bottom = 70.0
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxFlat_riqys")
 
-[node name="ExitButton" type="Button" parent="CanvasLayer/Control/VBoxContainer" unique_id=1834787999]
-custom_minimum_size = Vector2(400, 80)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
-theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
-theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 32
-theme_override_styles/normal = SubResource("StyleBoxFlat_d136f")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_c6fb4")
-theme_override_styles/hover = SubResource("StyleBoxFlat_6o0c3")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_d4yab")
-text = "Exit"
-
-[node name="SettingsPanel" type="PanelContainer" parent="CanvasLayer/Control" unique_id=1706783845]
-visible = false
+[node name="SettingsButton" type="Button" parent="CanvasLayer/MenuMainContainer" unique_id=1639330726]
+custom_minimum_size = Vector2(250, 70)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -225.0
-offset_top = -184.0
-offset_right = 225.0
-offset_bottom = 166.0
+offset_left = 88.0
+offset_top = 56.0
+offset_right = 338.0
+offset_bottom = 126.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_d4yab")
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_black_normal")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_c6fb4")
+theme_override_styles/hover = SubResource("StyleBoxFlat_6o0c3")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_d4yab")
+text = "SETTINGS"
 
-[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Control/SettingsPanel" unique_id=226071030]
-layout_mode = 2
-theme_override_constants/margin_left = 12
-theme_override_constants/margin_top = 12
-theme_override_constants/margin_right = 12
-theme_override_constants/margin_bottom = 12
-accessibility_region = true
+[node name="CreditsButton" type="Button" parent="CanvasLayer/MenuMainContainer" unique_id=1400627667]
+custom_minimum_size = Vector2(250, 70)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -336.0
+offset_top = 88.0
+offset_right = -86.0
+offset_bottom = 158.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_credits_normal")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_c6fb4")
+theme_override_styles/hover = SubResource("StyleBoxFlat_6o0c3")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_d4yab")
+text = "CREDITS"
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control/SettingsPanel/MarginContainer" unique_id=1793199899]
-layout_mode = 2
+[node name="ExitButton" type="Button" parent="CanvasLayer/MenuMainContainer" unique_id=1834787999]
+custom_minimum_size = Vector2(250, 70)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -120.0
+offset_top = 184.0
+offset_right = 130.0
+offset_bottom = 254.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_black_normal")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_c6fb4")
+theme_override_styles/hover = SubResource("StyleBoxFlat_6o0c3")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_d4yab")
+text = "EXIT"
+
+[node name="VersionLabel" type="Label" parent="CanvasLayer/MenuMainContainer" unique_id=2003740696]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 64.0
+offset_top = -56.0
+offset_right = 206.0
+offset_bottom = -31.0
+grow_vertical = 0
+text = "Version 1.0"
+label_settings = SubResource("LabelSettings_small_text")
+
+[node name="GodotEngineLabel" type="Label" parent="CanvasLayer/MenuMainContainer" unique_id=1509182771]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -440.0
+offset_top = -64.0
+offset_right = -55.0
+offset_bottom = -39.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "Proudly made with Godot Engine"
+label_settings = SubResource("LabelSettings_small_text")
+horizontal_alignment = 2
+
+[node name="SettingsPanel" type="Control" parent="CanvasLayer/MenuMainContainer" unique_id=1706783845]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Blur" type="Panel" parent="CanvasLayer/MenuMainContainer/SettingsPanel" unique_id=1543169976]
+show_behind_parent = true
+material = SubResource("ShaderMaterial_d4yab")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_settings_black")
+
+[node name="DiagonalInk" type="ColorRect" parent="CanvasLayer/MenuMainContainer/SettingsPanel" unique_id=116648325]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 304.0
+offset_top = -376.0
+offset_right = 312.0
+offset_bottom = -376.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 0.515
+color = Color(0, 0, 0, 1)
+
+[node name="DiagonalInk2" type="ColorRect" parent="CanvasLayer/MenuMainContainer/SettingsPanel" unique_id=1195751584]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 344.0
+offset_top = -368.0
+offset_right = 352.0
+offset_bottom = -368.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 0.515
+color = Color(0, 0, 0, 1)
+
+[node name="DiagonalInk3" type="ColorRect" parent="CanvasLayer/MenuMainContainer/SettingsPanel" unique_id=2032684688]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 368.0
+offset_top = -376.0
+offset_right = 376.0
+offset_bottom = -376.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 0.515
+color = Color(0, 0, 0, 1)
+
+[node name="DiagonalInk4" type="ColorRect" parent="CanvasLayer/MenuMainContainer/SettingsPanel" unique_id=1731980783]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 376.0
+offset_top = -368.00003
+offset_right = 384.0
+offset_bottom = -368.00003
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 0.515
+color = Color(0, 0, 0, 1)
+
+[node name="StairTeeth" type="Control" parent="CanvasLayer/MenuMainContainer/SettingsPanel" unique_id=2092678296]
+layout_mode = 1
+anchors_preset = 0
+offset_left = 648.0
+offset_top = 344.0
+offset_right = 648.0
+offset_bottom = 344.0
+
+[node name="Tooth1" type="ColorRect" parent="CanvasLayer/MenuMainContainer/SettingsPanel/StairTeeth" unique_id=649276211]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 551.4199
+offset_top = -672.0
+offset_right = 601.4199
+offset_bottom = -672.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 0.515
+color = Color(0, 0, 0, 1)
+
+[node name="Tooth2" type="ColorRect" parent="CanvasLayer/MenuMainContainer/SettingsPanel/StairTeeth" unique_id=218149012]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 589.4199
+offset_top = -640.0
+offset_right = 639.4199
+offset_bottom = -640.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 0.515
+color = Color(0, 0, 0, 1)
+
+[node name="Tooth3" type="ColorRect" parent="CanvasLayer/MenuMainContainer/SettingsPanel/StairTeeth" unique_id=1771881533]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 631.4199
+offset_top = -616.0
+offset_right = 681.4199
+offset_bottom = -616.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 0.515
+color = Color(0, 0, 0, 1)
+
+[node name="Tooth4" type="ColorRect" parent="CanvasLayer/MenuMainContainer/SettingsPanel/StairTeeth" unique_id=699000755]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 671.4199
+offset_top = -592.0
+offset_right = 721.4199
+offset_bottom = -592.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 0.515
+color = Color(0, 0, 0, 1)
+
+[node name="Tooth5" type="ColorRect" parent="CanvasLayer/MenuMainContainer/SettingsPanel/StairTeeth" unique_id=1176156360]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 711.4199
+offset_top = -568.0
+offset_right = 761.4199
+offset_bottom = -568.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 0.515
+color = Color(0, 0, 0, 1)
+
+[node name="Tooth6" type="ColorRect" parent="CanvasLayer/MenuMainContainer/SettingsPanel/StairTeeth" unique_id=319580833]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 751.4199
+offset_top = -544.0
+offset_right = 801.4199
+offset_bottom = -544.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 0.515
+color = Color(0, 0, 0, 1)
+
+[node name="Tooth7" type="ColorRect" parent="CanvasLayer/MenuMainContainer/SettingsPanel/StairTeeth" unique_id=1392047917]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 799.4199
+offset_top = -528.0
+offset_right = 849.4199
+offset_bottom = -528.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 0.515
+color = Color(0, 0, 0, 1)
+
+[node name="Tooth8" type="ColorRect" parent="CanvasLayer/MenuMainContainer/SettingsPanel/StairTeeth" unique_id=1030692992]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 831.4199
+offset_top = -503.99994
+offset_right = 881.4199
+offset_bottom = -503.99994
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 0.515
+color = Color(0, 0, 0, 1)
+
+[node name="Tooth9" type="ColorRect" parent="CanvasLayer/MenuMainContainer/SettingsPanel/StairTeeth" unique_id=2099938084]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 871.4199
+offset_top = -488.0
+offset_right = 921.4199
+offset_bottom = -488.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 0.515
+color = Color(0, 0, 0, 1)
+
+[node name="Tooth10" type="ColorRect" parent="CanvasLayer/MenuMainContainer/SettingsPanel/StairTeeth" unique_id=950140414]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 911.4199
+offset_top = -472.0
+offset_right = 961.4199
+offset_bottom = -472.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 0.515
+color = Color(0, 0, 0, 1)
+
+[node name="Tooth11" type="ColorRect" parent="CanvasLayer/MenuMainContainer/SettingsPanel/StairTeeth" unique_id=134477391]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 911.4199
+offset_top = -376.0
+offset_right = 961.4199
+offset_bottom = -376.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 0.515
+color = Color(0, 0, 0, 1)
+
+[node name="Tooth12" type="ColorRect" parent="CanvasLayer/MenuMainContainer/SettingsPanel/StairTeeth" unique_id=2062728299]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 919.4199
+offset_top = -304.00006
+offset_right = 969.4199
+offset_bottom = -304.00006
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 0.515
+color = Color(0, 0, 0, 1)
+
+[node name="Tooth13" type="ColorRect" parent="CanvasLayer/MenuMainContainer/SettingsPanel/StairTeeth" unique_id=1517689900]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 992.0
+offset_top = -338.0
+offset_right = 1042.0
+offset_bottom = -338.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 0.515
+color = Color(0, 0, 0, 1)
+
+[node name="Tooth14" type="ColorRect" parent="CanvasLayer/MenuMainContainer/SettingsPanel/StairTeeth" unique_id=605895619]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1007.4199
+offset_top = -272.0
+offset_right = 1057.4199
+offset_bottom = -272.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 0.515
+color = Color(0, 0, 0, 1)
+
+[node name="Tooth15" type="ColorRect" parent="CanvasLayer/MenuMainContainer/SettingsPanel/StairTeeth" unique_id=76273445]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1191.4199
+offset_top = -496.0
+offset_right = 1241.4199
+offset_bottom = -496.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 0.515
+color = Color(0, 0, 0, 1)
+
+[node name="StairTeeth2" type="Control" parent="CanvasLayer/MenuMainContainer/SettingsPanel" unique_id=46936574]
+anchors_preset = 0
+offset_right = 1280.0
+offset_bottom = 720.0
+
+[node name="Tooth1" type="ColorRect" parent="CanvasLayer/MenuMainContainer/SettingsPanel/StairTeeth2" unique_id=1018213169]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -664.0
+offset_top = -208.0
+offset_right = -664.0
+offset_bottom = -128.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Tooth2" type="ColorRect" parent="CanvasLayer/MenuMainContainer/SettingsPanel/StairTeeth2" unique_id=1049738663]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -664.0
+offset_top = -130.0
+offset_right = -664.0
+offset_bottom = -50.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Tooth3" type="ColorRect" parent="CanvasLayer/MenuMainContainer/SettingsPanel/StairTeeth2" unique_id=99353906]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -664.0
+offset_top = -54.0
+offset_right = -664.0
+offset_bottom = 26.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Tooth4" type="ColorRect" parent="CanvasLayer/MenuMainContainer/SettingsPanel/StairTeeth2" unique_id=1185539562]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -664.0
+offset_top = 10.0
+offset_right = -664.0
+offset_bottom = 90.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Tooth5" type="ColorRect" parent="CanvasLayer/MenuMainContainer/SettingsPanel/StairTeeth2" unique_id=1462818311]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -664.0
+offset_top = 74.0
+offset_right = -664.0
+offset_bottom = 154.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="SettingsWord" type="Label" parent="CanvasLayer/MenuMainContainer/SettingsPanel" unique_id=1887769574]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -206.0
+offset_top = 281.0
+offset_right = 442.0
+offset_bottom = 500.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -1.0471976
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 82
+text = "SETTINGS"
+label_settings = SubResource("LabelSettings_6o0c3")
+visible_characters = 0
+visible_ratio = 0.0
+
+[node name="LeftContent" type="VBoxContainer" parent="CanvasLayer/MenuMainContainer/SettingsPanel" unique_id=746320136]
+layout_mode = 1
+offset_left = -400.0
+offset_top = 184.0
+offset_right = -28.0
+offset_bottom = 490.0
 theme_override_constants/separation = 8
 
-[node name="Title" type="Label" parent="CanvasLayer/Control/SettingsPanel/MarginContainer/VBoxContainer" unique_id=18527251]
+[node name="ResolutionSection" type="VBoxContainer" parent="CanvasLayer/MenuMainContainer/SettingsPanel/LeftContent" unique_id=1414164529]
 layout_mode = 2
-text = "Settings"
-horizontal_alignment = 1
+theme_override_constants/separation = 10
 
-[node name="ResolutionRow" type="HBoxContainer" parent="CanvasLayer/Control/SettingsPanel/MarginContainer/VBoxContainer" unique_id=1864754561]
+[node name="ResolutionTitle" type="Label" parent="CanvasLayer/MenuMainContainer/SettingsPanel/LeftContent/ResolutionSection" unique_id=384895103]
 layout_mode = 2
-theme_override_constants/separation = 8
-
-[node name="ResolutionLabel" type="Label" parent="CanvasLayer/Control/SettingsPanel/MarginContainer/VBoxContainer/ResolutionRow" unique_id=863353775]
-layout_mode = 2
-size_flags_horizontal = 3
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 30
 text = "Resolution"
+visible_characters = 0
+visible_ratio = 0.0
 
-[node name="ResolutionOptions" type="OptionButton" parent="CanvasLayer/Control/SettingsPanel/MarginContainer/VBoxContainer/ResolutionRow" unique_id=172077103]
+[node name="ResolutionHint" type="Label" parent="CanvasLayer/MenuMainContainer/SettingsPanel/LeftContent/ResolutionSection" unique_id=983074747]
 layout_mode = 2
-size_flags_horizontal = 3
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 18
+text = "Change game display resolution"
+visible_characters = 0
+visible_ratio = 0.0
 
-[node name="FullscreenCheck" type="CheckBox" parent="CanvasLayer/Control/SettingsPanel/MarginContainer/VBoxContainer" unique_id=668779874]
+[node name="ResolutionOptions" type="OptionButton" parent="CanvasLayer/MenuMainContainer/SettingsPanel/LeftContent/ResolutionSection" unique_id=172077103]
+custom_minimum_size = Vector2(230, 34)
 layout_mode = 2
+size_flags_horizontal = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 18
+theme_override_styles/normal = SubResource("StyleBoxFlat_settings_select")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_settings_select")
+theme_override_styles/hover = SubResource("StyleBoxFlat_settings_select")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_d4yab")
+
+[node name="FullscreenCheck" type="CheckBox" parent="CanvasLayer/MenuMainContainer/SettingsPanel/LeftContent/ResolutionSection" unique_id=668779874]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 18
 text = "Fullscreen"
 
-[node name="VsyncCheck" type="CheckBox" parent="CanvasLayer/Control/SettingsPanel/MarginContainer/VBoxContainer" unique_id=862556144]
+[node name="VsyncCheck" type="CheckBox" parent="CanvasLayer/MenuMainContainer/SettingsPanel/LeftContent/ResolutionSection" unique_id=862556144]
 layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 18
 text = "VSync"
 
-[node name="MasterVolumeRow" type="HBoxContainer" parent="CanvasLayer/Control/SettingsPanel/MarginContainer/VBoxContainer" unique_id=935017624]
+[node name="ApplyButton" type="Button" parent="CanvasLayer/MenuMainContainer/SettingsPanel/LeftContent/ResolutionSection" unique_id=520373748]
+custom_minimum_size = Vector2(340, 52)
 layout_mode = 2
-theme_override_constants/separation = 8
-
-[node name="MasterVolumeLabel" type="Label" parent="CanvasLayer/Control/SettingsPanel/MarginContainer/VBoxContainer/MasterVolumeRow" unique_id=914658517]
-layout_mode = 2
-size_flags_horizontal = 3
-text = "Master"
-
-[node name="MasterVolumeSlider" type="HSlider" parent="CanvasLayer/Control/SettingsPanel/MarginContainer/VBoxContainer/MasterVolumeRow" unique_id=2124503754]
-layout_mode = 2
-size_flags_horizontal = 3
-value = 100.0
-
-[node name="MasterVolumeValue" type="Label" parent="CanvasLayer/Control/SettingsPanel/MarginContainer/VBoxContainer/MasterVolumeRow" unique_id=1486906634]
-custom_minimum_size = Vector2(44, 0)
-layout_mode = 2
-text = "100"
-horizontal_alignment = 2
-
-[node name="SfxVolumeRow" type="HBoxContainer" parent="CanvasLayer/Control/SettingsPanel/MarginContainer/VBoxContainer" unique_id=889552395]
-layout_mode = 2
-theme_override_constants/separation = 8
-
-[node name="SfxVolumeLabel" type="Label" parent="CanvasLayer/Control/SettingsPanel/MarginContainer/VBoxContainer/SfxVolumeRow" unique_id=332396756]
-layout_mode = 2
-size_flags_horizontal = 3
-text = "SFX"
-
-[node name="SfxVolumeSlider" type="HSlider" parent="CanvasLayer/Control/SettingsPanel/MarginContainer/VBoxContainer/SfxVolumeRow" unique_id=1025889280]
-layout_mode = 2
-size_flags_horizontal = 3
-value = 100.0
-
-[node name="SfxVolumeValue" type="Label" parent="CanvasLayer/Control/SettingsPanel/MarginContainer/VBoxContainer/SfxVolumeRow" unique_id=710430401]
-custom_minimum_size = Vector2(44, 0)
-layout_mode = 2
-text = "100"
-horizontal_alignment = 2
-
-[node name="MusicVolumeRow" type="HBoxContainer" parent="CanvasLayer/Control/SettingsPanel/MarginContainer/VBoxContainer" unique_id=2086497879]
-layout_mode = 2
-theme_override_constants/separation = 8
-
-[node name="MusicVolumeLabel" type="Label" parent="CanvasLayer/Control/SettingsPanel/MarginContainer/VBoxContainer/MusicVolumeRow" unique_id=1185887723]
-layout_mode = 2
-size_flags_horizontal = 3
-text = "Music"
-
-[node name="MusicVolumeSlider" type="HSlider" parent="CanvasLayer/Control/SettingsPanel/MarginContainer/VBoxContainer/MusicVolumeRow" unique_id=307614770]
-layout_mode = 2
-size_flags_horizontal = 3
-value = 100.0
-
-[node name="MusicVolumeValue" type="Label" parent="CanvasLayer/Control/SettingsPanel/MarginContainer/VBoxContainer/MusicVolumeRow" unique_id=1836047000]
-custom_minimum_size = Vector2(44, 0)
-layout_mode = 2
-text = "100"
-horizontal_alignment = 2
-
-[node name="StatusLabel" type="Label" parent="CanvasLayer/Control/SettingsPanel/MarginContainer/VBoxContainer" unique_id=210860596]
-custom_minimum_size = Vector2(0, 20)
-layout_mode = 2
-horizontal_alignment = 1
-
-[node name="ButtonRow" type="HBoxContainer" parent="CanvasLayer/Control/SettingsPanel/MarginContainer/VBoxContainer" unique_id=1038873131]
-layout_mode = 2
-theme_override_constants/separation = 8
-
-[node name="ApplyButton" type="Button" parent="CanvasLayer/Control/SettingsPanel/MarginContainer/VBoxContainer/ButtonRow" unique_id=520373748]
-layout_mode = 2
-size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 28
+theme_override_styles/normal = SubResource("StyleBoxFlat_settings_apply")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_settings_apply_hover")
+theme_override_styles/hover = SubResource("StyleBoxFlat_settings_apply_hover")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_d4yab")
 text = "Apply"
 
-[node name="BackButton" type="Button" parent="CanvasLayer/Control/SettingsPanel/MarginContainer/VBoxContainer/ButtonRow" unique_id=31973658]
+[node name="SoundSection" type="VBoxContainer" parent="CanvasLayer/MenuMainContainer/SettingsPanel/LeftContent" unique_id=483458873]
+visible = false
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="SoundTitle" type="Label" parent="CanvasLayer/MenuMainContainer/SettingsPanel/LeftContent/SoundSection" unique_id=891292]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 30
+text = "Sound/Music"
+
+[node name="SoundHint" type="Label" parent="CanvasLayer/MenuMainContainer/SettingsPanel/LeftContent/SoundSection" unique_id=55043876]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 18
+text = "Adjust game volume"
+
+[node name="MasterVolumeRow" type="HBoxContainer" parent="CanvasLayer/MenuMainContainer/SettingsPanel/LeftContent/SoundSection" unique_id=935017624]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="MasterVolumeLabel" type="Label" parent="CanvasLayer/MenuMainContainer/SettingsPanel/LeftContent/SoundSection/MasterVolumeRow" unique_id=914658517]
+custom_minimum_size = Vector2(76, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 18
+text = "Master"
+
+[node name="MasterVolumeSlider" type="HSlider" parent="CanvasLayer/MenuMainContainer/SettingsPanel/LeftContent/SoundSection/MasterVolumeRow" unique_id=2124503754]
 layout_mode = 2
 size_flags_horizontal = 3
-text = "Back"
+value = 100.0
+
+[node name="MasterVolumeValue" type="Label" parent="CanvasLayer/MenuMainContainer/SettingsPanel/LeftContent/SoundSection/MasterVolumeRow" unique_id=1486906634]
+custom_minimum_size = Vector2(44, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 18
+text = "100"
+horizontal_alignment = 2
+
+[node name="SfxVolumeRow" type="HBoxContainer" parent="CanvasLayer/MenuMainContainer/SettingsPanel/LeftContent/SoundSection" unique_id=889552395]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="SfxVolumeLabel" type="Label" parent="CanvasLayer/MenuMainContainer/SettingsPanel/LeftContent/SoundSection/SfxVolumeRow" unique_id=332396756]
+custom_minimum_size = Vector2(76, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 18
+text = "SFX"
+
+[node name="SfxVolumeSlider" type="HSlider" parent="CanvasLayer/MenuMainContainer/SettingsPanel/LeftContent/SoundSection/SfxVolumeRow" unique_id=1025889280]
+layout_mode = 2
+size_flags_horizontal = 3
+value = 100.0
+
+[node name="SfxVolumeValue" type="Label" parent="CanvasLayer/MenuMainContainer/SettingsPanel/LeftContent/SoundSection/SfxVolumeRow" unique_id=710430401]
+custom_minimum_size = Vector2(44, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 18
+text = "100"
+horizontal_alignment = 2
+
+[node name="MusicVolumeRow" type="HBoxContainer" parent="CanvasLayer/MenuMainContainer/SettingsPanel/LeftContent/SoundSection" unique_id=2086497879]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="MusicVolumeLabel" type="Label" parent="CanvasLayer/MenuMainContainer/SettingsPanel/LeftContent/SoundSection/MusicVolumeRow" unique_id=1185887723]
+custom_minimum_size = Vector2(76, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 18
+text = "Music"
+
+[node name="MusicVolumeSlider" type="HSlider" parent="CanvasLayer/MenuMainContainer/SettingsPanel/LeftContent/SoundSection/MusicVolumeRow" unique_id=307614770]
+layout_mode = 2
+size_flags_horizontal = 3
+value = 100.0
+
+[node name="MusicVolumeValue" type="Label" parent="CanvasLayer/MenuMainContainer/SettingsPanel/LeftContent/SoundSection/MusicVolumeRow" unique_id=1836047000]
+custom_minimum_size = Vector2(44, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 18
+text = "100"
+horizontal_alignment = 2
+
+[node name="SoundApplyButton" type="Button" parent="CanvasLayer/MenuMainContainer/SettingsPanel/LeftContent/SoundSection" unique_id=434376129]
+custom_minimum_size = Vector2(340, 52)
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 28
+theme_override_styles/normal = SubResource("StyleBoxFlat_settings_apply")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_settings_apply_hover")
+theme_override_styles/hover = SubResource("StyleBoxFlat_settings_apply_hover")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_d4yab")
+text = "Apply"
+
+[node name="ControlsSection" type="VBoxContainer" parent="CanvasLayer/MenuMainContainer/SettingsPanel/LeftContent" unique_id=1749560167]
+visible = false
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="ControlsTitle" type="Label" parent="CanvasLayer/MenuMainContainer/SettingsPanel/LeftContent/ControlsSection" unique_id=1572481533]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 30
+text = "Controls"
+
+[node name="ControlsHint" type="Label" parent="CanvasLayer/MenuMainContainer/SettingsPanel/LeftContent/ControlsSection" unique_id=930122341]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 18
+text = "Keyboard bindings"
+
+[node name="ControlsList" type="Label" parent="CanvasLayer/MenuMainContainer/SettingsPanel/LeftContent/ControlsSection" unique_id=726213844]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 20
+text = "Move Left      A / Left
+Move Right     D / Right
+Interact       E
+Pause          Esc"
+
+[node name="StatusLabel" type="Label" parent="CanvasLayer/MenuMainContainer/SettingsPanel/LeftContent" unique_id=210860596]
+custom_minimum_size = Vector2(0, 26)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.941176, 0, 1)
+theme_override_font_sizes/font_size = 18
+horizontal_alignment = 1
+
+[node name="RightTabs" type="VBoxContainer" parent="CanvasLayer/MenuMainContainer/SettingsPanel" unique_id=2058581672]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1300.0
+offset_top = 140.0
+offset_right = 250.00037
+offset_bottom = -322.0
+grow_horizontal = 2
+grow_vertical = 2
+offset_transform_enabled = true
+theme_override_constants/separation = 28
+
+[node name="ResolutionTab" type="Button" parent="CanvasLayer/MenuMainContainer/SettingsPanel/RightTabs" unique_id=1723565272]
+custom_minimum_size = Vector2(230, 58)
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 26
+theme_override_styles/normal = SubResource("StyleBoxFlat_settings_tab")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_settings_tab_active")
+theme_override_styles/hover = SubResource("StyleBoxFlat_settings_tab")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_d4yab")
+toggle_mode = true
+button_pressed = true
+text = "Resolution"
+
+[node name="SoundTab" type="Button" parent="CanvasLayer/MenuMainContainer/SettingsPanel/RightTabs" unique_id=1256472953]
+custom_minimum_size = Vector2(230, 58)
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 26
+theme_override_styles/normal = SubResource("StyleBoxFlat_o3nbu")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_settings_tab_active")
+theme_override_styles/hover = SubResource("StyleBoxFlat_settings_tab")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_d4yab")
+toggle_mode = true
+text = "Sound/Music"
+
+[node name="ControlsTab" type="Button" parent="CanvasLayer/MenuMainContainer/SettingsPanel/RightTabs" unique_id=1227046051]
+custom_minimum_size = Vector2(230, 58)
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 26
+theme_override_styles/normal = SubResource("StyleBoxFlat_v3p41")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_settings_tab_active")
+theme_override_styles/hover = SubResource("StyleBoxFlat_settings_tab")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_d4yab")
+toggle_mode = true
+text = "Controls"
+
+[node name="ResetButton" type="Button" parent="CanvasLayer/MenuMainContainer/SettingsPanel" unique_id=7699776]
+custom_minimum_size = Vector2(260, 58)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1300.0
+offset_top = 432.0
+offset_right = 280.00073
+offset_bottom = -224.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = SubResource("StyleBoxFlat_settings_apply")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_settings_apply_hover")
+theme_override_styles/hover = SubResource("StyleBoxFlat_6nqpc")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_d4yab")
+text = "Reset to Default"
+
+[node name="CloseButton" type="Button" parent="CanvasLayer/MenuMainContainer/SettingsPanel" unique_id=31973658]
+custom_minimum_size = Vector2(78, 78)
+layout_mode = 1
+offset_left = 1300.0
+offset_top = 22.0
+offset_right = 1378.0
+offset_bottom = 110.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 64
+theme_override_styles/normal = SubResource("StyleBoxEmpty_d4yab")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_d4yab")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_d4yab")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_d4yab")
+text = "X"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer" unique_id=1828003094]
+libraries/ = SubResource("AnimationLibrary_6nqpc")

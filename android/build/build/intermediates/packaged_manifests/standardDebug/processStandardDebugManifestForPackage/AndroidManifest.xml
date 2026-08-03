@@ -43,7 +43,7 @@
             android:value="mobile" />
         <meta-data
             android:name="org.godotengine.editor.version"
-            android:value="4.7.stable" />
+            android:value="4.7.1.stable" />
 
         <activity
             android:name="com.godot.game.GodotApp"
@@ -75,7 +75,7 @@
             android:shell="true" /> <!-- Records the version of the Godot library -->
         <meta-data
             android:name="org.godotengine.library.version"
-            android:value="4.7.0.stable" />
+            android:value="4.7.1.stable" />
 
         <activity
             android:name="org.godotengine.godot.utils.ProcessPhoenix"

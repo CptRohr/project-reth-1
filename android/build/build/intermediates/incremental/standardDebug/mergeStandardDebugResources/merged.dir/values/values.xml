@@ -117,7 +117,7 @@
     <string name="error_missing_vulkan_requirements_message">Warning - this device does not meet the requirements for Vulkan support</string>
     <string name="gabe_connection_error_message">Unable to connect to the Godot Android Build Environment (GABE). Please make sure it\'s installed on your device.</string>
     <string name="gabe_connection_error_title">Connection Failed!</string>
-    <string name="godot_project_name_string">RETH Game 1 (indev)</string>
+    <string name="godot_project_name_string">RETH 1 (indev)</string>
     <string name="status_bar_notification_info_overflow">999+</string>
     <string name="text_error_title">Error!</string>
     <style name="Base.Theme.SplashScreen" parent="Base.v21.Theme.SplashScreen"/>

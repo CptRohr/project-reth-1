@@ -9,11 +9,21 @@
 [ext_resource type="PackedScene" uid="uid://cdioa01qum4k4" path="res://Characters/NPC/NPC.tscn" id="4_87pa4"]
 [ext_resource type="Texture2D" uid="uid://croo63lst6hai" path="res://Assets/debug assets/GandalfHardcore City Tiles/City background layer2.png" id="4_nbdgs"]
 [ext_resource type="Texture2D" uid="uid://bxjskl2e76kj8" path="res://Assets/Background/Ground Tiles.png" id="6_a2c52"]
+[ext_resource type="Shader" uid="uid://b7cyain8lryxa" path="res://Assets/Shaders/2d_fog_overlay.gdshader" id="6_pqgox"]
+[ext_resource type="Texture2D" uid="uid://bq1vnydo0u8s5" path="res://Assets/debug assets/Cloud 5.png" id="6_sau1s"]
 [ext_resource type="Texture2D" uid="uid://cuugn7wk7te85" path="res://Assets/Background/House1.png" id="7_gugtu"]
 [ext_resource type="PackedScene" uid="uid://cvsat2wwojd4b" path="res://Characters/NPC/AbangBrewok.tscn" id="9_nbdgs"]
 [ext_resource type="Script" uid="uid://dcrykd7ugqep5" path="res://Scripts/sleep_interactable.gd" id="10_1eb4q"]
 [ext_resource type="Script" uid="uid://5uurhbsc5ucm" path="res://Scripts/activity_interactable.gd" id="11_utl14"]
 [ext_resource type="Script" uid="uid://do5vk0tirle8m" path="res://Scripts/school_interactable.gd" id="12_a2c52"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bhunq"]
+shader = ExtResource("6_pqgox")
+shader_parameter/noise_texture = ExtResource("6_sau1s")
+shader_parameter/density = 0.250000011875
+shader_parameter/speed = Vector2(0.001, 0.01)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_plhsg"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_pqgox"]
 texture = ExtResource("7_gugtu")
@@ -244,7 +254,7 @@ script = ExtResource("1_fo826")
 scroll_scale = Vector2(0.08, 1)
 repeat_size = Vector2(500, 0)
 autoscroll = Vector2(4, 0)
-repeat_times = 21
+repeat_times = 3
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/High Clouds" unique_id=1057957990]
 position = Vector2(67, -102.99999)
@@ -269,6 +279,18 @@ scale = Vector2(1.135, 1.135)
 texture = ExtResource("3_yb0hq")
 centered = false
 
+[node name="foghazeparallax" type="Parallax2D" parent="ParallaxBackground" unique_id=1842427885]
+scroll_scale = Vector2(0.5, 1)
+repeat_size = Vector2(1162.03, 0)
+repeat_times = 3
+
+[node name="foghaze" type="ColorRect" parent="ParallaxBackground/foghazeparallax" unique_id=944921589]
+material = SubResource("ShaderMaterial_bhunq")
+offset_left = -532.0
+offset_top = -114.0
+offset_right = 630.0
+offset_bottom = 98.0
+
 [node name="Near" type="Parallax2D" parent="ParallaxBackground" unique_id=2029300139]
 scroll_scale = Vector2(0.7, 1)
 repeat_size = Vector2(1162.19, 0)
@@ -282,11 +304,12 @@ centered = false
 
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=382452151]
 visibility_layer = 2
+material = SubResource("ShaderMaterial_plhsg")
 tile_map_data = PackedByteArray("AAAKAAEAAwAKAAMAAAAKAAIAAwAKAAQAAAALAAEAAwALAAMAAAALAAIAAwALAAQAAAAMAAEAAwAMAAMAAAAKAAAAAwAKAAIAAAALAAAAAwALAAIAAAAMAAAAAwAMAAIAAAAKAP//AwAKAAEAAAALAP//AwALAAEAAAAMAP//AwAMAAEAAAAMAAIAAwAMAAQAAAD7/wMABQAAAAAAAAD8/wMABQAAAAAAAAD9/wMABQAAAAAAAAD+/wMABQAAAAAAAAD//wMABQAAAAAAAAAAAAMABQAAAAAAAAABAAMABQAAAAAAAAACAAMABQAAAAAAAAADAAMABQAAAAAAAAAEAAMABQAAAAAAAAAFAAMABQAAAAAAAAAGAAMABQAAAAAAAAAHAAMABQAAAAAAAAAIAAMABQAAAAAAAAAJAAMABQAAAAAAAAAKAAMABQAAAAAAAAALAAMABQAAAAAAAAAMAAMABQAAAAAAAAANAAMABQAAAAAAAAAOAAMABQAAAAAAAAD6/wMABQAAAAAAAAD5/wMABQAAAAAAAAD4/wMABQAAAAAAAAD3/wMABQAAAAAAAAD2/wMABQAAAAAAAAD1/wMABQAAAAAAAAD0/wMABQAAAAAAAAD0/wQABQAAAAEAAAD1/wQABQAAAAEAAAD2/wQABQAAAAEAAAD3/wQABQAAAAEAAAD4/wQABQAAAAEAAAD5/wQABQAAAAEAAAD6/wQABQAAAAEAAAD7/wQABQAAAAEAAAD8/wQABQAAAAEAAAD9/wQABQAAAAEAAAD+/wQABQAAAAEAAAD//wQABQAAAAEAAAAAAAQABQAAAAEAAAABAAQABQAAAAEAAAACAAQABQAAAAEAAAADAAQABQAAAAEAAAAEAAQABQAAAAEAAAAFAAQABQAAAAEAAAAGAAQABQAAAAEAAAAHAAQABQAAAAEAAAAIAAQABQAAAAEAAAAJAAQABQAAAAEAAAAKAAQABQAAAAEAAAALAAQABQAAAAEAAAAMAAQABQAAAAEAAAANAAQABQAAAAEAAAAOAAQABQAAAAEAAAAOAAUABQAAAAEAAAANAAUABQAAAAEAAAAMAAUABQAAAAEAAAALAAUABQAAAAEAAAAKAAUABQAAAAEAAAAJAAUABQAAAAEAAAAIAAUABQAAAAEAAAAHAAUABQAAAAEAAAAGAAUABQAAAAEAAAAFAAUABQAAAAEAAAAEAAUABQAAAAEAAAADAAUABQAAAAEAAAACAAUABQAAAAEAAAABAAUABQAAAAEAAAAAAAUABQAAAAEAAAD//wUABQAAAAEAAAD+/wUABQAAAAEAAAD9/wUABQAAAAEAAAD8/wUABQAAAAEAAAD7/wUABQAAAAEAAAD6/wUABQAAAAEAAAD5/wUABQAAAAEAAAD4/wUABQAAAAEAAAD3/wUABQAAAAEAAAD2/wUABQAAAAEAAAD1/wUABQAAAAEAAAD0/wUABQAAAAEAAAD0/wYABQAAAAEAAAD1/wYABQAAAAEAAAD2/wYABQAAAAEAAAD3/wYABQAAAAEAAAD4/wYABQAAAAEAAAD5/wYABQAAAAEAAAD6/wYABQAAAAEAAAD7/wYABQAAAAEAAAD8/wYABQAAAAEAAAD9/wYABQAAAAEAAAD+/wYABQAAAAEAAAD//wYABQAAAAEAAAAAAAYABQAAAAEAAAABAAYABQAAAAEAAAACAAYABQAAAAEAAAADAAYABQAAAAEAAAAEAAYABQAAAAEAAAAFAAYABQAAAAEAAAAGAAYABQAAAAEAAAAHAAYABQAAAAEAAAAIAAYABQAAAAEAAAAJAAYABQAAAAEAAAAKAAYABQAAAAEAAAALAAYABQAAAAEAAAAMAAYABQAAAAEAAAANAAYABQAAAAEAAAAOAAYABQAAAAEAAAD7//7/AwABAAAAAAD7////AwABAAEAAAD7/wAAAwABAAIAAAD7/wEAAwABAAMAAAD7/wIAAwABAAQAAAD8//7/AwACAAAAAAD8////AwACAAEAAAD8/wAAAwACAAIAAAD8/wEAAwACAAMAAAD8/wIAAwACAAQAAAD9//7/AwADAAAAAAD9////AwADAAEAAAD9/wAAAwADAAIAAAD9/wEAAwADAAMAAAD9/wIAAwADAAQAAAD+//7/AwAEAAAAAAD+////AwAEAAEAAAD+/wAAAwAEAAIAAAD+/wEAAwAEAAMAAAD+/wIAAwAEAAQAAAD/////AwAFAAEAAAD//wAAAwAFAAIAAAD//wEAAwAFAAMAAAD//wIAAwAFAAQAAAAAAP//AwAGAAEAAAAAAAAAAwAGAAIAAAAAAAEAAwAGAAMAAAAAAAIAAwAGAAQAAAABAP//AwAHAAEAAAABAAAAAwAHAAIAAAABAAEAAwAHAAMAAAABAAIAAwAHAAQAAAACAP//AwAIAAEAAAACAAAAAwAIAAIAAAACAAEAAwAIAAMAAAACAAIAAwAIAAQAAAD6/wEAAwAAAAMAAAD6/wIAAwAAAAQAAAADAP//AwANAAEAAAADAAAAAwANAAIAAAADAAEAAwANAAMAAAADAAIAAwANAAQAAAAEAP//AwAOAAEAAAAEAAAAAwAOAAIAAAAEAAEAAwAOAAMAAAAEAAIAAwAOAAQAAAAFAP//AwAPAAEAAAAFAAAAAwAPAAIAAAAFAAEAAwAPAAMAAAAFAAIAAwAPAAQAAAAGAP//AwAQAAEAAAAGAAAAAwAQAAIAAAAGAAEAAwAQAAMAAAAGAAIAAwAQAAQAAAA=")
 tile_set = SubResource("TileSet_nbdgs")
 
 [node name="Player" parent="." unique_id=455174183 instance=ExtResource("1_y7n76")]
-position = Vector2(-40, 79)
+position = Vector2(-86, 81)
 
 [node name="DoorTransition" parent="." unique_id=382549217 instance=ExtResource("3_pes26")]
 position = Vector2(202, 82)

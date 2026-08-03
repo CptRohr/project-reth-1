@@ -70,11 +70,11 @@
 43            android:value="mobile" />
 43-->D:\GAME PROJECT\project-reth-1\android\build\src\debug\AndroidManifest.xml:23:89-111
 44        <meta-data
-44-->D:\GAME PROJECT\project-reth-1\android\build\src\debug\AndroidManifest.xml:24:9-116
+44-->D:\GAME PROJECT\project-reth-1\android\build\src\debug\AndroidManifest.xml:24:9-118
 45            android:name="org.godotengine.editor.version"
 45-->D:\GAME PROJECT\project-reth-1\android\build\src\debug\AndroidManifest.xml:24:41-86
-46            android:value="4.7.stable" />
-46-->D:\GAME PROJECT\project-reth-1\android\build\src\debug\AndroidManifest.xml:24:87-113
+46            android:value="4.7.1.stable" />
+46-->D:\GAME PROJECT\project-reth-1\android\build\src\debug\AndroidManifest.xml:24:87-115
 47
 48        <activity
 48-->D:\GAME PROJECT\project-reth-1\android\build\src\main\AndroidManifest.xml:32:9-43:46
@@ -130,39 +130,39 @@
 75            android:shell="true" /> <!-- Records the version of the Godot library -->
 75-->D:\GAME PROJECT\project-reth-1\android\build\src\main\AndroidManifest.xml:28:13-33
 76        <meta-data
-76-->[godot-lib.template_debug.aar] C:\Users\PC HOME\.gradle\caches\8.11.1\transforms\2a054675f96637db3680aa397c0eeda3\transformed\jetified-godot-lib.template_debug\AndroidManifest.xml:12:9-14:44
+76-->[godot-lib.template_debug.aar] C:\Users\PC HOME\.gradle\caches\8.11.1\transforms\94f32312ae07087ca21554f7f0e23cf8\transformed\jetified-godot-lib.template_debug\AndroidManifest.xml:12:9-14:44
 77            android:name="org.godotengine.library.version"
-77-->[godot-lib.template_debug.aar] C:\Users\PC HOME\.gradle\caches\8.11.1\transforms\2a054675f96637db3680aa397c0eeda3\transformed\jetified-godot-lib.template_debug\AndroidManifest.xml:13:13-59
-78            android:value="4.7.0.stable" />
-78-->[godot-lib.template_debug.aar] C:\Users\PC HOME\.gradle\caches\8.11.1\transforms\2a054675f96637db3680aa397c0eeda3\transformed\jetified-godot-lib.template_debug\AndroidManifest.xml:14:13-41
+77-->[godot-lib.template_debug.aar] C:\Users\PC HOME\.gradle\caches\8.11.1\transforms\94f32312ae07087ca21554f7f0e23cf8\transformed\jetified-godot-lib.template_debug\AndroidManifest.xml:13:13-59
+78            android:value="4.7.1.stable" />
+78-->[godot-lib.template_debug.aar] C:\Users\PC HOME\.gradle\caches\8.11.1\transforms\94f32312ae07087ca21554f7f0e23cf8\transformed\jetified-godot-lib.template_debug\AndroidManifest.xml:14:13-41
 79
 80        <activity
-80-->[godot-lib.template_debug.aar] C:\Users\PC HOME\.gradle\caches\8.11.1\transforms\2a054675f96637db3680aa397c0eeda3\transformed\jetified-godot-lib.template_debug\AndroidManifest.xml:16:9-20:75
+80-->[godot-lib.template_debug.aar] C:\Users\PC HOME\.gradle\caches\8.11.1\transforms\94f32312ae07087ca21554f7f0e23cf8\transformed\jetified-godot-lib.template_debug\AndroidManifest.xml:16:9-20:75
 81            android:name="org.godotengine.godot.utils.ProcessPhoenix"
-81-->[godot-lib.template_debug.aar] C:\Users\PC HOME\.gradle\caches\8.11.1\transforms\2a054675f96637db3680aa397c0eeda3\transformed\jetified-godot-lib.template_debug\AndroidManifest.xml:17:13-70
+81-->[godot-lib.template_debug.aar] C:\Users\PC HOME\.gradle\caches\8.11.1\transforms\94f32312ae07087ca21554f7f0e23cf8\transformed\jetified-godot-lib.template_debug\AndroidManifest.xml:17:13-70
 82            android:exported="false"
-82-->[godot-lib.template_debug.aar] C:\Users\PC HOME\.gradle\caches\8.11.1\transforms\2a054675f96637db3680aa397c0eeda3\transformed\jetified-godot-lib.template_debug\AndroidManifest.xml:18:13-37
+82-->[godot-lib.template_debug.aar] C:\Users\PC HOME\.gradle\caches\8.11.1\transforms\94f32312ae07087ca21554f7f0e23cf8\transformed\jetified-godot-lib.template_debug\AndroidManifest.xml:18:13-37
 83            android:process=":phoenix"
-83-->[godot-lib.template_debug.aar] C:\Users\PC HOME\.gradle\caches\8.11.1\transforms\2a054675f96637db3680aa397c0eeda3\transformed\jetified-godot-lib.template_debug\AndroidManifest.xml:19:13-39
+83-->[godot-lib.template_debug.aar] C:\Users\PC HOME\.gradle\caches\8.11.1\transforms\94f32312ae07087ca21554f7f0e23cf8\transformed\jetified-godot-lib.template_debug\AndroidManifest.xml:19:13-39
 84            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
-84-->[godot-lib.template_debug.aar] C:\Users\PC HOME\.gradle\caches\8.11.1\transforms\2a054675f96637db3680aa397c0eeda3\transformed\jetified-godot-lib.template_debug\AndroidManifest.xml:20:13-72
+84-->[godot-lib.template_debug.aar] C:\Users\PC HOME\.gradle\caches\8.11.1\transforms\94f32312ae07087ca21554f7f0e23cf8\transformed\jetified-godot-lib.template_debug\AndroidManifest.xml:20:13-72
 85
 86        <provider
-86-->[godot-lib.template_debug.aar] C:\Users\PC HOME\.gradle\caches\8.11.1\transforms\2a054675f96637db3680aa397c0eeda3\transformed\jetified-godot-lib.template_debug\AndroidManifest.xml:22:9-30:20
+86-->[godot-lib.template_debug.aar] C:\Users\PC HOME\.gradle\caches\8.11.1\transforms\94f32312ae07087ca21554f7f0e23cf8\transformed\jetified-godot-lib.template_debug\AndroidManifest.xml:22:9-30:20
 87            android:name="androidx.core.content.FileProvider"
-87-->[godot-lib.template_debug.aar] C:\Users\PC HOME\.gradle\caches\8.11.1\transforms\2a054675f96637db3680aa397c0eeda3\transformed\jetified-godot-lib.template_debug\AndroidManifest.xml:23:13-62
+87-->[godot-lib.template_debug.aar] C:\Users\PC HOME\.gradle\caches\8.11.1\transforms\94f32312ae07087ca21554f7f0e23cf8\transformed\jetified-godot-lib.template_debug\AndroidManifest.xml:23:13-62
 88            android:authorities="com.rethorizon.projectreth.fileprovider"
-88-->[godot-lib.template_debug.aar] C:\Users\PC HOME\.gradle\caches\8.11.1\transforms\2a054675f96637db3680aa397c0eeda3\transformed\jetified-godot-lib.template_debug\AndroidManifest.xml:24:13-64
+88-->[godot-lib.template_debug.aar] C:\Users\PC HOME\.gradle\caches\8.11.1\transforms\94f32312ae07087ca21554f7f0e23cf8\transformed\jetified-godot-lib.template_debug\AndroidManifest.xml:24:13-64
 89            android:exported="false"
-89-->[godot-lib.template_debug.aar] C:\Users\PC HOME\.gradle\caches\8.11.1\transforms\2a054675f96637db3680aa397c0eeda3\transformed\jetified-godot-lib.template_debug\AndroidManifest.xml:25:13-37
+89-->[godot-lib.template_debug.aar] C:\Users\PC HOME\.gradle\caches\8.11.1\transforms\94f32312ae07087ca21554f7f0e23cf8\transformed\jetified-godot-lib.template_debug\AndroidManifest.xml:25:13-37
 90            android:grantUriPermissions="true" >
-90-->[godot-lib.template_debug.aar] C:\Users\PC HOME\.gradle\caches\8.11.1\transforms\2a054675f96637db3680aa397c0eeda3\transformed\jetified-godot-lib.template_debug\AndroidManifest.xml:26:13-47
+90-->[godot-lib.template_debug.aar] C:\Users\PC HOME\.gradle\caches\8.11.1\transforms\94f32312ae07087ca21554f7f0e23cf8\transformed\jetified-godot-lib.template_debug\AndroidManifest.xml:26:13-47
 91            <meta-data
-91-->[godot-lib.template_debug.aar] C:\Users\PC HOME\.gradle\caches\8.11.1\transforms\2a054675f96637db3680aa397c0eeda3\transformed\jetified-godot-lib.template_debug\AndroidManifest.xml:27:13-29:64
+91-->[godot-lib.template_debug.aar] C:\Users\PC HOME\.gradle\caches\8.11.1\transforms\94f32312ae07087ca21554f7f0e23cf8\transformed\jetified-godot-lib.template_debug\AndroidManifest.xml:27:13-29:64
 92                android:name="android.support.FILE_PROVIDER_PATHS"
-92-->[godot-lib.template_debug.aar] C:\Users\PC HOME\.gradle\caches\8.11.1\transforms\2a054675f96637db3680aa397c0eeda3\transformed\jetified-godot-lib.template_debug\AndroidManifest.xml:28:17-67
+92-->[godot-lib.template_debug.aar] C:\Users\PC HOME\.gradle\caches\8.11.1\transforms\94f32312ae07087ca21554f7f0e23cf8\transformed\jetified-godot-lib.template_debug\AndroidManifest.xml:28:17-67
 93                android:resource="@xml/godot_provider_paths" />
-93-->[godot-lib.template_debug.aar] C:\Users\PC HOME\.gradle\caches\8.11.1\transforms\2a054675f96637db3680aa397c0eeda3\transformed\jetified-godot-lib.template_debug\AndroidManifest.xml:29:17-61
+93-->[godot-lib.template_debug.aar] C:\Users\PC HOME\.gradle\caches\8.11.1\transforms\94f32312ae07087ca21554f7f0e23cf8\transformed\jetified-godot-lib.template_debug\AndroidManifest.xml:29:17-61
 94        </provider>
 95        <provider
 95-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\PC HOME\.gradle\caches\8.11.1\transforms\84fea68a98a1f315d0418764414976ba\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:24:9-32:20
