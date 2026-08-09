@@ -1,14 +1,14 @@
+Label
+AnimationPlayer
 ColorRect
 Panel
 Control
-AnimationPlayer
 Sprite2D
 CanvasGroup
 Container
 Node2D
 Button
 CanvasLayer
-Label
 Marker2D
 VideoStreamPlayer
 Timer

@@ -1,6 +1,7 @@
 extends Node
 
 @export_file("*.tscn") var first_scene_path := "res://Areas/Cutscenes/opening_cutscene.tscn"
+@export_file("*.tscn") var credits_scene_path := "res://Scene/CreditsMenu.tscn"
 
 const RESOLUTIONS := [
 	Vector2i(1280, 720),
@@ -64,7 +65,7 @@ func _ready() -> void:
 	music_volume_slider.value_changed.connect(_on_audio_slider_changed)
 
 func _on_credits_pressed() -> void:
-	print("Credits pressed")
+	get_tree().change_scene_to_file(credits_scene_path)
 
 
 func _on_start_pressed() -> void:

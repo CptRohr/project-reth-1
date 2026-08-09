@@ -1,2 +1,7 @@
 # Ignore story drafts and game narrative drafts
 Story Draf/
+.vscode/
+.idea/
+.godot/
+.github/
+.agents/

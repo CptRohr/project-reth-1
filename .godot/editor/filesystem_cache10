@@ -1,6 +1,6 @@
 9cad1ddce9e5a63143ba340c9520626b
-::res://::1785753124
-AGENTS.md::TextFile::-1::1785656455::0::1::::<><><>0<>0<><>::
+::res://::1786246787
+AGENTS.md::TextFile::-1::1786245676::0::1::::<><><>0<>0<><>::
 export_presets.cfg::TextFile::-1::1785556206::0::1::::<><><>0<>0<><>::
 icon.svg::CompressedTexture2D::7047297600812045813::1778403263::1780469216::1::::<><><>0<>0<>8cd2dc43545da561a44dd320ce5aed39<>res://.godot/imported/icon.svg-218a8f2b3041327d8a5756f3a245f83b.ctex::
 MAINTAINER_NOTE.md::TextFile::-1::1785656560::0::1::::<><><>0<>0<><>::
@@ -772,16 +772,17 @@ grunge crack.png::CompressedTexture2D::1518761568111108684::1694439014::17853369
 ink splat.png::CompressedTexture2D::5359267817569592483::1694438824::1785336935::1::::<><><>0<>0<>77561340f53a041b8a1a7bc11dcfd9cf<>res://.godot/imported/ink splat.png-a2fc199263757a941233c58311746547.ctex::
 smoke 2.png::CompressedTexture2D::1729051863170387313::1694438860::1785336935::1::::<><><>0<>0<>c3d265454a59d26fbc3f620ac5b87565<>res://.godot/imported/smoke 2.png-2e1c916002d8eef9138376a0d6ee79fe.ctex::
 smoke.png::CompressedTexture2D::8791069858936807245::1694437310::1785336935::1::::<><><>0<>0<>ad3c1091113e7751d5a2048c0134bf58<>res://.godot/imported/smoke.png-11eaea2255c16f20d15525cc692c77c6.ctex::
-::res://Assets/Shaders/::1785656560
-2d_fog_overlay.gdshader::Shader::4638050085228675974::1785656560::0::1::::<><><>0<>0<><>::
-animated_pixel_art_text.gdshader::Shader::5258728734514064334::1785656560::0::1::::<><><>0<>0<><>::
-double_dither_transition.gdshader::Shader::7346881396470589973::1785656560::0::1::::<><><>0<>0<><>::
-glass_pixel_rect.gdshader::Shader::4036208461202626443::1785656560::0::1::::<><><>0<>0<><>::
-godray_edge_detection.gdshader::Shader::264816314951646785::1785656560::0::1::::<><><>0<>0<><>::
-slash_transition.gdshader::Shader::863049312060181103::1785656560::0::1::::<><><>0<>0<><>::
-square_transition.gdshader::Shader::7388856067185442144::1785656560::0::1::::<><><>0<>0<><>::
+::res://Assets/Shaders/::1785762525
+2d_fog_overlay.gdshader::Shader::4638050085228675974::1785753528::0::1::::<><><>0<>0<><>::
+animated_pixel_art_text.gdshader::Shader::5258728734514064334::1785753528::0::1::::<><><>0<>0<><>::
+double_dither_transition.gdshader::Shader::7346881396470589973::1785753528::0::1::::<><><>0<>0<><>::
+glass_pixel_rect.gdshader::Shader::4036208461202626443::1785753528::0::1::::<><><>0<>0<><>::
+godray_edge_detection.gdshader::Shader::264816314951646785::1785753528::0::1::::<><><>0<>0<><>::
+highlight.gdshader::Shader::4211261884015993019::1785762525::0::1::::<><><>0<>0<><>::
+slash_transition.gdshader::Shader::863049312060181103::1785753528::0::1::::<><><>0<>0<><>::
+square_transition.gdshader::Shader::7388856067185442144::1785753528::0::1::::<><><>0<>0<><>::
 time_of_day_gradient.gdshader::Shader::2795607094720471842::1785044734::0::1::::<><><>0<>0<><>::
-vibrancy_backdrop_blurredfrosted.gdshader::Shader::5320921632999403341::1785656560::0::1::::<><><>0<>0<><>::
+vibrancy_backdrop_blurredfrosted.gdshader::Shader::5320921632999403341::1785753528::0::1::::<><><>0<>0<><>::
 ::res://Assets/Videos/::1778723123
 SplashScreen.ogv::VideoStreamTheora::5441903498613988598::1778723105::0::1::::<><><>0<>0<><>::
 ::res://Audio/::1778719345
@@ -867,10 +868,10 @@ time_of_day_filter.gd::GDScript::5864379653346238263::1785046373::0::1::::<>Node
 time_passage_transition.gd::GDScript::3544800310453387397::1785343872::0::1::::<>CanvasLayer<><>0<>0<><>::
 transition_layer.gd::GDScript::984808028306279039::1778821882::0::1::::<>CanvasLayer<><>0<>0<><>::
 weather_filter.gd::GDScript::7300715438757218985::1780758266::0::1::::<>CanvasLayer<><>0<>0<><>::
-::res://Scene/::1785678957
+::res://Scene/::1785762589
 BootScene.tscn::PackedScene::2731828006932105934::1780469239::0::1::::<><><>0<>0<><>::uid://bu05g6n1sltem::::res://Scripts/bootscreen.gd<>uid://cjsdmdasoq5r3::::res://Assets/Videos/SplashScreen.ogv
 door_transition.tscn::PackedScene::3001109150926822551::1780469240::0::1::::<><><>0<>0<><>::uid://dkqcpc6q0y6v::::res://Scripts/door_transition.gd
-MainMenu.tscn::PackedScene::602040298995585819::1785678957::0::1::::<><><>0<>0<><>::uid://yr7fsm4os8s3::::res://Scripts/main_menu.gd<>uid://cg6mq2ad5712q::::res://Assets/Shaders/animated_pixel_art_text.gdshader<>uid://b38rgofq4civw::::res://Fonts/VCR_OSD_MONO_1.001.ttf<>uid://cjeyn3nfbvwcg::::res://Fonts/HarmonyOS_Sans_Black.ttf<>uid://ch2q2i83wsq0l::::res://Assets/Shaders/vibrancy_backdrop_blurredfrosted.gdshader
+MainMenu.tscn::PackedScene::602040298995585819::1785762589::0::1::::<><><>0<>0<><>::uid://yr7fsm4os8s3::::res://Scripts/main_menu.gd<>uid://cg6mq2ad5712q::::res://Assets/Shaders/animated_pixel_art_text.gdshader<>uid://b38rgofq4civw::::res://Fonts/VCR_OSD_MONO_1.001.ttf<>uid://cjeyn3nfbvwcg::::res://Fonts/HarmonyOS_Sans_Black.ttf<>uid://ch2q2i83wsq0l::::res://Assets/Shaders/vibrancy_backdrop_blurredfrosted.gdshader<>uid://b0874rmf04i1p::::res://Assets/Shaders/highlight.gdshader
 MobileControls.tscn::PackedScene::7776543030369129413::1785042643::0::1::::<><><>0<>0<><>::uid://b6vvovr1lryd2::::res://Managers/mobile_controls.gd
 PauseMenu.tscn::PackedScene::1235137516064594902::1785339375::0::1::::<><><>0<>0<><>::uid://68tmjttgyrfp::::res://Managers/pause_menu.gd<>uid://ch2q2i83wsq0l::::res://Assets/Shaders/vibrancy_backdrop_blurredfrosted.gdshader
 TimeOfDayFilter.tscn::PackedScene::-1::1785046340::0::1::::<><><>0<>0<><>::res://Managers/time_of_day_filter.gd
@@ -882,7 +883,7 @@ activity_interactable.gd::GDScript::2148197932603847600::1780840220::0::1::::<>A
 basic_movement.gd::GDScript::3831591779344575212::1785037398::0::1::::<>CharacterBody2D<><>0<>0<><>::
 bootscreen.gd::GDScript::3843640874363807832::1778723896::0::1::::<>Control<><>0<>0<><>::
 door_transition.gd::GDScript::232186144297520059::1778821355::0::1::::<>Area2D<><>0<>0<><>::
-main_menu.gd::GDScript::1721579507164882580::1785678620::0::1::::<>Node<><>0<>0<><>::
+main_menu.gd::GDScript::1721579507164882580::1785757743::0::1::::<>Node<><>0<>0<><>::
 school_interactable.gd::GDScript::8205131452242371238::1780843043::0::1::::<>Area2D<><>0<>0<><>::
 sleep_interactable.gd::GDScript::7336209433860980492::1780840221::0::1::::<>Area2D<><>0<>0<><>::
 ::res://Story Draf/::1785656560

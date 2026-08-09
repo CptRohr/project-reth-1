@@ -120,8 +120,7 @@ func _zoom_camera_to_npc(npc: Node2D) -> void:
 	print("               Target Zoom: %s (factor: %f)" % [target_zoom, zoom_factor])
 	print("               Target Local Pos: %s (offset: %s, blend: %f)" % [target_local_pos, offset, blend])
 
-	# Tweening a smoothed camera can cause the zoom-in to feel late or stuttery.
-	# Disable smoothing while the dialogue camera tween is active, then restore it on reset.
+	# Tween position and zoom after smoothing off.
 	camera.position_smoothing_enabled = false
 	camera.rotation_smoothing_enabled = false
 
