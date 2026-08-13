@@ -57,6 +57,29 @@ var current_spawn := ""
 var current_scene := ""
 
 
+func _ready() -> void:
+	call_deferred("_connect_dialogic_choice_focus")
+
+
+func _connect_dialogic_choice_focus() -> void:
+	if not has_node("/root/Dialogic"):
+		return
+	if not Dialogic.has_subsystem("Choices"):
+		call_deferred("_connect_dialogic_choice_focus")
+		return
+	if not Dialogic.Choices.question_shown.is_connected(_on_dialogic_question_shown):
+		Dialogic.Choices.question_shown.connect(_on_dialogic_question_shown)
+
+
+func _on_dialogic_question_shown(_info: Dictionary) -> void:
+	await get_tree().process_frame
+	for node: Node in get_tree().get_nodes_in_group("dialogic_choice_button"):
+		var button: Button = node as Button
+		if button and button.visible and not button.disabled:
+			GamepadFocusOverlay.push_focus(button)
+			break
+
+
 func set_spawn(spawn_id: String) -> void:
 	current_spawn = spawn_id
 	state_changed.emit()

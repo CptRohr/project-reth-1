@@ -6,6 +6,7 @@
 [ext_resource type="FontFile" uid="uid://cjeyn3nfbvwcg" path="res://Fonts/HarmonyOS_Sans_Black.ttf" id="4_d4yab"]
 [ext_resource type="Shader" uid="uid://ch2q2i83wsq0l" path="res://Assets/Shaders/vibrancy_backdrop_blurredfrosted.gdshader" id="4_o3nbu"]
 [ext_resource type="Shader" uid="uid://b0874rmf04i1p" path="res://Assets/Shaders/highlight.gdshader" id="4_v3p41"]
+[ext_resource type="FontFile" uid="uid://culniy34nvrfo" path="res://Fonts/HarmonyOS_Sans_Bold.ttf" id="7_6nqpc"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_main_panel_border"]
 bg_color = Color(1, 1, 1, 1)
@@ -193,6 +194,18 @@ corner_radius_top_left = 18
 corner_radius_top_right = 18
 corner_radius_bottom_right = 18
 corner_radius_bottom_left = 18
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_riqys"]
+shader = ExtResource("4_o3nbu")
+shader_parameter/blur_lod = 3.5
+
+[sub_resource type="LabelSettings" id="LabelSettings_v3p41"]
+font = ExtResource("2_c6fb4")
+font_size = 80
+
+[sub_resource type="LabelSettings" id="LabelSettings_6nqpc"]
+font = ExtResource("7_6nqpc")
+font_size = 24
 
 [sub_resource type="Animation" id="Animation_o3nbu"]
 length = 0.8
@@ -855,6 +868,90 @@ tracks/59/keys = {
 "handle_modes": PackedInt32Array(0),
 "points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
 "times": PackedFloat32Array(0)
+}
+tracks/60/type = "value"
+tracks/60/imported = false
+tracks/60/enabled = true
+tracks/60/path = NodePath("MenuMainContainer/CreditsPanel/CreditsTitle:visible_ratio")
+tracks/60/interp = 1
+tracks/60/loop_wrap = true
+tracks/60/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/61/type = "value"
+tracks/61/imported = false
+tracks/61/enabled = true
+tracks/61/path = NodePath("MenuMainContainer/CreditsPanel/MAINDEVText:visible_ratio")
+tracks/61/interp = 1
+tracks/61/loop_wrap = true
+tracks/61/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/62/type = "value"
+tracks/62/imported = false
+tracks/62/enabled = true
+tracks/62/path = NodePath("MenuMainContainer/CreditsPanel/WRITERText:visible_ratio")
+tracks/62/interp = 1
+tracks/62/loop_wrap = true
+tracks/62/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/63/type = "value"
+tracks/63/imported = false
+tracks/63/enabled = true
+tracks/63/path = NodePath("MenuMainContainer/CreditsPanel/ARTISTText:visible_ratio")
+tracks/63/interp = 1
+tracks/63/loop_wrap = true
+tracks/63/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/64/type = "value"
+tracks/64/imported = false
+tracks/64/enabled = true
+tracks/64/path = NodePath("MenuMainContainer/CreditsPanel/bg:scale")
+tracks/64/interp = 1
+tracks/64/loop_wrap = true
+tracks/64/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05)]
+}
+tracks/65/type = "value"
+tracks/65/imported = false
+tracks/65/enabled = true
+tracks/65/path = NodePath("MenuMainContainer/CreditsPanel/BackButton:scale")
+tracks/65/interp = 1
+tracks/65/loop_wrap = true
+tracks/65/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05)]
+}
+tracks/66/type = "value"
+tracks/66/imported = false
+tracks/66/enabled = true
+tracks/66/path = NodePath("MenuMainContainer/CreditsPanel/bg:color")
+tracks/66/interp = 1
+tracks/66/loop_wrap = true
+tracks/66/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_v3p41"]
@@ -1533,6 +1630,94 @@ tracks/60/keys = {
 "times": PackedFloat32Array(0, 0.36)
 }
 
+[sub_resource type="Animation" id="Animation_qf8tx"]
+resource_name = "creditspanel"
+length = 1.7
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MenuMainContainer/CreditsPanel/CreditsTitle:visible_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.2, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MenuMainContainer/CreditsPanel/MAINDEVText:visible_ratio")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.5, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("MenuMainContainer/CreditsPanel/WRITERText:visible_ratio")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.6, 1.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("MenuMainContainer/CreditsPanel/ARTISTText:visible_ratio")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.7, 1.7),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("MenuMainContainer/CreditsPanel/bg:scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05), Vector2(1, 1)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("MenuMainContainer/CreditsPanel/BackButton:scale")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.7, 1.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05), Vector2(1, 1)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("MenuMainContainer/CreditsPanel/bg:color")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 1.7),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 0.84705883)]
+}
+
 [sub_resource type="Animation" id="Animation_6nqpc"]
 resource_name = "hovermenu"
 loop_mode = 1
@@ -1541,6 +1726,7 @@ loop_mode = 1
 _data = {
 &"RESET": SubResource("Animation_o3nbu"),
 &"SettingsPanel": SubResource("Animation_v3p41"),
+&"creditspanel": SubResource("Animation_qf8tx"),
 &"hovermenu": SubResource("Animation_6nqpc")
 }
 
@@ -2494,6 +2680,129 @@ theme_override_styles/pressed = SubResource("StyleBoxEmpty_d4yab")
 theme_override_styles/hover = SubResource("StyleBoxEmpty_d4yab")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_d4yab")
 text = "X"
+
+[node name="CreditsPanel" type="Control" parent="CanvasLayer/MenuMainContainer" unique_id=1706783846]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="bg" type="ColorRect" parent="CanvasLayer/MenuMainContainer/CreditsPanel" unique_id=924268080]
+material = SubResource("ShaderMaterial_riqys")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1e-05, 1e-05)
+pivot_offset = Vector2(648, 360)
+color = Color(0, 0, 0, 0)
+
+[node name="CreditsTitle" type="Label" parent="CanvasLayer/MenuMainContainer/CreditsPanel" unique_id=1706783847]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -180.0
+offset_top = -288.0
+offset_right = 180.0
+offset_bottom = -217.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "CREDITS"
+label_settings = SubResource("LabelSettings_v3p41")
+horizontal_alignment = 1
+visible_characters = 0
+visible_ratio = 0.0
+
+[node name="MAINDEVText" type="Label" parent="CanvasLayer/MenuMainContainer/CreditsPanel" unique_id=1706783848]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -240.0
+offset_top = -200.0
+offset_right = 240.0
+offset_bottom = -80.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "\\\\ MAIN DEV \\\\
+CptRohr (Programer, Art, Designer, Lead Project)"
+label_settings = SubResource("LabelSettings_6nqpc")
+horizontal_alignment = 1
+vertical_alignment = 1
+visible_characters = 0
+visible_ratio = 0.0
+
+[node name="WRITERText" type="Label" parent="CanvasLayer/MenuMainContainer/CreditsPanel" unique_id=1698263215]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -555.0
+offset_top = -48.0
+offset_right = -75.0
+offset_bottom = 103.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "\\\\ WRITERS \\\\
+Nea (Main Writer)
+Nontxtt (Main Writer)
+◥꧁དℭ℟Åℤ¥༒₭ÏḼḼ℥℟ཌ꧂◤ (FFGOD)"
+label_settings = SubResource("LabelSettings_6nqpc")
+horizontal_alignment = 1
+vertical_alignment = 1
+visible_characters = 0
+visible_ratio = 0.0
+
+[node name="ARTISTText" type="Label" parent="CanvasLayer/MenuMainContainer/CreditsPanel" unique_id=1017705564]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 88.0
+offset_top = -64.0
+offset_right = 568.0
+offset_bottom = 56.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "\\\\ ARTIST \\\\
+Ryuzach (Pixel Art Artist)"
+label_settings = SubResource("LabelSettings_6nqpc")
+horizontal_alignment = 1
+vertical_alignment = 1
+visible_characters = 0
+visible_ratio = 0.0
+
+[node name="BackButton" type="Button" parent="CanvasLayer/MenuMainContainer/CreditsPanel" unique_id=1706783849]
+custom_minimum_size = Vector2(250, 70)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -125.0
+offset_top = 264.0
+offset_right = 125.0
+offset_bottom = 334.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1e-05, 1e-05)
+pivot_offset = Vector2(125, 35)
+text = "BACK TO MAIN MENU"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer" unique_id=1828003094]
 libraries/ = SubResource("AnimationLibrary_6nqpc")

@@ -1,7 +1,6 @@
 extends Node
 
 @export_file("*.tscn") var first_scene_path := "res://Areas/Cutscenes/opening_cutscene.tscn"
-@export_file("*.tscn") var credits_scene_path := "res://Scene/CreditsMenu.tscn"
 
 const RESOLUTIONS := [
 	Vector2i(1280, 720),
@@ -15,6 +14,8 @@ const SETTINGS_PANEL_BASE_SIZE := Vector2(1280.0, 720.0)
 @onready var version_label: Label = $CanvasLayer/MenuMainContainer/VersionLabel
 @onready var godot_label: Label = $CanvasLayer/MenuMainContainer/GodotEngineLabel
 @onready var credits_button: Button = $CanvasLayer/MenuMainContainer/CreditsButton
+@onready var credits_panel: Control = $CanvasLayer/MenuMainContainer/CreditsPanel
+@onready var credits_back_button: Button = $CanvasLayer/MenuMainContainer/CreditsPanel/BackButton
 @onready var start_button: Button = $CanvasLayer/MenuMainContainer/StartButton
 @onready var settings_button: Button = $CanvasLayer/MenuMainContainer/SettingsButton
 @onready var quit_button: Button = $CanvasLayer/MenuMainContainer/ExitButton
@@ -48,24 +49,64 @@ func _ready() -> void:
 	if get_viewport() != null:
 		get_viewport().size_changed.connect(_update_settings_panel_scale)
 
-	start_button.pressed.connect(_on_start_pressed)
-	settings_button.pressed.connect(_on_settings_pressed)
-	quit_button.pressed.connect(_on_quit_pressed)
+	# Main Menu Buttons
+	_setup_main_menu_button(start_button, _on_start_pressed, settings_button.get_path(), quit_button.get_path())
+	_setup_main_menu_button(settings_button, _on_settings_pressed, quit_button.get_path(), start_button.get_path(), start_button.get_path())
+	_setup_main_menu_button(quit_button, _on_quit_pressed, start_button.get_path(), settings_button.get_path(), settings_button.get_path())
 	if credits_button:
-		credits_button.pressed.connect(_on_credits_pressed)
-	apply_button.pressed.connect(_on_apply_pressed)
-	sound_apply_button.pressed.connect(_on_apply_pressed)
-	back_button.pressed.connect(_on_settings_back_pressed)
-	resolution_tab.pressed.connect(_show_resolution_settings)
-	sound_tab.pressed.connect(_show_sound_settings)
-	controls_tab.pressed.connect(_show_controls_settings)
-	reset_button.pressed.connect(_on_reset_to_default_pressed)
+		_setup_main_menu_button(credits_button, _on_credits_pressed)
+	_setup_main_menu_button(credits_back_button, _on_credits_back_pressed)
+
+	# Settings Panel Buttons
+	_setup_settings_button(apply_button, _on_apply_pressed)
+	_setup_settings_button(sound_apply_button, _on_apply_pressed)
+	_setup_settings_button(back_button, _on_settings_back_pressed)
+	_setup_settings_button(resolution_tab, _show_resolution_settings)
+	_setup_settings_button(sound_tab, _show_sound_settings)
+	_setup_settings_button(controls_tab, _show_controls_settings)
+	_setup_settings_button(reset_button, _on_reset_to_default_pressed)
+
+	# Initial focus
+	GamepadFocusOverlay.push_focus(start_button)
+
 	master_volume_slider.value_changed.connect(_on_audio_slider_changed)
 	sfx_volume_slider.value_changed.connect(_on_audio_slider_changed)
 	music_volume_slider.value_changed.connect(_on_audio_slider_changed)
 
+
+func _setup_main_menu_button(button: Button, on_pressed_callable: Callable, focus_next: NodePath = NodePath(""), focus_prev: NodePath = NodePath(""), focus_other_row: NodePath = NodePath("")):
+	button.focus_mode = Control.FOCUS_ALL
+	button.pressed.connect(on_pressed_callable)
+	button.focus_neighbor_bottom = focus_next
+	button.focus_neighbor_top = focus_prev
+	button.focus_neighbor_left = focus_other_row
+	button.focus_neighbor_right = focus_other_row
+
+func _setup_settings_button(button: Button, on_pressed_callable: Callable, focus_right_name: NodePath = NodePath(""), focus_left_name: NodePath = NodePath(""), focus_up_name: NodePath = NodePath(""), focus_down_name: NodePath = NodePath("")):
+	button.focus_mode = Control.FOCUS_ALL
+	button.pressed.connect(on_pressed_callable)
+	if focus_right_name != NodePath(""):
+		button.focus_neighbor_right = focus_right_name
+	if focus_left_name != NodePath(""):
+		button.focus_neighbor_left = focus_left_name
+	if focus_up_name != NodePath(""):
+		button.focus_neighbor_up = focus_up_name
+	if focus_down_name != NodePath(""):
+		button.focus_neighbor_down = focus_down_name
+
 func _on_credits_pressed() -> void:
-	get_tree().change_scene_to_file(credits_scene_path)
+	credits_panel.visible = true
+	if animation_player.is_playing():
+		animation_player.stop()
+	animation_player.play("creditspanel")
+	GamepadFocusOverlay.push_focus(credits_back_button)
+
+
+func _on_credits_back_pressed() -> void:
+	animation_player.play_backwards("creditspanel")
+	await animation_player.animation_finished
+	credits_panel.visible = false
+	GamepadFocusOverlay.pop_focus()
 
 
 func _on_start_pressed() -> void:
@@ -82,6 +123,9 @@ func open_settings() -> void:
 	if animation_player.is_playing():
 		animation_player.stop()
 	animation_player.play("SettingsPanel")
+	_set_main_menu_focus_mode(Control.FOCUS_NONE)
+	resolution_tab.grab_focus()
+	resolution_options.grab_focus()
 
 
 func close_settings() -> void:
@@ -91,6 +135,8 @@ func close_settings() -> void:
 	animation_player.play_backwards("SettingsPanel")
 	await animation_player.animation_finished
 	settings_panel.visible = false
+	_set_main_menu_focus_mode(Control.FOCUS_ALL)
+	settings_button.grab_focus()
 
 
 func _update_settings_panel_scale() -> void:
@@ -134,14 +180,26 @@ func setup_settings_menu() -> void:
 
 func _show_resolution_settings() -> void:
 	_set_settings_section(resolution_section)
+	resolution_tab.grab_focus()
+	resolution_options.grab_focus()
+	_set_settings_focus_mode(Control.FOCUS_ALL)
+	_set_main_menu_focus_mode(Control.FOCUS_NONE)
 
 
 func _show_sound_settings() -> void:
 	_set_settings_section(sound_section)
+	sound_tab.grab_focus()
+	master_volume_slider.grab_focus()
+	_set_settings_focus_mode(Control.FOCUS_ALL)
+	_set_main_menu_focus_mode(Control.FOCUS_NONE)
 
 
 func _show_controls_settings() -> void:
 	_set_settings_section(controls_section)
+	controls_tab.grab_focus()
+	_set_settings_focus_mode(Control.FOCUS_ALL)
+	_set_main_menu_focus_mode(Control.FOCUS_NONE)
+	# TODO: Add focus for controls section once implemented
 
 
 func _set_settings_section(active_section: Control) -> void:
@@ -152,6 +210,36 @@ func _set_settings_section(active_section: Control) -> void:
 	resolution_tab.button_pressed = active_section == resolution_section
 	sound_tab.button_pressed = active_section == sound_section
 	controls_tab.button_pressed = active_section == controls_section
+
+
+func _set_main_menu_focus_mode(mode: int) -> void:
+	start_button.focus_mode = mode
+	settings_button.focus_mode = mode
+	quit_button.focus_mode = mode
+	if credits_button:
+		credits_button.focus_mode = mode
+
+
+func _set_settings_focus_mode(mode: int) -> void:
+	resolution_options.focus_mode = mode
+	fullscreen_check.focus_mode = mode
+	vsync_check.focus_mode = mode
+	master_volume_slider.focus_mode = mode
+	sfx_volume_slider.focus_mode = mode
+	music_volume_slider.focus_mode = mode
+	apply_button.focus_mode = mode
+	sound_apply_button.focus_mode = mode
+	back_button.focus_mode = mode
+	resolution_tab.focus_mode = mode
+	sound_tab.focus_mode = mode
+	controls_tab.focus_mode = mode
+	reset_button.focus_mode = mode
+
+
+func _unhandled_input(event: InputEvent) -> void:
+	if settings_panel.visible and event.is_action_pressed("ui_cancel"):
+		get_viewport().set_input_as_handled()
+		close_settings()
 	status_label.text = ""
 
 

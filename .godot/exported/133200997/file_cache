@@ -115,13 +115,13 @@ res://Areas/Indoor/warung.tscn::6aad691393fab85d3db79ab2eff237c6::1780469239::re
 res://Areas/door.tscn::a1b671c19f453f759ab7a0bf0d721335::1780469236::res://.godot/exported/133200997/export-1a4f94d7ba112f72b36aced94a426995-door.scn
 res://Areas/street2.tscn::5a2bdf21f4ac0da5ce3b335da15b572c::1780469236::res://.godot/exported/133200997/export-36848b0256022a39176bbdb9f5cbf087-street2.scn
 res://Areas/street3.tscn::f05754d4bc9ffc1af25dfa5c7db8ec10::1780483755::res://.godot/exported/133200997/export-dff1ace9a8f31eef410c452b19eda50f-street3.scn
-res://Areas/street.tscn::ae4ca034e9124acccde71d77891ac98c::1785656897::res://.godot/exported/133200997/export-7671b81c4f979c4f4f9ba00a0dda2e36-street.scn
+res://Areas/street.tscn::ae4ca034e9124acccde71d77891ac98c::1786248240::res://.godot/exported/133200997/export-7671b81c4f979c4f4f9ba00a0dda2e36-street.scn
 res://Characters/Main Character/player.tscn::2ccf5b4335051fa6bc4ca2add268058d::1785315347::res://.godot/exported/133200997/export-9fb1f0e897c3ae6c1162b06d760ddc58-player.scn
 res://Characters/NPC/AbangBrewok.tscn::40cd41d3d9efc81564fe04947bbfe53c::1780469239::res://.godot/exported/133200997/export-3d1a2a1fd2d98316786c878b4a69b457-AbangBrewok.scn
 res://Characters/NPC/NPC.tscn::0c489e2c5bb8499ef6fd04d8b2c13060::1780469239::res://.godot/exported/133200997/export-36d84f5b596285bf7181d50ff3cee3ef-NPC.scn
 res://Scene/BootScene.tscn::315f73430072794bbf0c493350e86507::1780469239::res://.godot/exported/133200997/export-a60464afe119ae6dbb0fd068203f16a9-BootScene.scn
 res://Scene/door_transition.tscn::4ad077cf74844077ea4d098a35f80d97::1780469240::res://.godot/exported/133200997/export-be936d61831eb5d9c2ced61fed6ed6a0-door_transition.scn
-res://Scene/MainMenu.tscn::b5477b194c27dc01b55302e1f01981e5::1785678957::res://.godot/exported/133200997/export-0a99e4cd0f8bcabe94f502095a593aa8-MainMenu.scn
+res://Scene/MainMenu.tscn::d21cb8d3e1009fbb759e4ab9d396467a::1786280957::res://.godot/exported/133200997/export-0a99e4cd0f8bcabe94f502095a593aa8-MainMenu.scn
 res://Scene/MobileControls.tscn::bbed9714da5fa64bb68383c1fe9bc0be::1785042643::res://.godot/exported/133200997/export-363c247c3605dafa9fef67921e0a371d-MobileControls.scn
 res://Scene/transition_layer.tscn::ffe5d942e24ad2f3dce25496b9cf2505::1780469241::res://.godot/exported/133200997/export-94c4d32ec66317df4bfcbba2e7deb5d3-transition_layer.scn
 res://Styles/RETH Style.tres::27fe42c184e9f0b9319f5deda9c6aded::1780469244::res://.godot/exported/133200997/export-0f0022d8241ff5c22b7e5b0bcb0b754f-RETH Style.res

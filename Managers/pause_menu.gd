@@ -27,22 +27,32 @@ const RESOLUTIONS := [
 @onready var calendar_month_label: Label = $RootControl/CenterContainer/RootPanel/MarginContainer/Stack/CalendarBox/CalendarMonthLabel
 @onready var calendar_grid: GridContainer = $RootControl/CenterContainer/RootPanel/MarginContainer/Stack/CalendarBox/CalendarGrid
 
-var calendar_view_month := 4
-
+var calendar_view_month: int = 4
+var _last_main_focus: Control = null
+var _last_stats_focus: Control = null
+var _last_settings_focus: Control = null
+var _last_calendar_focus: Control = null
 
 func _ready() -> void:
 	layer = 90
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	_connect_buttons()
+	_track_focus()
 	_setup_settings_values()
 	hide_pause_menu()
-
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("pause_menu") and not _is_non_pause_scene():
 		toggle_pause_menu()
 		get_viewport().set_input_as_handled()
+		return
 
+	if root_control.visible and event.is_action_pressed("ui_cancel"):
+		get_viewport().set_input_as_handled()
+		if stats_box.visible or settings_box.visible or calendar_box.visible:
+			_show_main_buttons()
+		else:
+			hide_pause_menu()
 
 func toggle_pause_menu() -> void:
 	if root_control.visible:
@@ -50,45 +60,90 @@ func toggle_pause_menu() -> void:
 	else:
 		show_pause_menu()
 
-
 func show_pause_menu() -> void:
 	get_tree().paused = true
 	root_control.visible = true
 	_show_main_buttons()
 	status_label.text = ""
 
-
 func hide_pause_menu() -> void:
 	get_tree().paused = false
 	root_control.visible = false
 
+func _track_focus() -> void:
+	for child: Node in main_row.get_children():
+		if child is Button:
+			var button: Button = child as Button
+			button.focus_entered.connect(func(): _last_main_focus = button)
+
+	for child: Node in stats_box.find_children("*", "Control", true):
+		if child is Control:
+			var control: Control = child as Control
+			control.focus_entered.connect(func(): _last_stats_focus = control)
+
+	for child: Node in settings_box.find_children("*", "Control", true):
+		if child is Control:
+			var control: Control = child as Control
+			control.focus_entered.connect(func(): _last_settings_focus = control)
+
+	for child: Node in calendar_box.find_children("*", "Control", true):
+		if child is Control:
+			var control: Control = child as Control
+			control.focus_entered.connect(func(): _last_calendar_focus = control)
+
+func _set_container_focus_mode(container: Control, mode: int) -> void:
+	for child: Node in container.find_children("*", "Control", true):
+		if child is Control:
+			var control: Control = child as Control
+			if control is Button or control is OptionButton or control is CheckBox or control is HSlider:
+				control.focus_mode = mode
 
 func _connect_buttons() -> void:
-	$RootControl/CenterContainer/RootPanel/MarginContainer/Stack/MainRow/ResumeButton.pressed.connect(hide_pause_menu)
-	$RootControl/CenterContainer/RootPanel/MarginContainer/Stack/MainRow/StatsButton.pressed.connect(_show_stats)
-	$RootControl/CenterContainer/RootPanel/MarginContainer/Stack/MainRow/CalendarButton.pressed.connect(_show_calendar)
-	$RootControl/CenterContainer/RootPanel/MarginContainer/Stack/MainRow/SettingsButton.pressed.connect(_show_settings)
-	$RootControl/CenterContainer/RootPanel/MarginContainer/Stack/MainRow/MainMenuButton.pressed.connect(_go_to_main_menu)
-	$RootControl/CenterContainer/RootPanel/MarginContainer/Stack/MainRow/QuitButton.pressed.connect(Callable(get_tree(), "quit"))
-	$RootControl/CenterContainer/RootPanel/MarginContainer/Stack/StatsBox/StatsButtons/StatsBackButton.pressed.connect(_show_main_buttons)
-	$RootControl/CenterContainer/RootPanel/MarginContainer/Stack/SettingsBox/SettingsButtons/ApplyButton.pressed.connect(_apply_settings)
-	$RootControl/CenterContainer/RootPanel/MarginContainer/Stack/SettingsBox/SettingsButtons/SettingsBackButton.pressed.connect(_show_main_buttons)
-	$RootControl/CenterContainer/RootPanel/MarginContainer/Stack/CalendarBox/CalendarButtons/PreviousButton.pressed.connect(_show_previous_month)
-	$RootControl/CenterContainer/RootPanel/MarginContainer/Stack/CalendarBox/CalendarButtons/TodayButton.pressed.connect(_show_current_month)
-	$RootControl/CenterContainer/RootPanel/MarginContainer/Stack/CalendarBox/CalendarButtons/NextButton.pressed.connect(_show_next_month)
-	$RootControl/CenterContainer/RootPanel/MarginContainer/Stack/CalendarBox/CalendarButtons/CalendarBackButton.pressed.connect(_show_main_buttons)
+	_setup_button($RootControl/CenterContainer/RootPanel/MarginContainer/Stack/MainRow/ResumeButton, hide_pause_menu, "StatsButton")
+	_setup_button($RootControl/CenterContainer/RootPanel/MarginContainer/Stack/MainRow/StatsButton, _show_stats, "CalendarButton", "ResumeButton")
+	_setup_button($RootControl/CenterContainer/RootPanel/MarginContainer/Stack/MainRow/CalendarButton, _show_calendar, "SettingsButton", "StatsButton")
+	_setup_button($RootControl/CenterContainer/RootPanel/MarginContainer/Stack/MainRow/SettingsButton, _show_settings, "MainMenuButton", "CalendarButton")
+	_setup_button($RootControl/CenterContainer/RootPanel/MarginContainer/Stack/MainRow/MainMenuButton, _go_to_main_menu, "QuitButton", "SettingsButton")
+	_setup_button($RootControl/CenterContainer/RootPanel/MarginContainer/Stack/MainRow/QuitButton, Callable(get_tree(), "quit"), "ResumeButton", "MainMenuButton")
+
+	_setup_button($RootControl/CenterContainer/RootPanel/MarginContainer/Stack/StatsBox/StatsButtons/StatsBackButton, _show_main_buttons)
+
+	_setup_button($RootControl/CenterContainer/RootPanel/MarginContainer/Stack/SettingsBox/SettingsButtons/ApplyButton, _apply_settings, "SettingsBackButton")
+	_setup_button($RootControl/CenterContainer/RootPanel/MarginContainer/Stack/SettingsBox/SettingsButtons/SettingsBackButton, _show_main_buttons, "ApplyButton")
+
+	_setup_button($RootControl/CenterContainer/RootPanel/MarginContainer/Stack/CalendarBox/CalendarButtons/PreviousButton, _show_previous_month, "TodayButton")
+	_setup_button($RootControl/CenterContainer/RootPanel/MarginContainer/Stack/CalendarBox/CalendarButtons/TodayButton, _show_current_month, "NextButton", "PreviousButton")
+	_setup_button($RootControl/CenterContainer/RootPanel/MarginContainer/Stack/CalendarBox/CalendarButtons/NextButton, _show_next_month, "CalendarBackButton", "TodayButton")
+	_setup_button($RootControl/CenterContainer/RootPanel/MarginContainer/Stack/CalendarBox/CalendarButtons/CalendarBackButton, _show_main_buttons, "PreviousButton", "NextButton")
+
 	master_volume_slider.value_changed.connect(_on_audio_slider_changed)
 	sfx_volume_slider.value_changed.connect(_on_audio_slider_changed)
 	music_volume_slider.value_changed.connect(_on_audio_slider_changed)
 
+func _setup_button(button: Button, on_pressed_callable: Callable, focus_right_name: String = "", focus_left_name: String = "", focus_up_name: String = "", focus_down_name: String = "") -> void:
+	button.pressed.connect(on_pressed_callable)
+	button.focus_mode = Control.FOCUS_ALL
+	if not focus_right_name.is_empty():
+		button.focus_neighbor_right = button.get_parent().get_node(focus_right_name).get_path()
+	if not focus_left_name.is_empty():
+		button.focus_neighbor_left = button.get_parent().get_node(focus_left_name).get_path()
+	if not focus_up_name.is_empty():
+		button.focus_neighbor_up = button.get_parent().get_node(focus_up_name).get_path()
+	if not focus_down_name.is_empty():
+		button.focus_neighbor_down = button.get_parent().get_node(focus_down_name).get_path()
 
 func _show_stats() -> void:
 	main_row.visible = false
 	stats_box.visible = true
 	settings_box.visible = false
 	calendar_box.visible = false
+	_set_container_focus_mode(main_row, Control.FOCUS_NONE)
+	_set_container_focus_mode(stats_box, Control.FOCUS_ALL)
 	_refresh_stats_view()
-
+	if _last_stats_focus and is_instance_valid(_last_stats_focus) and _last_stats_focus.is_visible_in_tree():
+		_last_stats_focus.grab_focus()
+	else:
+		$RootControl/CenterContainer/RootPanel/MarginContainer/Stack/StatsBox/StatsButtons/StatsBackButton.grab_focus()
 
 func _show_settings() -> void:
 	main_row.visible = false
@@ -97,14 +152,26 @@ func _show_settings() -> void:
 	settings_box.visible = true
 	status_label.text = ""
 	_setup_settings_values()
-
+	_set_container_focus_mode(main_row, Control.FOCUS_NONE)
+	_set_container_focus_mode(settings_box, Control.FOCUS_ALL)
+	if _last_settings_focus and is_instance_valid(_last_settings_focus) and _last_settings_focus.is_visible_in_tree():
+		_last_settings_focus.grab_focus()
+	else:
+		resolution_options.grab_focus()
 
 func _show_main_buttons() -> void:
 	main_row.visible = true
 	stats_box.visible = false
 	settings_box.visible = false
 	calendar_box.visible = false
-
+	_set_container_focus_mode(main_row, Control.FOCUS_ALL)
+	_set_container_focus_mode(stats_box, Control.FOCUS_NONE)
+	_set_container_focus_mode(settings_box, Control.FOCUS_NONE)
+	_set_container_focus_mode(calendar_box, Control.FOCUS_NONE)
+	if _last_main_focus and is_instance_valid(_last_main_focus) and _last_main_focus.is_visible_in_tree():
+		_last_main_focus.grab_focus()
+	else:
+		$RootControl/CenterContainer/RootPanel/MarginContainer/Stack/MainRow/ResumeButton.grab_focus()
 
 func _show_calendar() -> void:
 	main_row.visible = false
@@ -113,14 +180,18 @@ func _show_calendar() -> void:
 	calendar_box.visible = true
 	calendar_view_month = int(get_calendar_manager().get_date_info(GameState.calendar_day_index)["month"])
 	_refresh_calendar_view()
-
+	_set_container_focus_mode(main_row, Control.FOCUS_NONE)
+	_set_container_focus_mode(calendar_box, Control.FOCUS_ALL)
+	if _last_calendar_focus and is_instance_valid(_last_calendar_focus) and _last_calendar_focus.is_visible_in_tree():
+		_last_calendar_focus.grab_focus()
+	else:
+		$RootControl/CenterContainer/RootPanel/MarginContainer/Stack/CalendarBox/CalendarButtons/PreviousButton.grab_focus()
 
 func _refresh_stats_view() -> void:
 	for child in stats_grid.get_children():
 		child.queue_free()
 
 	var player_stats: Dictionary = GameState.get_player_stats()
-
 	for stat_name in GameState.PLAYER_STATS:
 		var name_label := Label.new()
 		name_label.text = str(stat_name)
@@ -130,45 +201,34 @@ func _refresh_stats_view() -> void:
 		var value_label := Label.new()
 		value_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
 		value_label.custom_minimum_size = Vector2(160, 28)
-
 		if stat_name == GameState.ENERGY_STAT:
 			value_label.text = "%s / %s" % [player_stats[stat_name], GameState.DEFAULT_ENERGY]
 		else:
 			value_label.text = "%s / %s" % [player_stats[stat_name], GameState.STAT_MAX]
-
 		stats_grid.add_child(value_label)
-
 
 func _show_previous_month() -> void:
 	calendar_view_month = get_wrapped_story_month(-1)
 	_refresh_calendar_view()
 
-
 func _show_next_month() -> void:
 	calendar_view_month = get_wrapped_story_month(1)
 	_refresh_calendar_view()
-
 
 func _show_current_month() -> void:
 	calendar_view_month = int(get_calendar_manager().get_date_info(GameState.calendar_day_index)["month"])
 	_refresh_calendar_view()
 
-
 func get_wrapped_story_month(direction: int) -> int:
 	var calendar_manager = get_calendar_manager()
 	var story_months: Array = calendar_manager.get_story_months()
 	var current_index := story_months.find(calendar_view_month)
-
 	if current_index == -1:
 		return int(get_calendar_manager().get_date_info(GameState.calendar_day_index)["month"])
-
 	var next_index := (current_index + direction) % story_months.size()
-
 	if next_index < 0:
 		next_index = story_months.size() - 1
-
 	return int(story_months[next_index])
-
 
 func _refresh_calendar_view() -> void:
 	for child in calendar_grid.get_children():
@@ -192,47 +252,36 @@ func _refresh_calendar_view() -> void:
 		label.custom_minimum_size = Vector2(96, 72)
 		label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 		label.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
-
 		if cell.is_empty():
 			label.text = ""
 		else:
 			label.text = "%s\n%s" % [cell["day"], cell["routine"]]
-
 			if bool(cell.get("has_plan", false)) and str(cell.get("plan_summary", "")) != "":
 				label.text += "\n* %s" % cell["plan_summary"]
-
 			if bool(cell.get("has_special_events", false)):
 				label.text += "\n! %s" % cell["special_event_summary"]
 				label.add_theme_color_override("font_color", Color.ORANGE)
-
 			if bool(cell["is_today"]):
 				label.add_theme_color_override("font_color", Color.YELLOW)
 			elif int(current_date_info["month"]) != month:
 				label.add_theme_color_override("font_color", Color.LIGHT_GRAY)
-
 		calendar_grid.add_child(label)
-
 
 func get_calendar_manager():
 	return get_node("/root/CalendarManager")
 
-
 func _setup_settings_values() -> void:
 	resolution_options.clear()
-
 	for resolution in RESOLUTIONS:
 		resolution_options.add_item("%sx%s" % [resolution.x, resolution.y])
-
 	var current_size := DisplayServer.window_get_size()
 	var current_index := RESOLUTIONS.find(current_size)
 	if current_index == -1:
 		current_index = 0
-
 	resolution_options.select(current_index)
 	fullscreen_check.button_pressed = DisplayServer.window_get_mode() == DisplayServer.WINDOW_MODE_FULLSCREEN
 	vsync_check.button_pressed = DisplayServer.window_get_vsync_mode() != DisplayServer.VSYNC_DISABLED
 	_setup_audio_settings_values()
-
 
 func _apply_settings() -> void:
 	if fullscreen_check.button_pressed:
@@ -241,32 +290,24 @@ func _apply_settings() -> void:
 		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
 		DisplayServer.window_set_size(RESOLUTIONS[resolution_options.selected])
 		_center_window()
-
 	if vsync_check.button_pressed:
 		DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_ENABLED)
 	else:
 		DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_DISABLED)
-
 	_apply_audio_settings()
 	status_label.text = "Applied."
-
 
 func _go_to_main_menu() -> void:
 	hide_pause_menu()
 	get_tree().change_scene_to_file(MAIN_MENU_SCENE)
-
 
 func _center_window() -> void:
 	var screen := DisplayServer.window_get_current_screen()
 	var screen_position := DisplayServer.screen_get_position(screen)
 	var screen_size := DisplayServer.screen_get_size(screen)
 	var window_size := DisplayServer.window_get_size()
-	var centered_position := screen_position + Vector2i(
-		(screen_size.x - window_size.x) >> 1,
-		(screen_size.y - window_size.y) >> 1
-	)
+	var centered_position := screen_position + Vector2i((screen_size.x - window_size.x) >> 1, (screen_size.y - window_size.y) >> 1)
 	DisplayServer.window_set_position(centered_position)
-
 
 func _setup_audio_settings_values() -> void:
 	master_volume_slider.value = AudioSettings.get_volume_percent(AudioSettings.MASTER_BUS)
@@ -274,23 +315,19 @@ func _setup_audio_settings_values() -> void:
 	music_volume_slider.value = AudioSettings.get_volume_percent(AudioSettings.MUSIC_BUS)
 	_update_audio_volume_labels()
 
-
 func _on_audio_slider_changed(_value: float) -> void:
 	_update_audio_volume_labels()
-
 
 func _update_audio_volume_labels() -> void:
 	master_volume_value.text = "%s" % int(master_volume_slider.value)
 	sfx_volume_value.text = "%s" % int(sfx_volume_slider.value)
 	music_volume_value.text = "%s" % int(music_volume_slider.value)
 
-
 func _apply_audio_settings() -> void:
 	AudioSettings.set_volume_percent(AudioSettings.MASTER_BUS, master_volume_slider.value, false)
 	AudioSettings.set_volume_percent(AudioSettings.SFX_BUS, sfx_volume_slider.value, false)
 	AudioSettings.set_volume_percent(AudioSettings.MUSIC_BUS, music_volume_slider.value, false)
 	AudioSettings.save_settings()
-
 
 func _is_non_pause_scene() -> bool:
 	var current_scene := get_tree().current_scene

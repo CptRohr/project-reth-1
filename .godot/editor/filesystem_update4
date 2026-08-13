@@ -1,6 +1,4 @@
-res://README.md
-res://Scripts/basic_movement.gd
-res://Areas/street.tscn
+res://Scene/MainMenu.tscn
 res://Assets/Shaders/double_dither_transition.gdshader
 res://Assets/Shaders/vibrancy_backdrop_blurredfrosted.gdshader
 res://Assets/Shaders/square_transition.gdshader
@@ -10,6 +8,8 @@ res://Assets/Shaders/2d_fog_overlay.gdshader
 res://Assets/Shaders/highlight.gdshader
 res://Assets/Shaders/godray_edge_detection.gdshader
 res://Assets/Shaders/glass_pixel_rect.gdshader
+res://Managers/pause_menu.gd
 res://Scripts/main_menu.gd
-res://Scripts/CreditsMenu.gd
-res://Scene/CreditsMenu.tscn
+res://MAINTAINER_NOTE.md
+res://Managers/gamepad_focus_overlay.gd
+res://Managers/gamepad_focus_overlay_control.gd

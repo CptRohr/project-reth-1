@@ -813,12 +813,123 @@ Current behavior:
 - loads first scene from `first_scene_path`
 - exposes basic settings
 - quits the game
+- supports controller focus memory and nested settings/credits panels
 
 Maintenance rules:
 
-- Start-new-game setup belongs here only at the entry point.
+- Start-new-game setup belongs here only at entry point.
 - Persistent defaults belong in `GameState.reset_game()`.
 - Keep settings logic consistent with `PauseMenu`.
+- Main menu panels should lock focus to active panel and restore previous focused control when closed.
+
+## Pause Menu And UI
+
+Pause menu lives in:
+
+```text
+Managers/pause_menu.gd
+Scene/PauseMenu.tscn
+```
+
+It is an autoload `CanvasLayer` scene and currently provides:
+
+- Resume
+- Stats
+- Calendar
+- Settings
+- Main Menu
+- Quit Game
+
+Stats screen:
+
+- reads `GameState.get_player_stats()`
+- displays all stats in `GameState.PLAYER_STATS`
+- displays Energy as `current / 100`
+
+Calendar screen:
+
+- reads month grids from `CalendarManager`
+- supports Previous, Today, Next, Back
+- highlights today
+- shows routine labels like School or Free Day
+- shows a simple marker/summary for planned dates
+
+Settings:
+
+- resolution selection
+- fullscreen toggle
+- VSync toggle
+
+Gamepad UI rules:
+
+- `PauseMenu` keeps per-panel focus memory for main row, stats, settings, and calendar.
+- Returning from submenu must restore last focused control for that submenu when possible.
+- Cancel/back should close active submenu first, then close pause menu.
+- Do not rely on overlay stack pop for submenu return.
+
+Maintenance rules:
+
+- Pause menu layout belongs in `Scene/PauseMenu.tscn`.
+- Pause menu behavior and data refresh belong in `Managers/pause_menu.gd`.
+- Pause menu UI can read `GameState` and `CalendarManager`.
+- It should not own gameplay rules.
+- When adding new visible stats, update `GameState.PLAYER_STATS`; the Stats screen follows that list.
+
+## Gamepad Focus Overlay
+
+Universal focus overlay lives in:
+
+```text
+Managers/gamepad_focus_overlay.gd
+Managers/gamepad_focus_overlay_control.gd
+Scene/GamepadFocusOverlay.tscn
+```
+
+It is a visual-only `CanvasLayer` autoload used to show current controller-selected control.
+
+Rules:
+
+- overlay stays above all UI layers
+- built-in focus highlight still handles keyboard and touch
+- gamepad overlay is visual only and must not own focus logic
+- overlay only shows when joypad connected
+- focus memory flows through `GamepadFocusOverlay.push_focus()` / `pop_focus()` / `restore_last_focus()`
+- customize visual style in `gamepad_focus_overlay_control.gd` and overlay scene, not in gameplay scripts
+
+## Mobile Controls
+
+Mobile controls live in:
+
+```text
+Managers/mobile_controls.gd
+Scene/MobileControls.tscn
+```
+
+It is an autoload `CanvasLayer` scene that creates touch buttons at runtime.
+
+Current buttons:
+
+```text
+<  -> move_left
+>  -> move_right
+E  -> interact
+|| -> PauseMenu.toggle_pause_menu()
+```
+
+Behavior:
+
+- visible on mobile builds
+- optionally visible on desktop touchscreens
+- hidden on BootScene and MainMenu
+- releases held actions when hidden
+- uses the existing input action names so player, NPC, door, school, sleep, and activity scripts keep working
+
+Maintenance rules:
+
+- MobileControls should only bridge touch UI into existing actions.
+- Do not put movement, quest, stat, save, or scene logic here.
+- If a gameplay script uses `Input.is_action_just_pressed("interact")`, the mobile `E` button should trigger it automatically.
+- Pause is called directly because `PauseMenu` listens through `_unhandled_input()` instead of polling.
 
 ## Save / Load
 
@@ -880,6 +991,26 @@ Maintenance rules:
 - It can stay ugly while systems are being built.
 - Use `DebugHud.show_message("text")` for quick feedback.
 - Later, hide or replace it with proper UI.
+
+## Input Map And Controller UI
+
+Input map now treats controller like keyboard for core UI.
+
+Bindings:
+
+- `ui_accept` -> confirm / select
+- `ui_cancel` -> back / close submenu
+- `ui_up`, `ui_down`, `ui_left`, `ui_right` -> D-pad / stick navigation
+- `pause_menu` -> dedicated pause toggle
+- `interact` and `dialogic_default_action` keep gameplay/dialogue confirm separate where needed
+
+Rules:
+
+- built-in focus highlight stays for keyboard/touch
+- gamepad gets extra visual overlay from `GamepadFocusOverlay`
+- nested menus must lock focus to active panel while open
+- when returning from submenu, restore last focused control for that panel
+- do not add gamepad behavior by editing addons unless no app-side workaround exists
 
 ## Strict GDScript Notes
 
@@ -1138,6 +1269,21 @@ Follow this step-by-step checklist to register and place a new NPC in the game:
 2. Set `target_scene`.
 3. Set `target_spawn`.
 4. Ensure the destination map has `SpawnPoints/target_spawn`.
+
+## Session Cleanup Notes
+
+Gamepad UI pass added:
+
+- universal focus overlay autoload in `Managers/gamepad_focus_overlay.gd`
+- overlay visual in `Managers/gamepad_focus_overlay_control.gd` and `Scene/GamepadFocusOverlay.tscn`
+- controller/gamepad input map for `ui_accept`, `ui_cancel`, and D-pad navigation
+- pause menu focus memory per panel
+- main menu nested focus lock for settings and credits
+- overlay hidden when no joypad connected
+
+Rule:
+
+- avoid editing addons for controller UI if app-side workaround exists
 
 ## Golden Rule
 
