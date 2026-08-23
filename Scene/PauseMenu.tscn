@@ -53,10 +53,14 @@ bg_color = Color(0, 0, 0, 1)
 skew = Vector2(0.15, 0)
 border_color = Color(0, 0.8, 0.8980392, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pause_button"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_moybk"]
+bg_color = Color(0, 0, 0.74509805, 1)
+skew = Vector2(0.15, 0)
+border_color = Color(0, 0.8, 0.8980392, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5go37"]
 bg_color = Color(0, 0, 0, 1)
 skew = Vector2(0.15, 0)
-border_width_right = 3
 border_color = Color(0, 0.8, 0.8980392, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_l1n2m"]
@@ -64,6 +68,16 @@ bg_color = Color(0, 0.8, 0.8980392, 1)
 skew = Vector2(0.15, 0)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xdyg4"]
+bg_color = Color(0, 0, 0, 1)
+skew = Vector2(0.15, 0)
+border_color = Color(0, 0.8, 0.8980392, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_djane"]
+bg_color = Color(0, 0, 0.74509805, 1)
+skew = Vector2(0.15, 0)
+border_color = Color(0, 0.8, 0.8980392, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oiyub"]
 bg_color = Color(0, 0, 0, 1)
 skew = Vector2(0.15, 0)
 border_color = Color(0, 0.8, 0.8980392, 1)
@@ -77,6 +91,16 @@ bg_color = Color(0, 0, 0, 1)
 skew = Vector2(0.15, 0)
 border_color = Color(0, 0.8, 0.8980392, 1)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vi2gj"]
+bg_color = Color(0, 0, 0.74509805, 1)
+skew = Vector2(0.15, 0)
+border_color = Color(0, 0.8, 0.8980392, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lafcf"]
+bg_color = Color(0, 0, 0, 1)
+skew = Vector2(0.15, 0)
+border_color = Color(0, 0.8, 0.8980392, 1)
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kwk25"]
 bg_color = Color(0, 0.8, 0.8980392, 1)
 skew = Vector2(0.15, 0)
@@ -86,10 +110,24 @@ bg_color = Color(0, 0, 0, 1)
 skew = Vector2(0.15, 0)
 border_color = Color(0, 0.8, 0.8980392, 1)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bv44e"]
+bg_color = Color(0, 0, 0.74509805, 1)
+skew = Vector2(0.15, 0)
+border_color = Color(0, 0.8, 0.8980392, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pause_button"]
+bg_color = Color(0, 0, 0.74509805, 1)
+skew = Vector2(0.15, 0)
+border_color = Color(0, 0.8, 0.8980392, 1)
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kej3r"]
 bg_color = Color(0, 0, 0, 1)
 skew = Vector2(0.15, 0)
 border_color = Color(0, 0.8, 0.8980392, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t1njy"]
+bg_color = Color(0, 0, 0, 1)
+skew = Vector2(0.15, 0)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_olw3t"]
 bg_color = Color(0, 0.8, 0.8980392, 1)
@@ -103,7 +141,7 @@ corner_radius_bottom_right = 24
 corner_radius_bottom_left = 24
 
 [sub_resource type="Animation" id="Animation_moybk"]
-length = 0.001
+length = 1.7
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -808,7 +846,7 @@ custom_minimum_size = Vector2(300, 56)
 layout_mode = 0
 offset_left = 1303.0
 offset_top = 44.0
-offset_right = 1603.0034
+offset_right = 1603.0032
 offset_bottom = 129.0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
@@ -825,7 +863,7 @@ custom_minimum_size = Vector2(240, 56)
 layout_mode = 0
 offset_left = 1295.0
 offset_top = 142.0
-offset_right = 1596.0035
+offset_right = 1596.004
 offset_bottom = 218.0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
@@ -833,8 +871,8 @@ theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("3_dcbfr")
 theme_override_font_sizes/font_size = 64
 theme_override_styles/normal = SubResource("StyleBoxFlat_so2lw")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_pause_button")
-theme_override_styles/hover = SubResource("StyleBoxFlat_pause_button")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_moybk")
+theme_override_styles/hover = SubResource("StyleBoxFlat_5go37")
 theme_override_styles/focus = SubResource("StyleBoxFlat_l1n2m")
 
 [node name="StatsButton" type="Button" parent="RootControl/MainView" unique_id=1826858738]
@@ -850,8 +888,8 @@ theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("3_dcbfr")
 theme_override_font_sizes/font_size = 64
 theme_override_styles/normal = SubResource("StyleBoxFlat_xdyg4")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_pause_button")
-theme_override_styles/hover = SubResource("StyleBoxFlat_pause_button")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_djane")
+theme_override_styles/hover = SubResource("StyleBoxFlat_oiyub")
 theme_override_styles/focus = SubResource("StyleBoxFlat_157kv")
 
 [node name="ResumeButton" type="Button" parent="RootControl/MainView" unique_id=1772462668]
@@ -859,7 +897,7 @@ custom_minimum_size = Vector2(240, 56)
 layout_mode = 0
 offset_left = 1294.0
 offset_top = 329.0
-offset_right = 1560.9987
+offset_right = 1560.9985
 offset_bottom = 405.0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
@@ -867,8 +905,8 @@ theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("3_dcbfr")
 theme_override_font_sizes/font_size = 64
 theme_override_styles/normal = SubResource("StyleBoxFlat_41g8f")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_pause_button")
-theme_override_styles/hover = SubResource("StyleBoxFlat_pause_button")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_vi2gj")
+theme_override_styles/hover = SubResource("StyleBoxFlat_lafcf")
 theme_override_styles/focus = SubResource("StyleBoxFlat_kwk25")
 
 [node name="MainMenuButton" type="Button" parent="RootControl/MainView" unique_id=394658322]
@@ -876,7 +914,7 @@ custom_minimum_size = Vector2(270, 56)
 layout_mode = 0
 offset_left = 1296.0
 offset_top = 423.0
-offset_right = 1674.0059
+offset_right = 1674.0061
 offset_bottom = 499.0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
@@ -884,7 +922,7 @@ theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("3_dcbfr")
 theme_override_font_sizes/font_size = 64
 theme_override_styles/normal = SubResource("StyleBoxFlat_rw4pq")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_pause_button")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_bv44e")
 theme_override_styles/hover = SubResource("StyleBoxFlat_pause_button")
 theme_override_styles/focus = SubResource("StyleBoxFlat_kwk25")
 
@@ -893,7 +931,7 @@ custom_minimum_size = Vector2(250, 56)
 layout_mode = 0
 offset_left = 1294.0
 offset_top = 513.0
-offset_right = 1658.0029
+offset_right = 1658.0032
 offset_bottom = 589.0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
@@ -902,7 +940,7 @@ theme_override_fonts/font = ExtResource("3_dcbfr")
 theme_override_font_sizes/font_size = 64
 theme_override_styles/normal = SubResource("StyleBoxFlat_kej3r")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_pause_button")
-theme_override_styles/hover = SubResource("StyleBoxFlat_pause_button")
+theme_override_styles/hover = SubResource("StyleBoxFlat_t1njy")
 theme_override_styles/focus = SubResource("StyleBoxFlat_olw3t")
 
 [node name="StatsPanel" type="PanelContainer" parent="RootControl" unique_id=1010543992]
