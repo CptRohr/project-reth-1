@@ -212,7 +212,7 @@ func _set_settings_section(active_section: Control) -> void:
 	controls_tab.button_pressed = active_section == controls_section
 
 
-func _set_main_menu_focus_mode(mode: int) -> void:
+func _set_main_menu_focus_mode(mode: Control.FocusMode) -> void:
 	start_button.focus_mode = mode
 	settings_button.focus_mode = mode
 	quit_button.focus_mode = mode
@@ -220,7 +220,7 @@ func _set_main_menu_focus_mode(mode: int) -> void:
 		credits_button.focus_mode = mode
 
 
-func _set_settings_focus_mode(mode: int) -> void:
+func _set_settings_focus_mode(mode: Control.FocusMode) -> void:
 	resolution_options.focus_mode = mode
 	fullscreen_check.focus_mode = mode
 	vsync_check.focus_mode = mode

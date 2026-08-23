@@ -1,9 +1,10 @@
+AnimationPlayer
+PanelContainer
+Sprite2D
+Panel
 ColorRect
 Label
-AnimationPlayer
-Panel
 Control
-Sprite2D
 CanvasGroup
 Container
 Node2D
@@ -11,4 +12,3 @@ Button
 CanvasLayer
 Marker2D
 VideoStreamPlayer
-Timer

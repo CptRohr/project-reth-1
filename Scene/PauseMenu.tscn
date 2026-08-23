@@ -1,19 +1,678 @@
 [gd_scene format=3 uid="uid://ruksf2nbk6mc"]
 
 [ext_resource type="Script" uid="uid://68tmjttgyrfp" path="res://Managers/pause_menu.gd" id="1_pause"]
-[ext_resource type="Shader" uid="uid://ch2q2i83wsq0l" path="res://Assets/Shaders/vibrancy_backdrop_blurredfrosted.gdshader" id="2_c4igy"]
+[ext_resource type="Script" uid="uid://chlslhm1lvc8h" path="res://Managers/pause_menu_clock.gd" id="2_clock"]
+[ext_resource type="Texture2D" uid="uid://dne50m8vbjqkp" path="res://Assets/debug assets/PAUSE MENU.png" id="2_q2f0n"]
+[ext_resource type="FontFile" uid="uid://bs2uqmavvslyu" path="res://Fonts/HarmonyOS_Sans_Regular.ttf" id="3_dcbfr"]
+[ext_resource type="Shader" uid="uid://ch2q2i83wsq0l" path="res://Assets/Shaders/vibrancy_backdrop_blurredfrosted.gdshader" id="3_kwk25"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_qfc41"]
-shader = ExtResource("2_c4igy")
-shader_parameter/blur_lod = 3.5
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_q2f0n"]
+shader = ExtResource("3_kwk25")
+shader_parameter/blur_lod = 0.0
 
-[node name="PauseMenu" type="CanvasLayer" unique_id=1472331725]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c4igy"]
+bg_color = Color(0, 0, 0, 0.79607844)
+border_width_left = 6
+border_width_top = 6
+border_width_right = 6
+border_width_bottom = 6
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 1024
+corner_radius_top_right = 1024
+corner_radius_bottom_right = 1024
+corner_radius_bottom_left = 1024
+corner_detail = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bhunq"]
+bg_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 128
+corner_radius_top_right = 128
+corner_radius_bottom_right = 128
+corner_radius_bottom_left = 128
+corner_detail = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3o1w7"]
+bg_color = Color(0, 0, 0, 1)
+skew = Vector2(0.15, 0)
+border_color = Color(0, 0.8, 0.8980392, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4msbn"]
+bg_color = Color(8.663535e-07, 0, 0.74406356, 1)
+skew = Vector2(0.15, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qslsu"]
+bg_color = Color(0, 0, 0, 1)
+skew = Vector2(0.15, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mccmf"]
+bg_color = Color(0, 0.8, 0.8980392, 1)
+skew = Vector2(0.15, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_so2lw"]
+bg_color = Color(0, 0, 0, 1)
+skew = Vector2(0.15, 0)
+border_color = Color(0, 0.8, 0.8980392, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pause_button"]
+bg_color = Color(0, 0, 0, 1)
+skew = Vector2(0.15, 0)
+border_width_right = 3
+border_color = Color(0, 0.8, 0.8980392, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_l1n2m"]
+bg_color = Color(0, 0.8, 0.8980392, 1)
+skew = Vector2(0.15, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xdyg4"]
+bg_color = Color(0, 0, 0, 1)
+skew = Vector2(0.15, 0)
+border_color = Color(0, 0.8, 0.8980392, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_157kv"]
+bg_color = Color(0, 0.8, 0.8980392, 1)
+skew = Vector2(0.15, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_41g8f"]
+bg_color = Color(0, 0, 0, 1)
+skew = Vector2(0.15, 0)
+border_color = Color(0, 0.8, 0.8980392, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kwk25"]
+bg_color = Color(0, 0.8, 0.8980392, 1)
+skew = Vector2(0.15, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rw4pq"]
+bg_color = Color(0, 0, 0, 1)
+skew = Vector2(0.15, 0)
+border_color = Color(0, 0.8, 0.8980392, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kej3r"]
+bg_color = Color(0, 0, 0, 1)
+skew = Vector2(0.15, 0)
+border_color = Color(0, 0.8, 0.8980392, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_olw3t"]
+bg_color = Color(0, 0.8, 0.8980392, 1)
+skew = Vector2(0.15, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_panel"]
+bg_color = Color(0, 0, 0, 0.85)
+corner_radius_top_left = 24
+corner_radius_top_right = 24
+corner_radius_bottom_right = 24
+corner_radius_bottom_left = 24
+
+[sub_resource type="Animation" id="Animation_moybk"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("RootControl/MainView/ClockPanel:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("RootControl/MainView/ClockPanel:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-3.1415927]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("RootControl/MainView/ClockPanel:theme_override_styles/panel:bg_color")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 0.79607844)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("RootControl/MainView/ClockPanel:theme_override_styles/panel:corner_detail")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("RootControl/MainView/SettingsButton:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1303, 44)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("RootControl/MainView/CalendarButton:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1295, 142)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("RootControl/MainView/SettingsButton:text")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [""]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("RootControl/MainView/CalendarButton:text")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [""]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("RootControl/MainView/StatsButton:position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1296, 234)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("RootControl/MainView/StatsButton:text")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [""]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("RootControl/MainView/ResumeButton:position")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1294, 329)]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("RootControl/MainView/ResumeButton:text")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [""]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("RootControl/MainView/MainMenuButton:position")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1296, 423)]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("RootControl/MainView/MainMenuButton:text")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [""]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("RootControl/MainView/QuitButton:position")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1294, 513)]
+}
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("RootControl/MainView/QuitButton:text")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [""]
+}
+tracks/16/type = "value"
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/path = NodePath("RootControl/MainView/SettingsButton:theme_override_styles/normal:border_width_right")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/17/type = "value"
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/path = NodePath("RootControl/MainView/CalendarButton:theme_override_styles/normal:border_width_right")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/18/type = "value"
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/path = NodePath("RootControl/MainView/StatsButton:theme_override_styles/normal:border_width_right")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/19/type = "value"
+tracks/19/imported = false
+tracks/19/enabled = true
+tracks/19/path = NodePath("RootControl/MainView/ResumeButton:theme_override_styles/normal:border_width_right")
+tracks/19/interp = 1
+tracks/19/loop_wrap = true
+tracks/19/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/20/type = "value"
+tracks/20/imported = false
+tracks/20/enabled = true
+tracks/20/path = NodePath("RootControl/MainView/MainMenuButton:theme_override_styles/normal:border_width_right")
+tracks/20/interp = 1
+tracks/20/loop_wrap = true
+tracks/20/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/21/type = "value"
+tracks/21/imported = false
+tracks/21/enabled = true
+tracks/21/path = NodePath("RootControl/MainView/QuitButton:theme_override_styles/normal:border_width_right")
+tracks/21/interp = 1
+tracks/21/loop_wrap = true
+tracks/21/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/22/type = "value"
+tracks/22/imported = false
+tracks/22/enabled = true
+tracks/22/path = NodePath("RootControl/Background:material:shader_parameter/blur_lod")
+tracks/22/interp = 1
+tracks/22/loop_wrap = true
+tracks/22/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_djane"]
+resource_name = "pause_menu_in_out"
+length = 1.7
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("RootControl/MainView/ClockPanel:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.7),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("RootControl/MainView/ClockPanel:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.7),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-3.1415927, 0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("RootControl/MainView/ClockPanel:theme_override_styles/panel:bg_color")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.7),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0.79607844), Color(0, 0, 0, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("RootControl/MainView/ClockPanel:theme_override_styles/panel:corner_detail")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.2, 0.7),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1, 16]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("RootControl/MainView/SettingsButton:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.7, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1303, 44), Vector2(882, 44)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("RootControl/MainView/CalendarButton:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.8, 1.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1295, 142), Vector2(902, 142)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("RootControl/MainView/SettingsButton:text")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(1, 1.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": ["", "Settings"]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("RootControl/MainView/CalendarButton:text")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(1.1, 1.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": ["", "Calendar"]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("RootControl/MainView/StatsButton:position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0.9, 1.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1296, 234), Vector2(1011, 234)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("RootControl/MainView/StatsButton:text")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(1.2, 1.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": ["", "Stats"]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("RootControl/MainView/ResumeButton:position")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(1, 1.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1294, 329), Vector2(982.485, 329)]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("RootControl/MainView/ResumeButton:text")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(1.3, 1.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": ["", "Resume"]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("RootControl/MainView/MainMenuButton:position")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(1.1, 1.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1296, 423), Vector2(860.21, 423)]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("RootControl/MainView/MainMenuButton:text")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(1.4, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": ["", "Main Menu"]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("RootControl/MainView/QuitButton:position")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(1.2, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1294, 513), Vector2(861.345, 513)]
+}
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("RootControl/MainView/QuitButton:text")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(1.5, 1.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": ["", "Quit Game"]
+}
+tracks/16/type = "value"
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/path = NodePath("RootControl/MainView/SettingsButton:theme_override_styles/normal:border_width_right")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/keys = {
+"times": PackedFloat32Array(1, 1.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0, 16]
+}
+tracks/17/type = "value"
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/path = NodePath("RootControl/MainView/CalendarButton:theme_override_styles/normal:border_width_right")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/keys = {
+"times": PackedFloat32Array(1.1, 1.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0, 16]
+}
+tracks/18/type = "value"
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/path = NodePath("RootControl/MainView/StatsButton:theme_override_styles/normal:border_width_right")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/keys = {
+"times": PackedFloat32Array(1.2, 1.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0, 16]
+}
+tracks/19/type = "value"
+tracks/19/imported = false
+tracks/19/enabled = true
+tracks/19/path = NodePath("RootControl/MainView/ResumeButton:theme_override_styles/normal:border_width_right")
+tracks/19/interp = 1
+tracks/19/loop_wrap = true
+tracks/19/keys = {
+"times": PackedFloat32Array(1.3, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0, 16]
+}
+tracks/20/type = "value"
+tracks/20/imported = false
+tracks/20/enabled = true
+tracks/20/path = NodePath("RootControl/MainView/MainMenuButton:theme_override_styles/normal:border_width_right")
+tracks/20/interp = 1
+tracks/20/loop_wrap = true
+tracks/20/keys = {
+"times": PackedFloat32Array(1.4, 1.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0, 16]
+}
+tracks/21/type = "value"
+tracks/21/imported = false
+tracks/21/enabled = true
+tracks/21/path = NodePath("RootControl/MainView/QuitButton:theme_override_styles/normal:border_width_right")
+tracks/21/interp = 1
+tracks/21/loop_wrap = true
+tracks/21/keys = {
+"times": PackedFloat32Array(1.5, 1.7),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0, 16]
+}
+tracks/22/type = "value"
+tracks/22/imported = false
+tracks/22/enabled = true
+tracks/22/path = NodePath("RootControl/Background:material:shader_parameter/blur_lod")
+tracks/22/interp = 1
+tracks/22/loop_wrap = true
+tracks/22/keys = {
+"times": PackedFloat32Array(0, 0.7),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 3.50000016625]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_5go37"]
+_data = {
+&"RESET": SubResource("Animation_moybk"),
+&"pause_menu_in_out": SubResource("Animation_djane")
+}
+
+[node name="PauseMenu" type="CanvasLayer" unique_id=582101935]
 process_mode = 3
 layer = 90
 script = ExtResource("1_pause")
 
-[node name="RootControl" type="Control" parent="." unique_id=55780040]
-visible = false
+[node name="RootControl" type="Control" parent="." unique_id=903460322]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -21,243 +680,465 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="CenterContainer" type="CenterContainer" parent="RootControl" unique_id=411715368]
+[node name="Background" type="ColorRect" parent="RootControl" unique_id=2101820951]
+material = SubResource("ShaderMaterial_q2f0n")
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.55)
+
+[node name="MainView" type="Control" parent="RootControl" unique_id=1527254505]
+anchors_preset = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ClockPanel" type="PanelContainer" parent="RootControl/MainView" unique_id=1129842357]
+custom_minimum_size = Vector2(420, 420)
+layout_mode = 0
+offset_left = 499.0
+offset_top = 34.0
+offset_right = 1149.0
+offset_bottom = 684.0
+rotation = -3.1415927
+scale = Vector2(1e-05, 1e-05)
+pivot_offset = Vector2(330, 327)
+theme_override_styles/panel = SubResource("StyleBoxFlat_c4igy")
+
+[node name="Clock" type="Control" parent="RootControl/MainView/ClockPanel" unique_id=515868885]
+layout_mode = 2
+script = ExtResource("2_clock")
+hour_hand_path = NodePath("HourHand")
+minute_hand_path = NodePath("MinuteHand")
+selector_hand_path = NodePath("SelectorHand")
+
+[node name="Face" type="ColorRect" parent="RootControl/MainView/ClockPanel/Clock" unique_id=1736908708]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+color = Color(0, 0, 0, 0)
 
-[node name="RootPanel" type="PanelContainer" parent="RootControl/CenterContainer" unique_id=1041131004]
-material = SubResource("ShaderMaterial_qfc41")
-custom_minimum_size = Vector2(760, 520)
-layout_mode = 2
+[node name="HourHand" type="Control" parent="RootControl/MainView/ClockPanel/Clock" unique_id=1375537493]
+custom_minimum_size = Vector2(140, 10)
+anchors_preset = 0
+offset_left = 307.0
+offset_top = 316.0
+offset_right = 459.0
+offset_bottom = 326.0
+pivot_offset = Vector2(17, 5)
 
-[node name="MarginContainer" type="MarginContainer" parent="RootControl/CenterContainer/RootPanel" unique_id=771428448]
-layout_mode = 2
-theme_override_constants/margin_left = 16
-theme_override_constants/margin_top = 16
-theme_override_constants/margin_right = 16
-theme_override_constants/margin_bottom = 16
+[node name="HourBar" type="ColorRect" parent="RootControl/MainView/ClockPanel/Clock/HourHand" unique_id=955509804]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 0.7999754
+offset_bottom = -2.0570803
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.1255094, 0.56)
+pivot_offset = Vector2(5, 5)
+color = Color(0, 0, 0, 1)
 
-[node name="Stack" type="VBoxContainer" parent="RootControl/CenterContainer/RootPanel/MarginContainer" unique_id=680833751]
-layout_mode = 2
-theme_override_constants/separation = 12
+[node name="MinuteHand" type="Control" parent="RootControl/MainView/ClockPanel/Clock" unique_id=152810882]
+custom_minimum_size = Vector2(180, 8)
+anchors_preset = 0
+offset_left = 311.0
+offset_top = 317.0
+offset_right = 499.0
+offset_bottom = 325.0
+pivot_offset = Vector2(13, 4)
 
-[node name="Title" type="Label" parent="RootControl/CenterContainer/RootPanel/MarginContainer/Stack" unique_id=1240896021]
-layout_mode = 2
-text = "Paused"
-horizontal_alignment = 1
+[node name="MinuteBar" type="ColorRect" parent="RootControl/MainView/ClockPanel/Clock/MinuteHand" unique_id=1257127732]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -0.08000481
+offset_right = -48.332977
+offset_bottom = 0.58656025
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.799995, 0.48000002)
+pivot_offset = Vector2(5, 4)
+color = Color(0, 0, 0, 1)
 
-[node name="MainRow" type="HBoxContainer" parent="RootControl/CenterContainer/RootPanel/MarginContainer/Stack" unique_id=1749414944]
-layout_mode = 2
-theme_override_constants/separation = 8
+[node name="SelectorHand" type="Control" parent="RootControl/MainView/ClockPanel/Clock" unique_id=555983224]
+custom_minimum_size = Vector2(190, 6)
+anchors_preset = 0
+offset_left = 312.0
+offset_top = 318.0
+offset_right = 502.0
+offset_bottom = 324.0
+pivot_offset = Vector2(12, 3)
 
-[node name="ResumeButton" type="Button" parent="RootControl/CenterContainer/RootPanel/MarginContainer/Stack/MainRow" unique_id=1464010523]
-custom_minimum_size = Vector2(110, 40)
-layout_mode = 2
-size_flags_horizontal = 3
-text = "Resume"
+[node name="SelectorBar" type="ColorRect" parent="RootControl/MainView/ClockPanel/Clock/SelectorHand" unique_id=843203757]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -1.0400232
+offset_right = -51.35086
+offset_bottom = 5.4602213
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2.28, 0.3199951)
+pivot_offset = Vector2(4, 3)
+color = Color(0, 0.8, 0.9, 1)
 
-[node name="StatsButton" type="Button" parent="RootControl/CenterContainer/RootPanel/MarginContainer/Stack/MainRow" unique_id=1706707805]
-custom_minimum_size = Vector2(110, 40)
-layout_mode = 2
-size_flags_horizontal = 3
-text = "Stats"
+[node name="CenterDot" type="PanelContainer" parent="RootControl/MainView/ClockPanel/Clock" unique_id=416930847]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 0
+offset_left = 316.0
+offset_top = 313.0
+offset_right = 332.0
+offset_bottom = 329.0
+scale = Vector2(0.77, 0.77)
+pivot_offset = Vector2(8, 8)
+theme_override_styles/panel = SubResource("StyleBoxFlat_bhunq")
 
-[node name="CalendarButton" type="Button" parent="RootControl/CenterContainer/RootPanel/MarginContainer/Stack/MainRow" unique_id=485906475]
-custom_minimum_size = Vector2(110, 40)
-layout_mode = 2
-size_flags_horizontal = 3
-text = "Calendar"
+[node name="SettingsButton" type="Button" parent="RootControl/MainView" unique_id=177224773]
+custom_minimum_size = Vector2(300, 56)
+layout_mode = 0
+offset_left = 1303.0
+offset_top = 44.0
+offset_right = 1603.0034
+offset_bottom = 129.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_dcbfr")
+theme_override_font_sizes/font_size = 62
+theme_override_styles/normal = SubResource("StyleBoxFlat_3o1w7")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_4msbn")
+theme_override_styles/hover = SubResource("StyleBoxFlat_qslsu")
+theme_override_styles/focus = SubResource("StyleBoxFlat_mccmf")
 
-[node name="SettingsButton" type="Button" parent="RootControl/CenterContainer/RootPanel/MarginContainer/Stack/MainRow" unique_id=315366146]
-custom_minimum_size = Vector2(110, 40)
-layout_mode = 2
-size_flags_horizontal = 3
-text = "Settings"
+[node name="CalendarButton" type="Button" parent="RootControl/MainView" unique_id=44595643]
+custom_minimum_size = Vector2(240, 56)
+layout_mode = 0
+offset_left = 1295.0
+offset_top = 142.0
+offset_right = 1596.0035
+offset_bottom = 218.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_dcbfr")
+theme_override_font_sizes/font_size = 64
+theme_override_styles/normal = SubResource("StyleBoxFlat_so2lw")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_pause_button")
+theme_override_styles/hover = SubResource("StyleBoxFlat_pause_button")
+theme_override_styles/focus = SubResource("StyleBoxFlat_l1n2m")
 
-[node name="MainMenuButton" type="Button" parent="RootControl/CenterContainer/RootPanel/MarginContainer/Stack/MainRow" unique_id=1781927161]
-custom_minimum_size = Vector2(110, 40)
-layout_mode = 2
-size_flags_horizontal = 3
-text = "Main Menu"
+[node name="StatsButton" type="Button" parent="RootControl/MainView" unique_id=1826858738]
+custom_minimum_size = Vector2(215, 56)
+layout_mode = 0
+offset_left = 1296.0
+offset_top = 234.0
+offset_right = 1511.0
+offset_bottom = 310.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_dcbfr")
+theme_override_font_sizes/font_size = 64
+theme_override_styles/normal = SubResource("StyleBoxFlat_xdyg4")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_pause_button")
+theme_override_styles/hover = SubResource("StyleBoxFlat_pause_button")
+theme_override_styles/focus = SubResource("StyleBoxFlat_157kv")
 
-[node name="QuitButton" type="Button" parent="RootControl/CenterContainer/RootPanel/MarginContainer/Stack/MainRow" unique_id=1488379390]
-custom_minimum_size = Vector2(110, 40)
-layout_mode = 2
-size_flags_horizontal = 3
-text = "Quit Game"
+[node name="ResumeButton" type="Button" parent="RootControl/MainView" unique_id=1772462668]
+custom_minimum_size = Vector2(240, 56)
+layout_mode = 0
+offset_left = 1294.0
+offset_top = 329.0
+offset_right = 1560.9987
+offset_bottom = 405.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_dcbfr")
+theme_override_font_sizes/font_size = 64
+theme_override_styles/normal = SubResource("StyleBoxFlat_41g8f")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_pause_button")
+theme_override_styles/hover = SubResource("StyleBoxFlat_pause_button")
+theme_override_styles/focus = SubResource("StyleBoxFlat_kwk25")
 
-[node name="StatsBox" type="VBoxContainer" parent="RootControl/CenterContainer/RootPanel/MarginContainer/Stack" unique_id=2139905512]
+[node name="MainMenuButton" type="Button" parent="RootControl/MainView" unique_id=394658322]
+custom_minimum_size = Vector2(270, 56)
+layout_mode = 0
+offset_left = 1296.0
+offset_top = 423.0
+offset_right = 1674.0059
+offset_bottom = 499.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_dcbfr")
+theme_override_font_sizes/font_size = 64
+theme_override_styles/normal = SubResource("StyleBoxFlat_rw4pq")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_pause_button")
+theme_override_styles/hover = SubResource("StyleBoxFlat_pause_button")
+theme_override_styles/focus = SubResource("StyleBoxFlat_kwk25")
+
+[node name="QuitButton" type="Button" parent="RootControl/MainView" unique_id=371859305]
+custom_minimum_size = Vector2(250, 56)
+layout_mode = 0
+offset_left = 1294.0
+offset_top = 513.0
+offset_right = 1658.0029
+offset_bottom = 589.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_dcbfr")
+theme_override_font_sizes/font_size = 64
+theme_override_styles/normal = SubResource("StyleBoxFlat_kej3r")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_pause_button")
+theme_override_styles/hover = SubResource("StyleBoxFlat_pause_button")
+theme_override_styles/focus = SubResource("StyleBoxFlat_olw3t")
+
+[node name="StatsPanel" type="PanelContainer" parent="RootControl" unique_id=1010543992]
 visible = false
-layout_mode = 2
-theme_override_constants/separation = 8
+layout_mode = 0
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -300.0
+offset_top = -250.0
+offset_right = 300.0
+offset_bottom = 250.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_panel")
 
-[node name="StatsTitle" type="Label" parent="RootControl/CenterContainer/RootPanel/MarginContainer/Stack/StatsBox" unique_id=1121811705]
+[node name="Margin" type="MarginContainer" parent="RootControl/StatsPanel" unique_id=1223558301]
+layout_mode = 2
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 24
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 24
+
+[node name="VBox" type="VBoxContainer" parent="RootControl/StatsPanel/Margin" unique_id=1009558051]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="Title" type="Label" parent="RootControl/StatsPanel/Margin/VBox" unique_id=642569773]
 layout_mode = 2
 text = "Player Stats"
 horizontal_alignment = 1
 
-[node name="StatsGrid" type="GridContainer" parent="RootControl/CenterContainer/RootPanel/MarginContainer/Stack/StatsBox" unique_id=1824189537]
+[node name="StatsGrid" type="GridContainer" parent="RootControl/StatsPanel/Margin/VBox" unique_id=1574118555]
 layout_mode = 2
+size_flags_vertical = 3
 columns = 2
 
-[node name="StatsButtons" type="HBoxContainer" parent="RootControl/CenterContainer/RootPanel/MarginContainer/Stack/StatsBox" unique_id=1101359642]
+[node name="StatsBackButton" type="Button" parent="RootControl/StatsPanel/Margin/VBox" unique_id=490447881]
+custom_minimum_size = Vector2(120, 44)
 layout_mode = 2
-theme_override_constants/separation = 8
-
-[node name="StatsBackButton" type="Button" parent="RootControl/CenterContainer/RootPanel/MarginContainer/Stack/StatsBox/StatsButtons" unique_id=1063824497]
-custom_minimum_size = Vector2(110, 40)
-layout_mode = 2
-size_flags_horizontal = 3
+size_flags_horizontal = 4
 text = "Back"
 
-[node name="SettingsBox" type="VBoxContainer" parent="RootControl/CenterContainer/RootPanel/MarginContainer/Stack" unique_id=1539963769]
+[node name="SettingsPanel" type="PanelContainer" parent="RootControl" unique_id=508728035]
 visible = false
-layout_mode = 2
-theme_override_constants/separation = 8
+layout_mode = 0
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -350.0
+offset_top = -250.0
+offset_right = 350.0
+offset_bottom = 250.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_panel")
 
-[node name="ResolutionRow" type="HBoxContainer" parent="RootControl/CenterContainer/RootPanel/MarginContainer/Stack/SettingsBox" unique_id=194417363]
+[node name="Margin" type="MarginContainer" parent="RootControl/SettingsPanel" unique_id=1053379795]
 layout_mode = 2
-theme_override_constants/separation = 8
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 24
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 24
 
-[node name="ResolutionLabel" type="Label" parent="RootControl/CenterContainer/RootPanel/MarginContainer/Stack/SettingsBox/ResolutionRow" unique_id=1423113397]
+[node name="VBox" type="VBoxContainer" parent="RootControl/SettingsPanel/Margin" unique_id=619233552]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="ResolutionRow" type="HBoxContainer" parent="RootControl/SettingsPanel/Margin/VBox" unique_id=1701040321]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="RootControl/SettingsPanel/Margin/VBox/ResolutionRow" unique_id=1479559221]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Resolution"
 
-[node name="ResolutionOptions" type="OptionButton" parent="RootControl/CenterContainer/RootPanel/MarginContainer/Stack/SettingsBox/ResolutionRow" unique_id=307408416]
+[node name="ResolutionOptions" type="OptionButton" parent="RootControl/SettingsPanel/Margin/VBox/ResolutionRow" unique_id=285475364]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="FullscreenCheck" type="CheckBox" parent="RootControl/CenterContainer/RootPanel/MarginContainer/Stack/SettingsBox" unique_id=260734255]
+[node name="FullscreenCheck" type="CheckBox" parent="RootControl/SettingsPanel/Margin/VBox" unique_id=1809063942]
 layout_mode = 2
 text = "Fullscreen"
 
-[node name="VsyncCheck" type="CheckBox" parent="RootControl/CenterContainer/RootPanel/MarginContainer/Stack/SettingsBox" unique_id=981595391]
+[node name="VsyncCheck" type="CheckBox" parent="RootControl/SettingsPanel/Margin/VBox" unique_id=543199727]
 layout_mode = 2
 text = "VSync"
 
-[node name="MasterVolumeRow" type="HBoxContainer" parent="RootControl/CenterContainer/RootPanel/MarginContainer/Stack/SettingsBox" unique_id=1473631651]
+[node name="MasterVolumeRow" type="HBoxContainer" parent="RootControl/SettingsPanel/Margin/VBox" unique_id=1183462251]
 layout_mode = 2
-theme_override_constants/separation = 8
 
-[node name="MasterVolumeLabel" type="Label" parent="RootControl/CenterContainer/RootPanel/MarginContainer/Stack/SettingsBox/MasterVolumeRow" unique_id=921379460]
+[node name="Label" type="Label" parent="RootControl/SettingsPanel/Margin/VBox/MasterVolumeRow" unique_id=719365881]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Master"
 
-[node name="MasterVolumeSlider" type="HSlider" parent="RootControl/CenterContainer/RootPanel/MarginContainer/Stack/SettingsBox/MasterVolumeRow" unique_id=871702986]
+[node name="MasterVolumeSlider" type="HSlider" parent="RootControl/SettingsPanel/Margin/VBox/MasterVolumeRow" unique_id=1425524914]
 layout_mode = 2
 size_flags_horizontal = 3
 value = 100.0
 
-[node name="MasterVolumeValue" type="Label" parent="RootControl/CenterContainer/RootPanel/MarginContainer/Stack/SettingsBox/MasterVolumeRow" unique_id=1807626503]
+[node name="MasterVolumeValue" type="Label" parent="RootControl/SettingsPanel/Margin/VBox/MasterVolumeRow" unique_id=2089896717]
 custom_minimum_size = Vector2(44, 0)
 layout_mode = 2
 text = "100"
 horizontal_alignment = 2
 
-[node name="SfxVolumeRow" type="HBoxContainer" parent="RootControl/CenterContainer/RootPanel/MarginContainer/Stack/SettingsBox" unique_id=161196423]
+[node name="SfxVolumeRow" type="HBoxContainer" parent="RootControl/SettingsPanel/Margin/VBox" unique_id=1781797056]
 layout_mode = 2
-theme_override_constants/separation = 8
 
-[node name="SfxVolumeLabel" type="Label" parent="RootControl/CenterContainer/RootPanel/MarginContainer/Stack/SettingsBox/SfxVolumeRow" unique_id=2090670940]
+[node name="Label" type="Label" parent="RootControl/SettingsPanel/Margin/VBox/SfxVolumeRow" unique_id=248737451]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "SFX"
 
-[node name="SfxVolumeSlider" type="HSlider" parent="RootControl/CenterContainer/RootPanel/MarginContainer/Stack/SettingsBox/SfxVolumeRow" unique_id=2054820068]
+[node name="SfxVolumeSlider" type="HSlider" parent="RootControl/SettingsPanel/Margin/VBox/SfxVolumeRow" unique_id=1055575101]
 layout_mode = 2
 size_flags_horizontal = 3
 value = 100.0
 
-[node name="SfxVolumeValue" type="Label" parent="RootControl/CenterContainer/RootPanel/MarginContainer/Stack/SettingsBox/SfxVolumeRow" unique_id=1443864311]
+[node name="SfxVolumeValue" type="Label" parent="RootControl/SettingsPanel/Margin/VBox/SfxVolumeRow" unique_id=734812447]
 custom_minimum_size = Vector2(44, 0)
 layout_mode = 2
 text = "100"
 horizontal_alignment = 2
 
-[node name="MusicVolumeRow" type="HBoxContainer" parent="RootControl/CenterContainer/RootPanel/MarginContainer/Stack/SettingsBox" unique_id=2140914332]
+[node name="MusicVolumeRow" type="HBoxContainer" parent="RootControl/SettingsPanel/Margin/VBox" unique_id=918866764]
 layout_mode = 2
-theme_override_constants/separation = 8
 
-[node name="MusicVolumeLabel" type="Label" parent="RootControl/CenterContainer/RootPanel/MarginContainer/Stack/SettingsBox/MusicVolumeRow" unique_id=1508925430]
+[node name="Label" type="Label" parent="RootControl/SettingsPanel/Margin/VBox/MusicVolumeRow" unique_id=1591300506]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Music"
 
-[node name="MusicVolumeSlider" type="HSlider" parent="RootControl/CenterContainer/RootPanel/MarginContainer/Stack/SettingsBox/MusicVolumeRow" unique_id=1614553871]
+[node name="MusicVolumeSlider" type="HSlider" parent="RootControl/SettingsPanel/Margin/VBox/MusicVolumeRow" unique_id=277689984]
 layout_mode = 2
 size_flags_horizontal = 3
 value = 100.0
 
-[node name="MusicVolumeValue" type="Label" parent="RootControl/CenterContainer/RootPanel/MarginContainer/Stack/SettingsBox/MusicVolumeRow" unique_id=1185045547]
+[node name="MusicVolumeValue" type="Label" parent="RootControl/SettingsPanel/Margin/VBox/MusicVolumeRow" unique_id=713370497]
 custom_minimum_size = Vector2(44, 0)
 layout_mode = 2
 text = "100"
 horizontal_alignment = 2
 
-[node name="StatusLabel" type="Label" parent="RootControl/CenterContainer/RootPanel/MarginContainer/Stack/SettingsBox" unique_id=1567150289]
+[node name="StatusLabel" type="Label" parent="RootControl/SettingsPanel/Margin/VBox" unique_id=290914155]
 custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
 horizontal_alignment = 1
 
-[node name="SettingsButtons" type="HBoxContainer" parent="RootControl/CenterContainer/RootPanel/MarginContainer/Stack/SettingsBox" unique_id=998420910]
+[node name="ButtonsRow" type="HBoxContainer" parent="RootControl/SettingsPanel/Margin/VBox" unique_id=710737940]
 layout_mode = 2
-theme_override_constants/separation = 8
+theme_override_constants/separation = 12
 
-[node name="ApplyButton" type="Button" parent="RootControl/CenterContainer/RootPanel/MarginContainer/Stack/SettingsBox/SettingsButtons" unique_id=1730728063]
+[node name="ApplyButton" type="Button" parent="RootControl/SettingsPanel/Margin/VBox/ButtonsRow" unique_id=1804253720]
 custom_minimum_size = Vector2(110, 40)
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Apply"
 
-[node name="SettingsBackButton" type="Button" parent="RootControl/CenterContainer/RootPanel/MarginContainer/Stack/SettingsBox/SettingsButtons" unique_id=1426864752]
+[node name="SettingsBackButton" type="Button" parent="RootControl/SettingsPanel/Margin/VBox/ButtonsRow" unique_id=846908543]
 custom_minimum_size = Vector2(110, 40)
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Back"
 
-[node name="CalendarBox" type="VBoxContainer" parent="RootControl/CenterContainer/RootPanel/MarginContainer/Stack" unique_id=1161047653]
+[node name="CalendarPanel" type="PanelContainer" parent="RootControl" unique_id=1337105406]
 visible = false
-layout_mode = 2
-theme_override_constants/separation = 8
+layout_mode = 0
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -400.0
+offset_top = -280.0
+offset_right = 400.0
+offset_bottom = 280.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_panel")
 
-[node name="CalendarMonthLabel" type="Label" parent="RootControl/CenterContainer/RootPanel/MarginContainer/Stack/CalendarBox" unique_id=1010571231]
+[node name="Margin" type="MarginContainer" parent="RootControl/CalendarPanel" unique_id=565911108]
+layout_mode = 2
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 24
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 24
+
+[node name="VBox" type="VBoxContainer" parent="RootControl/CalendarPanel/Margin" unique_id=158512624]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="CalendarMonthLabel" type="Label" parent="RootControl/CalendarPanel/Margin/VBox" unique_id=1195483485]
 layout_mode = 2
 horizontal_alignment = 1
 
-[node name="CalendarGrid" type="GridContainer" parent="RootControl/CenterContainer/RootPanel/MarginContainer/Stack/CalendarBox" unique_id=1896650284]
+[node name="CalendarGrid" type="GridContainer" parent="RootControl/CalendarPanel/Margin/VBox" unique_id=374725485]
 layout_mode = 2
+size_flags_vertical = 3
 columns = 7
 
-[node name="CalendarButtons" type="HBoxContainer" parent="RootControl/CenterContainer/RootPanel/MarginContainer/Stack/CalendarBox" unique_id=413517379]
+[node name="ButtonsRow" type="HBoxContainer" parent="RootControl/CalendarPanel/Margin/VBox" unique_id=296540501]
 layout_mode = 2
-theme_override_constants/separation = 8
+theme_override_constants/separation = 12
 
-[node name="PreviousButton" type="Button" parent="RootControl/CenterContainer/RootPanel/MarginContainer/Stack/CalendarBox/CalendarButtons" unique_id=645561404]
+[node name="PreviousButton" type="Button" parent="RootControl/CalendarPanel/Margin/VBox/ButtonsRow" unique_id=568596423]
 custom_minimum_size = Vector2(110, 40)
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Previous"
 
-[node name="TodayButton" type="Button" parent="RootControl/CenterContainer/RootPanel/MarginContainer/Stack/CalendarBox/CalendarButtons" unique_id=791564522]
+[node name="TodayButton" type="Button" parent="RootControl/CalendarPanel/Margin/VBox/ButtonsRow" unique_id=1265220012]
 custom_minimum_size = Vector2(110, 40)
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Today"
 
-[node name="NextButton" type="Button" parent="RootControl/CenterContainer/RootPanel/MarginContainer/Stack/CalendarBox/CalendarButtons" unique_id=242560454]
+[node name="NextButton" type="Button" parent="RootControl/CalendarPanel/Margin/VBox/ButtonsRow" unique_id=2119928497]
 custom_minimum_size = Vector2(110, 40)
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Next"
 
-[node name="CalendarBackButton" type="Button" parent="RootControl/CenterContainer/RootPanel/MarginContainer/Stack/CalendarBox/CalendarButtons" unique_id=1174836967]
+[node name="CalendarBackButton" type="Button" parent="RootControl/CalendarPanel/Margin/VBox/ButtonsRow" unique_id=566296138]
 custom_minimum_size = Vector2(110, 40)
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Back"
+
+[node name="Reference" type="Sprite2D" parent="." unique_id=1788005868]
+visible = false
+position = Vector2(643, 360)
+scale = Vector2(0.6664352, 0.6664352)
+texture = ExtResource("2_q2f0n")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1644105415]
+libraries/ = SubResource("AnimationLibrary_5go37")
