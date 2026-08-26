@@ -49,11 +49,16 @@ directories/dtl_directory={
 "AbangBrewok_LaterDay": "res://Dialogue/AbangBrewok_LaterDay.dtl",
 "test": "res://Dialogue/test.dtl"
 }
-layout/style_directory={}
+layout/style_directory={
+"": "res://Styles/RETH.tres",
+"RETH": "res://Styles/RETH.tres"
+}
 glossary/default_case_sensitive=true
-layout/style_list=[]
-layout/default_style=""
-variables={}
+layout/style_list=["res://Styles/RETH.tres"]
+layout/default_style="res://Styles/RETH.tres"
+variables={
+"TestMetFlag": ""
+}
 extensions_folder="res://addons/dialogic_additions"
 text/letter_speed=0.03
 text/initial_text_reveal_skippable=true

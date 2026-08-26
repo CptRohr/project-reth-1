@@ -1,4 +1,4 @@
-#Mon Aug 10 06:23:44 WIB 2026
+#Sun Aug 23 22:16:56 WIB 2026
 base.2=D\:\\GAME PROJECT\\project-reth-1\\android\\build\\build\\intermediates\\dex\\standardDebug\\mergeProjectDexStandardDebug\\6\\classes.dex
 path.2=6/classes.dex
 base.1=D\:\\GAME PROJECT\\project-reth-1\\android\\build\\build\\intermediates\\dex\\standardDebug\\mergeProjectDexStandardDebug\\0\\classes.dex

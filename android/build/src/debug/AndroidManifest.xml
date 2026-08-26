@@ -21,7 +21,7 @@
         tools:ignore="GoogleAppIndexingWarning">
 
         <meta-data tools:node="replace" android:name="org.godotengine.rendering.method" android:value="mobile" />
-        <meta-data tools:node="replace" android:name="org.godotengine.editor.version" android:value="4.7.1.stable" />
+        <meta-data tools:node="replace" android:name="org.godotengine.editor.version" android:value="4.7.2.stable" />
         <activity android:name=".GodotApp" tools:replace="android:screenOrientation,android:excludeFromRecents,android:resizeableActivity" tools:node="mergeOnlyAttributes" android:excludeFromRecents="false" android:screenOrientation="landscape" android:resizeableActivity="true">
         </activity>
         <activity-alias

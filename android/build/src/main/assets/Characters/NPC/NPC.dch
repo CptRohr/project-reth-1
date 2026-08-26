@@ -18,35 +18,26 @@
 "volume_variance": 0.0
 }
 },
-"style": "RETH Style",
+"style": "RETH",
 "suffix": ""
 },
-&"default_portrait": "test portrait",
+&"default_portrait": "cewek test",
 &"description": "test npc",
-&"display_name": "Prabowo Subianto",
+&"display_name": "Rani",
 &"mirror": false,
 &"nicknames": [""],
-&"offset": Vector2(0, 0),
+&"offset": Vector2(0, 500),
 &"portraits": {
-"": {
+"cewek test": {
 "export_overrides": {
-"image": "\"res://Styles/RETH Style.tres\""
-},
-"mirror": false,
-"offset": Vector2(0, 0),
-"scale": 1,
-"scene": "res://addons/dialogic/Modules/HighlightPortrait/simple_highlight_portrait.tscn"
-},
-"test portrait": {
-"export_overrides": {
-"image": "\"res://Assets/debug assets/Prabowo_Subianto_2024_official_portrait.jpg\""
+"image": "\"res://Assets/debug assets/pngegg - 2026-08-23T114603.005.png\""
 },
 "ignore_char_scale": false,
 "mirror": false,
-"offset": Vector2(60, 140),
-"scale": 1.0,
+"offset": Vector2(0, 0),
+"scale": 1,
 "scene": "res://addons/dialogic/Modules/Character/default_portrait.tscn"
 }
 },
-&"scale": 1.0
+&"scale": 1.5
 }

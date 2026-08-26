@@ -1,10 +1,10 @@
-res://Managers/pause_menu.gd
-res://Scene/PauseMenu.tscn
+res://Areas/street.tscn
 res://Assets/Shaders/double_dither_transition.gdshader
 res://Assets/Shaders/vibrancy_backdrop_blurredfrosted.gdshader
 res://Assets/Shaders/square_transition.gdshader
 res://Assets/Shaders/slash_transition.gdshader
 res://Assets/Shaders/animated_pixel_art_text.gdshader
+res://Styles/RETH.tres
 res://Assets/Shaders/2d_fog_overlay.gdshader
 res://Assets/Shaders/highlight.gdshader
 res://Assets/Shaders/godray_edge_detection.gdshader

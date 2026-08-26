@@ -1,10 +1,33 @@
-NPC: Hey antek antek aasenggg
-NPC: HIDUUPP JOKOWIII
-NPC: CUKUP FUFUFAFA
-NPC: Apakah kamu anak abah??
+join NPC left
+NPC (cewek test): Hey kamu BERHENTI!!!
+update NPC center [animation="Bounce" wait="true" z_index="0" move_time="0.1"]
+NPC (cewek test): Aduh si cantik ini mau kemana sih? Kok buru-buru amat
+NPC (cewek test): Mau nemuin cogan goblok itu lagi kah?
+NPC (cewek test): Bener kan?
 - Ya
-	jump 
+	NPC: AHAHAHAHA...
+	NPC: Hadeh lu ini emang bener bener karbit banget, jadi kasian
+	NPC: Yaudah deh gw doain lo seneng sama cowok baru lo.
+	leave NPC
 - Tidak
-- NUKLIR ISRAEL
-	NPC: Yang bener aja kamu?
-	NPC: Pergi lo!
+	NPC: HALAH gw tau lo itu gak mau ngaku
+	NPC: Heh tapi gapapa bentar lagi lu pasti juga akan nyesel sama dia
+	NPC: Nama dia Araya kan?
+	- Siapa?
+		update NPC [animation="Shake X" length="1.0"]
+		Dia memukulmu lalu pergi begitu saja...
+	- Bukan urusan mu!
+		label Kabur
+		update NPC right [animation="Bounce"]
+		[wait time="1.0"]
+		update NPC left [animation="Bounce"]
+		[wait time="1.0"]
+		update NPC center [animation="Bounce"]
+		Dia menghalangi mu untuk kabur.
+		NPC: Enak aja mau kabur begitu aja
+		NPC: DENGER YA gw ini tau apapun tentang diri loe!
+		NPC: gw kasih tau dia seberapa buruknya diri elo kelar idup mu!
+		NPC: Jadi gak usah macem-macem sama gw.
+		NPC: Dah pergi sono lu!
+- Kabur
+	jump Kabur

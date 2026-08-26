@@ -1,5 +1,5 @@
 9cad1ddce9e5a63143ba340c9520626b
-::res://::1787455312
+::res://::1787496539
 AGENTS.md::TextFile::-1::1787451219::0::1::::<><><>0<>0<><>::
 export_presets.cfg::TextFile::-1::1787451234::0::1::::<><><>0<>0<><>::
 icon.svg::CompressedTexture2D::7047297600812045813::1787451234::1787451720::1::::<><><>0<>0<>8cd2dc43545da561a44dd320ce5aed39<>res://.godot/imported/icon.svg-218a8f2b3041327d8a5756f3a245f83b.ctex::
@@ -663,12 +663,12 @@ XUIXYSlider.gd::GDScript::2531689560247120064::1787451224::0::1::::XUI2DSlider<>
 barycentric_slider_test.gd::GDScript::2676250788288840677::1787451224::0::1::::<>VBoxContainer<><>0<>0<><>::
 XUIPreview.tscn::PackedScene::2132711828100596817::1787451224::0::1::::<><><>0<>0<><>::uid://gj43tr10wtx7::::res://addons/extended_ui/controls/sliders/XUIHslider.gd<>uid://bccms7decicay::::res://addons/extended_ui/controls/sliders/XUIXYSlider.gd<>uid://dn1du5vckua1k::::res://addons/extended_ui/controls/grids/XUIGridPanel.gd<>uid://beenpvfk8aenl::::res://addons/extended_ui/preview/barycentric_slider_test.gd<>uid://c26s2qvpowfvc::::res://addons/extended_ui/controls/sliders/XUIBarycentricSlider.gd<>uid://bcf0beduuvw5v::::res://addons/extended_ui/controls/sliders/BarycentricPoint.gd<>uid://cwocty0e86ef7::::res://addons/extended_ui/controls/containers/XUIViewContainer.gd<>uid://cxy7radialco::::res://addons/extended_ui/controls/containers/XUIRadialContainer.gd
 ::res://android/::1787451224
-::res://Areas/::1787451219
+::res://Areas/::1787461663
 door.tscn::PackedScene::1117023045278809421::1787451219::0::1::::<><><>0<>0<><>::
 street2.tscn::PackedScene::7684652251966522315::1787451219::0::1::::<><><>0<>0<><>::uid://d3swmgi1ckxhq::::res://Characters/Main Character/player.tscn<>uid://chnkdp0xllg28::::res://Areas/street_2.gd<>uid://bi003gu1i7jjb::::res://Scene/door_transition.tscn
 street3.tscn::PackedScene::2331105159337670246::1787451219::0::1::::<><><>0<>0<><>::uid://bi003gu1i7jjb::::res://Scene/door_transition.tscn<>uid://chnb8nau1k512::::res://Areas/street_3.gd<>uid://d3swmgi1ckxhq::::res://Characters/Main Character/player.tscn
 street.gd::GDScript::3044524554790333835::1787451219::0::1::::<>Node2D<><>0<>0<><>::
-street.tscn::PackedScene::3007747087117709265::1787451219::0::1::::<><><>0<>0<><>::uid://bjm140bsspmyt::::res://Areas/street.gd<>uid://d3swmgi1ckxhq::::res://Characters/Main Character/player.tscn<>uid://ceyoobvjjrq27::::res://Assets/debug assets/Cloud 1.png<>uid://br4v8hu8mps7p::::res://Assets/debug assets/Cloud 17.png<>uid://bi003gu1i7jjb::::res://Scene/door_transition.tscn<>uid://ds57i8r1obpam::::res://Assets/debug assets/GandalfHardcore City Tiles/City background layer1.png<>uid://cdioa01qum4k4::::res://Characters/NPC/NPC.tscn<>uid://croo63lst6hai::::res://Assets/debug assets/GandalfHardcore City Tiles/City background layer2.png<>uid://bxjskl2e76kj8::::res://Assets/Background/Ground Tiles.png<>uid://b7cyain8lryxa::::res://Assets/Shaders/2d_fog_overlay.gdshader<>uid://bq1vnydo0u8s5::::res://Assets/debug assets/Cloud 5.png<>uid://cuugn7wk7te85::::res://Assets/Background/House1.png<>uid://cvsat2wwojd4b::::res://Characters/NPC/AbangBrewok.tscn<>uid://dcrykd7ugqep5::::res://Scripts/sleep_interactable.gd<>uid://5uurhbsc5ucm::::res://Scripts/activity_interactable.gd<>uid://do5vk0tirle8m::::res://Scripts/school_interactable.gd
+street.tscn::PackedScene::3007747087117709265::1787461663::0::1::::<><><>0<>0<><>::uid://bjm140bsspmyt::::res://Areas/street.gd<>uid://d3swmgi1ckxhq::::res://Characters/Main Character/player.tscn<>uid://ceyoobvjjrq27::::res://Assets/debug assets/Cloud 1.png<>uid://br4v8hu8mps7p::::res://Assets/debug assets/Cloud 17.png<>uid://bi003gu1i7jjb::::res://Scene/door_transition.tscn<>uid://ds57i8r1obpam::::res://Assets/debug assets/GandalfHardcore City Tiles/City background layer1.png<>uid://cdioa01qum4k4::::res://Characters/NPC/NPC.tscn<>uid://croo63lst6hai::::res://Assets/debug assets/GandalfHardcore City Tiles/City background layer2.png<>uid://bxjskl2e76kj8::::res://Assets/Background/Ground Tiles.png<>uid://b7cyain8lryxa::::res://Assets/Shaders/2d_fog_overlay.gdshader<>uid://bq1vnydo0u8s5::::res://Assets/debug assets/Cloud 5.png<>uid://cuugn7wk7te85::::res://Assets/Background/House1.png<>uid://cvsat2wwojd4b::::res://Characters/NPC/AbangBrewok.tscn<>uid://dcrykd7ugqep5::::res://Scripts/sleep_interactable.gd<>uid://5uurhbsc5ucm::::res://Scripts/activity_interactable.gd<>uid://do5vk0tirle8m::::res://Scripts/school_interactable.gd
 street_2.gd::GDScript::5291613538495102455::1787451219::0::1::::<>Node2D<><>0<>0<><>::
 street_3.gd::GDScript::5291120515594267639::1787451219::0::1::::<>Node2D<><>0<>0<><>::
 ::res://Areas/Cutscenes/::1787451219
@@ -692,7 +692,7 @@ StreetBackground.png::CompressedTexture2D::4430255492485294545::1787451219::1787
 ::res://Assets/Background/::1787451714
 Ground Tiles.png::CompressedTexture2D::4020454870655534771::1787451219::1787451714::1::::<><><>0<>0<>63e432af632d36c40254b1fc6a754923<>res://.godot/imported/Ground Tiles.png-2cfb01012d89d4fe43a43b1e31442670.ctex::
 House1.png::CompressedTexture2D::6218295027736179048::1787451219::1787451714::1::::<><><>0<>0<>667f93521184c77d1776967fac457e9a<>res://.godot/imported/House1.png-c650104362e212f45a4361a1a7087863.ctex::
-::res://Assets/debug assets/::1787451718
+::res://Assets/debug assets/::1787460403
 Cloud 1.png::CompressedTexture2D::5104016932435041646::1787451219::1787451714::1::::<><><>0<>0<>b970f84385a0e01d87020b73e5c5ac1b<>res://.godot/imported/Cloud 1.png-3ecbb9dccb74e389bd246453df597df4.ctex::
 Cloud 2.png::CompressedTexture2D::4413579713147079511::1787451219::1787451714::1::::<><><>0<>0<>82b3edabc2a7c217b720ef8114897f25<>res://.godot/imported/Cloud 2.png-a3c00d1e5f92a27c71d4854685f5a1ab.ctex::
 Cloud 3.png::CompressedTexture2D::5654692346741591094::1787451219::1787451714::1::::<><><>0<>0<>e2bd34eb11b0d8740126031403b40bb9<>res://.godot/imported/Cloud 3.png-f29655ffed86112a06e0472832b1f40a.ctex::
@@ -716,6 +716,7 @@ Cloud 20.png::CompressedTexture2D::1092062949002744617::1787451219::1787451717::
 HD-mJ5_bgAAgTFs.jpg::CompressedTexture2D::2326698036443540380::1787451219::1787451718::1::::<><><>0<>0<>383d657aad7fa6f0a9f72a61d4c97df8<>res://.godot/imported/HD-mJ5_bgAAgTFs.jpg-88eb09261fed5557387aa92b061e7666.ctex::
 License.txt::TextFile::-1::1787451219::0::1::::<><><>0<>0<><>::
 PAUSE MENU.png::CompressedTexture2D::8081841366235179867::1787451219::1787451717::1::::<><><>0<>0<>77fa09b292f58229aff8dcc914d2bfb4<>res://.godot/imported/PAUSE MENU.png-937f8cfcadba002c31be60721aa3d456.ctex::
+pngegg - 2026-08-23T114603.005.png::CompressedTexture2D::971285660907909997::1787460364::1787460403::1::::<><><>0<>0<>a81d6ee21d2d7cfda374c127a35f3c5b<>res://.godot/imported/pngegg - 2026-08-23T114603.005.png-2576b14d60a7644970a01eec436b5458.ctex::
 Prabowo_Subianto_2024_official_portrait.jpg::CompressedTexture2D::2910099942038699633::1787451219::1787451717::1::::<><><>0<>0<>1dc0033f9565ba05aeb67374f727a2aa<>res://.godot/imported/Prabowo_Subianto_2024_official_portrait.jpg-17844bd5414677a583dfb563e9f8f5c1.ctex::
 ::res://Assets/debug assets/GAME UI IDEA/::1787451718
 IN GAME UI.png::CompressedTexture2D::6773218338563619087::1787451219::1787451717::1::::<><><>0<>0<>80fa83af99b5d795afa28d2b756631b9<>res://.godot/imported/IN GAME UI.png-b3e1c0df7b48bb8866d1ddc1f2784fe8.ctex::
@@ -774,17 +775,17 @@ grunge crack.png::CompressedTexture2D::1518761568111108684::1787451219::17874517
 ink splat.png::CompressedTexture2D::5359267817569592483::1787451219::1787451717::1::::<><><>0<>0<>77561340f53a041b8a1a7bc11dcfd9cf<>res://.godot/imported/ink splat.png-a2fc199263757a941233c58311746547.ctex::
 smoke 2.png::CompressedTexture2D::1729051863170387313::1787451219::1787451717::1::::<><><>0<>0<>c3d265454a59d26fbc3f620ac5b87565<>res://.godot/imported/smoke 2.png-2e1c916002d8eef9138376a0d6ee79fe.ctex::
 smoke.png::CompressedTexture2D::8791069858936807245::1787451219::1787451717::1::::<><><>0<>0<>ad3c1091113e7751d5a2048c0134bf58<>res://.godot/imported/smoke.png-11eaea2255c16f20d15525cc692c77c6.ctex::
-::res://Assets/Shaders/::1787451821
-2d_fog_overlay.gdshader::Shader::4638050085228675974::1787451821::0::1::::<><><>0<>0<><>::
-animated_pixel_art_text.gdshader::Shader::5258728734514064334::1787451820::0::1::::<><><>0<>0<><>::
-double_dither_transition.gdshader::Shader::7346881396470589973::1787451819::0::1::::<><><>0<>0<><>::
-glass_pixel_rect.gdshader::Shader::4036208461202626443::1787451821::0::1::::<><><>0<>0<><>::
-godray_edge_detection.gdshader::Shader::264816314951646785::1787451821::0::1::::<><><>0<>0<><>::
-highlight.gdshader::Shader::4211261884015993019::1787451821::0::1::::<><><>0<>0<><>::
-slash_transition.gdshader::Shader::863049312060181103::1787451820::0::1::::<><><>0<>0<><>::
-square_transition.gdshader::Shader::7388856067185442144::1787451820::0::1::::<><><>0<>0<><>::
+::res://Assets/Shaders/::1787461663
+2d_fog_overlay.gdshader::Shader::4638050085228675974::1787461663::0::1::::<><><>0<>0<><>::
+animated_pixel_art_text.gdshader::Shader::5258728734514064334::1787461663::0::1::::<><><>0<>0<><>::
+double_dither_transition.gdshader::Shader::7346881396470589973::1787461663::0::1::::<><><>0<>0<><>::
+glass_pixel_rect.gdshader::Shader::4036208461202626443::1787461663::0::1::::<><><>0<>0<><>::
+godray_edge_detection.gdshader::Shader::264816314951646785::1787461663::0::1::::<><><>0<>0<><>::
+highlight.gdshader::Shader::4211261884015993019::1787461663::0::1::::<><><>0<>0<><>::
+slash_transition.gdshader::Shader::863049312060181103::1787461663::0::1::::<><><>0<>0<><>::
+square_transition.gdshader::Shader::7388856067185442144::1787461663::0::1::::<><><>0<>0<><>::
 time_of_day_gradient.gdshader::Shader::2795607094720471842::1787451820::0::1::::<><><>0<>0<><>::
-vibrancy_backdrop_blurredfrosted.gdshader::Shader::5320921632999403341::1787451820::0::1::::<><><>0<>0<><>::
+vibrancy_backdrop_blurredfrosted.gdshader::Shader::5320921632999403341::1787461663::0::1::::<><><>0<>0<><>::
 ::res://Assets/Videos/::1787451219
 SplashScreen.ogv::VideoStreamTheora::5441903498613988598::1778723105::0::1::::<><><>0<>0<><>::
 ::res://Audio/::1778719345
@@ -795,44 +796,44 @@ thunderstorm ambience.wav::AudioStreamWAV::6089378284429175183::1787451219::1787
 ::res://Characters/::1778505951
 ::res://Characters/Main Character/::1787451219
 player.tscn::PackedScene::9163066004567956618::1787451219::0::1::::<><><>0<>0<><>::uid://buub0y4nodujs::::res://Scripts/basic_movement.gd<>uid://c7ky1klesy23e::::res://Assets/debug assets/Human Male Model/Sections/PNG/HMMWalkBare.png
-::res://Characters/NPC/::1787451821
-AbangBrewok.dch::Resource/DialogicCharacter::4785350284579031370::1787451821::0::1::::<><><>0<>0<><>::
+::res://Characters/NPC/::1787463215
+AbangBrewok.dch::Resource/DialogicCharacter::4785350284579031370::1787461315::0::1::::<><><>0<>0<><>::
 AbangBrewok.tscn::PackedScene::6284001266576948431::1787451219::0::1::::<><><>0<>0<><>::uid://eq4v17t6fsve::::res://Characters/NPC/abang_brewok.gd<>uid://8qemo0bvk24n::::res://Assets/debug assets/Human Male Model/Sections/PNG/HMMIdleSword.png
 abang_brewok.gd::GDScript::315585129025078798::1787451219::0::1::::<>Node2D<><>0<>0<><>::
-NPC.dch::Resource/DialogicCharacter::3888497355972282303::1787451821::0::1::::<><><>0<>0<><>::res://addons/dialogic/Modules/HighlightPortrait/simple_highlight_portrait.tscn<>res://Styles/RETH Style.tres<>res://addons/dialogic/Modules/Character/default_portrait.tscn<>res://Assets/debug assets/Prabowo_Subianto_2024_official_portrait.jpg
+NPC.dch::Resource/DialogicCharacter::3888497355972282303::1787463215::0::1::::<><><>0<>0<><>::res://addons/dialogic/Modules/Character/default_portrait.tscn<>res://Assets/debug assets/pngegg - 2026-08-23T114603.005.png
 npc.gd::GDScript::8121718120238425432::1787451219::0::1::::<>Node2D<><>0<>0<><>::
 NPC.tscn::PackedScene::5000774312234375429::1787451219::0::1::::<><><>0<>0<><>::uid://dnyhrmsffy5fg::::res://Characters/NPC/npc.gd<>uid://8qemo0bvk24n::::res://Assets/debug assets/Human Male Model/Sections/PNG/HMMIdleSword.png
 ::res://Custom Software/::1780495548
 ::res://Custom Software/CalendarDB/::1787451219
 ::res://Custom Software/CalendarDB/bin/::1780496643
 ::res://Custom Software/CalendarDB/bin/Debug/::1780496643
-::res://Custom Software/CalendarDB/bin/Debug/net9.0-windows/::1787451219
-CalendarDB.deps.json::JSON::-1::1787451219::0::1::::<><><>0<>0<><>::
-CalendarDB.runtimeconfig.json::JSON::-1::1787451219::0::1::::<><><>0<>0<><>::
-::res://Custom Software/CalendarDB/obj/::1787451220
-CalendarDB.csproj.nuget.dgspec.json::JSON::-1::1787451219::0::1::::<><><>0<>0<><>::
-project.assets.json::JSON::-1::1787451220::0::1::::<><><>0<>0<><>::
+::res://Custom Software/CalendarDB/bin/Debug/net9.0-windows/::1787480327
+CalendarDB.deps.json::JSON::-1::1787480327::0::1::::<><><>0<>0<><>::
+CalendarDB.runtimeconfig.json::JSON::-1::1787480327::0::1::::<><><>0<>0<><>::
+::res://Custom Software/CalendarDB/obj/::1787480316
+CalendarDB.csproj.nuget.dgspec.json::JSON::-1::1787480316::0::1::::<><><>0<>0<><>::
+project.assets.json::JSON::-1::1787480316::0::1::::<><><>0<>0<><>::
 ::res://Custom Software/CalendarDB/obj/Debug/::1780496643
 ::res://Custom Software/CalendarDB/obj/Debug/net9.0-windows/::1787451220
 CalendarDB.csproj.FileListAbsolute.txt::TextFile::-1::1787451219::0::1::::<><><>0<>0<><>::
-CalendarDB.sourcelink.json::JSON::-1::1787451220::0::1::::<><><>0<>0<><>::
+CalendarDB.sourcelink.json::JSON::-1::1787480317::0::1::::<><><>0<>0<><>::
 ::res://Custom Software/CalendarDB/obj/Debug/net9.0-windows/ref/::1787451220
 ::res://Custom Software/CalendarDB/obj/Debug/net9.0-windows/refint/::1787451220
 ::res://data/::1780748859
 ::res://data/calendar/::1787451234
-activities.json::JSON::-1::1787451234::0::1::::<><><>0<>0<><>::
-special_events.json::JSON::-1::1787451234::0::1::::<><><>0<>0<><>::
-weather.json::JSON::-1::1787451234::0::1::::<><><>0<>0<><>::
-weekly_schedule.json::JSON::-1::1787451234::0::1::::<><><>0<>0<><>::
+activities.json::JSON::-1::1787482092::0::1::::<><><>0<>0<><>::
+special_events.json::JSON::-1::1787482092::0::1::::<><><>0<>0<><>::
+weather.json::JSON::-1::1787482092::0::1::::<><><>0<>0<><>::
+weekly_schedule.json::JSON::-1::1787482092::0::1::::<><><>0<>0<><>::
 ::res://data/npc/::1787451234
-npcs.json::JSON::-1::1787451234::0::1::::<><><>0<>0<><>::
+npcs.json::JSON::-1::1787482092::0::1::::<><><>0<>0<><>::
 ::res://dev/::1785651294
 ::res://dev/null/::1787451234
-::res://Dialogue/::1787451220
-AbangBrewok.dtl::Resource/DialogicTimeline::662392918359479824::1787451220::0::1::::<><><>0<>0<><>::uid://cagcaxfuj3wys
+::res://Dialogue/::1787464633
+AbangBrewok.dtl::Resource/DialogicTimeline::662392918359479824::1787451220::0::1::::<><>uid://j7ym07anlusi<>0<>0<><>::uid://cagcaxfuj3wys
 AbangBrewok_AfterMet.dtl::Resource/DialogicTimeline::818936069543917061::1787451220::0::1::::<><>uid://j7ym07anlusi<>0<>0<><>::uid://cagcaxfuj3wys
 AbangBrewok_LaterDay.dtl::Resource/DialogicTimeline::7036188188420537822::1787451220::0::1::::<><>uid://j7ym07anlusi<>0<>0<><>::uid://cagcaxfuj3wys
-test.dtl::Resource/DialogicTimeline::8000281388052277857::1787451220::0::1::::<><>uid://j7ym07anlusi<>0<>0<><>::uid://bvnu8o0bxi5qx
+test.dtl::Resource/DialogicTimeline::8000281388052277857::1787464633::0::1::::<><><>0<>0<><>::uid://bvnu8o0bxi5qx
 ::res://Events/::1778405465
 ::res://Exported/::1787451221
 ::res://Fonts/::1787451714
@@ -864,7 +865,7 @@ game_state.gd::GDScript::7466684789968379564::1787451221::0::1::::<>Node<><>0<>0
 mobile_controls.gd::GDScript::4606927957718869401::1787451221::0::1::::<>CanvasLayer<><>0<>0<><>::
 NPCData.gd::GDScript::6089551712735744507::1787451221::0::1::::<>Node<><>0<>0<><>::
 objective_hud.gd::GDScript::8396323903484880863::1787451221::0::1::::<>CanvasLayer<><>0<>0<><>::
-pause_menu.gd::GDScript::2245154173986087485::1787455163::0::1::::<>CanvasLayer<><>0<>0<><>::
+pause_menu.gd::GDScript::2245154173986087485::1787455792::0::1::::<>CanvasLayer<><>0<>0<><>::
 pause_menu_clock.gd::GDScript::5287984365147790089::1787451221::0::1::::PauseMenuClock<>Control<><>0<>0<><>::
 scene_manager.gd::GDScript::6327425472722409346::1787451221::0::1::::<>Node<><>0<>0<><>::
 school_summary.gd::GDScript::1121519107232268697::1787451221::0::1::::<>CanvasLayer<><>0<>0<><>::
@@ -873,13 +874,13 @@ time_of_day_filter.gd::GDScript::5864379653346238263::1787451221::0::1::::<>Node
 time_passage_transition.gd::GDScript::3544800310453387397::1787451221::0::1::::<>CanvasLayer<><>0<>0<><>::
 transition_layer.gd::GDScript::984808028306279039::1787451221::0::1::::<>CanvasLayer<><>0<>0<><>::
 weather_filter.gd::GDScript::7300715438757218985::1787451221::0::1::::<>CanvasLayer<><>0<>0<><>::
-::res://Scene/::1787454384
+::res://Scene/::1787457902
 BootScene.tscn::PackedScene::2731828006932105934::1787451221::0::1::::<><><>0<>0<><>::uid://bu05g6n1sltem::::res://Scripts/bootscreen.gd<>uid://cjsdmdasoq5r3::::res://Assets/Videos/SplashScreen.ogv
 door_transition.tscn::PackedScene::3001109150926822551::1787451221::0::1::::<><><>0<>0<><>::uid://dkqcpc6q0y6v::::res://Scripts/door_transition.gd
 GamepadFocusOverlay.tscn::PackedScene::6584269626842755547::1787451221::0::1::::<><><>0<>0<><>::uid://bfwqk41qjjuun::::res://Managers/gamepad_focus_overlay.gd<>uid://b3pkhpilab881::::res://Managers/gamepad_focus_overlay_control.gd
 MainMenu.tscn::PackedScene::602040298995585819::1787451221::0::1::::<><><>0<>0<><>::uid://yr7fsm4os8s3::::res://Scripts/main_menu.gd<>uid://cg6mq2ad5712q::::res://Assets/Shaders/animated_pixel_art_text.gdshader<>uid://b38rgofq4civw::::res://Fonts/VCR_OSD_MONO_1.001.ttf<>uid://cjeyn3nfbvwcg::::res://Fonts/HarmonyOS_Sans_Black.ttf<>uid://ch2q2i83wsq0l::::res://Assets/Shaders/vibrancy_backdrop_blurredfrosted.gdshader<>uid://b0874rmf04i1p::::res://Assets/Shaders/highlight.gdshader<>uid://culniy34nvrfo::::res://Fonts/HarmonyOS_Sans_Bold.ttf
 MobileControls.tscn::PackedScene::7776543030369129413::1787451221::0::1::::<><><>0<>0<><>::uid://b6vvovr1lryd2::::res://Managers/mobile_controls.gd
-PauseMenu.tscn::PackedScene::1235137516064594902::1787454384::0::1::::<><><>0<>0<><>::uid://68tmjttgyrfp::::res://Managers/pause_menu.gd<>uid://chlslhm1lvc8h::::res://Managers/pause_menu_clock.gd<>uid://dne50m8vbjqkp::::res://Assets/debug assets/PAUSE MENU.png<>uid://bs2uqmavvslyu::::res://Fonts/HarmonyOS_Sans_Regular.ttf<>uid://ch2q2i83wsq0l::::res://Assets/Shaders/vibrancy_backdrop_blurredfrosted.gdshader
+PauseMenu.tscn::PackedScene::1235137516064594902::1787457902::0::1::::<><><>0<>0<><>::uid://68tmjttgyrfp::::res://Managers/pause_menu.gd<>uid://chlslhm1lvc8h::::res://Managers/pause_menu_clock.gd<>uid://dne50m8vbjqkp::::res://Assets/debug assets/PAUSE MENU.png<>uid://bs2uqmavvslyu::::res://Fonts/HarmonyOS_Sans_Regular.ttf<>uid://ch2q2i83wsq0l::::res://Assets/Shaders/vibrancy_backdrop_blurredfrosted.gdshader
 TimeOfDayFilter.tscn::PackedScene::-1::1787451221::0::1::::<><><>0<>0<><>::res://Managers/time_of_day_filter.gd
 TimePassageTransition.tscn::PackedScene::2962425887055743159::1787451221::0::1::::<><><>0<>0<><>::uid://bqrelw0txxfe8::::res://Managers/time_passage_transition.gd<>uid://cg6mq2ad5712q::::res://Assets/Shaders/animated_pixel_art_text.gdshader<>uid://b38rgofq4civw::::res://Fonts/VCR_OSD_MONO_1.001.ttf
 transition_layer.tscn::PackedScene::3826333143175602813::1787451221::0::1::::<><><>0<>0<><>::uid://obbv54kauuxb::::res://Managers/transition_layer.gd<>uid://dcw5cfcj42iuf::::res://Assets/Shaders/double_dither_transition.gdshader
@@ -894,7 +895,8 @@ school_interactable.gd::GDScript::8205131452242371238::1787451221::0::1::::<>Are
 sleep_interactable.gd::GDScript::7336209433860980492::1787451221::0::1::::<>Area2D<><>0<>0<><>::
 ::res://Story Draf/::1785656560
 draf prolog start-end.txt::TextFile::-1::1785656560::0::1::::<><><>0<>0<><>::
-::res://Styles/::1787451221
+::res://Styles/::1787482247
 Buble.tres::Resource/DialogicStyle::4253846648910597831::1787451221::0::1::::<><><>0<>0<><>::uid://syki6k0e6aac::::res://addons/dialogic/Modules/DefaultLayoutParts/Base_TextBubble/text_bubble_base.tscn<>uid://bwg6yncmh2cml::::res://addons/dialogic/Resources/dialogic_style_layer.gd<>uid://cn674foxwedqu::::res://addons/dialogic/Modules/DefaultLayoutParts/Layer_Input/full_advance_input_layer.tscn<>uid://dv08k6ljua6fm::::res://addons/dialogic/Resources/dialogic_style.gd
-RETH Style.tres::Resource/DialogicStyle::3670375500129008452::1787451221::0::1::::<><><>0<>0<><>::uid://bwg6yncmh2cml::::res://addons/dialogic/Resources/dialogic_style_layer.gd<>uid://dv08k6ljua6fm::::res://addons/dialogic/Resources/dialogic_style.gd
+RETH Style.tres::Resource/DialogicStyle::3670375500129008452::1787460267::0::1::::<><><>0<>0<><>::uid://bwg6yncmh2cml::::res://addons/dialogic/Resources/dialogic_style_layer.gd<>uid://dv08k6ljua6fm::::res://addons/dialogic/Resources/dialogic_style.gd
+RETH.tres::Resource/DialogicStyle::1122256166339435504::1787482247::0::1::::<><><>0<>0<><>::uid://cqpb3ie51rwl5::::res://addons/dialogic/Modules/DefaultLayoutParts/Base_Default/default_layout_base.tscn<>uid://bwg6yncmh2cml::::res://addons/dialogic/Resources/dialogic_style_layer.gd<>uid://cy1y14inwkplb::::res://addons/dialogic/Modules/DefaultLayoutParts/Layer_VN_Portraits/vn_portrait_layer.tscn<>uid://cn674foxwedqu::::res://addons/dialogic/Modules/DefaultLayoutParts/Layer_Input/full_advance_input_layer.tscn<>uid://bquja8jyk8kbr::::res://addons/dialogic/Modules/DefaultLayoutParts/Layer_VN_Textbox/vn_textbox_layer.tscn<>uid://dsbwnp5hegnu3::::res://addons/dialogic/Modules/DefaultLayoutParts/Layer_Glossary/glossary_popup_layer.tscn<>uid://dhk6j6eb6e3q::::res://addons/dialogic/Modules/DefaultLayoutParts/Layer_VN_Choices/vn_choice_layer.tscn<>uid://cvgf4c6gg0tsy::::res://addons/dialogic/Modules/DefaultLayoutParts/Layer_TextInput/text_input_layer.tscn<>uid://lx24i8fl6uo::::res://addons/dialogic/Modules/DefaultLayoutParts/Layer_History/history_layer.tscn<>uid://dv08k6ljua6fm::::res://addons/dialogic/Resources/dialogic_style.gd
 ::res://UI/::1778405374
