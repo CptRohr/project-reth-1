@@ -735,6 +735,13 @@ It is an autoload `CanvasLayer` scene and currently provides:
 - Main Menu
 - Quit Game
 
+Focus rules:
+
+- opening pause menu from gameplay always lands on `Resume`
+- submenu back buttons return to `Resume`
+- `Calendar`, `Stats`, and `Settings` should not change first-open default
+- controller selector hand should follow current focused control, not menu order
+
 Stats screen:
 
 - reads `GameState.get_player_stats()`

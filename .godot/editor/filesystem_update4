@@ -1,3 +1,4 @@
+res://Managers/pause_menu.gd
 res://Areas/street.tscn
 res://Assets/Shaders/double_dither_transition.gdshader
 res://Assets/Shaders/vibrancy_backdrop_blurredfrosted.gdshader
@@ -9,3 +10,4 @@ res://Assets/Shaders/2d_fog_overlay.gdshader
 res://Assets/Shaders/highlight.gdshader
 res://Assets/Shaders/godray_edge_detection.gdshader
 res://Assets/Shaders/glass_pixel_rect.gdshader
+res://MAINTAINER_NOTE.md

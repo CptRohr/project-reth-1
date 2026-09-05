@@ -421,7 +421,7 @@ tracks/22/keys = {
 
 [sub_resource type="Animation" id="Animation_djane"]
 resource_name = "pause_menu_in_out"
-length = 1.7
+length = 1.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -429,7 +429,7 @@ tracks/0/path = NodePath("RootControl/MainView/ClockPanel:scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.7),
+"times": PackedFloat32Array(0, 0.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2(1e-05, 1e-05), Vector2(1, 1)]
@@ -441,7 +441,7 @@ tracks/1/path = NodePath("RootControl/MainView/ClockPanel:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.7),
+"times": PackedFloat32Array(0, 0.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [-3.1415927, 0.0]
@@ -453,7 +453,7 @@ tracks/2/path = NodePath("RootControl/MainView/ClockPanel:theme_override_styles/
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.7),
+"times": PackedFloat32Array(0, 0.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(0, 0, 0, 0.79607844), Color(0, 0, 0, 0)]
@@ -477,7 +477,7 @@ tracks/4/path = NodePath("RootControl/MainView/SettingsButton:position")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0.7, 1),
+"times": PackedFloat32Array(0.5, 0.8),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2(1303, 44), Vector2(882, 44)]
@@ -489,7 +489,7 @@ tracks/5/path = NodePath("RootControl/MainView/CalendarButton:position")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(0.8, 1.1),
+"times": PackedFloat32Array(0.6, 0.90000004),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2(1295, 142), Vector2(902, 142)]
@@ -501,7 +501,7 @@ tracks/6/path = NodePath("RootControl/MainView/SettingsButton:text")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
-"times": PackedFloat32Array(1, 1.1),
+"times": PackedFloat32Array(0.8, 0.90000004),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": ["", "Settings"]
@@ -513,7 +513,7 @@ tracks/7/path = NodePath("RootControl/MainView/CalendarButton:text")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
-"times": PackedFloat32Array(1.1, 1.2),
+"times": PackedFloat32Array(0.90000004, 1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": ["", "Calendar"]
@@ -525,7 +525,7 @@ tracks/8/path = NodePath("RootControl/MainView/StatsButton:position")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
-"times": PackedFloat32Array(0.9, 1.2),
+"times": PackedFloat32Array(0.7, 1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2(1296, 234), Vector2(1011, 234)]
@@ -537,7 +537,7 @@ tracks/9/path = NodePath("RootControl/MainView/StatsButton:text")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/keys = {
-"times": PackedFloat32Array(1.2, 1.3),
+"times": PackedFloat32Array(1, 1.0999999),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": ["", "Stats"]
@@ -549,7 +549,7 @@ tracks/10/path = NodePath("RootControl/MainView/ResumeButton:position")
 tracks/10/interp = 1
 tracks/10/loop_wrap = true
 tracks/10/keys = {
-"times": PackedFloat32Array(1, 1.3),
+"times": PackedFloat32Array(0.8, 1.0999999),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2(1294, 329), Vector2(982.485, 329)]
@@ -561,7 +561,7 @@ tracks/11/path = NodePath("RootControl/MainView/ResumeButton:text")
 tracks/11/interp = 1
 tracks/11/loop_wrap = true
 tracks/11/keys = {
-"times": PackedFloat32Array(1.3, 1.4),
+"times": PackedFloat32Array(1.0999999, 1.2),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": ["", "Resume"]
@@ -573,7 +573,7 @@ tracks/12/path = NodePath("RootControl/MainView/MainMenuButton:position")
 tracks/12/interp = 1
 tracks/12/loop_wrap = true
 tracks/12/keys = {
-"times": PackedFloat32Array(1.1, 1.4),
+"times": PackedFloat32Array(0.90000004, 1.2),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2(1296, 423), Vector2(860.21, 423)]
@@ -585,7 +585,7 @@ tracks/13/path = NodePath("RootControl/MainView/MainMenuButton:text")
 tracks/13/interp = 1
 tracks/13/loop_wrap = true
 tracks/13/keys = {
-"times": PackedFloat32Array(1.4, 1.5),
+"times": PackedFloat32Array(1.2, 1.3),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": ["", "Main Menu"]
@@ -597,7 +597,7 @@ tracks/14/path = NodePath("RootControl/MainView/QuitButton:position")
 tracks/14/interp = 1
 tracks/14/loop_wrap = true
 tracks/14/keys = {
-"times": PackedFloat32Array(1.2, 1.5),
+"times": PackedFloat32Array(1, 1.3),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2(1294, 513), Vector2(861.345, 513)]
@@ -609,7 +609,7 @@ tracks/15/path = NodePath("RootControl/MainView/QuitButton:text")
 tracks/15/interp = 1
 tracks/15/loop_wrap = true
 tracks/15/keys = {
-"times": PackedFloat32Array(1.5, 1.6),
+"times": PackedFloat32Array(1.3, 1.4000001),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": ["", "Quit Game"]
@@ -621,7 +621,7 @@ tracks/16/path = NodePath("RootControl/MainView/SettingsButton:theme_override_st
 tracks/16/interp = 1
 tracks/16/loop_wrap = true
 tracks/16/keys = {
-"times": PackedFloat32Array(1, 1.2),
+"times": PackedFloat32Array(0.8, 1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [0, 16]
@@ -633,7 +633,7 @@ tracks/17/path = NodePath("RootControl/MainView/CalendarButton:theme_override_st
 tracks/17/interp = 1
 tracks/17/loop_wrap = true
 tracks/17/keys = {
-"times": PackedFloat32Array(1.1, 1.3),
+"times": PackedFloat32Array(0.90000004, 1.0999999),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [0, 16]
@@ -645,7 +645,7 @@ tracks/18/path = NodePath("RootControl/MainView/StatsButton:theme_override_style
 tracks/18/interp = 1
 tracks/18/loop_wrap = true
 tracks/18/keys = {
-"times": PackedFloat32Array(1.2, 1.4),
+"times": PackedFloat32Array(1, 1.2),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [0, 16]
@@ -657,7 +657,7 @@ tracks/19/path = NodePath("RootControl/MainView/ResumeButton:theme_override_styl
 tracks/19/interp = 1
 tracks/19/loop_wrap = true
 tracks/19/keys = {
-"times": PackedFloat32Array(1.3, 1.5),
+"times": PackedFloat32Array(1.0999999, 1.3),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [0, 16]
@@ -669,7 +669,7 @@ tracks/20/path = NodePath("RootControl/MainView/MainMenuButton:theme_override_st
 tracks/20/interp = 1
 tracks/20/loop_wrap = true
 tracks/20/keys = {
-"times": PackedFloat32Array(1.4, 1.6),
+"times": PackedFloat32Array(1.2, 1.4000001),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [0, 16]
@@ -681,7 +681,7 @@ tracks/21/path = NodePath("RootControl/MainView/QuitButton:theme_override_styles
 tracks/21/interp = 1
 tracks/21/loop_wrap = true
 tracks/21/keys = {
-"times": PackedFloat32Array(1.5, 1.7),
+"times": PackedFloat32Array(1.3, 1.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [0, 16]
@@ -844,9 +844,9 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_bhunq")
 [node name="SettingsButton" type="Button" parent="RootControl/MainView" unique_id=177224773]
 custom_minimum_size = Vector2(300, 56)
 layout_mode = 0
-offset_left = 1303.0
+offset_left = 882.0
 offset_top = 44.0
-offset_right = 1603.0032
+offset_right = 1182.0028
 offset_bottom = 129.0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
@@ -861,9 +861,9 @@ theme_override_styles/focus = SubResource("StyleBoxFlat_mccmf")
 [node name="CalendarButton" type="Button" parent="RootControl/MainView" unique_id=44595643]
 custom_minimum_size = Vector2(240, 56)
 layout_mode = 0
-offset_left = 1295.0
+offset_left = 902.0
 offset_top = 142.0
-offset_right = 1596.004
+offset_right = 1203.0043
 offset_bottom = 218.0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
@@ -878,9 +878,9 @@ theme_override_styles/focus = SubResource("StyleBoxFlat_l1n2m")
 [node name="StatsButton" type="Button" parent="RootControl/MainView" unique_id=1826858738]
 custom_minimum_size = Vector2(215, 56)
 layout_mode = 0
-offset_left = 1296.0
+offset_left = 1011.0
 offset_top = 234.0
-offset_right = 1511.0
+offset_right = 1226.0002
 offset_bottom = 310.0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
@@ -895,9 +895,9 @@ theme_override_styles/focus = SubResource("StyleBoxFlat_157kv")
 [node name="ResumeButton" type="Button" parent="RootControl/MainView" unique_id=1772462668]
 custom_minimum_size = Vector2(240, 56)
 layout_mode = 0
-offset_left = 1294.0
+offset_left = 982.485
 offset_top = 329.0
-offset_right = 1560.9985
+offset_right = 1249.4836
 offset_bottom = 405.0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
@@ -912,9 +912,9 @@ theme_override_styles/focus = SubResource("StyleBoxFlat_kwk25")
 [node name="MainMenuButton" type="Button" parent="RootControl/MainView" unique_id=394658322]
 custom_minimum_size = Vector2(270, 56)
 layout_mode = 0
-offset_left = 1296.0
+offset_left = 860.21
 offset_top = 423.0
-offset_right = 1674.0061
+offset_right = 1238.2166
 offset_bottom = 499.0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
@@ -929,9 +929,9 @@ theme_override_styles/focus = SubResource("StyleBoxFlat_kwk25")
 [node name="QuitButton" type="Button" parent="RootControl/MainView" unique_id=371859305]
 custom_minimum_size = Vector2(250, 56)
 layout_mode = 0
-offset_left = 1294.0
+offset_left = 861.345
 offset_top = 513.0
-offset_right = 1658.0032
+offset_right = 1225.3488
 offset_bottom = 589.0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_focus_color = Color(0, 0, 0, 1)

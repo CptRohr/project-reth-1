@@ -47,6 +47,9 @@ const RESOLUTIONS := [
 @onready var calendar_back_button: Button = $RootControl/CalendarPanel/Margin/VBox/ButtonsRow/CalendarBackButton
 
 var _focused_button: Button = null
+var _last_main_view_button: Button = null
+var _last_panel: StringName = &""
+var _open_resets_to_resume: bool = true
 var calendar_view_month: int = 4
 
 func _ready() -> void:
@@ -71,7 +74,12 @@ func _unhandled_input(event: InputEvent) -> void:
 	if root_control.visible and event.is_action_pressed("ui_cancel"):
 		get_viewport().set_input_as_handled()
 		if not main_view.visible:
+			_last_panel = &""
 			_show_main_view()
+			if is_instance_valid(_last_main_view_button):
+				_last_main_view_button.grab_focus()
+			else:
+				resume_button.grab_focus()
 		else:
 			hide_pause_menu()
 
@@ -86,12 +94,14 @@ func show_pause_menu() -> void:
 	root_control.visible = true
 	animation_player.play("pause_menu_in_out")
 	_show_main_view()
+	resume_button.grab_focus()
 
 func hide_pause_menu() -> void:
 	animation_player.play_backwards("pause_menu_in_out")
 	await animation_player.animation_finished
 	get_tree().paused = false
 	root_control.visible = false
+	_focused_button = null
 
 func _connect_buttons() -> void:
 	_setup_button(settings_button, _show_settings_panel)
@@ -101,9 +111,30 @@ func _connect_buttons() -> void:
 	_setup_button(main_menu_button, _go_to_main_menu)
 	_setup_button(quit_button, Callable(get_tree(), "quit"))
 
-	stats_back_button.pressed.connect(_show_main_view)
-	settings_back_button.pressed.connect(_show_main_view)
-	calendar_back_button.pressed.connect(_show_main_view)
+	stats_back_button.pressed.connect(func():
+		_last_panel = &""
+		_show_main_view()
+		if is_instance_valid(_last_main_view_button):
+			_last_main_view_button.grab_focus()
+		else:
+			resume_button.grab_focus()
+	)
+	settings_back_button.pressed.connect(func():
+		_last_panel = &""
+		_show_main_view()
+		if is_instance_valid(_last_main_view_button):
+			_last_main_view_button.grab_focus()
+		else:
+			resume_button.grab_focus()
+	)
+	calendar_back_button.pressed.connect(func():
+		_last_panel = &""
+		_show_main_view()
+		if is_instance_valid(_last_main_view_button):
+			_last_main_view_button.grab_focus()
+		else:
+			resume_button.grab_focus()
+	)
 
 	apply_button.pressed.connect(_apply_settings)
 	previous_button.pressed.connect(_show_previous_month)
@@ -119,6 +150,8 @@ func _setup_button(button: Button, on_pressed_callable: Callable) -> void:
 	button.focus_mode = Control.FOCUS_ALL
 	button.focus_entered.connect(func():
 		_focused_button = button
+		if button in [settings_button, calendar_button, stats_button, resume_button, main_menu_button, quit_button]:
+			_last_main_view_button = button
 	)
 	button.focus_exited.connect(func():
 		if _focused_button == button:
@@ -131,22 +164,27 @@ func _show_main_view() -> void:
 	stats_panel.visible = false
 	settings_panel.visible = false
 	calendar_panel.visible = false
-	resume_button.grab_focus()
 
-func _show_stats_panel() -> void:
+func _show_stats_panel(set_last_panel: bool = true) -> void:
+	if set_last_panel:
+		_last_panel = &"stats"
 	main_view.visible = false
 	stats_panel.visible = true
 	_refresh_stats_view()
 	stats_back_button.grab_focus()
 
-func _show_settings_panel() -> void:
+func _show_settings_panel(set_last_panel: bool = true) -> void:
+	if set_last_panel:
+		_last_panel = &"settings"
 	main_view.visible = false
 	settings_panel.visible = true
 	status_label.text = ""
 	_setup_settings_values()
 	settings_back_button.grab_focus()
 
-func _show_calendar_panel() -> void:
+func _show_calendar_panel(set_last_panel: bool = true) -> void:
+	if set_last_panel:
+		_last_panel = &"calendar"
 	main_view.visible = false
 	calendar_panel.visible = true
 	calendar_view_month = int(get_calendar_manager().get_date_info(GameState.calendar_day_index)["month"])
@@ -166,7 +204,7 @@ func _update_clock() -> void:
 func _update_selector_hand() -> void:
 	var target: Button = _focused_button
 	if target == null:
-		target = resume_button
+		target = _last_main_view_button if is_instance_valid(_last_main_view_button) else resume_button
 	var clock_center: Vector2 = clock.global_position + clock.size * 0.5
 	var target_center: Vector2 = target.global_position + target.size * 0.5
 	clock.set_selector_angle((target_center - clock_center).angle())
@@ -269,7 +307,9 @@ func get_calendar_manager():
 	return get_node("/root/CalendarManager")
 
 func _go_to_main_menu() -> void:
-	hide_pause_menu()
+	animation_player.stop(true)
+	get_tree().paused = false
+	root_control.visible = false
 	get_tree().change_scene_to_file(MAIN_MENU_SCENE)
 
 func _is_non_pause_scene() -> bool:
