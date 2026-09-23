@@ -33,9 +33,9 @@ Pretty sure it will be available on Mobile and Windows through itch.io. Later, M
 Yes. If you want contribute, send message, share idea, help with art, code, design, QA, or just tell us what part looks cursed. Every bit help.
 
 - **Is project serious?**
-Very serious. Extremely serious. Serious enough to contain jokes in README and probably several bugs in code.
+Very serious, i guess?
 
-*RETHorizon currently has 8 contributors consist of 2 Writers, 2 Programmers, 1 Art Artist, 1 Game Design Artist, 1 Quality Assurance/Playtester, and 1 Investor funding this project while pretending not to panic*
+*RETHorizon currently has 8 contributors consist of 2 Writers (those two are quite lazy and one of them didn't play any persona), 2 Programmers (the other one is still busy), 1 Art Artist, 1 Game Design Artist, 1 Quality Assurance/Playtester, and 1 Investor funding this project (he said)*
 
 ## Stay tuned for another announcement from us
 We keep cooking, and some day meal may be done. Until then, enjoy banner, atmosphere, and eternal waiting.
