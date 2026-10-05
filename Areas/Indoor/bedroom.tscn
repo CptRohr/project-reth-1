@@ -1,0 +1,122 @@
+[gd_scene format=3 uid="uid://i7tg833shjvc"]
+
+[ext_resource type="Script" uid="uid://ctmqirc8sotnm" path="res://Areas/Indoor/bedroom.gd" id="1_efl7w"]
+[ext_resource type="Texture2D" uid="uid://rdbs6f3f0a7" path="res://Assets/Background/black.png" id="2_1rho2"]
+[ext_resource type="Texture2D" uid="uid://bdbb8p5f7hj2s" path="res://Assets/Background/Camelia Bedroom-aa95.png" id="2_d3xv4"]
+[ext_resource type="Shader" uid="uid://c7eelt1vpwdun" path="res://Assets/Shaders/Transparent noise border.gdshader" id="3_ajaqc"]
+[ext_resource type="PackedScene" uid="uid://bi003gu1i7jjb" path="res://Scene/door_transition.tscn" id="3_pkgem"]
+[ext_resource type="PackedScene" uid="uid://d3swmgi1ckxhq" path="res://Characters/Main Character/player.tscn" id="4_pkgem"]
+[ext_resource type="Script" uid="uid://dcrykd7ugqep5" path="res://Scripts/sleep_interactable.gd" id="6_1rho2"]
+
+[sub_resource type="Gradient" id="Gradient_ojplw"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_kr8i3"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_wx76u"]
+noise = SubResource("FastNoiseLite_kr8i3")
+color_ramp = SubResource("Gradient_ojplw")
+seamless = true
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_f14xv"]
+shader = ExtResource("3_ajaqc")
+shader_parameter/textureNoise = SubResource("NoiseTexture2D_wx76u")
+shader_parameter/radius = 0.4210000199975
+shader_parameter/effectControl = 0.118000005605
+shader_parameter/burnSpeed = 0.08800000418
+shader_parameter/shape = 0.8400000399
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_028h7"]
+size = Vector2(264, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f14xv"]
+size = Vector2(264, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ajaqc"]
+size = Vector2(54, 17)
+
+[node name="Bedroom" type="CanvasLayer" unique_id=165754389]
+layer = 4
+follow_viewport_enabled = true
+script = ExtResource("1_efl7w")
+override_indoor_camera = true
+indoor_zoom_factor = 1.6
+
+[node name="Black" type="Sprite2D" parent="." unique_id=1279859879]
+position = Vector2(243.00002, -439)
+scale = Vector2(1.9200001, 1.9200001)
+texture = ExtResource("2_1rho2")
+
+[node name="Black" type="Sprite2D" parent="Black" unique_id=716535820]
+position = Vector2(-778.12494, 106.77083)
+scale = Vector2(1.9200001, 1.9200001)
+texture = ExtResource("2_1rho2")
+
+[node name="Black" type="Sprite2D" parent="Black/Black" unique_id=647039314]
+position = Vector2(1134.7113, -190.97221)
+scale = Vector2(1.9200001, 1.9200001)
+texture = ExtResource("2_1rho2")
+
+[node name="Black" type="Sprite2D" parent="Black/Black/Black" unique_id=511487109]
+position = Vector2(-215.88359, 628.43604)
+scale = Vector2(1.9200001, 1.9200001)
+texture = ExtResource("2_1rho2")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2136089581]
+material = SubResource("ShaderMaterial_f14xv")
+position = Vector2(279, 61)
+scale = Vector2(0.5156251, 0.51562506)
+texture = ExtResource("2_d3xv4")
+
+[node name="DoorTransition" parent="." unique_id=382549217 instance=ExtResource("3_pkgem")]
+visible = false
+position = Vector2(357, 74)
+scale = Vector2(1.2350024, 2.1150012)
+target_scene = "uid://5u3q4ro435i1"
+target_spawn = "FromBedroom"
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=953145380]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=902567853]
+position = Vector2(279, 104)
+shape = SubResource("RectangleShape2D_028h7")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="." unique_id=1220255573]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2" unique_id=597648116]
+position = Vector2(421, 68)
+rotation = 1.5707964
+shape = SubResource("RectangleShape2D_f14xv")
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="." unique_id=504869016]
+position = Vector2(-284, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D3" unique_id=1968363174]
+position = Vector2(421, 68)
+rotation = 1.5707964
+shape = SubResource("RectangleShape2D_f14xv")
+
+[node name="SpawnPoints" type="Marker2D" parent="." unique_id=1049835327]
+position = Vector2(369, 81)
+
+[node name="FromHome" type="Marker2D" parent="SpawnPoints" unique_id=1873403891]
+position = Vector2(-12, 0)
+
+[node name="Player" parent="." unique_id=455174183 instance=ExtResource("4_pkgem")]
+position = Vector2(357, 78)
+scale = Vector2(0.9999999, 0.9999999)
+
+[node name="Bed" type="Area2D" parent="." unique_id=1810365088]
+position = Vector2(185, 80)
+script = ExtResource("6_1rho2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bed" unique_id=455041958]
+position = Vector2(-1, 1)
+shape = SubResource("RectangleShape2D_ajaqc")
+
+[node name="Label" type="Label" parent="Bed" unique_id=1414976294]
+offset_left = -15.0
+offset_top = -12.0
+offset_right = 15.0
+offset_bottom = 11.0
+text = "Bed"
+metadata/_edit_use_anchors_ = true

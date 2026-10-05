@@ -2,41 +2,96 @@
 
 [ext_resource type="PackedScene" uid="uid://d3swmgi1ckxhq" path="res://Characters/Main Character/player.tscn" id="1_72b0g"]
 [ext_resource type="PackedScene" uid="uid://bi003gu1i7jjb" path="res://Scene/door_transition.tscn" id="2_f6vm4"]
+[ext_resource type="Texture2D" uid="uid://rdbs6f3f0a7" path="res://Assets/Background/black.png" id="2_g8tdf"]
+[ext_resource type="Texture2D" uid="uid://b4fdahtapp42c" path="res://Assets/Background/Camelia home-750c.png" id="2_wu7jj"]
+[ext_resource type="Shader" uid="uid://c7eelt1vpwdun" path="res://Assets/Shaders/Transparent noise border.gdshader" id="3_3yvfv"]
 [ext_resource type="Script" uid="uid://ds7ha60onmcic" path="res://Areas/Indoor/home.gd" id="3_home"]
 [ext_resource type="Script" uid="uid://dcrykd7ugqep5" path="res://Scripts/sleep_interactable.gd" id="4_7rxqh"]
 
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_4xh7l"]
+[sub_resource type="Gradient" id="Gradient_ojplw"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_kr8i3"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_wx76u"]
+noise = SubResource("FastNoiseLite_kr8i3")
+color_ramp = SubResource("Gradient_ojplw")
+seamless = true
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5lkt4"]
+shader = ExtResource("3_3yvfv")
+shader_parameter/textureNoise = SubResource("NoiseTexture2D_wx76u")
+shader_parameter/radius = 0.4210000199975
+shader_parameter/effectControl = 0.118000005605
+shader_parameter/burnSpeed = 0.08800000418
+shader_parameter/shape = 0.8400000399
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tw2oj"]
-size = Vector2(484, 20)
+size = Vector2(264, 20)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wu7jj"]
 size = Vector2(29, 17)
 
-[node name="Home" type="Node2D" unique_id=1748218625]
+[node name="Home" type="CanvasLayer" unique_id=950710398]
+layer = 4
+follow_viewport_enabled = true
 script = ExtResource("3_home")
+override_indoor_camera = true
+indoor_zoom_factor = 1.6
 
-[node name="Player" parent="." unique_id=455174183 instance=ExtResource("1_72b0g")]
-position = Vector2(347, 78)
+[node name="Black" type="Sprite2D" parent="." unique_id=503114649]
+position = Vector2(294, 69)
+scale = Vector2(1.9200001, 1.9200001)
+texture = ExtResource("2_g8tdf")
+
+[node name="Home" type="Sprite2D" parent="." unique_id=583837457]
+material = SubResource("ShaderMaterial_5lkt4")
+position = Vector2(279, 61)
+scale = Vector2(0.515625, 0.515625)
+texture = ExtResource("2_wu7jj")
+
+[node name="Player" parent="." unique_id=65993981 instance=ExtResource("1_72b0g")]
+position = Vector2(258, 78)
+scale = Vector2(0.9999999, 0.9999999)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=903601643]
 
-[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D" unique_id=1431447320]
-position = Vector2(244, 104)
-scale = Vector2(483.99997, 20.000004)
-texture = SubResource("PlaceholderTexture2D_4xh7l")
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D" unique_id=1579824006]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1316150592]
-position = Vector2(244, 104)
+position = Vector2(279, 104)
+shape = SubResource("RectangleShape2D_tw2oj")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="." unique_id=1092700372]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2" unique_id=182555250]
+position = Vector2(421, 68)
+rotation = 1.5707964
+shape = SubResource("RectangleShape2D_tw2oj")
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="." unique_id=1882907751]
+position = Vector2(-284, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D3" unique_id=234568045]
+position = Vector2(421, 68)
+rotation = 1.5707964
 shape = SubResource("RectangleShape2D_tw2oj")
 
 [node name="DoorTransition" parent="." unique_id=382549217 instance=ExtResource("2_f6vm4")]
-position = Vector2(469, 81)
+visible = false
+position = Vector2(369, 68.00001)
+scale = Vector2(2.475, 2.475)
 target_scene = "res://Areas/street.tscn"
 target_spawn = "FromHome"
 
+[node name="DoorTransition2" parent="." unique_id=1660400341 instance=ExtResource("2_f6vm4")]
+visible = false
+position = Vector2(192.00002, 75.00001)
+scale = Vector2(1.2349975, 1.9549999)
+target_scene = "uid://i7tg833shjvc"
+target_spawn = "FromHome"
+
 [node name="Bed" type="Area2D" parent="." unique_id=1632535900]
-position = Vector2(302, 80)
+position = Vector2(295, 80)
 script = ExtResource("4_7rxqh")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Bed" unique_id=1984742946]
@@ -52,6 +107,9 @@ text = "Bed"
 metadata/_edit_use_anchors_ = true
 
 [node name="SpawnPoints" type="Marker2D" parent="." unique_id=953319728]
-position = Vector2(469, 81)
+position = Vector2(369, 81)
+
+[node name="FromBedroom" type="Marker2D" parent="SpawnPoints" unique_id=882499906]
+position = Vector2(-177, 0)
 
 [node name="FromStreet" type="Marker2D" parent="SpawnPoints" unique_id=604892925]

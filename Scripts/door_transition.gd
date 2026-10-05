@@ -8,17 +8,21 @@ var transitioning: bool = false
 var player: Node2D
 
 
-func _on_body_entered(body):
+func _on_body_entered(body: Node2D) -> void:
 	print("ENTERED:", body.name)
 
-	if body.name == "Player":
-		player = body as Node2D
+	if body.is_in_group("Player") or body.name == "Player":
+		player = body
 		player_inside = true
+		if player.has_method(&"register_interactable"):
+			player.register_interactable(self)
 		print("PLAYER INSIDE")
 
 
-func _on_body_exited(body):
-	if body.name == "Player":
+func _on_body_exited(body: Node2D) -> void:
+	if body.is_in_group("Player") or body.name == "Player":
+		if body.has_method(&"unregister_interactable"):
+			body.unregister_interactable(self)
 		player = null
 		player_inside = false
 

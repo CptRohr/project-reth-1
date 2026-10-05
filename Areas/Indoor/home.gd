@@ -1,6 +1,14 @@
-extends Node2D
+#this one is exclusion for a scene that doesn't affected by the time filter
+extends CanvasLayer
+
+@export_group("Indoor Camera Override")
+@export var override_indoor_camera := false
+@export var indoor_zoom_factor := 1.0
 
 @onready var spawn_points = get_node_or_null("SpawnPoints")
+
+func get_indoor_zoom_factor() -> float:
+	return indoor_zoom_factor
 
 
 func _ready():

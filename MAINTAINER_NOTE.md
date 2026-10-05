@@ -73,6 +73,57 @@ Maintenance rules:
 - When movement is disabled, force `idle` so the walk animation does not get stuck.
 - Press-E gameplay should usually live on the thing being interacted with, not on the player.
 
+### Universal Interactable Prompt
+
+Shared player-head prompt lives in:
+
+```text
+Characters/Main Character/player.tscn -> Player/InteractableIcon
+Scripts/basic_movement.gd
+Assets/UI/Interactable.png
+```
+
+`InteractableIcon` is an `AnimatedSprite2D` child of the `CharacterBody2D` Player. `Interactable.png` is a 112x16 sprite sheet: seven 16x16 frames in one row. The `prompt` SpriteFrames animation loops at 8 FPS. Default node settings:
+
+```text
+visible = false
+position = Vector2(0, -24)
+z_index = 2
+```
+
+Prompt state is temporary presentation-only. Do not save it.
+
+`basic_movement.gd` owns prompt visibility and active overlap state through:
+
+```gdscript
+register_interactable(interactable: Node)
+unregister_interactable(interactable: Node)
+```
+
+Interactables call `register_interactable(self)` when Player enters and `unregister_interactable(self)` when Player exits. Player tracks instance IDs in `active_interactables`, so prompt remains visible while overlapping more than one valid target and hides only after final target exits.
+
+Current integrated scripts:
+
+```text
+Scripts/activity_interactable.gd
+Scripts/sleep_interactable.gd
+Scripts/school_interactable.gd
+Scripts/door_transition.gd
+Characters/NPC/npc.gd
+Characters/NPC/abang_brewok.gd
+```
+
+NPCs register only when `visible` and `is_interactable` are true. Other area interactables should use Player group/name check plus `has_method(&"register_interactable")` / `has_method(&"unregister_interactable")` before calling Player API.
+
+Dialogic integration stays app-side. `basic_movement.gd` listens to `Dialogic.timeline_started` and `Dialogic.timeline_ended`: hide prompt during dialogue; restore it after dialogue only if `active_interactables` still has a target. New overlaps during dialogue must not reveal prompt. Do not edit Dialogic addon files for prompt behavior.
+
+Maintenance rules:
+
+- Prompt visual and overlap tracking belong in Player; interaction action remains on target script.
+- New universal interactables must register/unregister themselves in their existing collision callbacks.
+- Do not use one boolean for shared prompt state; overlapping zones require tracked target IDs.
+- Tune prompt position, z-index, frames, or speed in `Characters/Main Character/player.tscn`.
+
 ## Scene Transitions
 
 Transition flow lives in:
@@ -152,16 +203,44 @@ Areas/street.gd
 Areas/street_2.gd
 Areas/Indoor/home.gd
 Areas/Indoor/warung.gd
+Areas/Indoor/schoolhallway.gd
+Areas/Indoor/schoolgate.gd
 ```
 
 They currently:
-
 - find the `SpawnPoints` node
 - place the player at `SceneManager.spawn_id` when possible
 - save the active scene path into `GameState`
+- support automatic universal indoor camera zoom with per-scene editor overrides (`indoor_zoom_factor`, based on template `Areas/Indoor/indoor_template.gd`)
+
+### Indoor Camera
+
+`Scripts/basic_movement.gd` detects indoor maps by scene path:
+
+```text
+res://Areas/Indoor/
+```
+
+Player camera tweens to `default_zoom * indoor_zoom_factor` after indoor scene loads. Outdoor scenes retain `default_zoom`. Dialogue camera retains priority while dialogue runs; when it ends, camera returns to current scene's indoor or outdoor zoom.
+
+Configure shared defaults on `Player` (`CharacterBody2D`) in `Characters/Main Character/player.tscn`:
+
+| Parameter | Default | Purpose |
+| :--- | :--- | :--- |
+| `indoor_zoom_enabled` | `true` | Enables automatic indoor zoom. |
+| `indoor_zoom_factor` | `1.25` | Default zoom multiplier for all indoor scenes. |
+| `indoor_zoom_duration` | `0.5` | Zoom tween duration in seconds. |
+
+For per-scene settings:
+
+1. Create script from `Areas/Indoor/indoor_template.gd`, or use existing indoor script.
+2. Attach script to indoor scene root.
+3. Enable `override_indoor_camera` in Inspector.
+4. Set `indoor_zoom_factor` for that scene.
+
+`override_indoor_camera = false` means Player `indoor_zoom_factor` remains active. Indoor camera state is presentation-only; do not save it in `GameState`.
 
 Maintenance rules:
-
 - Area scripts should stay simple.
 - They can initialize the map, place the player, and later spawn local NPCs/objects.
 - Avoid putting large gameplay systems in map scripts.
@@ -689,7 +768,7 @@ Maintenance rules:
 
 ### Dialogue Camera Zoom & Offset
 
-When a dialogue starts with an NPC, the camera smoothly glides and zooms to focus on a position between the player and the NPC.
+When a dialogue starts with an NPC, the camera smoothly glides and zooms to focus on a position between the player and the NPC. Dialogue camera zoom overrides indoor camera zoom temporarily; ending dialogue restores the active scene's indoor/outdoor camera zoom.
 
 > [!NOTE]
 > This behavior is handled globally in [basic_movement.gd](file:///d:/GAME%20PROJECT/project-reth-1/Scripts/basic_movement.gd) and utilizes Godot `Tween` logic to animate position and zoom.

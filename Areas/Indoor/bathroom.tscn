@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://b7knsujqo8ya7"]
+
+[ext_resource type="Script" uid="uid://b5a8ptgxqnqun" path="res://Areas/Indoor/bathroom.gd" id="1_7ph6n"]
+
+[node name="Bathroom" type="Node2D" unique_id=323859814]
+script = ExtResource("1_7ph6n")

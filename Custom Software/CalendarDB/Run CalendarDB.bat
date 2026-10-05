@@ -1,7 +1,8 @@
 @echo off
 setlocal
 cd /d "%~dp0..\.."
-dotnet build "Custom Software\CalendarDB\CalendarDB.csproj"
+:: Call the executable directly using its full path
+"C:\Program Files\dotnet\dotnet.exe" build "Custom Software\CalendarDB\CalendarDB.csproj"
 if errorlevel 1 (
     pause
     exit /b 1

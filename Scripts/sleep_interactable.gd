@@ -47,11 +47,15 @@ func get_calendar_manager():
 	return get_node("/root/CalendarManager")
 
 
-func _on_body_entered(body):
+func _on_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Player") or body.name == "Player":
 		player_inside = true
+		if body.has_method(&"register_interactable"):
+			body.register_interactable(self)
 
 
-func _on_body_exited(body):
+func _on_body_exited(body: Node2D) -> void:
 	if body.is_in_group("Player") or body.name == "Player":
 		player_inside = false
+		if body.has_method(&"unregister_interactable"):
+			body.unregister_interactable(self)

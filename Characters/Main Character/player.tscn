@@ -2,6 +2,64 @@
 
 [ext_resource type="Script" uid="uid://buub0y4nodujs" path="res://Scripts/basic_movement.gd" id="1_5or8t"]
 [ext_resource type="Texture2D" uid="uid://c7ky1klesy23e" path="res://Assets/debug assets/Human Male Model/Sections/PNG/HMMWalkBare.png" id="2_qfc41"]
+[ext_resource type="Texture2D" uid="uid://bhj1minbbt66d" path="res://Assets/UI/Interactable.png" id="3_interactable"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_interactable_0"]
+atlas = ExtResource("3_interactable")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_interactable_1"]
+atlas = ExtResource("3_interactable")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_interactable_2"]
+atlas = ExtResource("3_interactable")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_interactable_3"]
+atlas = ExtResource("3_interactable")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_interactable_4"]
+atlas = ExtResource("3_interactable")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_interactable_5"]
+atlas = ExtResource("3_interactable")
+region = Rect2(80, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_interactable_6"]
+atlas = ExtResource("3_interactable")
+region = Rect2(96, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_interactable"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_interactable_0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_interactable_1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_interactable_2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_interactable_3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_interactable_4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_interactable_5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_interactable_6")
+}],
+"loop": 1,
+"name": &"prompt",
+"speed": 8.0
+}]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qfc41"]
 atlas = ExtResource("2_qfc41")
@@ -80,6 +138,14 @@ animations = [{
 
 [node name="Player" type="CharacterBody2D" parent="." unique_id=49715399]
 script = ExtResource("1_5or8t")
+indoor_zoom_duration = 1.2
+
+[node name="InteractableIcon" type="AnimatedSprite2D" parent="Player" unique_id=324100834]
+z_index = 2
+position = Vector2(0, -23)
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_interactable")
+animation = &"prompt"
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Player" unique_id=995348183]
 position = Vector2(0.99999994, -3.9999998)

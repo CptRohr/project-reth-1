@@ -52,10 +52,14 @@ func _on_interaction_area_area_entered(area):
 	if area.is_in_group("Player"):
 		player_inside = true
 		player_ref = area.get_parent() as Node2D
+		if player_ref != null and is_interactable and visible and player_ref.has_method(&"register_interactable"):
+			player_ref.register_interactable(self)
 		print("PLAYER INSIDE")
 
 func _on_interaction_area_area_exited(area):
 	if area.is_in_group("Player"):
+		if player_ref != null and player_ref.has_method(&"unregister_interactable"):
+			player_ref.unregister_interactable(self)
 		player_inside = false
 		player_ref = null
 

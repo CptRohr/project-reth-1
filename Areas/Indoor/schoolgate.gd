@@ -1,6 +1,13 @@
 extends Node2D
 
+@export_group("Indoor Camera Override")
+@export var override_indoor_camera := false
+@export var indoor_zoom_factor := 1.0
+
 @onready var spawn_points = get_node_or_null("SpawnPoints")
+
+func get_indoor_zoom_factor() -> float:
+	return indoor_zoom_factor
 
 func _ready():
 	GameState.set_scene(scene_file_path)

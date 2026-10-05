@@ -109,14 +109,14 @@ res://addons/dialogic/Modules/Text/character_settings/character_moods_settings.t
 res://addons/dialogic/Modules/Text/character_settings/character_portrait_mood_settings.tscn::a38cae9522816fb97ce9bd9f54486f33::1787451224::res://.godot/exported/133200997/export-37c35566857061453231ad11bc175413-character_portrait_mood_settings.scn
 res://addons/dialogic/Modules/Text/settings_text.tscn::05970b04caa5fc0ae5ea022f2def2372::1787451224::res://.godot/exported/133200997/export-67100a9f8a5726886cf8dbc525c7a035-settings_text.scn
 res://addons/dialogic/Modules/Variable/variables_editor/variables_editor.tscn::d764d445d8da5a50462109fa152c3af7::1787451224::res://.godot/exported/133200997/export-81d6117e9fbfcc345d9d0dd8f77e3c55-variables_editor.scn
-res://Areas/Indoor/home.tscn::5324864f9fa9e91fc28f99d90ecd3001::1787451219::res://.godot/exported/133200997/export-54f55ba6fe20a78f0df8097d73879986-home.scn
+res://Areas/Indoor/home.tscn::00477465182ad61faca8cfef5a882d21::1791003400::res://.godot/exported/133200997/export-54f55ba6fe20a78f0df8097d73879986-home.scn
 res://Areas/Indoor/schoolhallway.tscn::d689f4113f662e3e1f20bdd2ad7521a9::1787451219::res://.godot/exported/133200997/export-47743183ea039c44fc1ff1cf07c13cfc-schoolhallway.scn
 res://Areas/Indoor/warung.tscn::dfa6bd0131df83e059f61cd23e969aaa::1787451219::res://.godot/exported/133200997/export-1b7d22cc863f4fff282813408eb1159a-warung.scn
 res://Areas/door.tscn::2a875cb345bc18e8d303f81879d5ea8a::1787451219::res://.godot/exported/133200997/export-1a4f94d7ba112f72b36aced94a426995-door.scn
 res://Areas/street2.tscn::77b8d984a19906854a86aa3796dce0c8::1787451219::res://.godot/exported/133200997/export-36848b0256022a39176bbdb9f5cbf087-street2.scn
 res://Areas/street3.tscn::b8cd9f5528dbc2f5a3543f4adf4d518f::1787451219::res://.godot/exported/133200997/export-dff1ace9a8f31eef410c452b19eda50f-street3.scn
-res://Areas/street.tscn::ae4ca034e9124acccde71d77891ac98c::1787496616::res://.godot/exported/133200997/export-7671b81c4f979c4f4f9ba00a0dda2e36-street.scn
-res://Characters/Main Character/player.tscn::992e1b0e9fdfe58e415ef04377aebdf2::1787451219::res://.godot/exported/133200997/export-9fb1f0e897c3ae6c1162b06d760ddc58-player.scn
+res://Areas/street.tscn::ae4ca034e9124acccde71d77891ac98c::1790992754::res://.godot/exported/133200997/export-7671b81c4f979c4f4f9ba00a0dda2e36-street.scn
+res://Characters/Main Character/player.tscn::2af6201deb3bf8e000bbd9db42f99744::1791003430::res://.godot/exported/133200997/export-9fb1f0e897c3ae6c1162b06d760ddc58-player.scn
 res://Characters/NPC/AbangBrewok.tscn::fe36ea52bca49cf8becaffa8f33fee3d::1787451219::res://.godot/exported/133200997/export-3d1a2a1fd2d98316786c878b4a69b457-AbangBrewok.scn
 res://Characters/NPC/NPC.tscn::ca2eb0f067fa8a7cd6fb41d1ba7da650::1787451219::res://.godot/exported/133200997/export-36d84f5b596285bf7181d50ff3cee3ef-NPC.scn
 res://Scene/BootScene.tscn::4127cdc97ce93f70417a38b90b98184f::1787451221::res://.godot/exported/133200997/export-a60464afe119ae6dbb0fd068203f16a9-BootScene.scn
@@ -135,11 +135,13 @@ res://addons/extended_ui/Theme.tres::8dda767f5da1f43cb9e6dc1cba16f023::178745122
 res://Areas/Cutscenes/opening_cutscene.tscn::2313a6d50891cd9fe047c332564ce05e::1787451219::res://.godot/exported/133200997/export-2284747a2e2a9f98f8269c11e7182562-opening_cutscene.scn
 res://Areas/Cutscenes/prolog_1.tscn::dcfbe24e11793ee687f2e2435383d50b::1787451219::res://.godot/exported/133200997/export-a194619deeede4f6c986a4dd6e74afe7-prolog_1.scn
 res://Areas/Indoor/schoolgate.tscn::3cfddf89b70d0b83e2dd554d65f33cee::1787451219::res://.godot/exported/133200997/export-e8603577ae674ce8cdfcc8a5a1abfaa2-schoolgate.scn
-res://Scene/PauseMenu.tscn::819becca04fd6cd53e46a734831d7495::1787457902::res://.godot/exported/133200997/export-2551516c0aecc61cbf7fdb5620cc1d6f-PauseMenu.scn
+res://Scene/PauseMenu.tscn::7e10e3ecc6111c0cfe6a860753ae3195::1791003851::res://.godot/exported/133200997/export-2551516c0aecc61cbf7fdb5620cc1d6f-PauseMenu.scn
 res://Scene/TimeOfDayFilter.tscn::f26eef7f9bc7356c628f3aebd6fedfd6::1787451221::res://.godot/exported/133200997/export-1220998ce89f18091f8d86e29552d211-TimeOfDayFilter.scn
 res://Scene/TimePassageTransition.tscn::13c59530e599a7f9661f62e006d153e9::1787451221::res://.godot/exported/133200997/export-d067c095b114fd6b072ef18a6cd0f9de-TimePassageTransition.scn
 res://Scene/WeatherFilter.tscn::1838cdd9b93d06a7bd2d6fa7f01e4712::1787451221::res://.godot/exported/133200997/export-e52ff7b5d1c07ca634515a7fe1527cd0-WeatherFilter.scn
 res://Styles/Buble.tres::5f0dd912595b60a07deb305dd534e868::1787451221::res://.godot/exported/133200997/export-14e928ef0ef9c425e48f66684d5c9870-Buble.res
 res://addons/dialogic/Editor/TimelineEditor/VisualEditor/add_event_button.tscn::8e08b8b1b6916f82feff9c5b35415147::1787451222::res://.godot/exported/133200997/export-3323441b1c2087c2ec1d9aeda6ef9c72-add_event_button.scn
 res://Scene/GamepadFocusOverlay.tscn::a8803ac8bb9b3eb63735674f8d00248b::1787451221::res://.godot/exported/133200997/export-7b57ee679ac719957aeb17e0175904a4-GamepadFocusOverlay.scn
-res://Styles/RETH.tres::55d05687a9f21f8c4d91e6a10b54ea9e::1787496616::res://.godot/exported/133200997/export-01590c1973df7f075ff490290d7a455a-RETH.res
+res://Styles/RETH.tres::55d05687a9f21f8c4d91e6a10b54ea9e::1791003085::res://.godot/exported/133200997/export-01590c1973df7f075ff490290d7a455a-RETH.res
+res://Areas/Indoor/bathroom.tscn::6f4b3bfd2dba422209e562d83c6fd878::1790990012::res://.godot/exported/133200997/export-d41ae88602ce042eeed22fc7ff709221-bathroom.scn
+res://Areas/Indoor/bedroom.tscn::54f4720580b93d574fc354319f1589dd::1791003401::res://.godot/exported/133200997/export-c4c07e99738e595f45634cfb99af547a-bedroom.scn
