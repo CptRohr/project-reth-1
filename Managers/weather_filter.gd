@@ -2,7 +2,7 @@ extends CanvasLayer
 
 const RAIN_WEATHERS := ["rain", "thunderstorm"]
 
-@export var weather_layer := 2
+@export var weather_layer := 0
 @export var outdoor_scene_paths: PackedStringArray = [
 	"res://Areas/street.tscn",
 	"res://Areas/street2.tscn",

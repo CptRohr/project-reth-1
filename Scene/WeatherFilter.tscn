@@ -1,24 +1,18 @@
-[gd_scene load_steps=4 format=3]
+[gd_scene format=3 uid="uid://4tf8g3adm6ni"]
 
-[ext_resource type="Script" path="res://Managers/weather_filter.gd" id="1_weather"]
+[ext_resource type="Script" uid="uid://dcarymomn1r7f" path="res://Managers/weather_filter.gd" id="1_weather"]
 [ext_resource type="AudioStream" uid="uid://bv18i0dpr0apa" path="res://Audio/SFX/rain loop.wav" id="2_rain"]
 [ext_resource type="AudioStream" uid="uid://cs00f2khqhggt" path="res://Audio/SFX/thunderstorm ambience.wav" id="3_thunder"]
 
-[node name="WeatherFilter" type="CanvasLayer"]
-layer = 3
+[node name="WeatherFilter" type="CanvasLayer" unique_id=1501883121]
 process_mode = 3
+layer = 3
 script = ExtResource("1_weather")
-weather_audio_bus = "WeatherSFX"
-rain_loop_volume_db = -2.0
-thunderstorm_ambience_volume_db = -4.0
-indoor_volume_offset_db = -16.0
-indoor_lowpass_cutoff_hz = 1150.0
-indoor_lowpass_resonance = 0.45
 
-[node name="RainLines" type="Node2D" parent="."]
+[node name="RainLines" type="Node2D" parent="." unique_id=468167833]
 visible = false
 
-[node name="LightningFlash" type="ColorRect" parent="."]
+[node name="LightningFlash" type="ColorRect" parent="." unique_id=1847541340]
 visible = false
 anchors_preset = 15
 anchor_right = 1.0
@@ -28,12 +22,10 @@ grow_vertical = 2
 mouse_filter = 2
 color = Color(1, 1, 1, 0)
 
-[node name="RainAudio" type="AudioStreamPlayer" parent="."]
+[node name="RainAudio" type="AudioStreamPlayer" parent="." unique_id=222962993]
 stream = ExtResource("2_rain")
 volume_db = -2.0
-bus = &"WeatherSFX"
 
-[node name="ThunderstormAudio" type="AudioStreamPlayer" parent="."]
+[node name="ThunderstormAudio" type="AudioStreamPlayer" parent="." unique_id=881733023]
 stream = ExtResource("3_thunder")
 volume_db = -4.0
-bus = &"WeatherSFX"

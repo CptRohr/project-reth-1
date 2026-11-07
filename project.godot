@@ -107,7 +107,7 @@ version_control/autoload_on_startup=true
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/dialogic/plugin.cfg", "res://addons/extended_ui/plugin.cfg")
+enabled=PackedStringArray("res://addons/dialogic/plugin.cfg", "res://addons/extended_ui/plugin.cfg", "res://addons/orca/plugin.cfg")
 
 [file_customization]
 

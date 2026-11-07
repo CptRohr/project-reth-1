@@ -1,0 +1,15 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "mcp": {
+    "servers": {
+      "godot": {
+        "type": "local",
+        "command": ["npx", "-y", "@coding-solo/godot-mcp"],
+        "cwd": ".",
+        "environment": {
+          "GODOT_PATH": "D:\\SteamLibrary\\steamapps\\common\\Godot Engine\\godot.windows.opt.tools.64.exe"
+        }
+      }
+    }
+  }
+}
